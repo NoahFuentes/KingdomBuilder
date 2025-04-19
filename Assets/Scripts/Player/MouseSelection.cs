@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class MouseSelection : MonoBehaviour
 {
-    [SerializeField] private Material baseMat;
+    [SerializeField] private PlayerInteractions pi;
+    [SerializeField] private PlayerStats ps;
 
+    [SerializeField] private Material baseMat;
 
     [SerializeField] private Material hoverMat_interaction;
     [SerializeField] private Material selectedMat_interaction;
@@ -14,18 +16,31 @@ public class MouseSelection : MonoBehaviour
 
     [SerializeField] private LayerMask hitMask;
 
+    [SerializeField] private LayerMask groundLayer;
+
     [SerializeField] private GameObject lastHoveredObject;
 
     [SerializeField] private GameObject lastSelectedObject;
 
     private void Start()
     {
+        pi = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteractions>();
+        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+
         hitMask = enemyMask + interactionMask;
     }
 
     private void Update()
     {
         DetectHoveredObject();
+        if (Input.GetMouseButtonDown(0) && !ps.m_CurrentWeapon.hasTargetedAttacks)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, 500, groundLayer))
+            {
+                pi.NonTargetedAttack(hit.point);
+            }
+        }
     }
 
     void DetectHoveredObject()
@@ -65,11 +80,6 @@ public class MouseSelection : MonoBehaviour
                 ResetLastSelectedObject();
                 lastSelectedObject = hoveredObject;
 
-                if ((enemyMask.value & (1 << hoveredObject.layer)) != 0)
-                {
-                    //set enemy to attack
-                    return;
-                }
                 Renderer renderer = hoveredObject.GetComponent<Renderer>();
                 if (renderer != null)
                 {
@@ -81,12 +91,14 @@ public class MouseSelection : MonoBehaviour
                     }
                 }
             }
-            /*
-            if (Input.GetMouseButtonDown(0))
+
+            if(Input.GetMouseButtonDown(0) && ps.m_CurrentWeapon.hasTargetedAttacks)
             {
-                hoveredObject.GetComponent<PlayerInteractions>().TakeDamage(5);
+                if ((enemyMask.value & (1 << hoveredObject.layer)) != 0)
+                {
+                    pi.TargetedAttack(hoveredObject.transform);
+                }
             }
-            */
         }
         else
         {

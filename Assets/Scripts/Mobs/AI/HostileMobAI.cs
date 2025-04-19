@@ -27,14 +27,14 @@ public class HostileMobAI : AttackingMobAI //class for all enemy based mobs (att
             {
                 SetIsAttackingTrue();
                 transform.LookAt(currentTarget.transform);
-                animator.SetTrigger("attack");
+                //animator.SetTrigger("attack");
                 agent.speed = 0f;
                 return;
             }
             agent.speed = stats.sprintMovementSpeed;
             agent.destination = currentTarget.transform.position;
-            animator.SetBool("isRunning", true);
-            animator.SetBool("isWalking", false);
+            //animator.SetBool("isRunning", true);
+            //animator.SetBool("isWalking", false);
         }
         else if (Time.time - lastWanderTime >= wanderTime)
         {
@@ -44,13 +44,13 @@ public class HostileMobAI : AttackingMobAI //class for all enemy based mobs (att
             Vector3 wanderPosition = new Vector3(randX, 0, randZ) + spawner.transform.position;
             agent.speed = stats.baseMovementSpeed;
             agent.destination = wanderPosition;
-            animator.SetBool("isWalking", true);
-            animator.SetBool("isRunning", false);
+            //animator.SetBool("isWalking", true);
+            //animator.SetBool("isRunning", false);
         }
         else if (Vector3.Distance(transform.position, agent.destination) <= stats.attackRange)
         {
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isRunning", false);
+            //animator.SetBool("isWalking", false);
+            //animator.SetBool("isRunning", false);
         }
     }
 }

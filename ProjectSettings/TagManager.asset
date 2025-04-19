@@ -8,6 +8,7 @@ TagManager:
   - KingdomOverlay
   - MainMenu
   - UIManager
+  - WeaponManager
   layers:
   - Default
   - TransparentFX

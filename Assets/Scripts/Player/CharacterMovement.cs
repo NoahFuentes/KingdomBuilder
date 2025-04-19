@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
@@ -5,15 +6,21 @@ public class CharacterMovement : MonoBehaviour
     private PlayerStats ps;
     private PlayerInteractions pi;
     private Rigidbody rb;
-    //private Animator animator;
+    private Animator animator;
     [SerializeField] private float deceleration;
     [SerializeField] private float acceleration;
+
+    [SerializeField] private Transform dashTarget;
+    [SerializeField] private float dashSpeed;
+    public bool isDashing = false;
+    
     [SerializeField] private float rotationSpeed;
     private Vector3 moveDirection;
     private Vector3 inputDirection;
     private float fallMag;
     [SerializeField] private float playerGravity;
 
+    public bool canMove = true;
     [SerializeField] private bool isgrounded;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius;
@@ -27,11 +34,12 @@ public class CharacterMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true; // Prevents unwanted rotations
 
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
+        if (!canMove) return;
         // Get input from the player
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveZ = Input.GetAxisRaw("Vertical");
@@ -63,13 +71,17 @@ public class CharacterMovement : MonoBehaviour
             fallMag = 0;
         }
 
+        if (!canMove) return;
         if (inputDirection.magnitude > 0)
         {
             if (Input.GetKey(KeyCode.LeftShift) && ps.m_CurrentStamina > 0)
             {
                 moveDirection *= ps.m_SprintSpeedMult;
                 pi.ReduceStamina(ps.m_SprintStaminaCost);
+                animator.SetBool("isRunning", true);
             }
+            else
+                animator.SetBool("isWalking", true);
             // face correct direction
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed);
@@ -77,13 +89,21 @@ public class CharacterMovement : MonoBehaviour
             // Apply movement smoothly
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, new Vector3(moveDirection.x, fallMag, moveDirection.z), acceleration);
 
-            //animator.SetBool("isWalking", true);
         }
         else
         {
             // Gradually slow down
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, new Vector3(0f, fallMag, 0f), deceleration);
-            //animator.SetBool("isWalking", false);
+            animator.SetBool("isWalking", false);
         }
+    }
+
+    public void DisableMovement()
+    {
+        canMove = false;
+    }
+    public void EnableMovement()
+    {
+        canMove = true;
     }
 }

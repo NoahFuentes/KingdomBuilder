@@ -20,13 +20,9 @@ public class PlayerStats : MonoBehaviour
     public float m_SprintSpeedMult = 1.4f;
     public float m_SprintStaminaCost = 0.1f;
 
+    public Animator m_Animator;
 
-
-    public Weapon m_OnHand;
-    public Weapon m_OffHand;
-    public Weapon m_Ranged;
-    public Weapon m_Magic;
-
+    public Weapon_SO m_CurrentWeapon;
     public Pickaxe m_Pickaxe;
     public Axe m_Axe;
 
