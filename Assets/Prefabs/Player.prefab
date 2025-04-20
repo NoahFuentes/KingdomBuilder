@@ -2244,8 +2244,8 @@ Transform:
   m_GameObject: {fileID: 8522641030376239786}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.581, y: -0.5, z: -3.7914}
-  m_LocalScale: {x: 1.3212364, y: 1.3212364, z: 1.3212364}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2674947067712043269}
@@ -2273,7 +2273,7 @@ Animator:
   m_GameObject: {fileID: 8522641030376239786}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 389ca3d9c9d4e4f43b89f75ba8cb2335, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1ddc66e888cd454ca85d29800de89f7, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2406,6 +2406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60285304027647489dbb3679336bdf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSpawn: {fileID: 0}
 --- !u!1 &8887787226857067547
 GameObject:
   m_ObjectHideFlags: 0

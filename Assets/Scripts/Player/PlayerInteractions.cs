@@ -12,6 +12,8 @@ public class PlayerInteractions : MonoBehaviour
     private float lastDamagedTime;
     private float lastUsedStaminaTime;
 
+    [SerializeField] private Transform weaponSpawn;
+
 
     private void Start()
     {
@@ -25,7 +27,7 @@ public class PlayerInteractions : MonoBehaviour
         ui.updateStaminaBarMaxValue(ps.m_MaxStamina);
         ui.updateStaminaBarCurrentValue(ps.m_CurrentStamina);
 
-        EquipWeapon(wm.GetWeaponDetailsByName("Stick"));
+        EquipWeapon("Stick");
     }
 
     private void FixedUpdate()
@@ -48,7 +50,7 @@ public class PlayerInteractions : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            EquipWeapon(wm.GetWeaponDetailsByName("Bow"));
+            EquipWeapon("Test");
     }
 
 
@@ -105,6 +107,7 @@ public class PlayerInteractions : MonoBehaviour
         if (Vector3.Distance(transform.position, target.position) > ps.m_CurrentWeapon.attackRange) return;
 
         FaceAttackDir(target.position);
+        animator.SetTrigger("attack");
 
         Debug.Log("Attacked target with " + ps.m_CurrentWeapon.weaponName);
         Debug.Log("Damage: " + ps.m_CurrentWeapon.damage);
@@ -116,7 +119,7 @@ public class PlayerInteractions : MonoBehaviour
     public void NonTargetedAttack(Vector3 direction)
     {
         FaceAttackDir(direction);
-
+        animator.SetTrigger("attack");
 
         Debug.Log("Attacked with " + ps.m_CurrentWeapon.weaponName);
         Debug.Log("Damage: " + ps.m_CurrentWeapon.damage);
@@ -135,14 +138,21 @@ public class PlayerInteractions : MonoBehaviour
         }
     }
 
-    public void EquipWeapon(Weapon_SO weapon)
+    public void EquipWeapon(string weaponName)
     {
+        Weapon_SO weapon = wm.GetWeaponDetailsByName(weaponName);
         ps.m_CurrentWeapon = weapon;
         animator.runtimeAnimatorController = weapon.animController;
-        
-
-        //remove old weapon model
+        /*
+        if(weaponSpawn.childCount != 0)
+        {
+            //remove old weapon model
+            Destroy(weaponSpawn.GetChild(0));
+        }
         //add new weapon model
+        Instantiate(weapon.model, weaponSpawn);
+        //update UI sprite
+        */
     }
 
     #endregion

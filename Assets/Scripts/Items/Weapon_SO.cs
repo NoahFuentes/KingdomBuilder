@@ -4,16 +4,13 @@ using UnityEngine;
 public class Weapon_SO : ScriptableObject
 {
     public string weaponName;
-    public Sprite icon;
-
     public float damage;
     public string dmgType;
-
     public float attackRange;
-
     public string weaponType;
-
     public bool hasTargetedAttacks;
-    public RuntimeAnimatorController animController;
 
+    public Sprite icon;
+    public AnimatorOverrideController animController;
+    public GameObject model;
 }

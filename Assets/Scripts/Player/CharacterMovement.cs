@@ -79,9 +79,13 @@ public class CharacterMovement : MonoBehaviour
                 moveDirection *= ps.m_SprintSpeedMult;
                 pi.ReduceStamina(ps.m_SprintStaminaCost);
                 animator.SetBool("isRunning", true);
+                animator.SetBool("isWalking", false);
             }
             else
+            {
+                animator.SetBool("isRunning", false);
                 animator.SetBool("isWalking", true);
+            }
             // face correct direction
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed);
@@ -94,6 +98,7 @@ public class CharacterMovement : MonoBehaviour
         {
             // Gradually slow down
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, new Vector3(0f, fallMag, 0f), deceleration);
+            animator.SetBool("isRunning", false);
             animator.SetBool("isWalking", false);
         }
     }
