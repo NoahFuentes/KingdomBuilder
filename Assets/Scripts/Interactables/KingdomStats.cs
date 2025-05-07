@@ -124,31 +124,31 @@ public class KingdomStats : MonoBehaviour
             switch (resources[i])
             {
                 case "food":
-                    m_CurrentFoodAmount = m_CurrentFoodAmount += amts[i] > m_MaxFoodAmount ? m_MaxFoodAmount : m_CurrentFoodAmount;
+                    m_CurrentFoodAmount = (((m_CurrentFoodAmount += amts[i]) > m_MaxFoodAmount) ? m_MaxFoodAmount : m_CurrentFoodAmount);
                     break;
                 case "water":
-                    m_CurrentWaterAmount = m_CurrentWaterAmount += amts[i] > m_MaxWaterAmount ? m_MaxWaterAmount : m_CurrentWaterAmount;
+                    m_CurrentWaterAmount = (((m_CurrentWaterAmount += amts[i]) > m_MaxWaterAmount) ? m_MaxWaterAmount : m_CurrentWaterAmount);
                     break;
                 case "wood":
-                    m_CurrentWoodAmount = m_CurrentWoodAmount += amts[i] > m_MaxWoodAmount ? m_MaxWoodAmount : m_CurrentWoodAmount;
+                    m_CurrentWoodAmount = (((m_CurrentWoodAmount += amts[i]) > m_MaxWoodAmount) ? m_MaxWoodAmount : m_CurrentWoodAmount);
                     break;
                 case "textile":
-                    m_CurrentTextileAmount = m_CurrentTextileAmount += amts[i] > m_MaxTextileAmount ? m_MaxTextileAmount : m_CurrentTextileAmount;
+                    m_CurrentTextileAmount = (((m_CurrentTextileAmount += amts[i]) > m_MaxTextileAmount) ? m_MaxTextileAmount : m_CurrentTextileAmount);
                     break;
                 case "stone":
-                    m_CurrentStoneAmount = m_CurrentStoneAmount += amts[i] > m_MaxStoneAmount ? m_MaxStoneAmount : m_CurrentStoneAmount;
+                    m_CurrentStoneAmount = (((m_CurrentStoneAmount += amts[i]) > m_MaxStoneAmount) ? m_MaxStoneAmount : m_CurrentStoneAmount);
                     break;
                 case "iron":
-                    m_CurrentIronAmount = m_CurrentIronAmount += amts[i] > m_MaxIronAmount ? m_MaxIronAmount : m_CurrentIronAmount;
+                    m_CurrentIronAmount = (((m_CurrentIronAmount += amts[i]) > m_MaxIronAmount) ? m_MaxIronAmount : m_CurrentIronAmount);
                     break;
                 case "gold":
-                    m_CurrentGoldAmount = m_CurrentGoldAmount += amts[i] > m_MaxGoldAmount ? m_MaxGoldAmount : m_CurrentGoldAmount;
+                    m_CurrentGoldAmount = (((m_CurrentGoldAmount += amts[i]) > m_MaxGoldAmount) ? m_MaxGoldAmount : m_CurrentGoldAmount);
                     break;
                 case "crystal":
-                    m_CurrentCrystalAmount = m_CurrentCrystalAmount += amts[i] > m_MaxCrystalAmount ? m_MaxCrystalAmount : m_CurrentCrystalAmount;
+                    m_CurrentCrystalAmount = (((m_CurrentCrystalAmount += amts[i]) > m_MaxCrystalAmount) ? m_MaxCrystalAmount : m_CurrentCrystalAmount);
                     break;
                 case "black crystal":
-                    m_CurrentBlackCrystalAmount = m_CurrentBlackCrystalAmount += amts[i] > m_MaxBlackCrystalAmount ? m_MaxBlackCrystalAmount : m_CurrentBlackCrystalAmount;
+                    m_CurrentBlackCrystalAmount = (((m_CurrentBlackCrystalAmount += amts[i]) > m_MaxBlackCrystalAmount) ? m_MaxBlackCrystalAmount : m_CurrentBlackCrystalAmount);
                     break;
                 default:
                     Debug.Log("Cannot find resource of type: " + resources[i]);

@@ -135,6 +135,16 @@ public class UIManager : MonoBehaviour
     }
 
     #endregion
+    #region CRAFTING MENUS
+    public GameObject armoryCraftingMenu;
+
+
+    public void CloseArmoryCraftingMenu()
+    {
+        armoryCraftingMenu.SetActive(false);
+    }
+
+    #endregion
     #region EXPLORING OVERLAY
     [SerializeField] private Slider playerHealthBar;
     [SerializeField] private Slider playerStaminaBar;

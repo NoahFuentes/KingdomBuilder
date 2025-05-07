@@ -11,6 +11,7 @@ TagManager:
   - WeaponManager
   - Ground
   - KingdomManager
+  - ArmoryCraftingMenu
   layers:
   - Default
   - TransparentFX

@@ -5,17 +5,26 @@ public class Crafting_Building : Building
     #region CraftingBuilding
     [SerializeField] protected GameObject craftingMenu;
 
-    public void OpenCraftMenu()
+    protected UIManager ui;
+
+    public virtual void OpenCraftMenu()
     {
         craftingMenu.SetActive(true);
+        CloseInteractionDisplay();
     }
-    public void CloseCraftMenu()
+    public virtual void CloseCraftMenu()
     {
         craftingMenu.SetActive(false);
     }
 
-    private void Update()
+
+    protected void Start()
     {
+        ui = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+    }
+    protected new void Update()
+    {
+        base.Update();
         if (!craftingMenu.activeSelf) return;
         Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
         if (Vector3.Distance(playerPos, transform.position) > interactionBreakDist)

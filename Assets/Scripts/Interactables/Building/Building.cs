@@ -42,13 +42,18 @@ public class Building : MonoBehaviour
         ui.UpdateResourceCounts();
         Destroy(gameObject);
     }
-    private void Update()
+    protected void CloseInteractionDisplay()
+    {
+        interactionDisplay.gameObject.SetActive(false);
+    }
+    
+    protected void Update()
     {
         if (!interactionDisplay.gameObject.activeSelf) return;
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
         if (Vector3.Distance(playerPos, transform.position) > interactionBreakDist)
         {
-            interactionDisplay.gameObject.SetActive(false);
+            CloseInteractionDisplay();
         }
     }
 
