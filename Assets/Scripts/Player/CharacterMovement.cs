@@ -9,10 +9,6 @@ public class CharacterMovement : MonoBehaviour
     private Animator animator;
     [SerializeField] private float deceleration;
     [SerializeField] private float acceleration;
-
-    [SerializeField] private Transform dashTarget;
-    [SerializeField] private float dashSpeed;
-    public bool isDashing = false;
     
     [SerializeField] private float rotationSpeed;
     private Vector3 moveDirection;
@@ -39,7 +35,14 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        if (!canMove) return;
+        if (!canMove)
+        {
+            // Gradually slow down
+            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, new Vector3(0f, fallMag, 0f), deceleration);
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isWalking", false);
+            return;
+        }
         // Get input from the player
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveZ = Input.GetAxisRaw("Vertical");

@@ -74,7 +74,7 @@
  *              
  *          Crafters: (Only one can be alive at a time)
  *              Artisan         (Player interacts to craft general items at a workshop)
- *              BlackSmith      (Turns raw metals into ingots. Player interacts to craft metalworks at a forge)
+ *              BlackSmith      (Turns raw metals into ingots. Player interacts to craft metalworks at a armory)
  *              Builder         (Player interacts to build advanced buildings at a planning quarters)
  *              Mage            (Player interacts to craft magic items at a mage tower)
  * 

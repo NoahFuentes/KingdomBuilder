@@ -12,5 +12,6 @@ public class Weapon_SO : ScriptableObject
 
     public Sprite icon;
     public AnimatorOverrideController animController;
-    public GameObject model;
+    public GameObject modelRight;
+    public GameObject modelLeft;
 }

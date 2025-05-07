@@ -20,4 +20,5 @@ MonoBehaviour:
   hasTargetedAttacks: 0
   icon: {fileID: 0}
   animController: {fileID: 22100000, guid: b83ad64678b7b8542a26a02a6780f86c, type: 2}
-  model: {fileID: 0}
+  modelRight: {fileID: 1125422861488534708, guid: a5a220207a2cec945be4bea9c1100a45, type: 3}
+  modelLeft: {fileID: 0}

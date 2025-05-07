@@ -9,6 +9,8 @@ TagManager:
   - MainMenu
   - UIManager
   - WeaponManager
+  - Ground
+  - KingdomManager
   layers:
   - Default
   - TransparentFX
@@ -17,15 +19,15 @@ TagManager:
   - Water
   - UI
   - Ground
-  - Interactable
+  - Resource
   - Enemy
   - Player
   - Hostile
   - Neutral
   - Passive
   - Skittish
-  - 
-  - 
+  - NPC
+  - Building
   - 
   - 
   - 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInteractions : MonoBehaviour
 {
     private PlayerStats ps;
+    private CharacterMovement movement;
     private Animator animator;
     private UIManager ui;
     private WeaponManager wm;
@@ -12,12 +13,15 @@ public class PlayerInteractions : MonoBehaviour
     private float lastDamagedTime;
     private float lastUsedStaminaTime;
 
-    [SerializeField] private Transform weaponSpawn;
+    [SerializeField] private Transform rightItemSpawn;
+    [SerializeField] private Transform leftItemSpawn;
+
 
 
     private void Start()
     {
         ps = GetComponent<PlayerStats>();
+        movement = GetComponent<CharacterMovement>();
         animator = GetComponent<Animator>();
         ui = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         wm = GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>();
@@ -49,8 +53,9 @@ public class PlayerInteractions : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            EquipWeapon("Test");
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    EquipWeapon("Test");
+        
     }
 
 
@@ -104,6 +109,8 @@ public class PlayerInteractions : MonoBehaviour
 
     public void TargetedAttack(Transform target)
     {
+        movement.canMove = false;
+        if (animator.GetBool("isAttacking")) return;
         if (Vector3.Distance(transform.position, target.position) > ps.m_CurrentWeapon.attackRange) return;
 
         FaceAttackDir(target.position);
@@ -118,6 +125,8 @@ public class PlayerInteractions : MonoBehaviour
 
     public void NonTargetedAttack(Vector3 direction)
     {
+        movement.canMove = false;
+        if (animator.GetBool("isAttacking")) return;
         FaceAttackDir(direction);
         animator.SetTrigger("attack");
 
@@ -143,16 +152,22 @@ public class PlayerInteractions : MonoBehaviour
         Weapon_SO weapon = wm.GetWeaponDetailsByName(weaponName);
         ps.m_CurrentWeapon = weapon;
         animator.runtimeAnimatorController = weapon.animController;
-        /*
-        if(weaponSpawn.childCount != 0)
+        if(rightItemSpawn.childCount != 0)
         {
             //remove old weapon model
-            Destroy(weaponSpawn.GetChild(0));
+            Destroy(rightItemSpawn.GetChild(0).gameObject);
+        }
+        if (leftItemSpawn.childCount != 0)
+        {
+            //remove old weapon model
+            Destroy(leftItemSpawn.GetChild(0).gameObject);
         }
         //add new weapon model
-        Instantiate(weapon.model, weaponSpawn);
+        if (null != weapon.modelRight)
+            Instantiate(weapon.modelRight, rightItemSpawn);
+        if(null != weapon.modelLeft)
+            Instantiate(weapon.modelLeft, rightItemSpawn);
         //update UI sprite
-        */
     }
 
     #endregion

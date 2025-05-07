@@ -6,6 +6,8 @@ public class Kingdom : MonoBehaviour
     private SphereCollider kingdomBuildCheck;
     private UIManager ui;
 
+    [SerializeField] private GameObject buildRangeIndicator;
+
     private void Start()
     {
         stats = GetComponent<KingdomStats>();
@@ -14,11 +16,11 @@ public class Kingdom : MonoBehaviour
 
         kingdomBuildCheck.radius = stats.m_KingdomRadius;
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
+            buildRangeIndicator.SetActive(false);
             ui.openExploringOverlay();
         }
     }
@@ -26,6 +28,7 @@ public class Kingdom : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            buildRangeIndicator.SetActive(true);
             ui.openKingdomOverlay();
         }
     }
