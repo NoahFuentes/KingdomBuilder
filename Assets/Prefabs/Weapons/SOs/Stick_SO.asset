@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Stick_SO
   m_EditorClassIdentifier: 
   weaponName: Stick
-  damage: 2
   dmgType: blunt
   attackRange: 0
   weaponType: SAS
+  damage: 2
+  staminaCost: 10
+  attackTime: 1
   dashDistance: 2
   dashSpeed: 25
   knockBackDist: 10

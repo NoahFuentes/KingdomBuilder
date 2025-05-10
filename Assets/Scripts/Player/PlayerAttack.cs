@@ -4,17 +4,30 @@ using System.Collections;
 public class PlayerAttack : MonoBehaviour
 {
     private PlayerStats ps;
+    private PlayerInteractions pi;
     private Rigidbody rb;
     private CharacterMovement movement;
     private Animator animator;
     [SerializeField] private LayerMask groundLayer;
 
+    private bool isDashing;
+    private bool isAttacking;
+    private bool collisionDetected;
+
+    private float lastAttackedTime;
 
 
     public void StartAttack(Vector3 direction)
     {
-        //add bail cases
+        //BAIL CASES
+        if (isDashing || isAttacking) return;
+        //check for attack spamming
+        if (Time.time - lastAttackedTime < ps.m_CurrentWeapon.attackTime) return;
+        //check stamina and remove it
+        if (ps.m_CurrentStamina < ps.m_CurrentWeapon.staminaCost) return;
 
+        lastAttackedTime = Time.time;
+        pi.ReduceStamina(ps.m_CurrentWeapon.staminaCost);
         //disable movement
         movement.DisableMovement();
         //face attack direction
@@ -45,26 +58,38 @@ public class PlayerAttack : MonoBehaviour
     }
     private IEnumerator Dash(float distance, float speed, Vector3 dir)
     {
+        collisionDetected = false;
+        isDashing = true;
         Vector3 startPos = transform.position;
 
-        while (Vector3.Distance(transform.position, startPos) <= distance)
+        while ((Vector3.Distance(transform.position, startPos) <= distance) && !collisionDetected)
         {
             rb.MovePosition(transform.position + (dir * (speed * Time.deltaTime)));
             yield return null;
         }
         movement.EnableMovement();
+        Debug.Log("col detect: " + collisionDetected);
+        isDashing = false;
     }
 
+    //UNITY FUNCTIONS
 
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        collisionDetected = true;
+    }
     private void Start()
     {
         ps = GetComponent<PlayerStats>();
+        pi = GetComponent<PlayerInteractions>();
         rb = GetComponent<Rigidbody>();
         movement = GetComponent<CharacterMovement>();
         animator = GetComponent<Animator>();
+        
+        isDashing = false;
+        isAttacking = false;
+        lastAttackedTime = Time.time;
     }
-
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))

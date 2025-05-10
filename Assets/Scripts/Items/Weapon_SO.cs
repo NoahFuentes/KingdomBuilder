@@ -4,11 +4,13 @@ using UnityEngine;
 public class Weapon_SO : ScriptableObject
 {
     public string weaponName;
-    public float damage;
     public string dmgType; //slash, pierce, blunt, magic
     public float attackRange; //mainly for ranged weapons
     public string weaponType; //SAS, Two-Handed, Bow, Staff
 
+    public float damage;
+    public float staminaCost;
+    public float attackTime;
     public float dashDistance;
     public float dashSpeed;
     public float knockBackDist; //10-90 player back and target back
