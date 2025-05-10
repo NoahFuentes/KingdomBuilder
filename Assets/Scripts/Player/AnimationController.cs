@@ -22,11 +22,11 @@ public class AnimationController : MonoBehaviour
     {
         dashCollider.enabled = false;
     }
-    public void StartAttack()
+    public void StartAttackAnimEvent()
     {
         animator.SetBool("isAttacking", true);
     }
-    public void FinishAttack()
+    public void FinishAttackAnimEvent()
     {
         movement.EnableMovement();
         animator.SetBool("isAttacking", false);

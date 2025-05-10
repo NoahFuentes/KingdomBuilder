@@ -10,7 +10,6 @@ public class PlayerAttack : MonoBehaviour
     private Animator animator;
     [SerializeField] private LayerMask groundLayer;
 
-    private bool isDashing;
     private bool isAttacking;
     private bool collisionDetected;
 
@@ -20,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
     public void StartAttack(Vector3 direction)
     {
         //BAIL CASES
-        if (isDashing || isAttacking) return;
+        if (isAttacking) return;
         //check for attack spamming
         if (Time.time - lastAttackedTime < ps.m_CurrentWeapon.attackTime) return;
         //check stamina and remove it
@@ -33,18 +32,9 @@ public class PlayerAttack : MonoBehaviour
         //face attack direction
         FaceAttackDir(direction);
         //start dash (dash animation should check for collision or end of range and attack)
-        //animator.SetTrigger("dash");
         Weapon_SO weapon = ps.m_CurrentWeapon;
         StartCoroutine(Dash(weapon.dashDistance, weapon.dashSpeed, (direction - transform.position).normalized));
-
-        Debug.Log("Attacked with " + ps.m_CurrentWeapon.weaponName);
-        Debug.Log("Damage: " + ps.m_CurrentWeapon.damage);
-        Debug.Log("Dmg Type: " + ps.m_CurrentWeapon.dmgType);
-        Debug.Log("Range: " + ps.m_CurrentWeapon.attackRange);
-        Debug.Log("Type: " + ps.m_CurrentWeapon.weaponType);
-        Debug.Log("Dash Distance: " + ps.m_CurrentWeapon.dashDistance);
-        Debug.Log("Dash Speed: " + ps.m_CurrentWeapon.dashSpeed);
-        Debug.Log("Knockback: " + ps.m_CurrentWeapon.knockBackDist);
+        Attack();
     }
     public void FaceAttackDir(Vector3 dir)
     {
@@ -59,7 +49,8 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator Dash(float distance, float speed, Vector3 dir)
     {
         collisionDetected = false;
-        isDashing = true;
+        isAttacking = true;
+        //animator.SetTrigger("dash");
         Vector3 startPos = transform.position;
 
         while ((Vector3.Distance(transform.position, startPos) <= distance) && !collisionDetected)
@@ -67,16 +58,32 @@ public class PlayerAttack : MonoBehaviour
             rb.MovePosition(transform.position + (dir * (speed * Time.deltaTime)));
             yield return null;
         }
-        movement.EnableMovement();
         Debug.Log("col detect: " + collisionDetected);
-        isDashing = false;
+        isAttacking = false;
+    }
+    private void Attack()
+    {
+        animator.SetTrigger("attack"); //attack animation needs to set isAttacking to false
+
+        Debug.Log("Attacked with " + ps.m_CurrentWeapon.weaponName);
+        Debug.Log("Damage: " + ps.m_CurrentWeapon.damage);
+        Debug.Log("Dmg Type: " + ps.m_CurrentWeapon.dmgType);
+        Debug.Log("Range: " + ps.m_CurrentWeapon.attackRange);
+        Debug.Log("Type: " + ps.m_CurrentWeapon.weaponType);
+        Debug.Log("Dash Distance: " + ps.m_CurrentWeapon.dashDistance);
+        Debug.Log("Dash Speed: " + ps.m_CurrentWeapon.dashSpeed);
+        Debug.Log("Knockback: " + ps.m_CurrentWeapon.knockBackDist);
     }
 
     //UNITY FUNCTIONS
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!isAttacking) return;
         collisionDetected = true;
+        //apply knockback to target
+        Vector3 dir = (collision.transform.position - transform.position).normalized;
+        collision.gameObject.GetComponent<Rigidbody>().AddForce(dir * ps.m_CurrentWeapon.knockBackDist, ForceMode.Impulse);
     }
     private void Start()
     {
@@ -86,7 +93,6 @@ public class PlayerAttack : MonoBehaviour
         movement = GetComponent<CharacterMovement>();
         animator = GetComponent<Animator>();
         
-        isDashing = false;
         isAttacking = false;
         lastAttackedTime = Time.time;
     }

@@ -21,7 +21,7 @@ MonoBehaviour:
   attackTime: 1
   dashDistance: 2
   dashSpeed: 25
-  knockBackDist: 10
+  knockBackDist: 80
   icon: {fileID: 0}
   animController: {fileID: 22100000, guid: e4578509f8f57bf4e8a1f98bc7c06282, type: 2}
   modelRight: {fileID: 1125422861488534708, guid: 147a73392412ab2449e0ea933dc0c8bb, type: 3}
