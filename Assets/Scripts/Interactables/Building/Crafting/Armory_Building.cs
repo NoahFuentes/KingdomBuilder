@@ -11,6 +11,5 @@ public class Armory_Building : Crafting_Building
         base.Start();
         craftingMenu = ui.armoryCraftingMenu;
     }
-
     #endregion
 }

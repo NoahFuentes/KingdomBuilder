@@ -16,7 +16,7 @@ public class CharacterMovement : MonoBehaviour
     private float fallMag;
     [SerializeField] private float playerGravity;
 
-    public bool canMove = true;
+    private bool canMove = true;
     [SerializeField] private bool isgrounded;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius;

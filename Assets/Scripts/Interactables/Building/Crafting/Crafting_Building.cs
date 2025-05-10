@@ -3,20 +3,18 @@ using UnityEngine;
 public class Crafting_Building : Building
 {
     #region CraftingBuilding
-    [SerializeField] protected GameObject craftingMenu;
-
+    protected GameObject craftingMenu;
     protected UIManager ui;
 
     public virtual void OpenCraftMenu()
     {
-        craftingMenu.SetActive(true);
         CloseInteractionDisplay();
+        craftingMenu.SetActive(true);
     }
     public virtual void CloseCraftMenu()
     {
         craftingMenu.SetActive(false);
     }
-
 
     protected void Start()
     {

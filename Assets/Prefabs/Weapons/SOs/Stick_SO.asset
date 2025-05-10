@@ -15,9 +15,11 @@ MonoBehaviour:
   weaponName: Stick
   damage: 2
   dmgType: blunt
-  attackRange: 4
-  weaponType: one-handed
-  hasTargetedAttacks: 0
+  attackRange: 0
+  weaponType: SAS
+  dashDistance: 2
+  dashSpeed: 25
+  knockBackDist: 10
   icon: {fileID: 0}
   animController: {fileID: 22100000, guid: e4578509f8f57bf4e8a1f98bc7c06282, type: 2}
   modelRight: {fileID: 1125422861488534708, guid: 147a73392412ab2449e0ea933dc0c8bb, type: 3}

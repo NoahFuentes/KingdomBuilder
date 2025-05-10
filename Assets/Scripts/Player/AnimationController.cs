@@ -17,7 +17,7 @@ public class AnimationController : MonoBehaviour
     }
     public void FinishAttack()
     {
-        movement.canMove = true;
+        movement.EnableMovement();
         animator.SetBool("isAttacking", false);
     }
 }

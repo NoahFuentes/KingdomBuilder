@@ -2,139 +2,124 @@ using UnityEngine;
 
 public class MouseSelection : MonoBehaviour
 {
-    [SerializeField] private PlayerInteractions pi;
-    [SerializeField] private PlayerStats ps;
+    [SerializeField] private LayerMask NPCMask;
+    [SerializeField] private LayerMask buildingMask;
+    [SerializeField] private LayerMask resourceMask;
+    [SerializeField] private LayerMask interactableMask;
 
-    [SerializeField] private Material baseMat;
+    [SerializeField] private GameObject hoveredObject;
 
-    [SerializeField] private Material hoverMat_interaction;
-    [SerializeField] private Material selectedMat_interaction;
-    [SerializeField] private Material hoverMat_enemy;
+    [SerializeField] private Texture2D mouseNPCHover;
+    [SerializeField] private Texture2D mouseResourceHover;
+    [SerializeField] private Texture2D mouseBase;
+    [SerializeField] private Vector2 mouseHotspot;
 
-    [SerializeField] private LayerMask interactionMask;
-    [SerializeField] private LayerMask enemyMask;
+    [SerializeField] private float interactableDistance;
 
-    [SerializeField] private LayerMask hitMask;
-
-    [SerializeField] private LayerMask groundLayer;
-
-    [SerializeField] private GameObject lastHoveredObject;
-
-    [SerializeField] private GameObject lastSelectedObject;
+    //private PlayerInteractions pi;
 
     private void Start()
     {
-        pi = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteractions>();
-        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        
+        //pi = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteractions>();
+        //ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
 
-        hitMask = enemyMask + interactionMask;
+        interactableMask = NPCMask + resourceMask + buildingMask;
+        Cursor.SetCursor(mouseBase, mouseHotspot, CursorMode.ForceSoftware);
     }
 
     private void Update()
     {
         DetectHoveredObject();
-        if (Input.GetMouseButtonDown(0) && !ps.m_CurrentWeapon.hasTargetedAttacks)
+
+        if (Input.GetMouseButtonDown(1)) //right click
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, 500, groundLayer))
-            {
-                pi.NonTargetedAttack(hit.point);
-            }
+            HandleRightClick();
         }
     }
 
-    void DetectHoveredObject()
+    private void DetectHoveredObject()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 500, hitMask))
+        if (Physics.Raycast(ray, out hit, 500, interactableMask))
         {
-            GameObject hoveredObject = hit.collider.gameObject;
-
-            if (hoveredObject != lastHoveredObject && hoveredObject != lastSelectedObject)
-            {
-                ResetLastHoveredObject();
-
-                Renderer renderer = hoveredObject.GetComponent<Renderer>();
-                if (renderer != null)
-                {
-                    Material[] mats = renderer.materials;
-                    if ((interactionMask.value & (1 << hoveredObject.layer)) != 0) {
-                        mats[1] = hoverMat_interaction;
-                    }
-                    else if ((enemyMask.value & (1 << hoveredObject.layer)) != 0)
-                    {
-                        mats[1] = hoverMat_enemy;
-                    }
-                    renderer.materials = mats;
-                }
-
-                lastHoveredObject = hoveredObject;
-            }
-
-            if (Input.GetMouseButtonDown(1))
-            {
-                if (hoveredObject == lastSelectedObject)
-                    return;
-                ResetLastSelectedObject();
-                lastSelectedObject = hoveredObject;
-
-                Renderer renderer = hoveredObject.GetComponent<Renderer>();
-                if (renderer != null)
-                {
-                    Material[] mats = renderer.materials;
-                    if ((interactionMask.value & (1 << hoveredObject.layer)) != 0)
-                    {
-                        mats[1] = selectedMat_interaction;
-                        renderer.materials = mats;
-                    }
-                }
-            }
-
-            if(Input.GetMouseButtonDown(0) && ps.m_CurrentWeapon.hasTargetedAttacks)
-            {
-                if ((enemyMask.value & (1 << hoveredObject.layer)) != 0)
-                {
-                    pi.TargetedAttack(hoveredObject.transform);
-                }
-            }
+            if (hit.collider.gameObject == hoveredObject) return;
+            hoveredObject = hit.collider.gameObject;
+            HandleObjectHovered();
         }
-        else
+        else if (null != hoveredObject)
+            HandleNoHover();
+    }
+
+    private void HandleObjectHovered()
+    {
+        if (null == hoveredObject) return;
+
+        if ((NPCMask.value & (1 << hoveredObject.layer)) != 0)
         {
-            ResetLastHoveredObject();
+            HandleNPCHover();
+        }
+        else if ((resourceMask.value & (1 << hoveredObject.layer)) != 0)
+        {
+            HandleResourceHover();
+        }
+        else if ((buildingMask.value & (1 << hoveredObject.layer)) != 0)
+        {
+            HandleBuildingHover();
         }
     }
 
-    void ResetLastHoveredObject()
+    private void HandleNPCHover()
     {
-        if (lastHoveredObject != null && lastHoveredObject != lastSelectedObject)
-        {
-            Renderer renderer = lastHoveredObject.GetComponent<Renderer>();
-            if (renderer != null && 1 < renderer.materials.Length)
-            {
-                Material[] mats = renderer.materials;
-                mats[1] = baseMat;
-                renderer.materials = mats;
-            }
+        Cursor.SetCursor(mouseNPCHover, mouseHotspot, CursorMode.ForceSoftware);
 
-            lastHoveredObject = null;
+        Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
+        if (Vector3.Distance(playerPos, hoveredObject.transform.position) > interactableDistance) return;
+        //make them outline?
+    }
+
+    private void HandleResourceHover()
+    {
+        Cursor.SetCursor(mouseResourceHover, mouseHotspot, CursorMode.ForceSoftware);
+
+        Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
+        if (Vector3.Distance(playerPos, hoveredObject.transform.position) > interactableDistance) return;
+        //make it outline?
+    }
+    private void HandleBuildingHover()
+    {
+        Cursor.SetCursor(mouseNPCHover, mouseHotspot, CursorMode.ForceSoftware);
+
+        Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
+        if (Vector3.Distance(playerPos, hoveredObject.transform.position) > interactableDistance) return;
+        //make it outline?
+    }
+
+    private void HandleRightClick()
+    {
+        if (null == hoveredObject) return;
+        Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
+        if (Vector3.Distance(playerPos, hoveredObject.transform.position) > interactableDistance) return;
+
+        if ((NPCMask.value & (1 << hoveredObject.layer)) != 0)
+        {
+            //open NPC managment UI
+        }
+        else if ((resourceMask.value & (1 << hoveredObject.layer)) != 0)
+        {
+            hoveredObject.GetComponent<Resource>().Interaction();
+        }
+        else if ((buildingMask.value & (1 << hoveredObject.layer)) != 0)
+        {
+            hoveredObject.GetComponent<Building>().Interaction();
         }
     }
 
-    void ResetLastSelectedObject()
+    private void HandleNoHover()
     {
-        if (lastSelectedObject != null)
-        {
-            Renderer renderer = lastSelectedObject.GetComponent<Renderer>();
-            if (renderer != null && 1 < renderer.materials.Length)
-            {
-                Material[] mats = renderer.materials;
-                mats[1] = baseMat;
-                renderer.materials = mats;
-            }
-
-            lastSelectedObject = null;
-        }
+        Cursor.SetCursor(mouseBase, mouseHotspot, CursorMode.ForceSoftware);
+        hoveredObject = null;
     }
 }

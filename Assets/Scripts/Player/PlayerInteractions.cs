@@ -107,6 +107,7 @@ public class PlayerInteractions : MonoBehaviour
 
     #region Combat
 
+    /*
     public void TargetedAttack(Transform target)
     {
         movement.canMove = false;
@@ -122,13 +123,14 @@ public class PlayerInteractions : MonoBehaviour
         Debug.Log("Range: " + ps.m_CurrentWeapon.attackRange);
         Debug.Log("Type: " + ps.m_CurrentWeapon.weaponType);
     }
-
+    */
+    /*
     public void NonTargetedAttack(Vector3 direction)
     {
-        movement.canMove = false;
         if (animator.GetBool("isAttacking")) return;
+        movement.DisableMovement();
         FaceAttackDir(direction);
-        animator.SetTrigger("attack");
+        animator.SetTrigger("attack"); //players swing animation
 
         Debug.Log("Attacked with " + ps.m_CurrentWeapon.weaponName);
         Debug.Log("Damage: " + ps.m_CurrentWeapon.damage);
@@ -146,7 +148,7 @@ public class PlayerInteractions : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, lookRotation.eulerAngles.y, 0);
         }
     }
-
+    */
     public void EquipWeapon(string weaponName)
     {
         Weapon_SO weapon = wm.GetWeaponDetailsByName(weaponName);
@@ -167,7 +169,7 @@ public class PlayerInteractions : MonoBehaviour
             Instantiate(weapon.modelRight, rightItemSpawn);
         if(null != weapon.modelLeft)
             Instantiate(weapon.modelLeft, rightItemSpawn);
-        //update UI sprite
+        //TODO: update UI sprite
     }
 
     #endregion

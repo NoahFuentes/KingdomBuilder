@@ -138,7 +138,10 @@ public class UIManager : MonoBehaviour
     #region CRAFTING MENUS
     public GameObject armoryCraftingMenu;
 
-
+    public void OpenArmoryCraftingMenu()
+    {
+        armoryCraftingMenu.SetActive(true);
+    }
     public void CloseArmoryCraftingMenu()
     {
         armoryCraftingMenu.SetActive(false);
