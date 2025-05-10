@@ -58,13 +58,13 @@ public class PlayerAttack : MonoBehaviour
             rb.MovePosition(transform.position + (dir * (speed * Time.deltaTime)));
             yield return null;
         }
-        Debug.Log("col detect: " + collisionDetected);
+        //Debug.Log("col detect: " + collisionDetected);
         isAttacking = false;
     }
     private void Attack()
     {
         animator.SetTrigger("attack"); //attack animation needs to set isAttacking to false
-
+        /*
         Debug.Log("Attacked with " + ps.m_CurrentWeapon.weaponName);
         Debug.Log("Damage: " + ps.m_CurrentWeapon.damage);
         Debug.Log("Dmg Type: " + ps.m_CurrentWeapon.dmgType);
@@ -73,6 +73,7 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log("Dash Distance: " + ps.m_CurrentWeapon.dashDistance);
         Debug.Log("Dash Speed: " + ps.m_CurrentWeapon.dashSpeed);
         Debug.Log("Knockback: " + ps.m_CurrentWeapon.knockBackDist);
+        */
     }
 
     //UNITY FUNCTIONS
@@ -82,8 +83,8 @@ public class PlayerAttack : MonoBehaviour
         if (!isAttacking) return;
         collisionDetected = true;
         //apply knockback to target
-        Vector3 dir = (collision.transform.position - transform.position).normalized;
-        collision.gameObject.GetComponent<Rigidbody>().AddForce(dir * ps.m_CurrentWeapon.knockBackDist, ForceMode.Impulse);
+        //Vector3 dir = (collision.transform.position - transform.position).normalized;
+        //collision.gameObject.GetComponent<Rigidbody>().AddForce(dir * ps.m_CurrentWeapon.knockBackDist, ForceMode.Impulse);
     }
     private void Start()
     {

@@ -4508,7 +4508,7 @@ MonoBehaviour:
   m_ShouldRegenHealth: 0
   m_MaxStamina: 100
   m_CurrentStamina: 100
-  m_StaminaRegenAmount: 0.1
+  m_StaminaRegenAmount: 0.4
   m_StaminaRegenDelay: 0.5
   m_ShouldRegenStamina: 0
   m_BaseMovementSpeed: 8
@@ -4570,6 +4570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a98e265f4987c24188fbebc7d39bfc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponCollider: {fileID: 0}
 --- !u!114 &8719330577616206947
 MonoBehaviour:
   m_ObjectHideFlags: 0

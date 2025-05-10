@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 7087840142058001158}
   m_Layer: 0
   m_Name: Weapon_Bow
-  m_TagString: Untagged
+  m_TagString: WorldSpaceWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

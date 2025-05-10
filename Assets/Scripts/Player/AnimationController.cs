@@ -4,23 +4,21 @@ public class AnimationController : MonoBehaviour
 {
     private Animator animator;
     private CharacterMovement movement;
-    [SerializeField] private Collider dashCollider;
+    public Collider weaponCollider;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         movement = GetComponent<CharacterMovement>();
-        dashCollider.enabled = false;
+        weaponCollider.enabled = false;
     }
 
 
     public void StartDash()
     {
-        dashCollider.enabled = true;
     }
     public void EndDash()
     {
-        dashCollider.enabled = false;
     }
     public void StartAttackAnimEvent()
     {
@@ -30,5 +28,13 @@ public class AnimationController : MonoBehaviour
     {
         movement.EnableMovement();
         animator.SetBool("isAttacking", false);
+    }
+    public void EnableHitBoxAnimEvent()
+    {
+        weaponCollider.enabled = true;
+    }
+    public void DisableHitBoxAnimEvent()
+    {
+        weaponCollider.enabled = false;
     }
 }

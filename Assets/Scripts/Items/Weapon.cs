@@ -2,5 +2,17 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public Weapon_SO details;
+    [SerializeField] private LayerMask hitMask;
+    private PlayerStats ps;
+    private void Start()
+    {
+        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (((1 << other.gameObject.layer) & hitMask) != 0)
+        {
+            other.gameObject.GetComponent<MobStats>().TakeDamage(ps.m_CurrentWeapon.damage);
+        }
+    }
 }
