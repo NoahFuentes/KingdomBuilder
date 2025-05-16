@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Vector3 NPCInactivePos;
 
     [SerializeField] private GameObject buildMenu;
+    [SerializeField] private KingdomStats ks;
 
     //NPC SideBar
     public void CallOpenNPCSideBar()
@@ -106,7 +107,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateResourceCounts()
     {
-        KingdomStats ks = GameObject.FindGameObjectWithTag("KingdomManager").GetComponent<KingdomStats>();
         foodCount.text = ks.m_CurrentFoodAmount.ToString() + "/" + ks.m_MaxFoodAmount.ToString();
         waterCount.text = ks.m_CurrentWaterAmount.ToString() + "/" + ks.m_MaxWaterAmount.ToString();
         woodCount.text = ks.m_CurrentWoodAmount.ToString() + "/" + ks.m_MaxWoodAmount.ToString();
@@ -181,6 +181,8 @@ public class UIManager : MonoBehaviour
         kingdomOverlay.SetActive(true);
         exploringOverlay.SetActive(false);
         mainMenu.SetActive(false);
+
+        ks = GameObject.FindGameObjectWithTag("KingdomManager").GetComponent<KingdomStats>();
 
         CallCloseNPCSideBar();
         CallCloseResSideBar();

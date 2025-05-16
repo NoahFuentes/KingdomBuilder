@@ -4,6 +4,7 @@ public class Building : MonoBehaviour
 {
     #region Building
     [SerializeField] private string buildingName;
+    [SerializeField] protected int buildingLevel;
     [SerializeField] protected float interactionBreakDist;
     public bool isOccupied = false;
 
@@ -36,10 +37,8 @@ public class Building : MonoBehaviour
     public void DeconstructBuilding()
     {
         KingdomStats ks = GameObject.FindGameObjectWithTag("KingdomManager").GetComponent<KingdomStats>();
-        UIManager ui = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
 
         ks.AddResources(returnResources, returnAmts);
-        ui.UpdateResourceCounts();
         Destroy(gameObject);
     }
     protected void CloseInteractionDisplay()

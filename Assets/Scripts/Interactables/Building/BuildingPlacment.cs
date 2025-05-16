@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class BuildingPlacement : MonoBehaviour
 {
-    private UIManager ui;
     private KingdomStats ks;
 
     public float gridSize = 1.0f;
@@ -17,7 +16,6 @@ public class BuildingPlacement : MonoBehaviour
 
     private void Start()
     {
-        ui = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         ks = GameObject.FindGameObjectWithTag("KingdomManager").GetComponent<KingdomStats>();
         startTime = Time.time;
     }
@@ -50,7 +48,6 @@ public class BuildingPlacement : MonoBehaviour
             }
             Instantiate(buildingPrefab, transform.position, transform.localRotation, GameObject.FindGameObjectWithTag("KingdomManager").transform);
             ks.RemoveResources(resources, costs);
-            ui.UpdateResourceCounts();
             Destroy(gameObject);
         }
     }

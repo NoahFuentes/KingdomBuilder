@@ -38,6 +38,13 @@ public class KingdomStats : MonoBehaviour
     public int m_MaxBlackCrystalAmount;
     public int m_CurrentBlackCrystalAmount;
 
+    private UIManager ui;
+
+    private void Start()
+    {
+        ui = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+    }
+
     public bool CanAfford(string[] resources, int[] costs)
     {
         for (int i = 0; i < resources.Length; i++)
@@ -116,6 +123,7 @@ public class KingdomStats : MonoBehaviour
                     break;
             }
         }
+        ui.UpdateResourceCounts();
     }
     public void AddResources(string[] resources, int[] amts)
     {
@@ -155,6 +163,7 @@ public class KingdomStats : MonoBehaviour
                     break;
             }
         }
+        ui.UpdateResourceCounts();
     }
 
 

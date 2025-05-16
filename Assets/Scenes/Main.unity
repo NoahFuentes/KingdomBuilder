@@ -41800,8 +41800,8 @@ MonoBehaviour:
   m_CurrentTextileAmount: 20
   m_MaxStoneAmount: 25
   m_CurrentStoneAmount: 25
-  m_MaxIronAmount: 15
-  m_CurrentIronAmount: 15
+  m_MaxIronAmount: 25
+  m_CurrentIronAmount: 25
   m_MaxGoldAmount: 10
   m_CurrentGoldAmount: 10
   m_MaxCrystalAmount: 5
@@ -48349,6 +48349,38 @@ PrefabInstance:
     - target: {fileID: 4604656869426961140, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1823194436}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InstantiateBuildingPlacement
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 5205168168571267679, guid: 1742ca6d08caad64da7438f851a0368b, type: 3}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
