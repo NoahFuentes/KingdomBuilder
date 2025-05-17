@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de97969bcaabcf48998891a70d05e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverString: Open Armory Menu.
+  hoverString: Upgrade Building.
   headerText: {fileID: 4366705915279936751}
 --- !u!1 &1122409019362189319
 GameObject:
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3283346544696057395}
         m_TargetAssemblyTypeName: Building, Assembly-CSharp
         m_MethodName: DeconstructBuilding
         m_Mode: 1

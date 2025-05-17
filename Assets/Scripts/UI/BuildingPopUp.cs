@@ -7,30 +7,10 @@ public class BuildingPopUp : MonoBehaviour
     private RectTransform rectTransform;
     [SerializeField] private Canvas canvas;
 
-    [SerializeField] private string interactionTxt;
-    [SerializeField] private string assignTxt;
-    [SerializeField] private string destroyTxt;
-
-    [SerializeField] private TextMeshProUGUI headerTxt;
-
     public void SetBuilding(Transform setBuilding)
     {
         building = setBuilding;
     }
-
-    public void SetTextInt()
-    {
-        headerTxt.text = interactionTxt;
-    }
-    public void SetTextAssign()
-    {
-        headerTxt.text = assignTxt;
-    }
-    public void SetTextDestroy()
-    {
-        headerTxt.text = destroyTxt;
-    }
-
 
     private void Start()
     {
