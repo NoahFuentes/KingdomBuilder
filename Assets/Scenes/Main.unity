@@ -2231,6 +2231,7 @@ MonoBehaviour:
   m_FollowPlayer: {fileID: 0}
   m_CameraOffset: {x: 0, y: 45, z: -45}
   damp: 0.25
+  zoomSensitivity: 5
 --- !u!1 &341213504
 GameObject:
   m_ObjectHideFlags: 0
