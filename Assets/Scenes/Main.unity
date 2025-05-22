@@ -6452,26 +6452,26 @@ MonoBehaviour:
   m_KingdomLevel: 1
   m_KingdomRadius: 15
   m_MaxFoodAmount: 50
-  m_CurrentFoodAmount: 40
+  m_CurrentFoodAmount: 0
   m_FoodConsumptionAmount: 0
   m_MaxWaterAmount: 50
-  m_CurrentWaterAmount: 40
+  m_CurrentWaterAmount: 0
   m_WaterConsumptionAmount: 0
   m_MaxWoodAmount: 50
-  m_CurrentWoodAmount: 40
+  m_CurrentWoodAmount: 0
   m_WoodConsumptionAmount: 0
   m_MaxTextileAmount: 25
-  m_CurrentTextileAmount: 20
+  m_CurrentTextileAmount: 0
   m_MaxStoneAmount: 25
-  m_CurrentStoneAmount: 25
+  m_CurrentStoneAmount: 0
   m_MaxIronAmount: 25
-  m_CurrentIronAmount: 25
+  m_CurrentIronAmount: 0
   m_MaxGoldAmount: 10
-  m_CurrentGoldAmount: 10
+  m_CurrentGoldAmount: 0
   m_MaxCrystalAmount: 5
-  m_CurrentCrystalAmount: 5
+  m_CurrentCrystalAmount: 0
   m_MaxBlackCrystalAmount: 3
-  m_CurrentBlackCrystalAmount: 3
+  m_CurrentBlackCrystalAmount: 0
   m_MaxPopulation: 0
   m_CurrentPopulation: 0
   m_WaterBearer_Count: 0

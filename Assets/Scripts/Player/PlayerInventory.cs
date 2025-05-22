@@ -28,4 +28,17 @@ public class PlayerInventory : MonoBehaviour
     {
         Instance = this;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) addResource("food", 15);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) addResource("water", 15);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) addResource("wood", 10);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) addResource("textile", 10);
+        if (Input.GetKeyDown(KeyCode.Alpha5)) addResource("stone", 5);
+        if (Input.GetKeyDown(KeyCode.Alpha6)) addResource("iron", 5);
+        if (Input.GetKeyDown(KeyCode.Alpha7)) addResource("gold", 3);
+        if (Input.GetKeyDown(KeyCode.Alpha8)) addResource("crystal", 1);
+        if (Input.GetKeyDown(KeyCode.Alpha9)) addResource("black crystal", 1);
+    }
 }
