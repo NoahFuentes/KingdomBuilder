@@ -7,7 +7,6 @@ public class PlayerInteractions : MonoBehaviour
     private PlayerStats ps;
     private CharacterMovement movement;
     private Animator animator;
-    private UIManager ui;
     private WeaponManager wm;
 
     private float lastDamagedTime;
@@ -23,13 +22,12 @@ public class PlayerInteractions : MonoBehaviour
         ps = GetComponent<PlayerStats>();
         movement = GetComponent<CharacterMovement>();
         animator = GetComponent<Animator>();
-        ui = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         wm = GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>();
 
-        ui.updateHealthBarMaxValue(ps.m_MaxHealth);
-        ui.updateHealthBarCurrentValue(ps.m_CurrentHealth);
-        ui.updateStaminaBarMaxValue(ps.m_MaxStamina);
-        ui.updateStaminaBarCurrentValue(ps.m_CurrentStamina);
+        UIManager.Instance.updateHealthBarMaxValue(ps.m_MaxHealth);
+        UIManager.Instance.updateHealthBarCurrentValue(ps.m_CurrentHealth);
+        UIManager.Instance.updateStaminaBarMaxValue(ps.m_MaxStamina);
+        UIManager.Instance.updateStaminaBarCurrentValue(ps.m_CurrentStamina);
 
         EquipWeapon("Stick");
     }
@@ -63,19 +61,19 @@ public class PlayerInteractions : MonoBehaviour
     public void HealPlayer()
     {
         ps.m_CurrentHealth++;
-        ui.updateHealthBarCurrentValue(ps.m_CurrentHealth);
+        UIManager.Instance.updateHealthBarCurrentValue(ps.m_CurrentHealth);
     }
     public void HealPlayer(float amt)
     {
         ps.m_CurrentHealth += amt;
-        ui.updateHealthBarCurrentValue(ps.m_CurrentHealth);
+        UIManager.Instance.updateHealthBarCurrentValue(ps.m_CurrentHealth);
     }
     public void TakeDamage(ushort damage)
     {
         ps.m_ShouldRegenHealth = false;
         lastDamagedTime = Time.time;
         ps.m_CurrentHealth -= damage;
-        ui.updateHealthBarCurrentValue(ps.m_CurrentHealth);
+        UIManager.Instance.updateHealthBarCurrentValue(ps.m_CurrentHealth);
         if (ps.m_CurrentHealth <= 0)
             killPlayer();
     }
@@ -85,17 +83,17 @@ public class PlayerInteractions : MonoBehaviour
         ps.m_ShouldRegenStamina = false;
         lastUsedStaminaTime = Time.time;
         ps.m_CurrentStamina -= amt;
-        ui.updateStaminaBarCurrentValue(ps.m_CurrentStamina);
+        UIManager.Instance.updateStaminaBarCurrentValue(ps.m_CurrentStamina);
     }
     public void RecoverStamina()
     {
         ps.m_CurrentStamina++;
-        ui.updateStaminaBarCurrentValue(ps.m_CurrentStamina);
+        UIManager.Instance.updateStaminaBarCurrentValue(ps.m_CurrentStamina);
     }
     public void RecoverStamina(float amt)
     {
         ps.m_CurrentStamina += amt;
-        ui.updateStaminaBarCurrentValue(ps.m_CurrentStamina);
+        UIManager.Instance.updateStaminaBarCurrentValue(ps.m_CurrentStamina);
     }
 
 

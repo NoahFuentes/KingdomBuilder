@@ -4,7 +4,6 @@ public class Crafting_Building : Building
 {
     #region CraftingBuilding
     protected GameObject craftingMenu;
-    protected UIManager ui;
 
     public virtual void OpenCraftMenu()
     {
@@ -16,10 +15,6 @@ public class Crafting_Building : Building
         craftingMenu.SetActive(false);
     }
 
-    protected void Start()
-    {
-        ui = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
-    }
     protected new void Update()
     {
         base.Update();

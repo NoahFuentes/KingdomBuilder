@@ -4391,6 +4391,7 @@ GameObject:
   - component: {fileID: 2084544628903037304}
   - component: {fileID: 276390016426374856}
   - component: {fileID: 8719330577616206947}
+  - component: {fileID: 1935428829583478943}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -4586,6 +4587,30 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &1935428829583478943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6386786476918871134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e3935c7aa08154e83c384bdd32767e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resNames:
+  - food
+  - water
+  - wood
+  - textile
+  - stone
+  - iron
+  - gold
+  - crystal
+  - black crystal
+  resCounts: 000000000000000000000000000000000000000000000000000000000000000000000000
+  resCountMaxes: 190000001900000014000000140000000f0000000a000000050000000500000003000000
 --- !u!1 &6557012328925162290
 GameObject:
   m_ObjectHideFlags: 0

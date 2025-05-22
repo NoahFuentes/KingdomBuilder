@@ -5,6 +5,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance { get; private set; }
     #region OVERLAY TOGGLING
     [SerializeField] private GameObject kingdomOverlay;
     [SerializeField] private GameObject exploringOverlay;
@@ -42,7 +43,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Vector3 NPCInactivePos;
 
     [SerializeField] private GameObject buildMenu;
-    [SerializeField] private KingdomStats ks;
 
     //NPC SideBar
     public void CallOpenNPCSideBar()
@@ -107,15 +107,15 @@ public class UIManager : MonoBehaviour
 
     public void UpdateResourceCounts()
     {
-        foodCount.text = ks.m_CurrentFoodAmount.ToString() + "/" + ks.m_MaxFoodAmount.ToString();
-        waterCount.text = ks.m_CurrentWaterAmount.ToString() + "/" + ks.m_MaxWaterAmount.ToString();
-        woodCount.text = ks.m_CurrentWoodAmount.ToString() + "/" + ks.m_MaxWoodAmount.ToString();
-        textileCount.text = ks.m_CurrentTextileAmount.ToString() + "/" + ks.m_MaxTextileAmount.ToString();
-        stoneCount.text = ks.m_CurrentStoneAmount.ToString() + "/" + ks.m_MaxStoneAmount.ToString();
-        ironCount.text = ks.m_CurrentIronAmount.ToString() + "/" + ks.m_MaxIronAmount.ToString();
-        goldCount.text = ks.m_CurrentGoldAmount.ToString() + "/" + ks.m_MaxGoldAmount.ToString();
-        crystalCount.text = ks.m_CurrentCrystalAmount.ToString() + "/" + ks.m_MaxCrystalAmount.ToString();
-        blackCrystalCount.text = ks.m_CurrentBlackCrystalAmount.ToString() + "/" + ks.m_MaxBlackCrystalAmount.ToString();
+        foodCount.text = KingdomStats.Instance.m_CurrentFoodAmount.ToString() + "/" + KingdomStats.Instance.m_MaxFoodAmount.ToString();
+        waterCount.text = KingdomStats.Instance.m_CurrentWaterAmount.ToString() + "/" + KingdomStats.Instance.m_MaxWaterAmount.ToString();
+        woodCount.text = KingdomStats.Instance.m_CurrentWoodAmount.ToString() + "/" + KingdomStats.Instance.m_MaxWoodAmount.ToString();
+        textileCount.text = KingdomStats.Instance.m_CurrentTextileAmount.ToString() + "/" + KingdomStats.Instance.m_MaxTextileAmount.ToString();
+        stoneCount.text = KingdomStats.Instance.m_CurrentStoneAmount.ToString() + "/" + KingdomStats.Instance.m_MaxStoneAmount.ToString();
+        ironCount.text = KingdomStats.Instance.m_CurrentIronAmount.ToString() + "/" + KingdomStats.Instance.m_MaxIronAmount.ToString();
+        goldCount.text = KingdomStats.Instance.m_CurrentGoldAmount.ToString() + "/" + KingdomStats.Instance.m_MaxGoldAmount.ToString();
+        crystalCount.text = KingdomStats.Instance.m_CurrentCrystalAmount.ToString() + "/" + KingdomStats.Instance.m_MaxCrystalAmount.ToString();
+        blackCrystalCount.text = KingdomStats.Instance.m_CurrentBlackCrystalAmount.ToString() + "/" + KingdomStats.Instance.m_MaxBlackCrystalAmount.ToString();
     }
 
     //Building
@@ -176,13 +176,17 @@ public class UIManager : MonoBehaviour
 
 
     //main functions
+    private void Awake()
+    {
+        Instance = this; 
+    }
     private void Start()
     {
         kingdomOverlay.SetActive(true);
         exploringOverlay.SetActive(false);
         mainMenu.SetActive(false);
 
-        ks = GameObject.FindGameObjectWithTag("KingdomManager").GetComponent<KingdomStats>();
+        //ks = GameObject.FindGameObjectWithTag("KingdomManager").GetComponent<KingdomStats>();
 
         CallCloseNPCSideBar();
         CallCloseResSideBar();

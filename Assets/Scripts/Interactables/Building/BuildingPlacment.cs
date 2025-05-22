@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BuildingPlacement : MonoBehaviour
 {
-    private KingdomStats ks;
+    //private KingdomStats ks;
 
     public float gridSize = 1.0f;
     private bool validPlacement = false;
@@ -16,7 +16,7 @@ public class BuildingPlacement : MonoBehaviour
 
     private void Start()
     {
-        ks = GameObject.FindGameObjectWithTag("KingdomManager").GetComponent<KingdomStats>();
+        //ks = GameObject.FindGameObjectWithTag("KingdomManager").GetComponent<KingdomStats>();
         startTime = Time.time;
     }
 
@@ -36,7 +36,7 @@ public class BuildingPlacement : MonoBehaviour
 
         transform.position = gridPos;
 
-        if (contacts == 0 && ks.CanAfford(resources, costs) && WithinBuildRange()) validPlacement = true;
+        if (contacts == 0 && KingdomStats.Instance.CanAfford(resources, costs) && WithinBuildRange()) validPlacement = true;
         else validPlacement = false;
 
         if (Input.GetMouseButtonDown(0))
@@ -47,7 +47,7 @@ public class BuildingPlacement : MonoBehaviour
                 return;
             }
             Instantiate(buildingPrefab, transform.position, transform.localRotation, GameObject.FindGameObjectWithTag("KingdomManager").transform);
-            ks.RemoveResources(resources, costs);
+            KingdomStats.Instance.RemoveResources(resources, costs);
             Destroy(gameObject);
         }
     }
@@ -55,7 +55,7 @@ public class BuildingPlacement : MonoBehaviour
     public bool WithinBuildRange()
     {
         GameObject kingdom = GameObject.FindGameObjectWithTag("KingdomManager");
-        if (Vector3.Distance(transform.position, kingdom.transform.position) > kingdom.GetComponent<KingdomStats>().m_KingdomRadius) return false;
+        if (Vector3.Distance(transform.position, kingdom.transform.position) > KingdomStats.Instance.m_KingdomRadius) return false;
         return true;
     }
 

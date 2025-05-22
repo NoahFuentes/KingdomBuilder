@@ -6,12 +6,12 @@ public class Resource_Building : Building
     [SerializeField] private int[] amountsForLevel;
     [SerializeField] private float resourceGivePeriod;
     private float lastResourceGain;
-    private KingdomStats ks;
+    //private KingdomStats ks;
 
     protected void Start()
     {
         lastResourceGain = Time.time;
-        ks = GameObject.FindGameObjectWithTag("KingdomManager").GetComponent<KingdomStats>();
+        //ks = GameObject.FindGameObjectWithTag("KingdomManager").GetComponent<KingdomStats>();
     }
 
     protected new void Update()
@@ -23,7 +23,7 @@ public class Resource_Building : Building
             Debug.Log("Giving " + amountsForLevel[buildingLevel] + " " + resourcetype);
             string[] resArr = {resourcetype};
             int[] amtArr = {amountsForLevel[buildingLevel]};
-            ks.AddResources(resArr, amtArr);
+            KingdomStats.Instance.AddResources(resArr, amtArr);
             lastResourceGain = Time.time;
         }
     }

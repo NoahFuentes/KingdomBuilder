@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class KingdomStats : MonoBehaviour
 {
+    public static KingdomStats Instance { get; private set; }
+
     //Location definition
     public ushort m_KingdomLevel; // (Campsite, Town Center, Grand Courtyard, Great Hall, High Keep)
     public float m_KingdomRadius;
@@ -38,11 +40,10 @@ public class KingdomStats : MonoBehaviour
     public int m_MaxBlackCrystalAmount;
     public int m_CurrentBlackCrystalAmount;
 
-    private UIManager ui;
 
-    private void Start()
+    private void Awake()
     {
-        ui = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+        Instance = this;
     }
 
     public bool CanAfford(string[] resources, int[] costs)
@@ -123,7 +124,7 @@ public class KingdomStats : MonoBehaviour
                     break;
             }
         }
-        ui.UpdateResourceCounts();
+        UIManager.Instance.UpdateResourceCounts();
     }
     public void AddResources(string[] resources, int[] amts)
     {
@@ -163,7 +164,7 @@ public class KingdomStats : MonoBehaviour
                     break;
             }
         }
-        ui.UpdateResourceCounts();
+        UIManager.Instance.UpdateResourceCounts();
     }
 
 

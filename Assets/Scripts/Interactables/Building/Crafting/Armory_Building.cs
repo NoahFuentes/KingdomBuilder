@@ -6,10 +6,9 @@ public class Armory_Building : Crafting_Building
     [SerializeField] private Weapon_SO[] weapons;
     [SerializeField] private bool[] isCrafted;
 
-    private new void Start()
+    private void Start()
     {
-        base.Start();
-        craftingMenu = ui.armoryCraftingMenu;
+        craftingMenu = UIManager.Instance.armoryCraftingMenu;
     }
     #endregion
 }

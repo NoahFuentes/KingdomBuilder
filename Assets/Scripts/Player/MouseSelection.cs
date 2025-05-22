@@ -113,7 +113,7 @@ public class MouseSelection : MonoBehaviour
         }
         else if ((buildingMask.value & (1 << hoveredObject.layer)) != 0)
         {
-            hoveredObject.GetComponent<Building>().Interaction();
+            hoveredObject.GetComponentInParent<Building>().Interaction();
         }
     }
 

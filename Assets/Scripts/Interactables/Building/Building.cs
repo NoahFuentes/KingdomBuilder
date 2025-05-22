@@ -36,9 +36,8 @@ public class Building : MonoBehaviour
 
     public void DeconstructBuilding()
     {
-        KingdomStats ks = GameObject.FindGameObjectWithTag("KingdomManager").GetComponent<KingdomStats>();
 
-        ks.AddResources(returnResources, returnAmts);
+        KingdomStats.Instance.AddResources(returnResources, returnAmts);
         Destroy(gameObject);
     }
     protected void CloseInteractionDisplay()
