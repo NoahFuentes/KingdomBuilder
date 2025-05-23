@@ -2,7 +2,13 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
+    public static WeaponManager Instance { get; private set; }
     public Weapon_SO[] weapons;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public Weapon_SO GetWeaponDetailsByName(string name)
     {

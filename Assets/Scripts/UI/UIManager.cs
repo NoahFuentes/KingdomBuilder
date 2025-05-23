@@ -137,7 +137,6 @@ public class UIManager : MonoBehaviour
     #endregion
     #region CRAFTING MENUS
     public GameObject armoryCraftingMenu;
-
     public void OpenArmoryCraftingMenu()
     {
         armoryCraftingMenu.SetActive(true);
@@ -145,6 +144,11 @@ public class UIManager : MonoBehaviour
     public void CloseArmoryCraftingMenu()
     {
         armoryCraftingMenu.SetActive(false);
+    }
+
+    public void CallEquipWeapon(Weapon_SO weapon)
+    {
+        PlayerInteractions.Instance.EquipWeapon(weapon);
     }
 
     #endregion

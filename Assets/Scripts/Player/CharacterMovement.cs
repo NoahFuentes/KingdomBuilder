@@ -4,7 +4,6 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     private PlayerStats ps;
-    private PlayerInteractions pi;
     private Rigidbody rb;
     private Animator animator;
     [SerializeField] private float deceleration;
@@ -25,7 +24,6 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         ps = GetComponent<PlayerStats>();
-        pi = GetComponent<PlayerInteractions>();
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true; // Prevents unwanted rotations
@@ -80,7 +78,7 @@ public class CharacterMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift) && ps.m_CurrentStamina > 0)
             {
                 moveDirection *= ps.m_SprintSpeedMult;
-                pi.ReduceStamina(ps.m_SprintStaminaCost);
+                PlayerInteractions.Instance.ReduceStamina(ps.m_SprintStaminaCost);
                 animator.SetBool("isRunning", true);
                 animator.SetBool("isWalking", false);
             }

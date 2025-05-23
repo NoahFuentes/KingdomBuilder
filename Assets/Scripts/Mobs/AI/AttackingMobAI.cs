@@ -25,7 +25,7 @@ public class AttackingMobAI : MobAI //parent class for all Mob AI that can attac
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerInteractions>().TakeDamage(stats.damage);
+            PlayerInteractions.Instance.TakeDamage(stats.damage);
         }
     }
 }
