@@ -100,31 +100,6 @@ public class PlayerInteractions : MonoBehaviour
     #endregion
 
     #region Combat
-    /*
-    public void EquipWeapon(string weaponName)
-    {
-        Weapon_SO weapon = wm.GetWeaponDetailsByName(weaponName);
-        ps.m_CurrentWeapon = weapon;
-        animator.runtimeAnimatorController = weapon.animController;
-        if(rightItemSpawn.childCount != 0)
-        {
-            //remove old weapon model
-            Destroy(rightItemSpawn.GetChild(0).gameObject);
-        }
-        if (leftItemSpawn.childCount != 0)
-        {
-            //remove old weapon model
-            Destroy(leftItemSpawn.GetChild(0).gameObject);
-        }
-        //add new weapon model
-        if (null != weapon.modelRight)
-            Instantiate(weapon.modelRight, rightItemSpawn);
-        if(null != weapon.modelLeft)
-            Instantiate(weapon.modelLeft, leftItemSpawn);
-        GetComponent<AnimationController>().weaponCollider = GameObject.FindGameObjectWithTag("WorldSpaceWeapon").GetComponent<Collider>();
-        //TODO: update UI sprite
-    }
-    */
     public void EquipWeapon(Weapon_SO weapon)
     {
         ps.m_CurrentWeapon = weapon;

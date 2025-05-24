@@ -13,15 +13,9 @@ public class AnimationController : MonoBehaviour
         weaponCollider.enabled = false;
     }
 
-
-    public void StartDash()
-    {
-    }
-    public void EndDash()
-    {
-    }
     public void StartAttackAnimEvent()
     {
+        if (null == weaponCollider) weaponCollider = GameObject.FindGameObjectWithTag("WorldSpaceWeapon").GetComponent<Collider>();
         animator.SetBool("isAttacking", true);
     }
     public void FinishAttackAnimEvent()

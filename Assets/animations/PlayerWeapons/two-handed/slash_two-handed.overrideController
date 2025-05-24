@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: slash_one-and-shield
+  m_Name: slash_two-handed
   m_Controller: {fileID: 9100000, guid: b1ddc66e888cd454ca85d29800de89f7, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: c8c24f7bc0a63ad4c8526da7eca2c858, type: 2}
