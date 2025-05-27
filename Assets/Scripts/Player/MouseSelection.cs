@@ -20,10 +20,6 @@ public class MouseSelection : MonoBehaviour
 
     private void Start()
     {
-        
-        //pi = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteractions>();
-        //ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-
         interactableMask = NPCMask + resourceMask + buildingMask;
         Cursor.SetCursor(mouseBase, mouseHotspot, CursorMode.ForceSoftware);
     }
