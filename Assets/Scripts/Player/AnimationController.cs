@@ -3,13 +3,11 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     private Animator animator;
-    private CharacterMovement movement;
     public Collider weaponCollider;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        movement = GetComponent<CharacterMovement>();
         weaponCollider.enabled = false;
     }
 
@@ -20,7 +18,7 @@ public class AnimationController : MonoBehaviour
     }
     public void FinishAttackAnimEvent()
     {
-        movement.EnableMovement();
+        CharacterMovement.Instance.EnableMovement();
         animator.SetBool("isAttacking", false);
     }
     public void EnableHitBoxAnimEvent()

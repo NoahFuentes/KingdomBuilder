@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public static PlayerStats Instance;
+
+
     public int m_MaxHealth = 100;
     public float m_CurrentHealth = 100;
 
@@ -30,4 +33,9 @@ public class PlayerStats : MonoBehaviour
     public Accessory m_Accessory1;
     public Accessory m_Accessory2;
     public Accessory m_Accessory3;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 }

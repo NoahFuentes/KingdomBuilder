@@ -7,6 +7,8 @@ public class MouseSelection : MonoBehaviour
     [SerializeField] private LayerMask resourceMask;
     [SerializeField] private LayerMask interactableMask;
 
+    [SerializeField] private LayerMask groundMask;
+
     [SerializeField] private GameObject hoveredObject;
 
     [SerializeField] private Texture2D mouseNPCHover;
@@ -95,7 +97,14 @@ public class MouseSelection : MonoBehaviour
 
     private void HandleRightClick()
     {
-        if (null == hoveredObject) return;
+        if (null == hoveredObject)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 500, groundMask))
+                CharacterMovement.Instance.navMoveToPosition(hit.point);
+            return;
+        }
         Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
         if (Vector3.Distance(playerPos, hoveredObject.transform.position) > interactableDistance) return;
 

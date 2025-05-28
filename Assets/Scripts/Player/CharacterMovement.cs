@@ -1,15 +1,18 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CharacterMovement : MonoBehaviour
 {
-    private PlayerStats ps;
+    public static CharacterMovement Instance;
     private Rigidbody rb;
     private Animator animator;
     [SerializeField] private float deceleration;
     [SerializeField] private float acceleration;
+    [SerializeField] private float navAcceleration;
     
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private float navRotationSpeed;
     private Vector3 moveDirection;
     private Vector3 inputDirection;
     private float fallMag;
@@ -21,13 +24,21 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask groundLM;
 
+    private NavMeshAgent nav;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
-        ps = GetComponent<PlayerStats>();
-
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true; // Prevents unwanted rotations
-
+        nav = GetComponent<NavMeshAgent>();
+        nav.speed = PlayerStats.Instance.m_BaseMovementSpeed;
+        nav.angularSpeed = navRotationSpeed;
+        nav.acceleration = navAcceleration;
+        nav.enabled = false;
         animator = GetComponent<Animator>();
     }
 
@@ -36,6 +47,7 @@ public class CharacterMovement : MonoBehaviour
         if (!canMove)
         {
             // Gradually slow down
+            nav.enabled = false;
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, new Vector3(0f, fallMag, 0f), deceleration);
             animator.SetBool("isRunning", false);
             animator.SetBool("isWalking", false);
@@ -50,7 +62,7 @@ public class CharacterMovement : MonoBehaviour
         if (inputDirection.magnitude > 0)
         {
             // Normalize to prevent faster diagonal movement and apply speed
-            moveDirection = inputDirection.normalized * (ps.m_BaseMovementSpeed);
+            moveDirection = inputDirection.normalized * (PlayerStats.Instance.m_BaseMovementSpeed);
         }
         else
         {
@@ -73,12 +85,25 @@ public class CharacterMovement : MonoBehaviour
         }
 
         if (!canMove) return;
+        if(nav.enabled && (Vector3.Distance(transform.position, nav.destination) > 1f))
+        {
+            Debug.Log("here");
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isRunning", false);
+        }
+        else if (nav.enabled && (Vector3.Distance(transform.position, nav.destination) <= 1f))
+        {
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isRunning", false);
+        }
         if (inputDirection.magnitude > 0)
         {
-            if (Input.GetKey(KeyCode.LeftShift) && ps.m_CurrentStamina > 0)
+            if (nav.enabled)
+                nav.enabled = false;
+            if (Input.GetKey(KeyCode.LeftShift) && PlayerStats.Instance.m_CurrentStamina > 0)
             {
-                moveDirection *= ps.m_SprintSpeedMult;
-                PlayerInteractions.Instance.ReduceStamina(ps.m_SprintStaminaCost);
+                moveDirection *= PlayerStats.Instance.m_SprintSpeedMult;
+                PlayerInteractions.Instance.ReduceStamina(PlayerStats.Instance.m_SprintStaminaCost);
                 animator.SetBool("isRunning", true);
                 animator.SetBool("isWalking", false);
             }
@@ -95,13 +120,19 @@ public class CharacterMovement : MonoBehaviour
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, new Vector3(moveDirection.x, fallMag, moveDirection.z), acceleration);
 
         }
-        else
+        else if (!nav.enabled)
         {
             // Gradually slow down
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, new Vector3(0f, fallMag, 0f), deceleration);
             animator.SetBool("isRunning", false);
             animator.SetBool("isWalking", false);
         }
+    }
+
+    public void navMoveToPosition(Vector3 pos)
+    {
+        nav.enabled = true;
+        nav.SetDestination(pos);
     }
 
     public void DisableMovement()

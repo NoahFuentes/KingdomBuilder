@@ -3,10 +3,8 @@ using System.Collections;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private PlayerStats ps;
     private PlayerInteractions pi;
     private Rigidbody rb;
-    private CharacterMovement movement;
     private Animator animator;
     [SerializeField] private LayerMask groundLayer;
 
@@ -21,18 +19,18 @@ public class PlayerAttack : MonoBehaviour
         //BAIL CASES
         if (isAttacking) return;
         //check for attack spamming
-        if (Time.time - lastAttackedTime < ps.m_CurrentWeapon.attackTime) return;
+        if (Time.time - lastAttackedTime < PlayerStats.Instance.m_CurrentWeapon.attackTime) return;
         //check stamina and remove it
-        if (ps.m_CurrentStamina < ps.m_CurrentWeapon.staminaCost) return;
+        if (PlayerStats.Instance.m_CurrentStamina < PlayerStats.Instance.m_CurrentWeapon.staminaCost) return;
 
         lastAttackedTime = Time.time;
-        pi.ReduceStamina(ps.m_CurrentWeapon.staminaCost);
+        pi.ReduceStamina(PlayerStats.Instance.m_CurrentWeapon.staminaCost);
         //disable movement
-        movement.DisableMovement();
+        CharacterMovement.Instance.DisableMovement();
         //face attack direction
         FaceAttackDir(direction);
         //start dash (dash animation should check for collision or end of range and attack)
-        Weapon_SO weapon = ps.m_CurrentWeapon;
+        Weapon_SO weapon = PlayerStats.Instance.m_CurrentWeapon;
         StartCoroutine(Dash(weapon.dashDistance, weapon.dashSpeed, (direction - transform.position).normalized));
         Attack();
     }
@@ -88,10 +86,8 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Start()
     {
-        ps = GetComponent<PlayerStats>();
         pi = GetComponent<PlayerInteractions>();
         rb = GetComponent<Rigidbody>();
-        movement = GetComponent<CharacterMovement>();
         animator = GetComponent<Animator>();
         
         isAttacking = false;
