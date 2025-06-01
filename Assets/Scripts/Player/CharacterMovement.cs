@@ -85,9 +85,8 @@ public class CharacterMovement : MonoBehaviour
         }
 
         if (!canMove) return;
-        if(nav.enabled && (Vector3.Distance(transform.position, nav.destination) > 1f))
+        if(nav.enabled && (Vector3.Distance(transform.position, nav.destination) > nav.stoppingDistance))
         {
-            Debug.Log("here");
             animator.SetBool("isWalking", true);
             animator.SetBool("isRunning", false);
         }
