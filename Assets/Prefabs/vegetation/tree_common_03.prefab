@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 2689623033455159559}
   - component: {fileID: 9035506521886295639}
   - component: {fileID: -3556538793468691297}
+  - component: {fileID: 7154697305596958048}
   m_Layer: 7
   m_Name: tree_common_03
   m_TagString: Untagged
@@ -232,3 +233,26 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!136 &7154697305596958048
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920258591700445090}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.43
+  m_Height: 18.02
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 7.44}

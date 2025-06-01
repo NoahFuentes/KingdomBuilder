@@ -11785,7 +11785,9 @@ MonoBehaviour:
   mouseResourceHover: {fileID: 2800000, guid: e40438da50f1371419f50778b3da1a61, type: 3}
   mouseBase: {fileID: 2800000, guid: f0556ff233d03be4ea69793a01440b16, type: 3}
   mouseHotspot: {x: 6, y: 6}
-  interactableDistance: 15
+  buildingInteractableDistance: 20
+  NPCInteractableDistance: 20
+  resourceInteractableDistance: 10
 --- !u!4 &563822323 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4129083750285881280, guid: 58df8a430299adb4d80f0cfd411ecb7e, type: 3}
@@ -24411,7 +24413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_KingdomLevel: 1
-  m_KingdomRadius: 15
+  m_KingdomRadius: 25
   m_MaxFoodAmount: 50
   m_CurrentFoodAmount: 0
   m_FoodConsumptionAmount: 0

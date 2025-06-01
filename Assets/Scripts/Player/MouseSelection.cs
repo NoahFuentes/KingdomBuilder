@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class MouseSelection : MonoBehaviour
 {
+    [SerializeField] private Collider distCheckCol;
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private float distToPlayer;
+
     [SerializeField] private LayerMask NPCMask;
     [SerializeField] private LayerMask buildingMask;
     [SerializeField] private LayerMask resourceMask;
@@ -16,12 +20,15 @@ public class MouseSelection : MonoBehaviour
     [SerializeField] private Texture2D mouseBase;
     [SerializeField] private Vector2 mouseHotspot;
 
-    [SerializeField] private float interactableDistance;
+    [SerializeField] private float buildingInteractableDistance;
+    [SerializeField] private float NPCInteractableDistance;
+    [SerializeField] private float resourceInteractableDistance;
 
     //private PlayerInteractions pi;
 
     private void Start()
     {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         interactableMask = NPCMask + resourceMask + buildingMask;
         Cursor.SetCursor(mouseBase, mouseHotspot, CursorMode.ForceSoftware);
     }
@@ -43,12 +50,30 @@ public class MouseSelection : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 500, interactableMask))
         {
-            if (hit.collider.gameObject == hoveredObject) return;
-            hoveredObject = hit.collider.gameObject;
+            if (hit.collider.gameObject != hoveredObject)
+            {
+                hoveredObject = hit.collider.gameObject;
+                GetColliderOfHoveredObject();
+            }
+            if (null != distCheckCol)
+                distToPlayer = Vector3.Distance(playerTransform.position, distCheckCol.ClosestPoint(playerTransform.position));
             HandleObjectHovered();
         }
         else if (null != hoveredObject)
             HandleNoHover();
+    }
+
+    private void GetColliderOfHoveredObject()
+    {
+        if (null == hoveredObject) return;
+
+        Collider[] colliders = hoveredObject.GetComponents<Collider>();
+        foreach (Collider col in colliders)
+        {
+            if (col is MeshCollider) continue;
+            distCheckCol = col;
+            return;
+        }
     }
 
     private void HandleObjectHovered()
@@ -71,60 +96,75 @@ public class MouseSelection : MonoBehaviour
 
     private void HandleNPCHover()
     {
+        if (distToPlayer > NPCInteractableDistance)
+        {
+            Cursor.SetCursor(mouseBase, mouseHotspot, CursorMode.ForceSoftware);
+            return;
+        }
         Cursor.SetCursor(mouseNPCHover, mouseHotspot, CursorMode.ForceSoftware);
-
-        Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
-        if (Vector3.Distance(playerPos, hoveredObject.transform.position) > interactableDistance) return;
         //make them outline?
     }
 
     private void HandleResourceHover()
     {
+        if (distToPlayer > resourceInteractableDistance)
+        {
+            Cursor.SetCursor(mouseBase, mouseHotspot, CursorMode.ForceSoftware);
+            return;
+        }
         Cursor.SetCursor(mouseResourceHover, mouseHotspot, CursorMode.ForceSoftware);
-
-        Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
-        if (Vector3.Distance(playerPos, hoveredObject.transform.position) > interactableDistance) return;
         //make it outline?
     }
     private void HandleBuildingHover()
     {
+        if (distToPlayer > buildingInteractableDistance)
+        {
+            Cursor.SetCursor(mouseBase, mouseHotspot, CursorMode.ForceSoftware);
+            return;
+        }
         Cursor.SetCursor(mouseNPCHover, mouseHotspot, CursorMode.ForceSoftware);
-
-        Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
-        if (Vector3.Distance(playerPos, hoveredObject.transform.position) > interactableDistance) return;
         //make it outline?
     }
 
     private void HandleRightClick()
     {
-        if (null == hoveredObject)
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 500, groundMask))
-                CharacterMovement.Instance.navMoveToPosition(hit.point);
-            return;
-        }
-        Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
-        if (Vector3.Distance(playerPos, hoveredObject.transform.position) > interactableDistance) return;
+        if (null == hoveredObject) return;
 
         if ((NPCMask.value & (1 << hoveredObject.layer)) != 0)
         {
-            //open NPC managment UI
+            HandleNPCRightClick();
         }
         else if ((resourceMask.value & (1 << hoveredObject.layer)) != 0)
         {
-            hoveredObject.GetComponent<Resource>().Interaction();
+            HandleResourceRightClick();
+            //hoveredObject.GetComponent<Resource>().Interaction();
         }
         else if ((buildingMask.value & (1 << hoveredObject.layer)) != 0)
         {
-            hoveredObject.GetComponentInParent<Building>().Interaction();
+            HandleBuildingRightClick();
         }
+    }
+
+    private void HandleNPCRightClick()
+    {
+        if (distToPlayer > NPCInteractableDistance) return;
+    }
+
+    private void HandleResourceRightClick()
+    {
+        if (distToPlayer > resourceInteractableDistance) return;
+        CharacterMovement.Instance.navMoveToPosition(hoveredObject.GetComponent<CapsuleCollider>().ClosestPoint(playerTransform.position));
+    }
+    private void HandleBuildingRightClick()
+    {
+        if (distToPlayer > buildingInteractableDistance) return;
+        hoveredObject.GetComponentInParent<Building>().Interaction();
     }
 
     private void HandleNoHover()
     {
         Cursor.SetCursor(mouseBase, mouseHotspot, CursorMode.ForceSoftware);
         hoveredObject = null;
+        distCheckCol = null;
     }
 }
