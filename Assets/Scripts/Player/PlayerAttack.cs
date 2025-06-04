@@ -25,8 +25,10 @@ public class PlayerAttack : MonoBehaviour
 
         lastAttackedTime = Time.time;
         pi.ReduceStamina(PlayerStats.Instance.m_CurrentWeapon.staminaCost);
-        //disable movement
+        //disable movement and stop animations
         CharacterMovement.Instance.DisableMovement();
+        animator.SetBool("isMining", false);
+        animator.SetBool("isChopping", false);
         //face attack direction
         FaceAttackDir(direction);
         //start dash (dash animation should check for collision or end of range and attack)

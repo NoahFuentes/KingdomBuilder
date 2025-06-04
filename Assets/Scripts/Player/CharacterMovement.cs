@@ -114,11 +114,9 @@ public class CharacterMovement : MonoBehaviour
         if (inputDirection.magnitude > 0)
         {
             if (nav.enabled)
-            {
                 nav.enabled = false;
-                animator.SetBool("isMining", false);
-                animator.SetBool("isChopping", false);
-            }
+            animator.SetBool("isMining", false);
+            animator.SetBool("isChopping", false);
             if (Input.GetKey(KeyCode.LeftShift) && PlayerStats.Instance.m_CurrentStamina > 0)
             {
                 moveDirection *= PlayerStats.Instance.m_SprintSpeedMult;
