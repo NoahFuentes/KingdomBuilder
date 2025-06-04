@@ -85,20 +85,40 @@ public class CharacterMovement : MonoBehaviour
         }
 
         if (!canMove) return;
-        if(nav.enabled && (Vector3.Distance(transform.position, nav.destination) > nav.stoppingDistance))
+        if (nav.enabled && (Vector3.Distance(transform.position, nav.destination) <= nav.stoppingDistance))
         {
-            animator.SetBool("isWalking", true);
-            animator.SetBool("isRunning", false);
-        }
-        else if (nav.enabled && (Vector3.Distance(transform.position, nav.destination) <= 1f))
-        {
+            transform.LookAt(nav.destination);
             animator.SetBool("isWalking", false);
             animator.SetBool("isRunning", false);
+            if (null == PlayerInteractions.Instance.resourceInteractable)
+            {
+                nav.enabled = false;
+                return;
+            }
+            if (PlayerInteractions.Instance.resourceInteractable.isMinable)
+            {
+                //mine
+                animator.SetBool("isChopping", false);
+                animator.SetBool("isMining", true);
+
+            }
+            else
+            {
+                //chop
+                animator.SetBool("isMining", false);
+                animator.SetBool("isChopping", true);
+
+            }
+            
         }
         if (inputDirection.magnitude > 0)
         {
             if (nav.enabled)
+            {
                 nav.enabled = false;
+                animator.SetBool("isMining", false);
+                animator.SetBool("isChopping", false);
+            }
             if (Input.GetKey(KeyCode.LeftShift) && PlayerStats.Instance.m_CurrentStamina > 0)
             {
                 moveDirection *= PlayerStats.Instance.m_SprintSpeedMult;
@@ -132,6 +152,8 @@ public class CharacterMovement : MonoBehaviour
     {
         nav.enabled = true;
         nav.SetDestination(pos);
+        animator.SetBool("isWalking", true);
+        animator.SetBool("isRunning", false);
     }
 
     public void DisableMovement()

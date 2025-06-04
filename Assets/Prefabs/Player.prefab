@@ -4562,6 +4562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightItemSpawn: {fileID: 5634634113323621694}
   leftItemSpawn: {fileID: 8044684944421349650}
+  resourceInteractable: {fileID: 0}
 --- !u!114 &276390016426374856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4628,9 +4629,9 @@ NavMeshAgent:
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 450
-  m_StoppingDistance: 2
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0

@@ -105,6 +105,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resName: Oak Tree
   isMinable: 0
+  resToGive: wood
+  amtToGive: 5
+  maxHealth: 10
+  currentHealth: 10
 --- !u!64 &-7767695860867339464
 MeshCollider:
   m_ObjectHideFlags: 0

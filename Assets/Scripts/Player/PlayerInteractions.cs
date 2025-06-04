@@ -13,6 +13,8 @@ public class PlayerInteractions : MonoBehaviour
     [SerializeField] private Transform rightItemSpawn;
     [SerializeField] private Transform leftItemSpawn;
 
+    public Resource resourceInteractable;
+
 
     private void Awake()
     {

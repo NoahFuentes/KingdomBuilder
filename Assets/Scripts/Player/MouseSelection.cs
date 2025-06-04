@@ -154,6 +154,7 @@ public class MouseSelection : MonoBehaviour
     {
         if (distToPlayer > resourceInteractableDistance) return;
         CharacterMovement.Instance.navMoveToPosition(hoveredObject.GetComponent<CapsuleCollider>().ClosestPoint(playerTransform.position));
+        hoveredObject.GetComponent<Resource>().Interaction();
     }
     private void HandleBuildingRightClick()
     {

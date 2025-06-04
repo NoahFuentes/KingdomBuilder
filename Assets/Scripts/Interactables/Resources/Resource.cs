@@ -5,22 +5,29 @@ public class Resource : MonoBehaviour
     [SerializeField] private string resName;
     public bool isMinable = false; //used to defer between axe and pickaxe
 
+    [SerializeField] private string resToGive;
+    [SerializeField] private int amtToGive;
+
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int currentHealth;
+
+    public int TakeDamage(int dmg)
+    {
+        currentHealth -= dmg;
+        if (currentHealth <= 0)
+            Harvest();
+        return currentHealth;
+    }
+    public void Harvest()
+    {
+        PlayerInventory.Instance.addResource(resToGive, amtToGive);
+        Destroy(gameObject); //TODO: Make this actually do something
+    }
 
     public virtual void Interaction()
     {
-        Debug.Log("Interacting with " + resName);
-        if (isMinable) MineInteraction();
-        else ChopInteraction();
-    }
-
-    private void MineInteraction()
-    {
-        Debug.Log(resName + " is minable");
-
-    }
-    private void ChopInteraction()
-    {
-        Debug.Log(resName + " is choppable");
-
+        if (PlayerInteractions.Instance.resourceInteractable == this) return;
+        PlayerInteractions.Instance.resourceInteractable = this;
+        //set world model to pick or axe based on isMinable
     }
 }

@@ -11765,6 +11765,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016b7521defc0ae4d8a099716fbd5f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distCheckCol: {fileID: 0}
+  playerTransform: {fileID: 0}
+  distToPlayer: 0
   NPCMask:
     serializedVersion: 2
     m_Bits: 16384
@@ -11785,9 +11788,9 @@ MonoBehaviour:
   mouseResourceHover: {fileID: 2800000, guid: e40438da50f1371419f50778b3da1a61, type: 3}
   mouseBase: {fileID: 2800000, guid: f0556ff233d03be4ea69793a01440b16, type: 3}
   mouseHotspot: {x: 6, y: 6}
-  buildingInteractableDistance: 20
-  NPCInteractableDistance: 20
-  resourceInteractableDistance: 10
+  buildingInteractableDistance: 15
+  NPCInteractableDistance: 15
+  resourceInteractableDistance: 5
 --- !u!4 &563822323 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4129083750285881280, guid: 58df8a430299adb4d80f0cfd411ecb7e, type: 3}

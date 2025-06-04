@@ -29,4 +29,16 @@ public class AnimationController : MonoBehaviour
     {
         weaponCollider.enabled = false;
     }
+
+    public void HitResourceAnimEvent()
+    {
+        Resource res = PlayerInteractions.Instance.resourceInteractable;
+        int health = res.TakeDamage(1); //TODO: make this according to player's tool dmg
+        if (health <= 0)
+        {
+            animator.SetBool("isMining", false);
+            animator.SetBool("isChopping", false);
+        }
+
+    }
 }
