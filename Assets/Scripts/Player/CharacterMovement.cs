@@ -87,7 +87,9 @@ public class CharacterMovement : MonoBehaviour
         if (!canMove) return;
         if (nav.enabled && (Vector3.Distance(transform.position, nav.destination) <= nav.stoppingDistance))
         {
-            transform.LookAt(nav.destination);
+            Resource lookat;
+            if (( lookat = PlayerInteractions.Instance.resourceInteractable) != null)
+                transform.LookAt(lookat.transform.position);
             animator.SetBool("isWalking", false);
             animator.SetBool("isRunning", false);
             if (null == PlayerInteractions.Instance.resourceInteractable)
