@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
         FaceAttackDir(direction);
         //start dash (dash animation should check for collision or end of range and attack)
         Weapon_SO weapon = PlayerStats.Instance.m_CurrentWeapon;
-        StartCoroutine(Dash(weapon.dashDistance, weapon.dashSpeed, (direction - transform.position).normalized));
+        //StartCoroutine(Dash(weapon.dashDistance, weapon.dashSpeed, (direction - transform.position).normalized));
         Attack();
     }
     public void FaceAttackDir(Vector3 dir)
@@ -46,6 +46,7 @@ public class PlayerAttack : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, lookRotation.eulerAngles.y, 0);
         }
     }
+    /*
     private IEnumerator Dash(float distance, float speed, Vector3 dir)
     {
         collisionDetected = false;
@@ -61,6 +62,7 @@ public class PlayerAttack : MonoBehaviour
         //Debug.Log("col detect: " + collisionDetected);
         isAttacking = false;
     }
+    */
     private void Attack()
     {
         animator.SetTrigger("attack"); //attack animation needs to set isAttacking to false
