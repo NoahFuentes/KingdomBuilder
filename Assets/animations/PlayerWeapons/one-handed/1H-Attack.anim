@@ -119356,15 +119356,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.4
-    functionName: EnableHitBoxAnimEvent
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.53333336
-    functionName: DisableHitBoxAnimEvent
+  - time: 0.43333334
+    functionName: CheckHitBoxAnimEvent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

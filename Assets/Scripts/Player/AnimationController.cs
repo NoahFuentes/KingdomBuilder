@@ -3,17 +3,16 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     private Animator animator;
-    public Collider weaponCollider;
+    [SerializeField] private Transform attackTrans;
+    [SerializeField] private LayerMask attackMask;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        weaponCollider.enabled = false;
     }
 
     public void StartAttackAnimEvent()
     {
-        if (null == weaponCollider) weaponCollider = GameObject.FindGameObjectWithTag("WorldSpaceWeapon").GetComponent<Collider>();
         animator.SetBool("isAttacking", true);
     }
     public void FinishAttackAnimEvent()
@@ -21,13 +20,15 @@ public class AnimationController : MonoBehaviour
         CharacterMovement.Instance.EnableMovement();
         animator.SetBool("isAttacking", false);
     }
-    public void EnableHitBoxAnimEvent()
+    public void CheckHitBoxAnimEvent()
     {
-        weaponCollider.enabled = true;
-    }
-    public void DisableHitBoxAnimEvent()
-    {
-        weaponCollider.enabled = false;
+        Weapon_SO weapon = PlayerStats.Instance.m_CurrentWeapon;
+        Collider[] enemiesHit = Physics.OverlapBox(attackTrans.position, weapon.attackDimensions / 2, Quaternion.identity, attackMask);
+        foreach(Collider enemy in enemiesHit)
+        {
+            //bad spot for this, but this is where we damgage enemies...
+            enemy.GetComponent<MobStats>().TakeDamage(weapon.damage);
+        }
     }
 
     public void HitResourceAnimEvent()

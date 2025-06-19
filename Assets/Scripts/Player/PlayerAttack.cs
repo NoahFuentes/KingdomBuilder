@@ -9,7 +9,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     private bool isAttacking;
-    private bool collisionDetected;
 
     private float lastAttackedTime;
 
@@ -32,8 +31,6 @@ public class PlayerAttack : MonoBehaviour
         //face attack direction
         FaceAttackDir(direction);
         //start dash (dash animation should check for collision or end of range and attack)
-        Weapon_SO weapon = PlayerStats.Instance.m_CurrentWeapon;
-        //StartCoroutine(Dash(weapon.dashDistance, weapon.dashSpeed, (direction - transform.position).normalized));
         Attack();
     }
     public void FaceAttackDir(Vector3 dir)
@@ -80,14 +77,6 @@ public class PlayerAttack : MonoBehaviour
 
     //UNITY FUNCTIONS
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!isAttacking) return;
-        collisionDetected = true;
-        //apply knockback to target
-        //Vector3 dir = (collision.transform.position - transform.position).normalized;
-        //collision.gameObject.GetComponent<Rigidbody>().AddForce(dir * ps.m_CurrentWeapon.knockBackDist, ForceMode.Impulse);
-    }
     private void Start()
     {
         pi = GetComponent<PlayerInteractions>();

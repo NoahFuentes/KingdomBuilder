@@ -11,12 +11,11 @@ public class Weapon_SO : ScriptableObject
     public float damage;
     public float staminaCost;
     public float attackTime;
-    public float dashDistance;
-    public float dashSpeed;
     public float knockBackDist; //10-90 player back and target back
 
     public Sprite icon;
     public AnimatorOverrideController animController;
     public GameObject modelRight;
     public GameObject modelLeft;
+    public Vector3 attackDimensions;
 }

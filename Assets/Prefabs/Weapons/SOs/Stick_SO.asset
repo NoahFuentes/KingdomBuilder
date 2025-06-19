@@ -26,3 +26,4 @@ MonoBehaviour:
   animController: {fileID: 22100000, guid: e4578509f8f57bf4e8a1f98bc7c06282, type: 2}
   modelRight: {fileID: 1125422861488534708, guid: 147a73392412ab2449e0ea933dc0c8bb, type: 3}
   modelLeft: {fileID: 0}
+  attackDimensions: {x: 2, y: 2, z: 2}

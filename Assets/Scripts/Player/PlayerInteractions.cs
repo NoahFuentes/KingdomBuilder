@@ -117,7 +117,7 @@ public class PlayerInteractions : MonoBehaviour
             Instantiate(weapon.modelRight, rightItemSpawn);
         if (null != weapon.modelLeft)
             Instantiate(weapon.modelLeft, leftItemSpawn);
-        GetComponent<AnimationController>().weaponCollider = GameObject.FindGameObjectWithTag("WorldSpaceWeapon").GetComponent<Collider>();
+
         //TODO: update UI sprite
     }
 
