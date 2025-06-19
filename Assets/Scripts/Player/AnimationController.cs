@@ -23,7 +23,12 @@ public class AnimationController : MonoBehaviour
     public void CheckHitBoxAnimEvent()
     {
         Weapon_SO weapon = PlayerStats.Instance.m_CurrentWeapon;
-        Collider[] enemiesHit = Physics.OverlapBox(attackTrans.position, weapon.attackDimensions / 2, Quaternion.identity, attackMask);
+        Collider[] enemiesHit = Physics.OverlapBox(attackTrans.position, weapon.attackDimensions / 2, transform.rotation, attackMask);
+        if(enemiesHit.Length > 0)
+            Draw.Instance.DrawBox(attackTrans.position, transform.rotation, weapon.attackDimensions, Color.red);
+        else
+            Draw.Instance.DrawBox(attackTrans.position, transform.rotation, weapon.attackDimensions, Color.blue);
+
         foreach(Collider enemy in enemiesHit)
         {
             //bad spot for this, but this is where we damgage enemies...
