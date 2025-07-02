@@ -2,10 +2,18 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
+    public static AnimationController Instance;
     private Animator animator;
+
     [SerializeField] private Transform attackTrans;
     [SerializeField] private LayerMask attackMask;
+    public GameObject playerWSWeaponR;
+    public GameObject playerWSWeaponL;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -34,6 +42,22 @@ public class AnimationController : MonoBehaviour
             //bad spot for this, but this is where we damgage enemies...
             enemy.GetComponent<MobStats>().TakeDamage(weapon.damage);
         }
+    }
+    public void EnableWeaponTrailR()
+    {
+        playerWSWeaponR.GetComponentInChildren<TrailRenderer>().emitting = true;
+    }
+    public void DisableWeaponTrailR()
+    {
+        playerWSWeaponR.GetComponentInChildren<TrailRenderer>().emitting = false;
+    }
+    public void EnableWeaponTrailL()
+    {
+        playerWSWeaponL.GetComponentInChildren<TrailRenderer>().emitting = true;
+    }
+    public void DisableWeaponTrailL()
+    {
+        playerWSWeaponL.GetComponentInChildren<TrailRenderer>().emitting = false;
     }
 
     public void HitResourceAnimEvent()

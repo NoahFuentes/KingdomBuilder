@@ -13,14 +13,12 @@ MonoBehaviour:
   m_Name: Two-Handed-Sword_SO
   m_EditorClassIdentifier: 
   weaponName: Two Handed Sword
-  dmgType: slash
+  dmgType: melee
   attackRange: 6
   weaponType: two-handed
   damage: 6
   staminaCost: 20
   attackTime: 2
-  dashDistance: 1
-  dashSpeed: 20
   knockBackDist: 115
   icon: {fileID: 0}
   animController: {fileID: 22100000, guid: b83ad64678b7b8542a26a02a6780f86c, type: 2}

@@ -114,9 +114,9 @@ public class PlayerInteractions : MonoBehaviour
         }
         //add new weapon model
         if (null != weapon.modelRight)
-            Instantiate(weapon.modelRight, rightItemSpawn);
+            AnimationController.Instance.playerWSWeaponR = Instantiate(weapon.modelRight, rightItemSpawn);
         if (null != weapon.modelLeft)
-            Instantiate(weapon.modelLeft, leftItemSpawn);
+            AnimationController.Instance.playerWSWeaponL = Instantiate(weapon.modelLeft, leftItemSpawn);
 
         //TODO: update UI sprite
     }

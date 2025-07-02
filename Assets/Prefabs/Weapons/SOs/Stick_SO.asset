@@ -13,14 +13,12 @@ MonoBehaviour:
   m_Name: Stick_SO
   m_EditorClassIdentifier: 
   weaponName: Stick
-  dmgType: blunt
+  dmgType: melee
   attackRange: 0
   weaponType: SAS
   damage: 2
   staminaCost: 10
   attackTime: 1
-  dashDistance: 2
-  dashSpeed: 25
   knockBackDist: 80
   icon: {fileID: 0}
   animController: {fileID: 22100000, guid: e4578509f8f57bf4e8a1f98bc7c06282, type: 2}
