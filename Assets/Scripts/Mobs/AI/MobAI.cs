@@ -30,9 +30,10 @@ public class MobAI : MonoBehaviour //Master class for all Mob AIs, interactions 
         animator = GetComponent<Animator>();
     }
 
-    public virtual void TakeDamage(short dmg)
+    public virtual void TakeDamage(float dmg)
     {
         stats.currentHealth -= dmg;
+        Debug.Log(gameObject.name + " took " + dmg + " damage: " + (stats.currentHealth + dmg) + " -> " + stats.currentHealth);
         if (stats.currentHealth <= 0)
         {
             Die();

@@ -24,8 +24,8 @@ public class AttackingMobAI : MobAI //parent class for all Mob AI that can attac
 
         foreach (Collider enemy in enemiesHit)
         {
-            //bad spot for this, but this is where we damgage enemies...
-            enemy.GetComponent<MobStats>()?.TakeDamage(stats.damage);
+            //bad spot for this, but this is where we damgage targets...
+            enemy.GetComponent<MobAI>()?.TakeDamage(stats.damage);
             enemy.GetComponent<PlayerInteractions>()?.TakeDamage(stats.damage);
         }
     }

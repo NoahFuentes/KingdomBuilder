@@ -16,15 +16,4 @@ public class MobStats : MonoBehaviour
     public Vector3 attackDimensions;
     public float stoppingDistance;
 
-    public void TakeDamage(float dmg)
-    {
-        currentHealth -= dmg;
-        Debug.Log(gameObject.name + " took " + dmg + " damage: " + (currentHealth + dmg) + " -> " + currentHealth);
-        if (currentHealth <= 0)
-            KillMob();
-    }
-    public void KillMob()
-    {
-        Destroy(gameObject);
-    }
 }

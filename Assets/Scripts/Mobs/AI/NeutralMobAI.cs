@@ -43,14 +43,17 @@ public class NeutralMobAI : AttackingMobAI
         }
     }
 
-    public override void TakeDamage(short dmg)
+    public override void TakeDamage(float dmg)
     {
+        base.TakeDamage(dmg);
+        /*
         stats.currentHealth -= dmg;
         if (stats.currentHealth <= 0)
         {
             Die();
             return;
         }
+        */
         wasHit = true;
     }
 }
