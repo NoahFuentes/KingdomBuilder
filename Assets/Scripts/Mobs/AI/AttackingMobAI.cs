@@ -2,6 +2,7 @@ using UnityEngine;
 public class AttackingMobAI : MobAI //parent class for all Mob AI that can attack (hostile and neutral mobs)
 {
     public bool isAttacking = false;
+    [SerializeField] private Transform attackTrans;
     
     public void SetIsAttackingTrue()
     {
@@ -13,13 +14,20 @@ public class AttackingMobAI : MobAI //parent class for all Mob AI that can attac
     }
 
 
-    public void ActivateAttackHitBox()
+    public void CheckAttackHitBox()
     {
-        stats.attackHitBox.enabled = true;
-    }
-    public void DeactivateAttackHitBox()
-    {
-        stats.attackHitBox.enabled = false;
+        Collider[] enemiesHit = Physics.OverlapBox(attackTrans.position, stats.attackDimensions / 2, transform.rotation, targetMask);
+        if (enemiesHit.Length > 0)
+            Draw.Instance.DrawBox(attackTrans.position, transform.rotation, stats.attackDimensions, Color.red);
+        else
+            Draw.Instance.DrawBox(attackTrans.position, transform.rotation, stats.attackDimensions, Color.blue);
+
+        foreach (Collider enemy in enemiesHit)
+        {
+            //bad spot for this, but this is where we damgage enemies...
+            enemy.GetComponent<MobStats>()?.TakeDamage(stats.damage);
+            enemy.GetComponent<PlayerInteractions>()?.TakeDamage(stats.damage);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

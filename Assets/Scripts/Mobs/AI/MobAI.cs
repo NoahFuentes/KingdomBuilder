@@ -16,7 +16,7 @@ public class MobAI : MonoBehaviour //Master class for all Mob AIs, interactions 
     
     protected MobStats stats;
     protected NavMeshAgent agent;
-    //protected Animator animator;
+    protected Animator animator;
 
 
     protected void Start()
@@ -25,9 +25,9 @@ public class MobAI : MonoBehaviour //Master class for all Mob AIs, interactions 
 
         agent = GetComponent<NavMeshAgent>();
         agent.speed = stats.baseMovementSpeed;
-        agent.stoppingDistance = stats.attackRange - 0.25f;
+        agent.stoppingDistance = stats.stoppingDistance;
 
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     public virtual void TakeDamage(short dmg)
@@ -38,6 +38,7 @@ public class MobAI : MonoBehaviour //Master class for all Mob AIs, interactions 
             Die();
             return;
         }
+        //knockback?
     }
 
     protected void RestoreHealth(short healAmt)

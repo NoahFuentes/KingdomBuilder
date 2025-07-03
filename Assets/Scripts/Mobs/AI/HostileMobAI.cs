@@ -7,8 +7,8 @@ public class HostileMobAI : AttackingMobAI //class for all enemy based mobs (att
         targets = Physics.OverlapSphere(transform.position, noticeRange, targetMask);
         if (targets.Length > 0)
         {
-            float closestTargetDist = Vector3.Distance(transform.position, targets[0].transform.position);
             GameObject currentTarget = targets[0].gameObject;
+            float closestTargetDist = Vector3.Distance(transform.position, currentTarget.transform.position);
             for (int i = 0; i < targets.Length; i++)
             {
                 float dist = Vector3.Distance(transform.position, targets[i].transform.position);
@@ -23,18 +23,18 @@ public class HostileMobAI : AttackingMobAI //class for all enemy based mobs (att
                 transform.LookAt(currentTarget.transform);
                 return;
             }
-            if (Vector3.Distance(transform.position, currentTarget.transform.position) <= stats.attackRange)
+            if (Vector3.Distance(transform.position, currentTarget.transform.position) <= stats.stoppingDistance)
             {
                 SetIsAttackingTrue();
                 transform.LookAt(currentTarget.transform);
-                //animator.SetTrigger("attack");
+                animator.SetTrigger("attack");
                 agent.speed = 0f;
                 return;
             }
             agent.speed = stats.sprintMovementSpeed;
             agent.destination = currentTarget.transform.position;
-            //animator.SetBool("isRunning", true);
-            //animator.SetBool("isWalking", false);
+            animator.SetBool("isRunning", true);
+            animator.SetBool("isWalking", false);
         }
         else if (Time.time - lastWanderTime >= wanderTime)
         {
@@ -44,13 +44,13 @@ public class HostileMobAI : AttackingMobAI //class for all enemy based mobs (att
             Vector3 wanderPosition = new Vector3(randX, 0, randZ) + spawner.transform.position;
             agent.speed = stats.baseMovementSpeed;
             agent.destination = wanderPosition;
-            //animator.SetBool("isWalking", true);
-            //animator.SetBool("isRunning", false);
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isRunning", false);
         }
-        else if (Vector3.Distance(transform.position, agent.destination) <= stats.attackRange)
+        else if (Vector3.Distance(transform.position, agent.destination) <= stats.stoppingDistance)
         {
-            //animator.SetBool("isWalking", false);
-            //animator.SetBool("isRunning", false);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isRunning", false);
         }
     }
 }
