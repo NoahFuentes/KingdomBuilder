@@ -8,12 +8,21 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private int[] resCounts;
     [SerializeField] private int[] resCountMaxes;
 
+    
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void addResource(string resName, int amt)
     {
         for (int i = 0; i < resNames.Length; i++)
         {
             if (resName != resNames[i]) continue;
-            resCounts[i] = (((resCounts[i] += amt) > resCountMaxes[i]) ? resCountMaxes[i] : resCounts[i]);
+            resCounts[i] = Mathf.Clamp(resCounts[i] + amt, 0, resCountMaxes[i]);
+            UIManager.Instance.UpdatePlayerInventoryResourceCount(i, resCounts[i], resCountMaxes[i]);
+            return;
         }
     }
 
@@ -21,12 +30,10 @@ public class PlayerInventory : MonoBehaviour
     {
         KingdomStats.Instance.AddResources(resNames, resCounts);
         for(int i = 0; i < resCounts.Length; i++)
+        {
             resCounts[i]=0;
-    }
-
-    private void Start()
-    {
-        Instance = this;
+            UIManager.Instance.UpdatePlayerInventoryResourceCount(i, resCounts[i], resCountMaxes[i]);
+        }
     }
 
     private void Update()
@@ -41,4 +48,6 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha8)) addResource("crystal", 1);
         if (Input.GetKeyDown(KeyCode.Alpha9)) addResource("black crystal", 1);
     }
+
+    
 }

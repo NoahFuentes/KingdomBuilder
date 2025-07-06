@@ -105,7 +105,7 @@ public class UIManager : MonoBehaviour
         resSideBar.SetActive(false);
     }
 
-    public void UpdateResourceCounts()
+    public void UpdateKingdomResourceCounts()
     {
         foodCount.text = KingdomStats.Instance.m_CurrentFoodAmount.ToString() + "/" + KingdomStats.Instance.m_MaxFoodAmount.ToString();
         waterCount.text = KingdomStats.Instance.m_CurrentWaterAmount.ToString() + "/" + KingdomStats.Instance.m_MaxWaterAmount.ToString();
@@ -176,6 +176,32 @@ public class UIManager : MonoBehaviour
 
     }
     #endregion
+    #region Player Inventory UI
+    [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private TextMeshProUGUI[] resCountsUIStrings;
+
+    private void TogglePlayerInventory()
+    {
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
+    }
+    public void UpdatePlayerInventoryResourceCount(int resIndex, int newCount, int resMax)
+    {
+        resCountsUIStrings[resIndex].text = newCount.ToString() + "/" + resMax.ToString();
+    }
+    private void InitializePlayerInventoryResourceCounts()
+    {
+        resCountsUIStrings[0].text = "0/25";
+        resCountsUIStrings[1].text = "0/25";
+        resCountsUIStrings[2].text = "0/20";
+        resCountsUIStrings[3].text = "0/20";
+        resCountsUIStrings[4].text = "0/15";
+        resCountsUIStrings[5].text = "0/10";
+        resCountsUIStrings[6].text = "0/5";
+        resCountsUIStrings[7].text = "0/5";
+        resCountsUIStrings[8].text = "0/3";
+    }
+
+    #endregion
 
 
 
@@ -189,14 +215,14 @@ public class UIManager : MonoBehaviour
         kingdomOverlay.SetActive(true);
         exploringOverlay.SetActive(false);
         mainMenu.SetActive(false);
-
-        //ks = GameObject.FindGameObjectWithTag("KingdomManager").GetComponent<KingdomStats>();
+        inventoryUI.SetActive(false);
 
         CallCloseNPCSideBar();
         CallCloseResSideBar();
         closeBuildMenu();
 
-        UpdateResourceCounts();
+        UpdateKingdomResourceCounts();
+        InitializePlayerInventoryResourceCounts();
     }
 
     private void Update()
@@ -204,6 +230,10 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             mainMenu.SetActive(!mainMenu.activeSelf);
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            TogglePlayerInventory();
         }
     }
 

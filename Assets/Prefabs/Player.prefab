@@ -4611,6 +4611,8 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 15616
+  playerWSWeaponR: {fileID: 0}
+  playerWSWeaponL: {fileID: 0}
 --- !u!114 &8719330577616206947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4650,6 +4652,17 @@ MonoBehaviour:
   - black crystal
   resCounts: 000000000000000000000000000000000000000000000000000000000000000000000000
   resCountMaxes: 190000001900000014000000140000000f0000000a000000050000000500000003000000
+  inventoryUI: {fileID: 0}
+  resCountsUIStrings:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!195 &2234383902371135861
 NavMeshAgent:
   m_ObjectHideFlags: 0

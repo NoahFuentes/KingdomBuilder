@@ -12,15 +12,15 @@ public class KingdomStats : MonoBehaviour
     //Resources (Currently: Food, water, wood, textiles, stone, iron, gold, crystal, and black crystal) 
     public int m_MaxFoodAmount;
     public int m_CurrentFoodAmount;
-    public int m_FoodConsumptionAmount;
+    public int m_FoodUpkeep;
 
     public int m_MaxWaterAmount;
     public int m_CurrentWaterAmount;
-    public int m_WaterConsumptionAmount;
+    public int m_WaterUpkeep;
 
     public int m_MaxWoodAmount;
     public int m_CurrentWoodAmount;
-    public int m_WoodConsumptionAmount;
+    public int m_WoodUpkeep;
 
     public int m_MaxTextileAmount;
     public int m_CurrentTextileAmount;
@@ -124,7 +124,7 @@ public class KingdomStats : MonoBehaviour
                     break;
             }
         }
-        UIManager.Instance.UpdateResourceCounts();
+        UIManager.Instance.UpdateKingdomResourceCounts();
     }
     public void AddResources(string[] resources, int[] amts)
     {
@@ -164,7 +164,7 @@ public class KingdomStats : MonoBehaviour
                     break;
             }
         }
-        UIManager.Instance.UpdateResourceCounts();
+        UIManager.Instance.UpdateKingdomResourceCounts();
     }
 
 
