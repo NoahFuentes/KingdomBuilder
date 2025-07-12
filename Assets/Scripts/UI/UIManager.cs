@@ -23,99 +23,23 @@ public class UIManager : MonoBehaviour
     }
     #endregion
     #region KINGDOM OVERLAY
-    [SerializeField] private float smoothing;
 
-    [SerializeField] private GameObject resSideBar;
-    [SerializeField] private Vector3 resActivePos;
-    [SerializeField] private Vector3 resInactivePos;
-    [SerializeField] private TextMeshProUGUI foodCount;
-    [SerializeField] private TextMeshProUGUI waterCount;
-    [SerializeField] private TextMeshProUGUI woodCount;
-    [SerializeField] private TextMeshProUGUI textileCount;
-    [SerializeField] private TextMeshProUGUI stoneCount;
-    [SerializeField] private TextMeshProUGUI ironCount;
-    [SerializeField] private TextMeshProUGUI goldCount;
-    [SerializeField] private TextMeshProUGUI crystalCount;
-    [SerializeField] private TextMeshProUGUI blackCrystalCount;
-
-    [SerializeField] private GameObject NPCSideBar;
-    [SerializeField] private Vector3 NPCActivePos;
-    [SerializeField] private Vector3 NPCInactivePos;
-
+    [SerializeField] private TextMeshProUGUI[] kingdomResourceCountStrings;
     [SerializeField] private GameObject buildMenu;
-
-    //NPC SideBar
-    public void CallOpenNPCSideBar()
-    {
-        StartCoroutine(openNPCSideBar());
-    }
-    public void CallCloseNPCSideBar()
-    {
-        StartCoroutine(closeNPCSideBar());
-    }
-    public IEnumerator openNPCSideBar()
-    {
-        NPCSideBar.SetActive(true);
-        RectTransform tr = NPCSideBar.GetComponent<RectTransform>();
-        while (Vector3.Distance(tr.localPosition, NPCActivePos) != 0)
-        {
-            tr.localPosition = Vector3.MoveTowards(tr.localPosition, NPCActivePos, smoothing * Time.deltaTime);
-            yield return null;
-        }
-    }
-    public IEnumerator closeNPCSideBar()
-    {
-        RectTransform tr = NPCSideBar.GetComponent<RectTransform>();
-        while (Vector3.Distance(tr.localPosition, NPCInactivePos) != 0)
-        {
-            tr.localPosition = Vector3.MoveTowards(tr.localPosition, NPCInactivePos, smoothing * Time.deltaTime);
-            yield return null;
-        }
-        NPCSideBar.SetActive(false);
-    }
-
-
-    //Resource SideBar
-    public void CallOpenResSideBar()
-    {
-        StartCoroutine(openResSideBar());
-    }
-    public void CallCloseResSideBar()
-    {
-        StartCoroutine(closeResSideBar());
-    }
-    public IEnumerator openResSideBar()
-    {
-        resSideBar.SetActive(true);
-        RectTransform tr = resSideBar.GetComponent<RectTransform>();
-        while (Vector3.Distance(tr.localPosition, resActivePos) != 0)
-        {
-            tr.localPosition = Vector3.MoveTowards(tr.localPosition, resActivePos, smoothing * Time.deltaTime);
-            yield return null;
-        }
-    }
-    public IEnumerator closeResSideBar()
-    {
-        RectTransform tr = resSideBar.GetComponent<RectTransform>();
-        while (Vector3.Distance(tr.localPosition, resInactivePos) != 0)
-        {
-            tr.localPosition = Vector3.MoveTowards(tr.localPosition, resInactivePos, smoothing * Time.deltaTime);
-            yield return null;
-        }
-        resSideBar.SetActive(false);
-    }
 
     public void UpdateKingdomResourceCounts()
     {
-        foodCount.text = KingdomStats.Instance.m_CurrentFoodAmount.ToString() + "/" + KingdomStats.Instance.m_MaxFoodAmount.ToString();
-        waterCount.text = KingdomStats.Instance.m_CurrentWaterAmount.ToString() + "/" + KingdomStats.Instance.m_MaxWaterAmount.ToString();
-        woodCount.text = KingdomStats.Instance.m_CurrentWoodAmount.ToString() + "/" + KingdomStats.Instance.m_MaxWoodAmount.ToString();
-        textileCount.text = KingdomStats.Instance.m_CurrentTextileAmount.ToString() + "/" + KingdomStats.Instance.m_MaxTextileAmount.ToString();
-        stoneCount.text = KingdomStats.Instance.m_CurrentStoneAmount.ToString() + "/" + KingdomStats.Instance.m_MaxStoneAmount.ToString();
-        ironCount.text = KingdomStats.Instance.m_CurrentIronAmount.ToString() + "/" + KingdomStats.Instance.m_MaxIronAmount.ToString();
-        goldCount.text = KingdomStats.Instance.m_CurrentGoldAmount.ToString() + "/" + KingdomStats.Instance.m_MaxGoldAmount.ToString();
-        crystalCount.text = KingdomStats.Instance.m_CurrentCrystalAmount.ToString() + "/" + KingdomStats.Instance.m_MaxCrystalAmount.ToString();
-        blackCrystalCount.text = KingdomStats.Instance.m_CurrentBlackCrystalAmount.ToString() + "/" + KingdomStats.Instance.m_MaxBlackCrystalAmount.ToString();
+        int[] resCounts = KingdomStats.Instance.resourceCurrentAmounts;
+
+        if (resCounts.Length != kingdomResourceCountStrings.Length)
+        {
+            Debug.Log("ERROR: Resource count does not match ui text counts.");
+            return;
+        }
+        for (int i = 0; i < kingdomResourceCountStrings.Length; i++)
+        {
+            kingdomResourceCountStrings[i].text = resCounts[i].ToString();
+        }
     }
 
     //Building
@@ -178,7 +102,7 @@ public class UIManager : MonoBehaviour
     #endregion
     #region Player Inventory UI
     [SerializeField] private GameObject inventoryUI;
-    [SerializeField] private TextMeshProUGUI[] resCountsUIStrings;
+    [SerializeField] private TextMeshProUGUI[] playerResCountsUIStrings;
 
     private void TogglePlayerInventory()
     {
@@ -186,19 +110,15 @@ public class UIManager : MonoBehaviour
     }
     public void UpdatePlayerInventoryResourceCount(int resIndex, int newCount, int resMax)
     {
-        resCountsUIStrings[resIndex].text = newCount.ToString() + "/" + resMax.ToString();
+        playerResCountsUIStrings[resIndex].text = newCount.ToString() + "/" + resMax.ToString();
     }
     private void InitializePlayerInventoryResourceCounts()
     {
-        resCountsUIStrings[0].text = "0/25";
-        resCountsUIStrings[1].text = "0/25";
-        resCountsUIStrings[2].text = "0/20";
-        resCountsUIStrings[3].text = "0/20";
-        resCountsUIStrings[4].text = "0/15";
-        resCountsUIStrings[5].text = "0/10";
-        resCountsUIStrings[6].text = "0/5";
-        resCountsUIStrings[7].text = "0/5";
-        resCountsUIStrings[8].text = "0/3";
+        int[] maxes = PlayerInventory.Instance.resCountMaxes;
+        for (int i = 0; i < playerResCountsUIStrings.Length; i++)
+        {
+            playerResCountsUIStrings[i].text = "0/" + maxes[i];
+        }
     }
 
     #endregion
@@ -217,12 +137,10 @@ public class UIManager : MonoBehaviour
         mainMenu.SetActive(false);
         inventoryUI.SetActive(false);
 
-        CallCloseNPCSideBar();
-        CallCloseResSideBar();
         closeBuildMenu();
 
-        UpdateKingdomResourceCounts();
         InitializePlayerInventoryResourceCounts();
+        UpdateKingdomResourceCounts();
     }
 
     private void Update()

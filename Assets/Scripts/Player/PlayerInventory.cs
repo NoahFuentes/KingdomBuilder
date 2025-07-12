@@ -6,7 +6,7 @@ public class PlayerInventory : MonoBehaviour
 
     [SerializeField] private string[] resNames;
     [SerializeField] private int[] resCounts;
-    [SerializeField] private int[] resCountMaxes;
+    public int[] resCountMaxes;
 
     
 
@@ -45,8 +45,6 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha5)) addResource("stone", 5);
         if (Input.GetKeyDown(KeyCode.Alpha6)) addResource("iron", 5);
         if (Input.GetKeyDown(KeyCode.Alpha7)) addResource("gold", 3);
-        if (Input.GetKeyDown(KeyCode.Alpha8)) addResource("crystal", 1);
-        if (Input.GetKeyDown(KeyCode.Alpha9)) addResource("black crystal", 1);
     }
 
     
