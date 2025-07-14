@@ -5,7 +5,6 @@ public class BuildingPlacement : MonoBehaviour
     //private KingdomStats ks;
 
     public float gridSize = 1.0f;
-    private bool validPlacement = false;
     [SerializeField] private int contacts = 0;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float startTime;
@@ -36,13 +35,23 @@ public class BuildingPlacement : MonoBehaviour
 
         transform.position = gridPos;
 
-        if (contacts == 0 && KingdomStats.Instance.CanAfford(resources, costs) && WithinBuildRange()) validPlacement = true;
-        else validPlacement = false;
-
         if (Input.GetMouseButtonDown(0))
         {
-            if (!validPlacement)
+            if (contacts != 0)
             {
+                Debug.Log(name + ": Could not place, CONTACT INVALID.");
+                Destroy(gameObject);
+                return;
+            }
+            else if (!KingdomStats.Instance.CanAfford(resources, costs))
+            {
+                Debug.Log(name + ": Could not place, COULD NOT AFFORD.");
+                Destroy(gameObject);
+                return;
+            }
+            else if (!WithinBuildRange())
+            {
+                Debug.Log(name + ": Could not place, NOT IN BUILD RANGE.");
                 Destroy(gameObject);
                 return;
             }

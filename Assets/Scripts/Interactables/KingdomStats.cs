@@ -28,14 +28,17 @@ public class KingdomStats : MonoBehaviour
         for (int i = 0; i < resources.Length; i++)
         {
             bool canAfford = false;
+            bool found = false;
             for (int j = 0; j < resourceNames.Length; j++)
             {
                 if (resources[i] == resourceNames[j])
                 {
+                    found = true;
                     canAfford = (resourceCurrentAmounts[j] - costs[i] >= 0) ? true : false;
                     break;
                 }
             }
+            if (!found) Debug.Log("COULD NOT FIND RESOURCE OF NAME: " + resources[i]);
             if (!canAfford) return false;
         }
         return true;
@@ -49,6 +52,7 @@ public class KingdomStats : MonoBehaviour
             {
                 if (resources[i] == resourceNames[j])
                 {
+                    found = true;
                     resourceCurrentAmounts[j] = Mathf.Clamp(resourceCurrentAmounts[j] - costs[i], 0, resourceMaxAmounts[j]);
                     break;
                 }
@@ -66,6 +70,7 @@ public class KingdomStats : MonoBehaviour
             {
                 if (resources[i] == resourceNames[j])
                 {
+                    found = true;
                     resourceCurrentAmounts[j] = Mathf.Clamp(resourceCurrentAmounts[j] + amts[i], 0, resourceMaxAmounts[j]);
                     break;
                 }
