@@ -54,9 +54,11 @@ MonoBehaviour:
   startTime: 0
   buildingPrefab: {fileID: 1432519351757623957, guid: 0bce610d884beee4da817ba346fe7f90, type: 3}
   resources:
+  - water
   - food
-  - wood
-  costs: 0a0000000f000000
+  - timber
+  - cloth
+  costs: 0a0000000a0000000a0000000a000000
 --- !u!65 &8219535930248922592
 BoxCollider:
   m_ObjectHideFlags: 0

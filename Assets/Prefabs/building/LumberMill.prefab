@@ -692,12 +692,12 @@ MonoBehaviour:
   interactionBreakDist: 15
   isOccupied: 1
   returnResources:
-  - wood
+  - timber
   - iron
-  returnAmts: 190000000a000000
+  returnAmts: 2800000005000000
   canvas: {fileID: 5434188051074660436}
   interactionDisplay: {fileID: 3885167210023537242}
-  resourcetype: wood
+  resourcetype: timber
   amountsForLevel: 05000000080000000c0000000f000000
   resourceGivePeriod: 5
 --- !u!1 &7911077306701964383

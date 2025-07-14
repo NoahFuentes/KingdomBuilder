@@ -49,8 +49,10 @@ MonoBehaviour:
   buildingLevel: 0
   interactionBreakDist: 0
   isOccupied: 0
-  returnResources: []
-  returnAmts: 
+  returnResources:
+  - timber
+  - cloth
+  returnAmts: 0a0000000a000000
   canvas: {fileID: 0}
   interactionDisplay: {fileID: 0}
 --- !u!1 &7117633299302336485

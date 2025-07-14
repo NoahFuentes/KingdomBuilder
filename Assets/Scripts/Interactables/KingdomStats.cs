@@ -80,6 +80,12 @@ public class KingdomStats : MonoBehaviour
         UIManager.Instance.UpdateKingdomResourceCounts();
     }
 
+    private void Update()
+    {
+        string[] resArray = { "cloth", "iron"};
+        int[] resAmts = { 20, 20 };
+        if (Input.GetKeyDown(KeyCode.H)) AddResources(resArray, resAmts);
+    }
 
     public bool waterBearerPresent;
     public bool farmerPresent;

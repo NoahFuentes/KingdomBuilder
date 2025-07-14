@@ -823,10 +823,10 @@ MonoBehaviour:
   interactionBreakDist: 15
   isOccupied: 1
   returnResources:
-  - food
-  - wood
+  - timber
+  - cloth
   - stone
-  returnAmts: 0a000000190000000f000000
+  returnAmts: 190000001900000014000000
   canvas: {fileID: 3543123024009870628}
   interactionDisplay: {fileID: 3931441941595948192}
   weapons:
