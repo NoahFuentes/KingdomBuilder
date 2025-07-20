@@ -8,6 +8,8 @@ public class KingdomStats : MonoBehaviour
     public ushort m_KingdomLevel; // (Campsite, Town Center, Grand Courtyard, Great Hall, High Keep)
     public float m_KingdomRadius;
 
+    public int kingdomPopulationCap;
+
     //Resources
 
     public string[] resourceNames;
