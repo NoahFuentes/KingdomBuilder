@@ -1,3 +1,8 @@
+/* This script is applied to the main camera of the scene and makes it follow the players transform + the specified
+ * offset. The scroll wheel allows for zoom in and out.
+ */
+
+
 using UnityEngine;
 
 public class CameraFollowPlayer : MonoBehaviour

@@ -52,11 +52,6 @@ public class UIManager : MonoBehaviour
         buildMenu.SetActive(true);
     }
 
-    public void InstantiateBuildingPlacement(GameObject buildingPlacer) 
-    {
-        closeBuildMenu();
-        Instantiate(buildingPlacer);
-    }
 
     #endregion
     #region CRAFTING MENUS
