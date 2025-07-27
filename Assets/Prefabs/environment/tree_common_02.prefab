@@ -213,8 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resName: Oak Tree
   isMinable: 0
-  resToGive: wood
-  amtToGive: 5
+  resToGive: timber
+  amtToGive: 2
   maxHealth: 10
   currentHealth: 10
 --- !u!114 &6611777118003622138

@@ -106,7 +106,7 @@ MonoBehaviour:
   resName: Oak Tree
   isMinable: 0
   resToGive: timber
-  amtToGive: 5
+  amtToGive: 2
   maxHealth: 10
   currentHealth: 10
 --- !u!64 &-7767695860867339464
