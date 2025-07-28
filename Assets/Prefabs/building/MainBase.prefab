@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 8818253050228904030}
   - component: {fileID: 5154850830830778827}
   - component: {fileID: 5119276892045794348}
-  - component: {fileID: 1300926730807299574}
+  - component: {fileID: 6648112612234661371}
   m_Layer: 15
   m_Name: MainBase
   m_TagString: Untagged
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!114 &1300926730807299574
+--- !u!114 &6648112612234661371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -517,17 +517,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5705781644849687513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58a705d378034f84f91fe0b806c42cbe, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d664621e1163884c9d250c95c4562a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Campsite
+  buildingInfo: {fileID: 11400000, guid: c9f749bf1ae3e994784786ca35779ce5, type: 2}
   buildingLevel: 1
-  interactionBreakDist: 15
-  isOccupied: 1
-  returnResources: []
-  returnAmts: 
-  canvas: {fileID: 55566575874561407}
-  interactionDisplay: {fileID: 8861025935354267477}
+  buildRangeIndicator: {fileID: 0}
 --- !u!1 &6434095765992557132
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +746,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1300926730807299574}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Kingdom_Building, Assembly-CSharp
         m_MethodName: CallInventoryDepot
         m_Mode: 1

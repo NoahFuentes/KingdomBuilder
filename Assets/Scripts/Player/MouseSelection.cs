@@ -159,7 +159,7 @@ public class MouseSelection : MonoBehaviour
     private void HandleBuildingRightClick()
     {
         if (distToPlayer > buildingInteractableDistance) return;
-        hoveredObject.GetComponentInParent<Building>().Interaction();
+        hoveredObject.GetComponentInParent<BuildingBase>().OnSelect();
     }
 
     private void HandleNoHover()

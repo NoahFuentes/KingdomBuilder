@@ -19,7 +19,7 @@ public class BuildingManager : MonoBehaviour
     private Building_SO buildingToBuild;
 
     private GameObject wsPlacer;
-    private GameObject wsBuilding;
+    public GameObject wsBuilding;
 
     public void SetwsBuilding(GameObject newBuilding)
     {
@@ -82,9 +82,10 @@ public class BuildingManager : MonoBehaviour
             return;
         } 
         
-        GameObject building = Instantiate(buildingToBuild.building, placementTrans.position, placementTrans.rotation);
+        GameObject wsBuilding = Instantiate(buildingToBuild.building, placementTrans.position, placementTrans.rotation);
         AddCellsToOccupiedList(gridPos);
         KingdomStats.Instance.RemoveResources(buildingToBuild.resources, buildingToBuild.costs);
+        wsBuilding.GetComponent<BuildingBase>().OnBuild();
     }
 
     private void AddCellsToOccupiedList(Vector2Int bottomLeftCell)
@@ -117,6 +118,7 @@ public class BuildingManager : MonoBehaviour
     public void DemolishBuilding()
     {
         //TODO: Remove cells from occupied list
+        wsBuilding.GetComponent<BuildingBase>().OnDemolish();
         Destroy(wsBuilding);
         KingdomStats.Instance.AddResources(buildingToBuild.resources, buildingToBuild.costs);
     }

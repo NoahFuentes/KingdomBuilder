@@ -27,6 +27,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] kingdomResourceCountStrings;
     [SerializeField] private GameObject buildMenu;
 
+    [SerializeField] private GameObject buildingInfoFooter;
+    public GameObject interactionButton;
+    [SerializeField] private GameObject upgradeButton;
+    [SerializeField] private GameObject demolishButton;
+    [SerializeField] private TextMeshProUGUI buildingInfoDesc;
+    [SerializeField] private TextMeshProUGUI buildingInfoName;
+    [SerializeField] private Image buildingInfoImage;
+
+
     public void UpdateKingdomResourceCounts()
     {
         int[] resCounts = KingdomStats.Instance.resourceCurrentAmounts;
@@ -40,6 +49,26 @@ public class UIManager : MonoBehaviour
         {
             kingdomResourceCountStrings[i].text = resCounts[i].ToString();
         }
+    }
+
+    public void OpenBuildingInfoFooter()
+    {
+        buildingInfoFooter.SetActive(true);
+    }
+    public void CloseBuildingInfoFooter()
+    {
+        buildingInfoFooter.SetActive(false);
+    }
+    public void UpdateBuildingInfoFooter(Building_SO buildingInfo, ushort level)
+    {
+        interactionButton.SetActive(buildingInfo.interactable);
+        upgradeButton.SetActive(buildingInfo.upgradable);
+        demolishButton.SetActive(buildingInfo.demolishable);
+
+        buildingInfoDesc.text = buildingInfo.buildingDesc;
+        buildingInfoName.text = buildingInfo.buildingName + " lvl. " + level.ToString();
+        buildingInfoImage.sprite = buildingInfo.buildingIcon;
+
     }
 
     //Building
