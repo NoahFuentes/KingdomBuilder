@@ -85,6 +85,7 @@ public class BuildingManager : MonoBehaviour
         GameObject wsBuilding = Instantiate(buildingToBuild.building, placementTrans.position, placementTrans.rotation);
         AddCellsToOccupiedList(gridPos);
         KingdomStats.Instance.RemoveResources(buildingToBuild.resources, buildingToBuild.costs);
+        wsBuilding.GetComponent<BuildingBase>().originGridPos = gridPos;
         wsBuilding.GetComponent<BuildingBase>().OnBuild();
     }
 
@@ -95,6 +96,16 @@ public class BuildingManager : MonoBehaviour
             for (int y = 0; y < buildingToBuild.gridSize.y; y++)
             {
                 occupiedGridCells.Add(new Vector2Int(bottomLeftCell.x+x, bottomLeftCell.y+y));
+            }
+        }
+    }
+    private void RemoveCellsToOccupiedList(Vector2Int bottomLeftCell)
+    {
+        for (int x = 0; x < buildingToBuild.gridSize.x; x++)
+        {
+            for (int y = 0; y < buildingToBuild.gridSize.y; y++)
+            {
+                occupiedGridCells.Remove(new Vector2Int(bottomLeftCell.x + x, bottomLeftCell.y + y));
             }
         }
     }
@@ -118,6 +129,7 @@ public class BuildingManager : MonoBehaviour
     public void DemolishBuilding()
     {
         //TODO: Remove cells from occupied list
+        RemoveCellsToOccupiedList(wsBuilding.GetComponent<BuildingBase>().originGridPos);
         wsBuilding.GetComponent<BuildingBase>().OnDemolish();
         Destroy(wsBuilding);
         KingdomStats.Instance.AddResources(buildingToBuild.resources, buildingToBuild.costs);

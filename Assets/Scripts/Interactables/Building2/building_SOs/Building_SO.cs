@@ -13,6 +13,7 @@ public class Building_SO : ScriptableObject
     public Vector2Int gridSize; //must be square... rectangles are too much work...
 
     public bool interactable; //has an assotiated menu that can be opened
+    public string interactButtonString;
     public bool upgradable;
     public bool demolishable;
 

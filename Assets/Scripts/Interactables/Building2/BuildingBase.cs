@@ -4,7 +4,7 @@ public class BuildingBase : MonoBehaviour
 {
     [SerializeField] private Building_SO buildingInfo;
     [SerializeField] private ushort buildingLevel;
-
+    public Vector2Int originGridPos;
 
     public virtual void OnSelect()
     {
