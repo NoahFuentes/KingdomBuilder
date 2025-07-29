@@ -390,6 +390,7 @@ GameObject:
   - component: {fileID: 5154850830830778827}
   - component: {fileID: 5119276892045794348}
   - component: {fileID: 6648112612234661371}
+  - component: {fileID: 6266723284407560145}
   m_Layer: 15
   m_Name: MainBase
   m_TagString: Untagged
@@ -522,7 +523,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingInfo: {fileID: 11400000, guid: c9f749bf1ae3e994784786ca35779ce5, type: 2}
   buildingLevel: 1
+  originGridPos: {x: 0, y: 0}
   buildRangeIndicator: {fileID: 0}
+--- !u!135 &6266723284407560145
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5705781644849687513}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6434095765992557132
 GameObject:
   m_ObjectHideFlags: 0

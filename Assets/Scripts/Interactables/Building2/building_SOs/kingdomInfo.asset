@@ -19,6 +19,7 @@ MonoBehaviour:
   costs: 
   gridSize: {x: 2, y: 2}
   interactable: 1
+  interactButtonString: Deposit
   upgradable: 1
   demolishable: 0
   placer: {fileID: 0}

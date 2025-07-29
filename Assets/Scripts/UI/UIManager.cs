@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     }
     public void openExploringOverlay()
     {
+        CloseBuildingInfoFooter();
         kingdomOverlay.SetActive(false);
         exploringOverlay.SetActive(true);
     }
@@ -67,6 +68,7 @@ public class UIManager : MonoBehaviour
 
         buildingInfoDesc.text = buildingInfo.buildingDesc;
         buildingInfoName.text = buildingInfo.buildingName + " lvl. " + level.ToString();
+        interactionButton.GetComponentInChildren<TextMeshProUGUI>().text = buildingInfo.interactButtonString;
         buildingInfoImage.sprite = buildingInfo.buildingIcon;
 
     }

@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Armory
   buildingDesc: Craft and equip weapons
-  buildingIcon: {fileID: 0}
+  buildingIcon: {fileID: 21300000, guid: 603b41322fb317544867136318e8936e, type: 3}
   resources:
   - food
   - lumber
   - copper
   - iron
   costs: 19000000140000000f0000000f000000
+  gridSize: {x: 3, y: 3}
+  interactable: 1
+  interactButtonString: Open Armory
+  upgradable: 1
+  demolishable: 1
   placer: {fileID: 3849958370700298729, guid: db47451d5cd115f499dcaf69e793ed47, type: 3}
   building: {fileID: 2899486821130460191, guid: f07dedc0c5806bd40a4a6168ead5af9b, type: 3}
