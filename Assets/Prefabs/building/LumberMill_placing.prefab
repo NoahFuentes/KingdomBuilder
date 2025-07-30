@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1345058134867867928}
-  - component: {fileID: 3132636412242975021}
-  - component: {fileID: 8219535930248922592}
   m_Layer: 0
   m_Name: LumberMill_placing
   m_TagString: Untagged
@@ -34,53 +32,6 @@ Transform:
   - {fileID: 7951032962911110937}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3132636412242975021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5205168168571267679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b77253f863bfe44d882f1af4ef2fc13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridSize: 3
-  contacts: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  startTime: 0
-  buildingPrefab: {fileID: 5071439788468570273, guid: b2ea6bb11a60ff44f889fc743b9068fd, type: 3}
-  resources:
-  - water
-  - food
-  - timber
-  - rough stone
-  - iron
-  costs: 19000000190000002d0000001400000005000000
---- !u!65 &8219535930248922592
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5205168168571267679}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 11.26, y: 7.1, z: 7.98}
-  m_Center: {x: -1.06, y: 3.05, z: 0}
 --- !u!1 &7944946331368195505
 GameObject:
   m_ObjectHideFlags: 0

@@ -148,6 +148,7 @@ public class MouseSelection : MonoBehaviour
     private void HandleNPCRightClick()
     {
         if (distToPlayer > NPCInteractableDistance) return;
+        //TODO: do something??
     }
 
     private void HandleResourceRightClick()

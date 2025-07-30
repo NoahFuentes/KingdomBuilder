@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.EventSystems;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -90,6 +90,8 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log(BuildingManager.Instance.isPlacing);
+            if (EventSystem.current.IsPointerOverGameObject() || BuildingManager.Instance.isPlacing) return;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 500, groundLayer))
             {

@@ -14,12 +14,15 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
 
     [SerializeField] private List<Vector2Int> occupiedGridCells = new List<Vector2Int>();
-    private bool isPlacing = false;
+    public bool isPlacing = false;
 
     private Building_SO buildingToBuild;
 
     private GameObject wsPlacer;
     public GameObject wsBuilding;
+
+    [SerializeField] private float buildingInteractDistance;
+    private GameObject player;
 
     public void SetwsBuilding(GameObject newBuilding)
     {
@@ -144,7 +147,12 @@ public class BuildingManager : MonoBehaviour
         grid = GetComponent<Grid>();
     }
 
-    private void Update()
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void LateUpdate()
     {
         if (isPlacing && null != wsPlacer)
         {
@@ -169,5 +177,11 @@ public class BuildingManager : MonoBehaviour
                 CancelBuildingPlacement();
             }
         }
+    }
+    private void FixedUpdate()
+    {
+        if (wsBuilding == null) return;
+        if(Vector3.Distance(player.transform.position, wsBuilding.transform.position) > buildingInteractDistance)
+            UIManager.Instance.CloseBuildingInfoFooter();
     }
 }
