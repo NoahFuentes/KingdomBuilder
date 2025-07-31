@@ -50,13 +50,10 @@ public class MouseSelection : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 500, interactableMask))
         {
+            
             if (hit.collider.gameObject != hoveredObject)
-            {
                 hoveredObject = hit.collider.gameObject;
-                GetColliderOfHoveredObject();
-            }
-            if (null != distCheckCol)
-                distToPlayer = Vector3.Distance(playerTransform.position, distCheckCol.ClosestPoint(playerTransform.position));
+            distToPlayer = Vector3.Distance(playerTransform.position, hoveredObject.transform.position);
             HandleObjectHovered();
         }
         else if (null != hoveredObject)

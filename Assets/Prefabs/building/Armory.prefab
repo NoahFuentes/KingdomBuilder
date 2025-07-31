@@ -361,7 +361,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -5918128210354544070}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Building, Assembly-CSharp
         m_MethodName: DeconstructBuilding
         m_Mode: 1
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -5918128210354544070}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Crafting_Building, Assembly-CSharp
         m_MethodName: OpenCraftMenu
         m_Mode: 1
@@ -781,7 +781,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1345058134867867928}
-  - component: {fileID: -5918128210354544070}
+  - component: {fileID: -1878781085851859494}
   m_Layer: 15
   m_Name: Armory
   m_TagString: Untagged
@@ -806,7 +806,7 @@ Transform:
   - {fileID: 8077897459649350856}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5918128210354544070
+--- !u!114 &-1878781085851859494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -815,24 +815,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5205168168571267679}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3815c99367b17041912b0a450968606, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f356287642a4e24f950efedc92ff79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Armory
-  buildingLevel: 0
-  interactionBreakDist: 15
-  isOccupied: 1
-  returnResources:
-  - timber
-  - cloth
-  - stone
-  returnAmts: 190000001900000014000000
-  canvas: {fileID: 3543123024009870628}
-  interactionDisplay: {fileID: 3931441941595948192}
-  weapons:
-  - {fileID: 11400000, guid: 9e344bb56af0ce44293f77515198e4db, type: 2}
-  - {fileID: 11400000, guid: baf6c5e6026bf5644a5d89aacb96becf, type: 2}
-  isCrafted: 0101
+  buildingInfo: {fileID: 11400000, guid: df73dfb6e7576da40b6b167a3bb35e0a, type: 2}
+  buildingLevel: 1
+  originGridPos: {x: 0, y: 0}
 --- !u!1 &5247457791302775795
 GameObject:
   m_ObjectHideFlags: 0

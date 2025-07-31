@@ -84,6 +84,7 @@ public class KingdomStats : MonoBehaviour
 
     private void Update()
     {
+        //Give kingdom resources
         string[] resArray = { "cloth", "iron"};
         int[] resAmts = { 20, 20 };
         if (Input.GetKeyDown(KeyCode.H)) AddResources(resArray, resAmts);

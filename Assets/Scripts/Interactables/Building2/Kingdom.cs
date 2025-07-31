@@ -3,19 +3,26 @@ using UnityEngine.UI;
 
 public class Kingdom : BuildingBase
 {
+    private SphereCollider kingdomBuildCheck;
+    [SerializeField] private GameObject buildRangeIndicator;
+
+    public override void OnBuild()
+    {
+        base.OnBuild();
+    }
+    public override void OnDemolish()
+    {
+        base.OnDemolish();
+    }
     public override void OnSelect()
     {
-        UIManager.Instance.interactionButton.GetComponent<Button>().onClick.RemoveAllListeners();
-        UIManager.Instance.interactionButton.GetComponent<Button>().onClick.AddListener(() => PlayerInventory.Instance.depotToKingdom());
         base.OnSelect();
+        UIManager.Instance.interactionButton.GetComponent<Button>().onClick.AddListener(() => PlayerInventory.Instance.depotToKingdom());
     }
 
 
 
-
-    private SphereCollider kingdomBuildCheck;
-
-    [SerializeField] private GameObject buildRangeIndicator;
+    //UNITY FUNCTIONS
 
     private void Start()
     {

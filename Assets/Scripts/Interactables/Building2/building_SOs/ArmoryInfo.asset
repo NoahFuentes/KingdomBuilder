@@ -26,5 +26,5 @@ MonoBehaviour:
   interactButtonString: Open Armory
   upgradable: 1
   demolishable: 1
-  placer: {fileID: 3849958370700298729, guid: db47451d5cd115f499dcaf69e793ed47, type: 3}
-  building: {fileID: 2899486821130460191, guid: f07dedc0c5806bd40a4a6168ead5af9b, type: 3}
+  placer: {fileID: 5205168168571267679, guid: 16c246b1035a49342b97aaa4dd562d95, type: 3}
+  building: {fileID: 5205168168571267679, guid: f4d82e538ab1b6b42817cedc9fba5463, type: 3}
