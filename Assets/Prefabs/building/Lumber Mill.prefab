@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 6579739480910075566}
   - component: {fileID: -7136510271293681406}
   m_Layer: 15
-  m_Name: LumberMill
+  m_Name: Lumber Mill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

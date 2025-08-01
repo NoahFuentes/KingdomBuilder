@@ -24,6 +24,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private float buildingInteractDistance;
     private GameObject player;
 
+
     public void SetwsBuilding(GameObject newBuilding)
     {
         wsBuilding = newBuilding;
@@ -46,6 +47,12 @@ public class BuildingManager : MonoBehaviour
         {
             //TODO: notifier message
             Debug.Log("Cannot afford " + buildingToBuild.buildingName + "!");
+            return;
+        }
+        if (BuldingAlreadyPlaced(buildingToBuild.buildingName))
+        {
+            //TODO: notifier message
+            Debug.Log(buildingToBuild.buildingName + " is already placed!");
             return;
         }
         wsPlacer = Instantiate(buildingToBuild.placer);
@@ -90,6 +97,14 @@ public class BuildingManager : MonoBehaviour
         KingdomStats.Instance.RemoveResources(buildingToBuild.resources, buildingToBuild.costs);
         wsBuilding.GetComponent<BuildingBase>().originGridPos = gridPos;
         wsBuilding.GetComponent<BuildingBase>().OnBuild();
+    }
+
+    private bool BuldingAlreadyPlaced(string buildingName)
+    {
+        if (buildingName == "House") return false;
+        Debug.Log("Looking for building " + buildingName + "(Clone)");
+        Debug.Log((null != GameObject.Find(buildingName + "(Clone)") ? "FOUND" : "NOT FOUND"));
+        return null != GameObject.Find(buildingName + "(Clone)");
     }
 
     private void AddCellsToOccupiedList(Vector2Int bottomLeftCell)
