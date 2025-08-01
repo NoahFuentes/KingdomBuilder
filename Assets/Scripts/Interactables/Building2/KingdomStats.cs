@@ -31,17 +31,23 @@ public class KingdomStats : MonoBehaviour
         {
             bool canAfford = false;
             bool found = false;
+            int tempAmt = 0;
             for (int j = 0; j < resourceNames.Length; j++)
             {
                 if (resources[i] == resourceNames[j])
                 {
                     found = true;
                     canAfford = (resourceCurrentAmounts[j] - costs[i] >= 0) ? true : false;
+                    tempAmt = resourceCurrentAmounts[j];
                     break;
                 }
             }
             if (!found) Debug.Log("COULD NOT FIND RESOURCE OF NAME: " + resources[i]);
-            if (!canAfford) return false;
+            if (!canAfford)
+            {
+                Debug.Log("COULD NOT AFFORD RESOURCE OF NAME: " + resources[i] + ". HAVE: " + tempAmt + " NEED: " + costs[i]);
+                return false;
+            }
         }
         return true;
     }
