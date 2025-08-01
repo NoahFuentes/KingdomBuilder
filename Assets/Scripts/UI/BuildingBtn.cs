@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 using TMPro;
 
 public class BuildingBtn : MonoBehaviour
@@ -10,10 +11,11 @@ public class BuildingBtn : MonoBehaviour
     [SerializeField] private TextMeshProUGUI buildingName;
     [SerializeField] private TextMeshProUGUI buildingDesc;
 
-    //[SerializeField] private Sprite[] resourceIcons;
+    [SerializeField] private Image[] resourceIcons;
     [SerializeField] private TextMeshProUGUI[] resourceCosts;
 
 
+    //UNITY FUNCTIONS
 
     private void Start()
     {
@@ -21,7 +23,15 @@ public class BuildingBtn : MonoBehaviour
         buildingName.text = buildingInfo.buildingName;
         buildingDesc.text = buildingInfo.buildingDesc;
 
-        for (int i = 0; i < buildingInfo.resources.Length; i++)
+        for (int i = 0; i < resourceCosts.Length; i++)
+        {
+            if (i > buildingInfo.costs.Length-1)
+            {
+                resourceCosts[i].text = "";
+                resourceIcons[i].enabled = false;
+                continue;
+            }
             resourceCosts[i].text = buildingInfo.costs[i].ToString();
+        }
     }
 }

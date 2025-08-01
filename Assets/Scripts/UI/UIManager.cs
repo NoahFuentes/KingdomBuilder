@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
+    #region GENERAL
+
+    #endregion
     #region OVERLAY TOGGLING
     [SerializeField] private GameObject kingdomOverlay;
     [SerializeField] private GameObject exploringOverlay;
@@ -158,6 +161,7 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
+
         kingdomOverlay.SetActive(true);
         exploringOverlay.SetActive(false);
         mainMenu.SetActive(false);
