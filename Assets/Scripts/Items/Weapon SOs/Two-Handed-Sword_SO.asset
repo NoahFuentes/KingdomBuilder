@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ece7b41ae070e4d90bf8c7953b0993, type: 3}
+  m_Name: Two-Handed-Sword_SO
+  m_EditorClassIdentifier: 
+  weaponName: Two Handed Sword
+  dmgType: melee
+  attackRange: 6
+  weaponType: two-handed
+  damage: 6
+  staminaCost: 20
+  attackTime: 2
+  knockBackDist: 115
+  icon: {fileID: 0}
+  animController: {fileID: 22100000, guid: b83ad64678b7b8542a26a02a6780f86c, type: 2}
+  modelRight: {fileID: 1125422861488534708, guid: a5a220207a2cec945be4bea9c1100a45, type: 3}
+  modelLeft: {fileID: 0}
+  attackDimensions: {x: 3, y: 2, z: 4}
