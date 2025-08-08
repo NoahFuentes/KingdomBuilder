@@ -37,5 +37,6 @@ public class ArmoryBtn : MonoBehaviour
     private void OnEnable()
     {
         GetComponent<Button>().interactable = KingdomStats.Instance.CanAfford(weaponInfo.resources, weaponInfo.costs);
+
     }
 }
