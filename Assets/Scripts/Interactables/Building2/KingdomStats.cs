@@ -96,6 +96,23 @@ public class KingdomStats : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H)) AddResources(resArray, resAmts);
     }
 
+    private void OnTriggerEnter(Collider other) //NOT A GOOD PLACE FOR THIS FUNCTION BUT IT HAS TO BE HERE
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            //buildRangeIndicator.SetActive(true);
+            UIManager.Instance.openKingdomOverlay();
+        }
+    }
+    private void OnTriggerExit(Collider other)  //NOT A GOOD PLACE FOR THIS FUNCTION BUT IT HAS TO BE HERE
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            //buildRangeIndicator.SetActive(false);
+            UIManager.Instance.openExploringOverlay();
+        }
+    }
+
     public bool waterBearerPresent;
     public bool farmerPresent;
     public bool builderPresent;

@@ -22,6 +22,7 @@ public class BuildingManager : MonoBehaviour
     public GameObject wsBuilding;
 
     [SerializeField] private float buildingInteractDistance;
+    [SerializeField] private GameObject buildingGridVisual;
     private GameObject player;
 
 
@@ -57,6 +58,7 @@ public class BuildingManager : MonoBehaviour
         }
         wsPlacer = Instantiate(buildingToBuild.placer);
         isPlacing = true;
+        buildingGridVisual.SetActive(isPlacing);
         UIManager.Instance.closeBuildMenu();
     }
     public void BuildBuilding()
@@ -78,6 +80,7 @@ public class BuildingManager : MonoBehaviour
         }
 
         isPlacing = false;
+        buildingGridVisual.SetActive(isPlacing);
         Destroy(wsPlacer);
         if (buildingToBuild == null)
         {

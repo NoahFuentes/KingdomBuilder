@@ -33,4 +33,10 @@ public class BuildingBtn : MonoBehaviour
             resourceCosts[i].text = buildingInfo.costs[i].ToString();
         }
     }
+
+    private void OnEnable()
+    {
+        GetComponent<Button>().interactable = KingdomStats.Instance.CanAfford(buildingInfo.resources, buildingInfo.costs);
+
+    }
 }

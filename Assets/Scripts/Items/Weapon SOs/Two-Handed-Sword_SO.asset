@@ -13,14 +13,19 @@ MonoBehaviour:
   m_Name: Two-Handed-Sword_SO
   m_EditorClassIdentifier: 
   weaponName: Two Handed Sword
+  weaponDesc: A large blade. Good for groups of enemies.
   dmgType: melee
-  attackRange: 6
-  weaponType: two-handed
+  attackRange: 0
   damage: 6
   staminaCost: 20
   attackTime: 2
   knockBackDist: 115
-  icon: {fileID: 0}
+  resources:
+  - food
+  - lumber
+  - iron
+  costs: 230000000f0000000a000000
+  weaponIcon: {fileID: 21300000, guid: 1225aae5cdb5cfb4196e11d97df783b3, type: 3}
   animController: {fileID: 22100000, guid: b83ad64678b7b8542a26a02a6780f86c, type: 2}
   modelRight: {fileID: 1125422861488534708, guid: a5a220207a2cec945be4bea9c1100a45, type: 3}
   modelLeft: {fileID: 0}

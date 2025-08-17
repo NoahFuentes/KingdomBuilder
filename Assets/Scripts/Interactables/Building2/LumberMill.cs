@@ -20,6 +20,7 @@ public class LumberMill : BuildingBase
     public override void OnSelect()
     {
         base.OnSelect();
+        UIManager.Instance.interactionButton.GetComponentInChildren<TextMeshProUGUI>().text = (isCuttingLumber ? "Chop Timber" : "Cut Lumber");
         UIManager.Instance.interactionButton.GetComponent<Button>().onClick.AddListener(() => ToggleIsCuttingLumber());
     }
 
