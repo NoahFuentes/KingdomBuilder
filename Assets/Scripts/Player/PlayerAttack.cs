@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
     private PlayerInteractions pi;
     private Rigidbody rb;
     private Animator animator;
-    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask attackLayer;
 
     private bool isAttacking;
 
@@ -92,8 +92,13 @@ public class PlayerAttack : MonoBehaviour
         {
             if (EventSystem.current.IsPointerOverGameObject() || BuildingManager.Instance.isPlacing) return;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, 500, groundLayer))
+            if (Physics.Raycast(ray, out RaycastHit hit, 500, attackLayer))
             {
+                if (hit.collider.CompareTag("AttackableMob"))
+                {
+                    StartAttack(hit.collider.gameObject.transform.position);
+                    return;
+                }
                 StartAttack(hit.point);
             }
         }

@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: -5921354522550681490}
   m_Layer: 12
   m_Name: EnemyTest_passive
-  m_TagString: Untagged
+  m_TagString: AttackableMob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,13 +268,11 @@ MonoBehaviour:
   healthRegenTime: 5
   baseMovementSpeed: 7
   sprintMovementSpeed: 12
-  attackHitBox: {fileID: 0}
   damage: 3
   damageType: Physical
   attackRate: 1
-  attackRange: 2
-  weaknessTypes: []
-  resistanceTypes: []
+  attackDimensions: {x: 0, y: 0, z: 0}
+  stoppingDistance: 0
 --- !u!195 &2565227013016793382
 NavMeshAgent:
   m_ObjectHideFlags: 0

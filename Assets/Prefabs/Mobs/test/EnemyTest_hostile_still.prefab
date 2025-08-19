@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 7992973839151748968}
   m_Layer: 10
   m_Name: EnemyTest_hostile_still
-  m_TagString: Untagged
+  m_TagString: AttackableMob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,10 +266,8 @@ MonoBehaviour:
   healthRegenTime: 5
   baseMovementSpeed: 7
   sprintMovementSpeed: 12
-  attackHitBox: {fileID: 0}
   damage: 3
   damageType: Physical
   attackRate: 1
-  attackRange: 2
-  weaknessTypes: []
-  resistanceTypes: []
+  attackDimensions: {x: 0, y: 0, z: 0}
+  stoppingDistance: 0
