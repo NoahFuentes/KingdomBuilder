@@ -40,20 +40,17 @@ public class BuildingManager : MonoBehaviour
     {
         if (buildingToBuild == null)
         {
-            //TODO: notifier message
-            Debug.Log("No building selected!");
+            NotificationManager.Instance.Notify("No building selected", Color.red);
             return;
         }
         if (!KingdomStats.Instance.CanAfford(buildingToBuild.resources, buildingToBuild.costs))
         {
-            //TODO: notifier message
-            Debug.Log("Cannot afford " + buildingToBuild.buildingName + "!");
+            NotificationManager.Instance.Notify("Cannot afford to build " + buildingToBuild.buildingName, Color.red);
             return;
         }
         if (BuldingAlreadyPlaced(buildingToBuild.buildingName))
         {
-            //TODO: notifier message
-            Debug.Log(buildingToBuild.buildingName + " is already placed!");
+            NotificationManager.Instance.Notify(buildingToBuild.buildingName + " has already been built", Color.red);
             return;
         }
         wsPlacer = Instantiate(buildingToBuild.placer);
@@ -68,14 +65,12 @@ public class BuildingManager : MonoBehaviour
         Vector2Int gridPos = new Vector2Int(cell.x, cell.z);
         if (Vector3.Distance(GameObject.FindGameObjectWithTag("KingdomBuilding").transform.position, placementTrans.position) > KingdomStats.Instance.m_KingdomRadius)
         {
-            //TODO: notifier message
-            Debug.Log(buildingToBuild.buildingName + " is too far from kingdom center!");
+            NotificationManager.Instance.Notify(buildingToBuild.buildingName + " is not within the kingdom border", Color.red);
             return;
         }
         if (CellIsOccupied(gridPos))
         {
-            //TODO: notifier message
-            Debug.Log("Building collision detected!");
+            NotificationManager.Instance.Notify("Building space is already occupied", Color.red);
             return;
         }
 
@@ -84,14 +79,12 @@ public class BuildingManager : MonoBehaviour
         Destroy(wsPlacer);
         if (buildingToBuild == null)
         {
-            //TODO: notifier message
-            Debug.Log("No building selected!");
+            NotificationManager.Instance.Notify("No building selected to place", Color.red);
             return;
         }
         if (!KingdomStats.Instance.CanAfford(buildingToBuild.resources, buildingToBuild.costs))
         {
-            //TODO: notifier message
-            Debug.Log("Cannot afford " + buildingToBuild.buildingName + "!");
+            NotificationManager.Instance.Notify("Cannot afford to build " + buildingToBuild.buildingName, Color.red);
             return;
         } 
         
@@ -105,8 +98,8 @@ public class BuildingManager : MonoBehaviour
     private bool BuldingAlreadyPlaced(string buildingName)
     {
         if (buildingName == "House") return false;
-        Debug.Log("Looking for building " + buildingName + "(Clone)");
-        Debug.Log((null != GameObject.Find(buildingName + "(Clone)") ? "FOUND" : "NOT FOUND"));
+        //Debug.Log("Looking for building " + buildingName + "(Clone)");
+        //Debug.Log((null != GameObject.Find(buildingName + "(Clone)") ? "FOUND" : "NOT FOUND"));
         return null != GameObject.Find(buildingName + "(Clone)");
     }
 
@@ -149,7 +142,6 @@ public class BuildingManager : MonoBehaviour
     }
     public void DemolishBuilding()
     {
-        //TODO: Remove cells from occupied list
         RemoveCellsToOccupiedList(wsBuilding.GetComponent<BuildingBase>().originGridPos);
         wsBuilding.GetComponent<BuildingBase>().OnDemolish();
         Destroy(wsBuilding);
