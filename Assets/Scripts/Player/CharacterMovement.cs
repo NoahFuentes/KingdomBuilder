@@ -119,12 +119,21 @@ public class CharacterMovement : MonoBehaviour
                 nav.enabled = false;
             animator.SetBool("isMining", false);
             animator.SetBool("isChopping", false);
-            if (Input.GetKey(KeyCode.LeftShift) && PlayerStats.Instance.m_CurrentStamina > 0)
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                moveDirection *= PlayerStats.Instance.m_SprintSpeedMult;
-                PlayerInteractions.Instance.ReduceStamina(PlayerStats.Instance.m_SprintStaminaCost);
-                animator.SetBool("isRunning", true);
-                animator.SetBool("isWalking", false);
+                if(PlayerStats.Instance.m_CurrentStamina > 0)
+                {
+                    moveDirection *= PlayerStats.Instance.m_SprintSpeedMult;
+                    PlayerInteractions.Instance.ReduceStamina(PlayerStats.Instance.m_SprintStaminaCost);
+                    animator.SetBool("isRunning", true);
+                    animator.SetBool("isWalking", false);
+                }
+                else
+                {
+                    NotificationManager.Instance.Notify("Insufficient stamina", Color.red);
+                    animator.SetBool("isRunning", false);
+                    animator.SetBool("isWalking", true);
+                }
             }
             else
             {

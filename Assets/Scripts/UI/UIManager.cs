@@ -6,7 +6,108 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
-    #region GENERAL
+    #region GENERAL 
+
+
+    public Sprite waterIcon;
+    public Sprite foodIcon;
+
+    public Sprite timberIcon;
+    public Sprite lumberIcon;
+    public Sprite fineLumberIcon;
+
+    public Sprite clothIcon;
+    public Sprite leatherIcon;
+
+    public Sprite roughStoneIcon;
+    public Sprite cutStoneIcon;
+    public Sprite polishedBrickIcon;
+
+    public Sprite copperOreIcon;
+    public Sprite copperIcon;
+    public Sprite ironOreIcon;
+    public Sprite ironIcon;
+    public Sprite goldOreIcon;
+    public Sprite goldIcon;
+
+    public Sprite bloodShardIcon;
+    public Sprite bloodIronIcon;
+    public Sprite geodeIcon;
+    public Sprite crysenyxIcon;
+    public Sprite gravenScrapIcon;
+    public Sprite gravenSteelIcon;
+
+    public Sprite yellowEssIcon;
+    public Sprite blueEssIcon;
+    public Sprite redEssIcon;
+    public Sprite whiteEssIcon;
+
+    public Sprite artifactIcon;
+
+    public Sprite GetResIconByName(string resName)
+    {
+        switch (resName)
+        {
+            case "water":
+                return waterIcon;
+            case "food":
+                return foodIcon;
+            case "timber":
+                return timberIcon;
+            case "lumber":
+                return lumberIcon;
+            case "fine lumber":
+                return fineLumberIcon;
+            case "cloth":
+                return clothIcon;
+            case "leather":
+                return leatherIcon;
+            case "rough stone":
+                return roughStoneIcon;
+            case "cut stone":
+                return cutStoneIcon;
+            case "polished brick":
+                return polishedBrickIcon;
+            case "copper ore":
+                return copperOreIcon;
+            case "copper":
+                return copperIcon;
+            case "iron ore":
+                return ironOreIcon;
+            case "iron":
+                return ironIcon;
+            case "gold ore":
+                return goldOreIcon;
+            case "gold":
+                return goldIcon;
+            case "blood shard":
+                return bloodShardIcon;
+            case "bloodiron":
+                return bloodIronIcon;
+            case "geode":
+                return geodeIcon;
+            case "crysenyx":
+                return crysenyxIcon;
+            case "graven scrap":
+                return gravenScrapIcon;
+            case "gravensteel":
+                return gravenSteelIcon;
+            case "yellow essence":
+                return yellowEssIcon;
+            case "blue essence":
+                return blueEssIcon;
+            case "red essence":
+                return redEssIcon;
+            case "white essence":
+                return whiteEssIcon;
+            case "artifact":
+                return artifactIcon;
+            default:
+                Debug.Log("No res name by: " + resName);
+                return null;
+        }
+
+    }
 
     #endregion
     #region OVERLAY TOGGLING

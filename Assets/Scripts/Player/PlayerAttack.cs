@@ -20,8 +20,11 @@ public class PlayerAttack : MonoBehaviour
         //check for attack spamming
         if (Time.time - lastAttackedTime < PlayerStats.Instance.m_CurrentWeapon.attackTime) return;
         //check stamina and remove it
-        if (PlayerStats.Instance.m_CurrentStamina < PlayerStats.Instance.m_CurrentWeapon.staminaCost) return;
-
+        if (PlayerStats.Instance.m_CurrentStamina < PlayerStats.Instance.m_CurrentWeapon.staminaCost)
+        {
+            NotificationManager.Instance.Notify("Insufficient stamina", Color.red);
+            return;
+        }
         lastAttackedTime = Time.time;
         pi.ReduceStamina(PlayerStats.Instance.m_CurrentWeapon.staminaCost);
         //disable movement and stop animations

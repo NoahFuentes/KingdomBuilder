@@ -20,6 +20,7 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < resNames.Length; i++)
         {
             if (resName != resNames[i]) continue;
+            //TODO: call function that notifies res gain... use UIManager.Instance.GetResIconByName(resName) to get the icon
             resCounts[i] = Mathf.Clamp(resCounts[i] + amt, 0, resCountMaxes[i]);
             UIManager.Instance.UpdatePlayerInventoryResourceCount(i, resCounts[i], resCountMaxes[i]);
             return;
