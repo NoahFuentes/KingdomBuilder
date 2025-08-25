@@ -24,6 +24,8 @@ public class NotificationManager : MonoBehaviour
     [SerializeField] private DamageNotification damageNotification;
     [SerializeField] int poolSize;
     private Queue<DamageNotification> damageNotificationsPool = new Queue<DamageNotification>();
+    [SerializeField] private GameObject damageFlash;
+    [SerializeField] private float flashDuration;
 
     private void Awake()
     {
@@ -118,6 +120,18 @@ public class NotificationManager : MonoBehaviour
     {
         dn.gameObject.SetActive(false);
         damageNotificationsPool.Enqueue(dn);
+    }
+
+    public void FlashScreenRed()
+    {
+        StartCoroutine(FlashScreenRedCoroutine()); 
+    }
+    private IEnumerator FlashScreenRedCoroutine()
+    {
+        damageFlash.SetActive(true);
+        yield return new WaitForSeconds(flashDuration);
+        damageFlash.SetActive(false);
+
     }
 
 }
