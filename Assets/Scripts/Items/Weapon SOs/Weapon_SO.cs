@@ -8,7 +8,7 @@ public class Weapon_SO : ScriptableObject
     public string dmgType; //melee, ranged, magic
 
     public float attackRange; //mainly for ranged weapons
-    public float damage;
+    public int damage;
     public float staminaCost;
     public float attackTime;
     public float knockBackDist;

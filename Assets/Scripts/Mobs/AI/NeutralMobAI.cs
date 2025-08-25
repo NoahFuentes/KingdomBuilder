@@ -43,7 +43,7 @@ public class NeutralMobAI : AttackingMobAI
         }
     }
 
-    public override void TakeDamage(float dmg)
+    public override void TakeDamage(int dmg)
     {
         base.TakeDamage(dmg);
         /*

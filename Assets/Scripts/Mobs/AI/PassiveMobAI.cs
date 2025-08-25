@@ -43,7 +43,7 @@ public class PassiveMobAI : NonAttackingMobAI
         }
     }
 
-    public override void TakeDamage(float dmg)
+    public override void TakeDamage(int dmg)
     {
         base.TakeDamage(dmg);
         /*

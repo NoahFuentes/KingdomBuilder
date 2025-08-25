@@ -24,11 +24,12 @@ public class AttackingMobAI : MobAI //parent class for all Mob AI that can attac
 
         foreach (Collider enemy in enemiesHit)
         {
-            //bad spot for this, but this is where we damgage targets...
+            //bad spot for this, but this is where we damage targets...
             enemy.GetComponent<MobAI>()?.TakeDamage(stats.damage);
             enemy.GetComponent<PlayerInteractions>()?.TakeDamage(stats.damage);
         }
     }
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -36,4 +37,5 @@ public class AttackingMobAI : MobAI //parent class for all Mob AI that can attac
             PlayerInteractions.Instance.TakeDamage(stats.damage);
         }
     }
+    */
 }

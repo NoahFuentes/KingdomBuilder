@@ -30,10 +30,11 @@ public class MobAI : MonoBehaviour //Master class for all Mob AIs, interactions 
         animator = GetComponent<Animator>();
     }
 
-    public virtual void TakeDamage(float dmg)
+    public virtual void TakeDamage(int dmg)
     {
         stats.currentHealth -= dmg;
-        Debug.Log(gameObject.name + " took " + dmg + " damage: " + (stats.currentHealth + dmg) + " -> " + stats.currentHealth);
+        //Debug.Log(gameObject.name + " took " + dmg + " damage: " + (stats.currentHealth + dmg) + " -> " + stats.currentHealth);
+        NotificationManager.Instance.ShowDamageNotification(transform.position, dmg, Color.red);
         if (stats.currentHealth <= 0)
         {
             Die();
@@ -42,7 +43,7 @@ public class MobAI : MonoBehaviour //Master class for all Mob AIs, interactions 
         //knockback?
     }
 
-    protected void RestoreHealth(short healAmt)
+    protected void RestoreHealth(int healAmt)
     {
         if (stats.currentHealth + healAmt <= stats.maxHealth)
             stats.currentHealth += healAmt;

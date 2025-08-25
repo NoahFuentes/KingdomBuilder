@@ -7,20 +7,36 @@ public class NotificationManager : MonoBehaviour
 {
     public static NotificationManager Instance { get; private set; }
 
+    //Screen text notifications
     [SerializeField] private TextMeshProUGUI notificationTextBox;
     [SerializeField] private float popUpTime;
     [SerializeField] private float fadeDuration;
 
+    //resource gathering notifications
     [SerializeField] private GameObject resourceGatherPopUpObject;
     [SerializeField] private RectTransform resourceNotificationsParent;
     [SerializeField] private float spacing;
     [SerializeField] private float moveDuration;
     private List<RectTransform> activeResourceNotifications = new List<RectTransform>();
 
+    //damage notifications
+    [SerializeField] private Transform dmgNotifParent;
+    [SerializeField] private DamageNotification damageNotification;
+    [SerializeField] int poolSize;
+    private Queue<DamageNotification> damageNotificationsPool = new Queue<DamageNotification>();
+
     private void Awake()
     {
         Instance = this;
         notificationTextBox.gameObject.SetActive(false);
+
+        //populate damage notif pool
+        for (int i = 0; i < poolSize; i++)
+        {
+            DamageNotification dn = Instantiate(damageNotification, dmgNotifParent);
+            dn.gameObject.SetActive(false);
+            damageNotificationsPool.Enqueue(dn);
+        }
     }
 
 
@@ -89,5 +105,19 @@ public class NotificationManager : MonoBehaviour
         Destroy(rectTrans.gameObject);
     }
 
+    public void ShowDamageNotification(Vector3 worldPos, int amount, Color color)
+    {
+        DamageNotification dn = damageNotificationsPool.Count > 0 ? damageNotificationsPool.Dequeue() : Instantiate(damageNotification, dmgNotifParent);
+        dn.transform.position = worldPos;
+        dn.transform.rotation = Camera.main.transform.rotation;
+        dn.gameObject.SetActive(true);
+        dn.Init(amount, color);
+    }
+
+    public void ReturnDamageNotifToPool(DamageNotification dn)
+    {
+        dn.gameObject.SetActive(false);
+        damageNotificationsPool.Enqueue(dn);
+    }
 
 }
