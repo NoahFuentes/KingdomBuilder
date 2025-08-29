@@ -66,6 +66,7 @@ public class PlayerInteractions : MonoBehaviour
     {
         NotificationManager.Instance.ShowDamageNotification(transform.position, damage, Color.red);
         NotificationManager.Instance.FlashScreenRed();
+        PlayerAudioManager.Instance.PlayClipByName("take damage");
         PlayerStats.Instance.m_ShouldRegenHealth = false;
         lastDamagedTime = Time.time;
         PlayerStats.Instance.m_CurrentHealth -= damage;

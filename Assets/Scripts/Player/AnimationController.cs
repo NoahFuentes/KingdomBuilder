@@ -71,4 +71,13 @@ public class AnimationController : MonoBehaviour
         }
 
     }
+
+    public void PlayFootStepSound()
+    {
+        PlayerAudioManager.Instance.PlayFootStep();
+    }
+    public void PlayAttackSound()
+    {
+        PlayerAudioManager.Instance.PlayClipByName("attack");
+    }
 }
