@@ -78,6 +78,6 @@ public class AnimationController : MonoBehaviour
     }
     public void PlayAttackSound()
     {
-        PlayerAudioManager.Instance.PlayClipByName("attack");
+        PlayerAudioManager.Instance.PlaySoundByName("attack");
     }
 }

@@ -1,19 +1,35 @@
 using UnityEngine;
+using System;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance;
+    public Sound[] sounds;
 
-    private AudioSource worldAmbience;
-
-
-    private void Awake()
+    public void PlaySoundByName(string soundName)
     {
-        Instance = this;
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
+        if (null != s)
+        {
+            if (s.pitchVariation)
+                s.source.pitch = UnityEngine.Random.Range(0.85f, 1.15f);
+            s.source.Play();
+        }
     }
-    private void Start()
+
+
+    public void Awake()
     {
-        worldAmbience = GetComponent<AudioSource>();
-        worldAmbience.Play();
+        foreach (Sound s in sounds)
+        {
+            AudioSource source = gameObject.AddComponent<AudioSource>();
+            source.clip = s.clip;
+            source.volume = s.volume;
+            source.pitch = s.pitch;
+            source.playOnAwake = s.playOnAwake;
+            source.loop = s.loop;
+            s.source = source;
+            if (source.playOnAwake) source.Play();
+        }
+
     }
 }
