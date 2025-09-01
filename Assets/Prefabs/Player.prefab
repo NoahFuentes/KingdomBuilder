@@ -4699,6 +4699,7 @@ MonoBehaviour:
     volume: 1
     pitchVariation: 1
     pitch: 1
+    loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   - name: take damage
@@ -4706,6 +4707,23 @@ MonoBehaviour:
     volume: 1
     pitchVariation: 1
     pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: mine hit
+    clip: {fileID: 8300000, guid: 430252e325ffd1d45a17b7243e385880, type: 3}
+    volume: 1
+    pitchVariation: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: chop hit
+    clip: {fileID: 8300000, guid: da7f2615d648520448a41c8650cbb07c, type: 3}
+    volume: 1
+    pitchVariation: 1
+    pitch: 1
+    loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   footSteps:
@@ -4713,7 +4731,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0ee0a920a6cd0a04d8512ce7a568a448, type: 3}
   - {fileID: 8300000, guid: 88b2e39ebb623454db67de70a222af37, type: 3}
   - {fileID: 8300000, guid: 652fd338362bfb74e821a50ad886b15c, type: 3}
-  footStepVolume: 0.2
+  footStepVolume: 0.15
 --- !u!1 &6557012328925162290
 GameObject:
   m_ObjectHideFlags: 0

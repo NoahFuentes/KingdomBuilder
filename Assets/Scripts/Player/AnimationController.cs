@@ -76,8 +76,13 @@ public class AnimationController : MonoBehaviour
     {
         PlayerAudioManager.Instance.PlayFootStep();
     }
-    public void PlayAttackSound()
+    public void PlayPlayerSoundByName(string soundName)
     {
-        PlayerAudioManager.Instance.PlaySoundByName("attack");
+        PlayerAudioManager.Instance.PlaySoundByName(soundName);
+    }
+
+    public void PlayGlobalSoundByName(string soundName)
+    {
+        GameObject.FindGameObjectWithTag("GlobalAudioManager").GetComponent<AudioManager>().PlaySoundByName(soundName);
     }
 }
