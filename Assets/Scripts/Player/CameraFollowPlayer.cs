@@ -8,6 +8,7 @@ using UnityEngine;
 public class CameraFollowPlayer : MonoBehaviour
 {
     [SerializeField] private Transform m_FollowPlayer;
+    [SerializeField] private Transform audioListenerTransform;
 
     [SerializeField] private Vector3 cameraOffset;
     [SerializeField] private float damp;
@@ -16,7 +17,6 @@ public class CameraFollowPlayer : MonoBehaviour
     [SerializeField] private float zoomMin;
     private Vector3 velocity = Vector3.zero;
 
-    private bool inRotationMode;
     [SerializeField] private float camSensitivity;
 
     private void Start()
@@ -41,6 +41,7 @@ public class CameraFollowPlayer : MonoBehaviour
 
         cameraOffset.y = Mathf.Clamp(newY, zoomMin, zoomMax);
         cameraOffset.z = Mathf.Clamp(newZ, -zoomMax, -zoomMin);
+
     }
     
 }

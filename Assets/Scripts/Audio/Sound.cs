@@ -16,6 +16,10 @@ public class Sound
     public bool loop = false;
     public bool playOnAwake= false;
 
+    [Range(0f, 1f)]
+    public float spatialBlend = 1f;
+    public float maxDistance = 110f;
+
     [HideInInspector]
     public AudioSource source;
 }

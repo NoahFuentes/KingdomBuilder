@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 245403781442237793}
   - component: {fileID: 7444829336598586160}
   - component: {fileID: 7551512595779641655}
+  - component: {fileID: 4379539980974659517}
   m_Layer: 10
   m_Name: skeleton
   m_TagString: Attackable
@@ -440,6 +441,43 @@ MonoBehaviour:
   spawnerIndex: 0
   isAttacking: 0
   attackTrans: {fileID: 9123801976081148616}
+--- !u!114 &4379539980974659517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3282325396129724769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e29c585da929094abf411ad40b1d675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: attack
+    clip: {fileID: 8300000, guid: b9f9245fb70a60b4fb0b41794926ade9, type: 3}
+    volume: 1
+    pitchVariation: 1
+    pitch: 0
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 1
+    maxDistance: 110
+    source: {fileID: 0}
+  - name: take damage
+    clip: {fileID: 8300000, guid: 656dc9f908322e744ad24867bfce321b, type: 3}
+    volume: 1
+    pitchVariation: 1
+    pitch: 0.1
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 1
+    maxDistance: 110
+    source: {fileID: 0}
+  footSteps:
+  - {fileID: 8300000, guid: 652fd338362bfb74e821a50ad886b15c, type: 3}
+  - {fileID: 8300000, guid: 0ee0a920a6cd0a04d8512ce7a568a448, type: 3}
+  footStepVolume: 1
 --- !u!1 &3485821896566417648
 GameObject:
   m_ObjectHideFlags: 0

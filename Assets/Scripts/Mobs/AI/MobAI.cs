@@ -11,12 +11,13 @@ public class MobAI : MonoBehaviour //Master class for all Mob AIs, interactions 
     [SerializeField] protected float wanderTime;
     protected float lastWanderTime;
 
-    public MobSpawner spawner;
-    public ushort spawnerIndex;
-    
+    [HideInInspector] public MobSpawner spawner;
+    [HideInInspector] public ushort spawnerIndex;
+
     protected MobStats stats;
     protected NavMeshAgent agent;
     protected Animator animator;
+    protected MobAudioManager audioManager;
 
 
     protected void Start()
@@ -28,6 +29,7 @@ public class MobAI : MonoBehaviour //Master class for all Mob AIs, interactions 
         agent.stoppingDistance = stats.stoppingDistance;
 
         animator = GetComponent<Animator>();
+        audioManager = GetComponent<MobAudioManager>();
     }
 
     public virtual void TakeDamage(int dmg)
@@ -35,6 +37,7 @@ public class MobAI : MonoBehaviour //Master class for all Mob AIs, interactions 
         stats.currentHealth -= dmg;
         //Debug.Log(gameObject.name + " took " + dmg + " damage: " + (stats.currentHealth + dmg) + " -> " + stats.currentHealth);
         NotificationManager.Instance.ShowDamageNotification(transform.position, dmg, Color.red);
+        audioManager.PlaySoundByName("take damage");
         if (stats.currentHealth <= 0)
         {
             Die();

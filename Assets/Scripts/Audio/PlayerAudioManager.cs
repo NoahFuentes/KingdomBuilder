@@ -23,6 +23,9 @@ public class PlayerAudioManager : AudioManager
         Instance = this;
         footStepSource = gameObject.AddComponent<AudioSource>();
         footStepSource.volume = footStepVolume;
+        footStepSource.spatialBlend = 1f;
+        footStepSource.rolloffMode = AudioRolloffMode.Linear;
+        footStepSource.maxDistance = 110f;
         base.Awake();
     }
 }
