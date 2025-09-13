@@ -37,7 +37,7 @@ public class MobAI : MonoBehaviour //Master class for all Mob AIs, interactions 
         stats.currentHealth -= dmg;
         //Debug.Log(gameObject.name + " took " + dmg + " damage: " + (stats.currentHealth + dmg) + " -> " + stats.currentHealth);
         NotificationManager.Instance.ShowDamageNotification(transform.position, dmg, Color.red);
-        audioManager.PlaySoundByName("take damage");
+        audioManager?.PlaySoundByName("take damage");
         if (stats.currentHealth <= 0)
         {
             Die();

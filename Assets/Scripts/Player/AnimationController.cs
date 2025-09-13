@@ -40,7 +40,7 @@ public class AnimationController : MonoBehaviour
         foreach(Collider enemy in enemiesHit)
         {
             //bad spot for this, but this is where we damgage enemies...
-            enemy.GetComponent<MobAI>().TakeDamage(weapon.damage);
+            enemy.GetComponent<MobAI>()?.TakeDamage(weapon.damage);
         }
     }
     public void EnableWeaponTrailR()
