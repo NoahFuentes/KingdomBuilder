@@ -17,13 +17,13 @@ MonoBehaviour:
   - prefab: {fileID: 6739804228592001243, guid: 6cdd667aa0034cd4dadc8d58a65fb098, type: 3}
     selected: 1
   paintType: 0
-  brushSize: 68.1
+  brushSize: 49.1
   minBrushSize: 0.1
   maxBrushSize: 100
   paintDeltaDistance: 0.4
   maxPaintDeltaDistance: 3
   minPaintDeltaDistance: 0.1
-  prefabsPerStroke: 20
+  prefabsPerStroke: 9
   maxprefabsPerStroke: 20
   minprefabsPerStroke: 1
   spawnHeight: 10
@@ -60,12 +60,12 @@ MonoBehaviour:
   scaleApplicationType: 1
   minScale: 1
   maxScale: 1
-  minXScale: 2
-  maxXScale: 2
-  minYScale: 2
-  maxYScale: 2
-  minZScale: 2
-  maxZScale: 2
+  minXScale: 4
+  maxXScale: 5
+  minYScale: 1.75
+  maxYScale: 2.25
+  minZScale: 4
+  maxZScale: 5
   parentList: []
   eraseBrushSize: 5.12
   minEraseBrushSize: 0.1
