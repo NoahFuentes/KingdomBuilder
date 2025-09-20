@@ -6,6 +6,7 @@ public class CharacterMovement : MonoBehaviour
 {
     public static CharacterMovement Instance;
     private Rigidbody rb;
+    [SerializeField] private Transform cameraTransform;
     private Animator animator;
     [SerializeField] private float deceleration;
     [SerializeField] private float acceleration;
@@ -40,6 +41,7 @@ public class CharacterMovement : MonoBehaviour
         nav.acceleration = navAcceleration;
         nav.enabled = false;
         animator = GetComponent<Animator>();
+        cameraTransform = Camera.main.transform;
     }
 
     void Update()
@@ -62,7 +64,13 @@ public class CharacterMovement : MonoBehaviour
         if (inputDirection.magnitude > 0)
         {
             // Normalize to prevent faster diagonal movement and apply speed
-            moveDirection = inputDirection.normalized * (PlayerStats.Instance.m_BaseMovementSpeed);
+            //moveDirection = inputDirection.normalized * (PlayerStats.Instance.m_BaseMovementSpeed);
+
+            Vector3 camForward = Vector3.Scale(cameraTransform.forward, new Vector3(1, 0, 1)).normalized;
+            Vector3 camRight = cameraTransform.right;
+
+            moveDirection = (camForward * moveZ + camRight * moveX).normalized * (PlayerStats.Instance.m_BaseMovementSpeed);
+
         }
         else
         {
