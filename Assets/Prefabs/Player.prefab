@@ -1269,6 +1269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce17323a954ce049bdfc7faed6cb685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  focusShaderMat: {fileID: 2100000, guid: 5522eeb0ebefce348a3493cf3c741d23, type: 2}
   currentFocusedObject: {fileID: 0}
   interactionDistance: 3.5
   buildingMask:

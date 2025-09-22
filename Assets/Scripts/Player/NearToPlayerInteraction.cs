@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class NearToPlayerInteraction : MonoBehaviour
 {
+    [SerializeField] private Material focusShaderMat;
+
     [SerializeField] private GameObject currentFocusedObject;
     private Transform playerTransform;
 
@@ -12,6 +14,8 @@ public class NearToPlayerInteraction : MonoBehaviour
     [SerializeField] private LayerMask buildingMask;
     [SerializeField] private LayerMask resourceMask;
 
+    private MeshRenderer focusedObjectRenderer;
+    private Material[] focusedObjOriginalMats;
 
     private void ChangeFocusedObject(GameObject objectToFocusOn)
     {
@@ -25,14 +29,28 @@ public class NearToPlayerInteraction : MonoBehaviour
 
     private void ClearFocusedObject()
     {
-        //take shader off
+        if (null == currentFocusedObject) return;
+        //take off focus shader
+        focusedObjectRenderer.materials = focusedObjOriginalMats;
+
         currentFocusedObject = null;
     }
 
     private void FocusOnNewFocusObject(GameObject objectToFocusOn)
     {
-        //set shader
         currentFocusedObject = objectToFocusOn;
+        focusedObjectRenderer = currentFocusedObject.GetComponent<MeshRenderer>();
+        focusedObjOriginalMats = focusedObjectRenderer.materials;
+
+        //set focus shader
+        Material[] newMats = new Material[focusedObjOriginalMats.Length + 1];
+        for (int i = 0; i < focusedObjOriginalMats.Length; i++)
+            newMats[i] = focusedObjOriginalMats[i];
+
+        // Add the outline as the last material
+        newMats[newMats.Length - 1] = focusShaderMat;
+
+        focusedObjectRenderer.materials = newMats;
     }
 
     private void InteractWithFocusedObject()
@@ -58,6 +76,9 @@ public class NearToPlayerInteraction : MonoBehaviour
     {
         currentFocusedObject.GetComponentInParent<BuildingBase>().OnSelect();
     }
+
+
+    //UNITY FUNCTIONS
 
     private void Start()
     {
