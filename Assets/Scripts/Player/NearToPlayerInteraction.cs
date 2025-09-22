@@ -3,12 +3,14 @@ using UnityEngine;
 public class NearToPlayerInteraction : MonoBehaviour
 {
     [SerializeField] private GameObject currentFocusedObject;
+    private Transform playerTransform;
 
     //[SerializeField] private Transform checkTransform;
     [SerializeField] private float interactionDistance;
-    [SerializeField] private LayerMask interactionMask;
+    private LayerMask interactionMask;
 
-
+    [SerializeField] private LayerMask buildingMask;
+    [SerializeField] private LayerMask resourceMask;
 
 
     private void ChangeFocusedObject(GameObject objectToFocusOn)
@@ -31,6 +33,42 @@ public class NearToPlayerInteraction : MonoBehaviour
     {
         //set shader
         currentFocusedObject = objectToFocusOn;
+    }
+
+    private void InteractWithFocusedObject()
+    {
+        if (null == currentFocusedObject) return;
+
+        if ((resourceMask.value & (1 << currentFocusedObject.layer)) != 0)
+        {
+            HandleResourceInteraction();
+        }
+        else if ((buildingMask.value & (1 << currentFocusedObject.layer)) != 0)
+        {
+            HandleBuildingInteraction();
+        }
+    }
+
+    private void HandleResourceInteraction()
+    {
+        CharacterMovement.Instance.navMoveToPosition(currentFocusedObject.GetComponent<CapsuleCollider>().ClosestPoint(playerTransform.position));
+        currentFocusedObject.GetComponent<Resource>().Interaction();
+    }
+    private void HandleBuildingInteraction()
+    {
+        currentFocusedObject.GetComponentInParent<BuildingBase>().OnSelect();
+    }
+
+    private void Start()
+    {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        interactionMask = buildingMask + resourceMask;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+            InteractWithFocusedObject();
     }
 
     private void FixedUpdate()

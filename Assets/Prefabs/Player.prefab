@@ -1271,9 +1271,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentFocusedObject: {fileID: 0}
   interactionDistance: 3.5
-  interactionMask:
+  buildingMask:
     serializedVersion: 2
-    m_Bits: 32896
+    m_Bits: 32768
+  resourceMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &2142006546496789173
 GameObject:
   m_ObjectHideFlags: 0
