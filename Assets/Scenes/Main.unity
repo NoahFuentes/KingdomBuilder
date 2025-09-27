@@ -13941,7 +13941,6 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
-  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -14067,26 +14066,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &330585548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b01d6e9bd0a5fca4c9cc13f78dbda772, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FollowPlayer: {fileID: 0}
-  audioListenerTransform: {fileID: 0}
-  cameraOffset: {x: 0, y: 13.5, z: -25}
-  damp: 0.25
-  zoomSensitivity: 8
-  zoomMax: 40
-  zoomMin: 20
-  camSensitivity: 1
 --- !u!1001 &330891180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23182,6 +23161,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1084607588}
     m_Modifications:
+    - target: {fileID: 1277848244923261744, guid: 963fa8b26a8b2d54d8df23a83d918732, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277848244923261744, guid: 963fa8b26a8b2d54d8df23a83d918732, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 91580d492d88cd142ad7c2d3fbf70fdd, type: 2}
     - target: {fileID: 7390168689261807434, guid: 963fa8b26a8b2d54d8df23a83d918732, type: 3}
       propertyPath: m_Name
       value: P_BirchTree_07_Summer
@@ -54495,7 +54482,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1121130819}
   - component: {fileID: 1121130821}
-  - component: {fileID: 1121130822}
   m_Layer: 0
   m_Name: KingdomManager
   m_TagString: KingdomManager
@@ -54575,27 +54561,6 @@ MonoBehaviour:
   minerPresent: 0
   soldier2Present: 0
   SorcererPresent: 0
---- !u!135 &1121130822
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121130818}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1121664072 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2377056640886328237, guid: 6f89ce1dd1d073142b04db24a18e2ca7, type: 3}
@@ -61150,13 +61115,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269784222}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3818978, y: 0.70845664, z: -0.54533476, w: 0.2342079}
+  m_LocalRotation: {x: -0.4476336, y: 0.68486434, z: -0.48429644, w: 0.30990624}
   m_LocalPosition: {x: -36.512756, y: 2.5299988, z: 66.02542}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 52, y: 201, z: 0}
+  m_LocalEulerAnglesHint: {x: 22.7, y: 111.548, z: -81.889}
 --- !u!1001 &1270580472
 PrefabInstance:
   m_ObjectHideFlags: 0

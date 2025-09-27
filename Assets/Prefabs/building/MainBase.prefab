@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8818253050228904030}
   - component: {fileID: 5119276892045794348}
   - component: {fileID: 6648112612234661371}
-  - component: {fileID: 1583545663616793226}
+  - component: {fileID: 5645734275075008790}
   m_Layer: 15
   m_Name: MainBase
   m_TagString: Untagged
@@ -125,7 +125,7 @@ MonoBehaviour:
   buildingInfo: {fileID: 11400000, guid: c9f749bf1ae3e994784786ca35779ce5, type: 2}
   buildingLevel: 1
   originGridPos: {x: 0, y: 0}
---- !u!64 &1583545663616793226
+--- !u!64 &5645734275075008790
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

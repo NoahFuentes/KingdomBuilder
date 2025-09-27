@@ -3,8 +3,6 @@ using UnityEngine.UI;
 
 public class Kingdom : BuildingBase
 {
-    private SphereCollider kingdomBuildCheck;
-    //[SerializeField] private GameObject buildRangeIndicator;
 
     public override void OnBuild()
     {
@@ -24,11 +22,5 @@ public class Kingdom : BuildingBase
 
     //UNITY FUNCTIONS
 
-    private void Start()
-    {
-        kingdomBuildCheck = GetComponentInParent<SphereCollider>();
-
-        kingdomBuildCheck.radius = KingdomStats.Instance.m_KingdomRadius;
-    }
     
 }
