@@ -39,7 +39,7 @@ public class NearToPlayerInteraction : MonoBehaviour
     private void FocusOnNewFocusObject(GameObject objectToFocusOn)
     {
         currentFocusedObject = objectToFocusOn;
-        focusedObjectRenderer = currentFocusedObject.GetComponent<MeshRenderer>();
+        focusedObjectRenderer = currentFocusedObject.GetComponentInChildren<MeshRenderer>();
         focusedObjOriginalMats = focusedObjectRenderer.materials;
 
         //set focus shader
@@ -69,12 +69,12 @@ public class NearToPlayerInteraction : MonoBehaviour
 
     private void HandleResourceInteraction()
     {
-        CharacterMovement.Instance.navMoveToPosition(currentFocusedObject.GetComponent<CapsuleCollider>().ClosestPoint(playerTransform.position));
+        CharacterMovement.Instance.navMoveToPosition(currentFocusedObject.GetComponentInChildren<CapsuleCollider>().ClosestPoint(playerTransform.position));
         currentFocusedObject.GetComponent<Resource>().Interaction();
     }
     private void HandleBuildingInteraction()
     {
-        currentFocusedObject.GetComponentInParent<BuildingBase>().OnSelect();
+        currentFocusedObject.GetComponent<BuildingBase>().OnSelect();
     }
 
 
@@ -93,10 +93,11 @@ public class NearToPlayerInteraction : MonoBehaviour
     }
 
     private void FixedUpdate()
-    { 
+    {
         //get all colliders with interactabel layer
         Collider[] interactablesInRange = Physics.OverlapSphere(transform.position, interactionDistance, interactionMask);
-        if (interactablesInRange.Length < 1) {
+        if (interactablesInRange.Length < 1)
+        {
             ClearFocusedObject();   //if no objects are found, clear the focus object
             return;
         }
@@ -114,8 +115,7 @@ public class NearToPlayerInteraction : MonoBehaviour
             }
         }
         //if the closest is not the focus object, change to the closest
-        if(closestInteractable.gameObject != currentFocusedObject)
-            ChangeFocusedObject(closestInteractable.gameObject);
+        if (closestInteractable.gameObject != currentFocusedObject)
+            ChangeFocusedObject(closestInteractable.transform.parent.gameObject);
     }
-
 }

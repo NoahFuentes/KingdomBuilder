@@ -140,7 +140,7 @@ Transform:
   m_GameObject: {fileID: 5214062316515028892}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.798998, y: 1.1, z: -26.124779}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -179,7 +179,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b89e1d172067dfc4eb1a26a3717952b3, type: 2}
-  - {fileID: 2100000, guid: 88c0a72872856644396b954dea75fc48, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -268,13 +267,11 @@ MonoBehaviour:
   healthRegenTime: 5
   baseMovementSpeed: 7
   sprintMovementSpeed: 12
-  attackHitBox: {fileID: 0}
   damage: 3
   damageType: Physical
   attackRate: 1
-  attackRange: 2
-  weaknessTypes: []
-  resistanceTypes: []
+  attackDimensions: {x: 0, y: 0, z: 0}
+  stoppingDistance: 0
 --- !u!195 &2565227013016793382
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -317,3 +314,5 @@ MonoBehaviour:
   wanderTime: 5
   spawner: {fileID: 0}
   spawnerIndex: 0
+  isAttacking: 0
+  attackTrans: {fileID: 0}

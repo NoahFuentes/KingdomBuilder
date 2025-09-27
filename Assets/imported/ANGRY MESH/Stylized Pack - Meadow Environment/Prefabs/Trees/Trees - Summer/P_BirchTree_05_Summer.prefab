@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2042468938112327828}
   - component: {fileID: 7758855892368236659}
   - component: {fileID: 8397569610728508873}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_BirchTree_05_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +58,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -94,7 +97,8 @@ GameObject:
   m_Component:
   - component: {fileID: 168413989000398498}
   - component: {fileID: 4903377692320985555}
-  m_Layer: 0
+  - component: {fileID: 2228669919455158898}
+  m_Layer: 7
   m_Name: P_BirchTree_05_Summer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,6 +156,24 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8397569610728508873}
   m_Enabled: 1
+--- !u!114 &2228669919455158898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656825216535829528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc8c35b0d5688944dbbef95e6c9f9591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resName: Birch Tree
+  isMinable: 0
+  resToGive: timber
+  amtToGive: 3
+  maxHealth: 10
+  currentHealth: 10
 --- !u!1 &1342847594374953808
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +185,7 @@ GameObject:
   - component: {fileID: 8289128504213127188}
   - component: {fileID: 8932514158931448172}
   - component: {fileID: 3176513673605531822}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_BirchTree_05_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,6 +232,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -246,7 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 271144290531380699}
   - component: {fileID: 3183283211162375853}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +327,7 @@ GameObject:
   - component: {fileID: 3577965264013747590}
   - component: {fileID: 3972971197093120546}
   - component: {fileID: 7828180770719422072}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_BirchTree_05_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,6 +374,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -386,7 +414,7 @@ GameObject:
   - component: {fileID: 4409764334612539068}
   - component: {fileID: 1658706829939897175}
   - component: {fileID: 8989272241899010439}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_BirchTree_05_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,6 +461,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
