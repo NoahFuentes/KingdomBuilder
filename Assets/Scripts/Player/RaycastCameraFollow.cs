@@ -34,8 +34,8 @@ public class RaycastCameraFollow : MonoBehaviour
 
         targetZoom = Mathf.Clamp((minZoom + maxZoom) * 0.5f, minZoom, maxZoom); // Start at mid zoom
 
-        Cursor.lockState = CursorLockMode.Locked; // Lock cursor (optional)
-        Cursor.visible = false;                   // Hide cursor (optional)
+        //Cursor.lockState = CursorLockMode.Locked; // Lock cursor (optional)
+        //Cursor.visible = false;                   // Hide cursor (optional)
 
         character = GameObject.FindGameObjectWithTag("Player").transform;
     }

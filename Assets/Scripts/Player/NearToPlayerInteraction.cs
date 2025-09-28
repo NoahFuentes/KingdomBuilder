@@ -127,10 +127,13 @@ public class NearToPlayerInteraction : MonoBehaviour
         //if the closest is not the focus object, change to the closest
         if (closestInteractable.gameObject != currentFocusedObject)
         {
+            /* CLEANUP
             if ((resourceMask.value & (1 << closestInteractable.gameObject.layer)) != 0)
                 ChangeFocusedObject(closestInteractable.transform.parent.gameObject);
             else if ((buildingMask.value & (1 << closestInteractable.gameObject.layer)) != 0)
                 ChangeFocusedObject(closestInteractable.gameObject);
+            */
+                ChangeFocusedObject(closestInteractable.transform.parent.gameObject);
 
         }
     }

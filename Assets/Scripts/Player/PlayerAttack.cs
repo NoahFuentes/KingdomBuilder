@@ -13,7 +13,7 @@ public class PlayerAttack : MonoBehaviour
     private float lastAttackedTime;
 
 
-    public void StartAttack(Vector3 direction)
+    public void StartAttack()
     {
         //BAIL CASES
         if (isAttacking) return;
@@ -32,37 +32,23 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool("isMining", false);
         animator.SetBool("isChopping", false);
         //face attack direction
-        FaceAttackDir(direction);
+        FaceCameraDir();
         //start dash (dash animation should check for collision or end of range and attack)
         Attack();
     }
-    public void FaceAttackDir(Vector3 dir)
+    public void FaceCameraDir()
     {
-        dir.y = transform.position.y;
-        Vector3 direction = dir - transform.position;
-        if (direction.sqrMagnitude > 0.001f)
-        {
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Euler(0, lookRotation.eulerAngles.y, 0);
-        }
-    }
-    /*
-    private IEnumerator Dash(float distance, float speed, Vector3 dir)
-    {
-        collisionDetected = false;
-        isAttacking = true;
-        //animator.SetTrigger("dash");
-        Vector3 startPos = transform.position;
+        Vector3 camForward = Camera.main.transform.forward;
+        camForward.y = 0f;
+        camForward.Normalize();
 
-        while ((Vector3.Distance(transform.position, startPos) <= distance) && !collisionDetected)
+        if (camForward != Vector3.zero)
         {
-            rb.MovePosition(transform.position + (dir * (speed * Time.deltaTime)));
-            yield return null;
+            // Target rotation to face the camera direction
+            Quaternion targetRotation = Quaternion.LookRotation(camForward);
+            transform.rotation = targetRotation;
         }
-        //Debug.Log("col detect: " + collisionDetected);
-        isAttacking = false;
     }
-    */
     private void Attack()
     {
         animator.SetTrigger("attack"); //attack animation needs to set isAttacking to false
@@ -94,6 +80,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (EventSystem.current.IsPointerOverGameObject() || BuildingManager.Instance.isPlacing) return;
+            /* CLEANUP
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 500, attackLayer))
             {
@@ -104,6 +91,8 @@ public class PlayerAttack : MonoBehaviour
                 }
                 StartAttack(hit.point);
             }
+            */
+            StartAttack();
         }
     }
 }
