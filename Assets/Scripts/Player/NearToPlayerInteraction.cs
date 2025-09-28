@@ -56,7 +56,7 @@ public class NearToPlayerInteraction : MonoBehaviour
     private void InteractWithFocusedObject()
     {
         if (null == currentFocusedObject) return;
-
+        /*
         if ((resourceMask.value & (1 << currentFocusedObject.layer)) != 0)
         {
             HandleResourceInteraction();
@@ -65,6 +65,16 @@ public class NearToPlayerInteraction : MonoBehaviour
         {
             HandleBuildingInteraction();
         }
+        */
+        if (currentFocusedObject.TryGetComponent<Resource>(out Resource res))
+        {
+            HandleResourceInteraction();
+        }
+        else if (currentFocusedObject.TryGetComponent<BuildingBase>(out BuildingBase building))
+        {
+            HandleBuildingInteraction();
+        }
+            
     }
 
     private void HandleResourceInteraction()
