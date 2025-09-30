@@ -58694,7 +58694,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9098457957491026876, guid: ab1d96ebae4c49d4daec1a19df6db91c, type: 3}
       propertyPath: WindGrassTurbulence
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9098457957491026876, guid: ab1d96ebae4c49d4daec1a19df6db91c, type: 3}
+      propertyPath: WindTreeFlexibility
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9098457957491026876, guid: ab1d96ebae4c49d4daec1a19df6db91c, type: 3}
       propertyPath: WindGrassFlexibility
@@ -87277,9 +87281,9 @@ MonoBehaviour:
   mouseSensitivity: 2
   minPitch: -30
   maxPitch: 60
-  pivotOffset: {x: 0, y: 1.5, z: 0}
-  minZoom: 15
-  maxZoom: 30
+  pivotOffset: {x: 0, y: 2, z: 0}
+  minZoom: 5
+  maxZoom: 20
   zoomSpeed: 5
   collisionMask:
     serializedVersion: 2
