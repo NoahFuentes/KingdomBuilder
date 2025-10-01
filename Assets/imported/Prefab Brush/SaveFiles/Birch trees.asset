@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cb495ffbca0404d878640680165899, type: 3}
+  m_Name: Birch trees
+  m_EditorClassIdentifier: 
+  prefabList: []
+  prefabData:
+  - prefab: {fileID: 3149934543208911127, guid: 6f89ce1dd1d073142b04db24a18e2ca7, type: 3}
+    selected: 1
+  - prefab: {fileID: 9176196354295710496, guid: 766c09020c8c5a64580073e733bc26f9, type: 3}
+    selected: 1
+  - prefab: {fileID: 4982421113069778432, guid: bc0bccb9463c8ed4ca8bce46a28f9e71, type: 3}
+    selected: 1
+  - prefab: {fileID: 3597874497802831757, guid: ed093cb5b56daf7468dcc88d2be53b1e, type: 3}
+    selected: 1
+  - prefab: {fileID: 656825216535829528, guid: c29569ded283b9143abc4c6cef0d120a, type: 3}
+    selected: 1
+  - prefab: {fileID: 8947858963990798490, guid: a2a8057a15162e24e83b38d47fd669ca, type: 3}
+    selected: 1
+  - prefab: {fileID: 7390168689261807434, guid: 963fa8b26a8b2d54d8df23a83d918732, type: 3}
+    selected: 1
+  paintType: 0
+  brushSize: 89.4
+  minBrushSize: 0.1
+  maxBrushSize: 100
+  paintDeltaDistance: 5
+  maxPaintDeltaDistance: 10
+  minPaintDeltaDistance: 2
+  prefabsPerStroke: 13
+  maxprefabsPerStroke: 100
+  minprefabsPerStroke: 1
+  spawnHeight: 10
+  addRigidbodyToPaintedPrefab: 1
+  physicsIterations: 100
+  checkLayer: 0
+  checkTag: 0
+  checkSlope: 1
+  ignorePaintedPrefabs: 1
+  ignoreTriggers: 1
+  chainPivotAxis: 0
+  chainDirection: 0
+  requiredTagMask: 0
+  requiredLayerMask: 0
+  minRequiredSlope: 0
+  maxRequiredSlope: 25.637913
+  prefabOriginOffset: {x: 0, y: 0, z: 0}
+  prefabRotationOffset: {x: 0, y: 0, z: 0}
+  draggingAction: 0
+  rotationAxis: 0
+  rotationSensitivity: 10
+  parentingStyle: 2
+  parent: {fileID: 0}
+  rotateToMatchSurface: 0
+  rotateSurfaceDirection: 0
+  randomizeRotation: 1
+  minXRotation: 0
+  maxXRotation: 0
+  minYRotation: 0
+  maxYRotation: 360
+  minZRotation: 0
+  maxZRotation: 0
+  scaleType: 1
+  scaleApplicationType: 1
+  minScale: 1
+  maxScale: 2
+  minXScale: 1
+  maxXScale: 2
+  minYScale: 1
+  maxYScale: 2
+  minZScale: 1
+  maxZScale: 2
+  parentList: []
+  eraseBrushSize: 20
+  minEraseBrushSize: 0.1
+  maxEraseBrushSize: 20
+  eraseType: 0
+  checkLayerForErase: 0
+  checkTagForErase: 0
+  checkSlopeForErase: 0
+  mustBeSelectedInBrush: 0
+  requiredTagMaskForErase: 0
+  requiredLayerMaskForErase: 0
+  minRequiredSlopeForErase: 0
+  maxRequiredSlopeForErase: 0
+  eraseDetection: 1
+  paintBrushHotKey: 112
+  paintBrushHoldKey: 1
+  removeBrushHotKey: 306
+  removeBrushHoldKey: 1
+  disableBrushHotKey: 105
+  disableBrushHoldKey: 1
+  hideToolsWarnings: 0

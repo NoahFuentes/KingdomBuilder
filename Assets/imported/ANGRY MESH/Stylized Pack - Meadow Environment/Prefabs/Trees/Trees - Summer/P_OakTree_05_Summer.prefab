@@ -27,10 +27,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.08624109, y: 0.1796527, z: 0.14455375, w: 0.9692222}
   m_LocalPosition: {x: -0.213, y: 2.051, z: 0.077}
-  m_LocalScale: {x: 0.1634761, y: 1.2321959, z: 0.16347606}
+  m_LocalScale: {x: 0.16347611, y: 1.2321959, z: 0.16347606}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3707868182422438919}
+  m_Father: {fileID: 5143236121345940042}
   m_LocalEulerAnglesHint: {x: 6.617, y: 22.066, z: 18.257}
 --- !u!136 &3678400332609964826
 CapsuleCollider:
@@ -55,42 +55,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &375238804142732693
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3707868182422438919}
-  m_Layer: 0
-  m_Name: Collisions
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3707868182422438919
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375238804142732693}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8784437815039399904}
-  - {fileID: 37645369143004185}
-  - {fileID: 2001070576818782005}
-  - {fileID: 1628761089366266445}
-  - {fileID: 6242176775556220174}
-  m_Father: {fileID: 5143236121345940042}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &933372731357359417
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +113,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -233,6 +200,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -289,7 +259,7 @@ Transform:
   m_LocalScale: {x: 0.1634761, y: 1.2321959, z: 0.16347606}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3707868182422438919}
+  m_Father: {fileID: 5143236121345940042}
   m_LocalEulerAnglesHint: {x: -18.748, y: 13.936, z: 4.746}
 --- !u!136 &1977438847840244164
 CapsuleCollider:
@@ -372,6 +342,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -428,7 +401,7 @@ Transform:
   m_LocalScale: {x: 0.1634761, y: 1.2321959, z: 0.16347606}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3707868182422438919}
+  m_Father: {fileID: 5143236121345940042}
   m_LocalEulerAnglesHint: {x: -27.624, y: -118.638, z: -1.809}
 --- !u!136 &432112489643836509
 CapsuleCollider:
@@ -463,7 +436,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5143236121345940042}
   - component: {fileID: 88503718576057659}
-  m_Layer: 0
+  - component: {fileID: 4707845217826115803}
+  m_Layer: 7
   m_Name: P_OakTree_05_Summer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +461,11 @@ Transform:
   - {fileID: 1034601929030272698}
   - {fileID: 6262066634441475075}
   - {fileID: 3954260631995439892}
-  - {fileID: 3707868182422438919}
+  - {fileID: 8784437815039399904}
+  - {fileID: 37645369143004185}
+  - {fileID: 2001070576818782005}
+  - {fileID: 1628761089366266445}
+  - {fileID: 6242176775556220174}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &88503718576057659
@@ -521,6 +499,24 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5217185645929029277}
   m_Enabled: 1
+--- !u!114 &4707845217826115803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488659430540574960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc8c35b0d5688944dbbef95e6c9f9591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resName: Oak Tree
+  isMinable: 0
+  resToGive: timber
+  amtToGive: 3
+  maxHealth: 10
+  currentHealth: 10
 --- !u!1 &5960002726233066296
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8784437815039399904}
   - component: {fileID: 9208835966076845519}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +547,7 @@ Transform:
   m_LocalScale: {x: 0.7031788, y: 2.2380629, z: 0.7031788}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3707868182422438919}
+  m_Father: {fileID: 5143236121345940042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &9208835966076845519
 CapsuleCollider:
@@ -634,6 +630,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -687,10 +686,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.24991941, y: 0.022562353, z: -0.118097626, w: 0.96077275}
   m_LocalPosition: {x: 0.106, y: 1.444, z: -0.355}
-  m_LocalScale: {x: 0.1634761, y: 1.2321959, z: 0.16347606}
+  m_LocalScale: {x: 0.16347611, y: 1.232196, z: 0.16347606}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3707868182422438919}
+  m_Father: {fileID: 5143236121345940042}
   m_LocalEulerAnglesHint: {x: -28.353, y: 6.681, z: -15.705}
 --- !u!136 &8813462577035881527
 CapsuleCollider:

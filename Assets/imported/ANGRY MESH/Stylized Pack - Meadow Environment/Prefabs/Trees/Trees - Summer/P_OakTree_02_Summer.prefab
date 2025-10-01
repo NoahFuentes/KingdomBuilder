@@ -27,10 +27,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.41320297, y: 0.11763825, z: 0.06066687, w: 0.9009685}
   m_LocalPosition: {x: -0.114, y: 3.859, z: -1.273}
-  m_LocalScale: {x: 0.38431734, y: 1.9855917, z: 0.3843173}
+  m_LocalScale: {x: 0.38431734, y: 1.9855917, z: 0.38431728}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1304861826263568744}
+  m_Father: {fileID: 2313990932069655706}
   m_LocalEulerAnglesHint: {x: -49.362, y: 14.389, z: 1.065}
 --- !u!136 &3542864742501496434
 CapsuleCollider:
@@ -65,7 +65,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2653201994064394187}
   - component: {fileID: 5451191416595800188}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ Transform:
   m_LocalScale: {x: 2.6349792, y: 4.742391, z: 2.6349792}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1304861826263568744}
+  m_Father: {fileID: 2313990932069655706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &5451191416595800188
 CapsuleCollider:
@@ -120,7 +120,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2313990932069655706}
   - component: {fileID: 7369839349064668139}
-  m_Layer: 0
+  - component: {fileID: -8222637691774242828}
+  m_Layer: 7
   m_Name: P_OakTree_02_Summer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +145,10 @@ Transform:
   - {fileID: 8002027799546919374}
   - {fileID: 7569719569722339173}
   - {fileID: 793680156681022324}
-  - {fileID: 1304861826263568744}
+  - {fileID: 2653201994064394187}
+  - {fileID: 9038376098178471677}
+  - {fileID: 8249575209528780266}
+  - {fileID: 3204535994582808042}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &7369839349064668139
@@ -178,6 +182,24 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7606343242094307659}
   m_Enabled: 1
+--- !u!114 &-8222637691774242828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123003154188008992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc8c35b0d5688944dbbef95e6c9f9591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resName: Oak Tree
+  isMinable: 0
+  resToGive: timber
+  amtToGive: 3
+  maxHealth: 10
+  currentHealth: 10
 --- !u!1 &4047982669635918736
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,10 +227,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.17520025, y: 0.7286797, z: 0.23398359, w: -0.6193403}
   m_LocalPosition: {x: 0.783, y: 3.936, z: -0.262}
-  m_LocalScale: {x: 0.37552845, y: 2.4049835, z: 0.37552848}
+  m_LocalScale: {x: 0.37552848, y: 2.4049835, z: 0.37552848}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1304861826263568744}
+  m_Father: {fileID: 2313990932069655706}
   m_LocalEulerAnglesHint: {x: -33.919, y: 261.452, z: -2.383}
 --- !u!136 &7630799003724339060
 CapsuleCollider:
@@ -291,6 +313,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -375,6 +400,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -459,6 +487,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -543,6 +574,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -596,10 +630,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.06485652, y: 0.8390117, z: 0.29346302, w: 0.45357743}
   m_LocalPosition: {x: -0.476, y: 4.178, z: 0.142}
-  m_LocalScale: {x: 0.38674107, y: 1.888127, z: 0.3867411}
+  m_LocalScale: {x: 0.3867411, y: 1.8881267, z: 0.38674113}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1304861826263568744}
+  m_Father: {fileID: 2313990932069655706}
   m_LocalEulerAnglesHint: {x: -33.454, y: 119.931, z: 10.873}
 --- !u!136 &2245451655145833723
 CapsuleCollider:
@@ -624,38 +658,3 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &9011911028166477404
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1304861826263568744}
-  m_Layer: 0
-  m_Name: Collisions
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1304861826263568744
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9011911028166477404}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2653201994064394187}
-  - {fileID: 9038376098178471677}
-  - {fileID: 8249575209528780266}
-  - {fileID: 3204535994582808042}
-  m_Father: {fileID: 2313990932069655706}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

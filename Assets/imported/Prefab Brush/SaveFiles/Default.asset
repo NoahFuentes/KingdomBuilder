@@ -14,34 +14,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabList: []
   prefabData:
-  - prefab: {fileID: 5974451096353316774, guid: e630ace539e49f2408ceaad235728299, type: 3}
+  - prefab: {fileID: 3149934543208911127, guid: 6f89ce1dd1d073142b04db24a18e2ca7, type: 3}
     selected: 1
-  - prefab: {fileID: 6274994970716342424, guid: 77239b86084584d4583a28bacdb86d40, type: 3}
+  - prefab: {fileID: 9176196354295710496, guid: 766c09020c8c5a64580073e733bc26f9, type: 3}
+    selected: 1
+  - prefab: {fileID: 4982421113069778432, guid: bc0bccb9463c8ed4ca8bce46a28f9e71, type: 3}
+    selected: 1
+  - prefab: {fileID: 3597874497802831757, guid: ed093cb5b56daf7468dcc88d2be53b1e, type: 3}
+    selected: 1
+  - prefab: {fileID: 656825216535829528, guid: c29569ded283b9143abc4c6cef0d120a, type: 3}
+    selected: 1
+  - prefab: {fileID: 8947858963990798490, guid: a2a8057a15162e24e83b38d47fd669ca, type: 3}
+    selected: 1
+  - prefab: {fileID: 7390168689261807434, guid: 963fa8b26a8b2d54d8df23a83d918732, type: 3}
     selected: 1
   paintType: 0
-  brushSize: 68.1
+  brushSize: 89.4
   minBrushSize: 0.1
   maxBrushSize: 100
-  paintDeltaDistance: 0.4
-  maxPaintDeltaDistance: 3
-  minPaintDeltaDistance: 0.1
-  prefabsPerStroke: 1
-  maxprefabsPerStroke: 20
+  paintDeltaDistance: 5
+  maxPaintDeltaDistance: 10
+  minPaintDeltaDistance: 2
+  prefabsPerStroke: 13
+  maxprefabsPerStroke: 100
   minprefabsPerStroke: 1
   spawnHeight: 10
   addRigidbodyToPaintedPrefab: 1
   physicsIterations: 100
   checkLayer: 0
   checkTag: 0
-  checkSlope: 0
-  ignorePaintedPrefabs: 0
+  checkSlope: 1
+  ignorePaintedPrefabs: 1
   ignoreTriggers: 1
   chainPivotAxis: 0
   chainDirection: 0
   requiredTagMask: 0
   requiredLayerMask: 0
   minRequiredSlope: 0
-  maxRequiredSlope: 0
+  maxRequiredSlope: 25.637913
   prefabOriginOffset: {x: 0, y: 0, z: 0}
   prefabRotationOffset: {x: 0, y: 0, z: 0}
   draggingAction: 0
@@ -58,18 +68,18 @@ MonoBehaviour:
   maxYRotation: 360
   minZRotation: 0
   maxZRotation: 0
-  scaleType: 2
+  scaleType: 1
   scaleApplicationType: 1
   minScale: 1
-  maxScale: 1
-  minXScale: 0.8
-  maxXScale: 1.1
-  minYScale: 0.8
-  maxYScale: 1.2
-  minZScale: 0.8
-  maxZScale: 1.1
+  maxScale: 2
+  minXScale: 1
+  maxXScale: 2
+  minYScale: 1
+  maxYScale: 2
+  minZScale: 1
+  maxZScale: 2
   parentList: []
-  eraseBrushSize: 5.12
+  eraseBrushSize: 20
   minEraseBrushSize: 0.1
   maxEraseBrushSize: 20
   eraseType: 0
@@ -81,7 +91,7 @@ MonoBehaviour:
   requiredLayerMaskForErase: 0
   minRequiredSlopeForErase: 0
   maxRequiredSlopeForErase: 0
-  eraseDetection: 0
+  eraseDetection: 1
   paintBrushHotKey: 112
   paintBrushHoldKey: 1
   removeBrushHotKey: 306

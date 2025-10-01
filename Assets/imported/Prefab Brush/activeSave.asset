@@ -14,19 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabList: []
   prefabData:
-  - prefab: {fileID: 3149934543208911127, guid: 6f89ce1dd1d073142b04db24a18e2ca7, type: 3}
+  - prefab: {fileID: 6472482104993175197, guid: 23cfd292dd2292b4889b7d0b539bbac9, type: 3}
     selected: 1
-  - prefab: {fileID: 9176196354295710496, guid: 766c09020c8c5a64580073e733bc26f9, type: 3}
+  - prefab: {fileID: 5862405924426940943, guid: c32e71d04b3efee4c8b51ac32a9f0d52, type: 3}
     selected: 1
-  - prefab: {fileID: 4982421113069778432, guid: bc0bccb9463c8ed4ca8bce46a28f9e71, type: 3}
+  - prefab: {fileID: 3123003154188008992, guid: 16b06d38b02a08a47b4dc73cf2170e36, type: 3}
     selected: 1
-  - prefab: {fileID: 3597874497802831757, guid: ed093cb5b56daf7468dcc88d2be53b1e, type: 3}
+  - prefab: {fileID: 1251633837437587517, guid: a843a6495ff298c468704aac7b54f069, type: 3}
     selected: 1
-  - prefab: {fileID: 656825216535829528, guid: c29569ded283b9143abc4c6cef0d120a, type: 3}
+  - prefab: {fileID: 8795537203286808627, guid: 4f8d5dccf650451429f16ab1a411c983, type: 3}
     selected: 1
-  - prefab: {fileID: 8947858963990798490, guid: a2a8057a15162e24e83b38d47fd669ca, type: 3}
+  - prefab: {fileID: 7127126856755748550, guid: b3dfd692508cb7945a8d73d87ce544c1, type: 3}
     selected: 1
-  - prefab: {fileID: 7390168689261807434, guid: 963fa8b26a8b2d54d8df23a83d918732, type: 3}
+  - prefab: {fileID: 494598984310106526, guid: 816de6b64cea5e14e8888a759f6faac4, type: 3}
+    selected: 1
+  - prefab: {fileID: 5488659430540574960, guid: 77b637d43b8a8db4c8953750c3b86c3e, type: 3}
+    selected: 1
+  - prefab: {fileID: 4797334568627606873, guid: 7456e05cb8ccd1b4b945965689533574, type: 3}
+    selected: 1
+  - prefab: {fileID: 872305611457084623, guid: 4ee7a02bcec4dfc43bbbb32e0c700a07, type: 3}
     selected: 1
   paintType: 0
   brushSize: 89.4
@@ -35,7 +41,7 @@ MonoBehaviour:
   paintDeltaDistance: 5
   maxPaintDeltaDistance: 10
   minPaintDeltaDistance: 2
-  prefabsPerStroke: 13
+  prefabsPerStroke: 7
   maxprefabsPerStroke: 100
   minprefabsPerStroke: 1
   spawnHeight: 10
