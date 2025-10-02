@@ -53,6 +53,7 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         animator.SetTrigger("attack"); //attack animation needs to set isAttacking to false
+        
         /*
         Debug.Log("Attacked with " + ps.m_CurrentWeapon.weaponName);
         Debug.Log("Damage: " + ps.m_CurrentWeapon.damage);
