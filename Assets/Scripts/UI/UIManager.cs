@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using StarterAssets;
 using System.Collections.Generic;
 using TMPro;
 
@@ -158,11 +159,19 @@ public class UIManager : MonoBehaviour
 
     public void OpenBuildingInfoFooter()
     {
-        buildingInfoFooter.SetActive(true);
+        buildingInfoFooter.SetActive(true); 
+        StarterAssetsInputs sai = GameObject.FindGameObjectWithTag("Player").GetComponent<StarterAssetsInputs>();
+        sai.look = Vector2.zero;
+        sai.cursorInputForLook = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
     public void CloseBuildingInfoFooter()
     {
         buildingInfoFooter.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<StarterAssetsInputs>().cursorInputForLook = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void UpdateBuildingInfoFooter(Building_SO buildingInfo, ushort level)
     {

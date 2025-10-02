@@ -17,6 +17,8 @@ TagManager:
   - AttackableMob
   - Attackable
   - GlobalAudioManager
+  - CinemachineTarget
+  - CinemachineVC
   layers:
   - Default
   - TransparentFX

@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using StarterAssets;
 
 public class PlayerAttack : MonoBehaviour
 {
     private PlayerInteractions pi;
-    private Rigidbody rb;
+    private ThirdPersonController tpc;
     private Animator animator;
-    [SerializeField] private LayerMask attackLayer;
+    //[SerializeField] private LayerMask attackLayer;
 
     private bool isAttacking;
 
@@ -28,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
         lastAttackedTime = Time.time;
         pi.ReduceStamina(PlayerStats.Instance.m_CurrentWeapon.staminaCost);
         //disable movement and stop animations
-        CharacterMovement.Instance.DisableMovement();
+        tpc.canMove = false;
         animator.SetBool("isMining", false);
         animator.SetBool("isChopping", false);
         //face attack direction
@@ -69,7 +70,7 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         pi = GetComponent<PlayerInteractions>();
-        rb = GetComponent<Rigidbody>();
+        tpc = GetComponent<ThirdPersonController>();
         animator = GetComponent<Animator>();
         
         isAttacking = false;
@@ -79,19 +80,8 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject() || BuildingManager.Instance.isPlacing) return;
-            /* CLEANUP
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, 500, attackLayer))
-            {
-                if (hit.collider.CompareTag("AttackableMob"))
-                {
-                    StartAttack(hit.collider.gameObject.transform.position);
-                    return;
-                }
-                StartAttack(hit.point);
-            }
-            */
+            if (EventSystem.current.IsPointerOverGameObject() || BuildingManager.Instance.isPlacing || !tpc.Grounded) return;
+            
             StartAttack();
         }
     }

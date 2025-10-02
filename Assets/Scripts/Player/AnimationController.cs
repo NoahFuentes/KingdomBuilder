@@ -1,4 +1,5 @@
 using UnityEngine;
+using StarterAssets;
 
 public class AnimationController : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class AnimationController : MonoBehaviour
     }
     public void FinishAttackAnimEvent()
     {
-        CharacterMovement.Instance.EnableMovement();
+        GetComponent<ThirdPersonController>().canMove = true;
         animator.SetBool("isAttacking", false);
     }
     public void CheckHitBoxAnimEvent()
@@ -72,10 +73,6 @@ public class AnimationController : MonoBehaviour
 
     }
 
-    public void PlayFootStepSound()
-    {
-        PlayerAudioManager.Instance.PlayFootStep();
-    }
     public void PlayPlayerSoundByName(string soundName)
     {
         PlayerAudioManager.Instance.PlaySoundByName(soundName);

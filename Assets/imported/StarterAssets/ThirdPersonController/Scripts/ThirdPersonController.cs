@@ -15,6 +15,9 @@ namespace StarterAssets
     public class ThirdPersonController : MonoBehaviour
     {
         [Header("Player")]
+        [Tooltip("Can the player move or not")]
+        public bool canMove = true;
+
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
 
@@ -245,6 +248,13 @@ namespace StarterAssets
                 _speed = targetSpeed;
             }
 
+            if (!canMove) _speed = 0f;
+            if (_input.move != Vector2.zero)
+            {
+                _animator.SetBool("isChopping", false);
+                _animator.SetBool("isMining", false);
+            } 
+
             _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
             if (_animationBlend < 0.01f) _animationBlend = 0f;
 
@@ -253,7 +263,7 @@ namespace StarterAssets
 
             // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving
-            if (_input.move != Vector2.zero)
+            if (_input.move != Vector2.zero && canMove)
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
                                   _mainCamera.transform.eulerAngles.y;

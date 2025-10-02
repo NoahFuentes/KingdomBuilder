@@ -56,37 +56,43 @@ public class NearToPlayerInteraction : MonoBehaviour
     private void InteractWithFocusedObject()
     {
         if (null == currentFocusedObject) return;
-        /*
-        if ((resourceMask.value & (1 << currentFocusedObject.layer)) != 0)
-        {
-            HandleResourceInteraction();
-        }
-        else if ((buildingMask.value & (1 << currentFocusedObject.layer)) != 0)
-        {
-            HandleBuildingInteraction();
-        }
-        */
         if (currentFocusedObject.TryGetComponent<Resource>(out Resource res))
         {
-            HandleResourceInteraction();
+            HandleResourceInteraction(res);
         }
         else if (currentFocusedObject.TryGetComponent<BuildingBase>(out BuildingBase building))
         {
-            HandleBuildingInteraction();
+            HandleBuildingInteraction(building);
         }
             
     }
 
-    private void HandleResourceInteraction()
+    private void HandleResourceInteraction(Resource res)
     {
-        CharacterMovement.Instance.navMoveToPosition(currentFocusedObject.GetComponentInChildren<CapsuleCollider>().ClosestPoint(playerTransform.position));
-        currentFocusedObject.GetComponent<Resource>().Interaction();
-    }
-    private void HandleBuildingInteraction()
-    {
-        currentFocusedObject.GetComponent<BuildingBase>().OnSelect();
-    }
+        if (null == currentFocusedObject || null == res) return;
+        Animator animator = GetComponentInParent<Animator>();
+        transform.parent.LookAt(currentFocusedObject.transform);
+        if (res.isMinable)
+        {
+            //mine
+            animator.SetBool("isChopping", false);
+            animator.SetBool("isMining", true);
 
+        }
+        else
+        {
+            //chop
+            animator.SetBool("isMining", false);
+            animator.SetBool("isChopping", true);
+
+        }
+        res.Interaction();
+    } 
+    private void HandleBuildingInteraction(BuildingBase building)
+    {
+        if (null == currentFocusedObject || null == building) return;
+        building.OnSelect();
+    }
 
     //UNITY FUNCTIONS
 
