@@ -37,6 +37,11 @@ Shader "ANGRYMESH/Stylized Pack/Grass"
 		_WindGrassFlexibility( "Wind Grass Flexibility", Range( 0, 1 ) ) = 1
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 
+		//Noah's additions
+		[Header(Player Displacement)]
+		_GrassDisplacementAmount ("Displacement Amount", Float) = 0.25
+		_GrassBendRadius ("Bend Radius", Float) = 2.5
+
 
 		//_TransmissionShadow( "Transmission Shadow", Range( 0, 1 ) ) = 0.5
 		//_TransStrength( "Trans Strength", Range( 0, 50 ) ) = 1
@@ -368,6 +373,12 @@ Shader "ANGRYMESH/Stylized Pack/Grass"
 			float _WindGrassAmplitude;
 			float _TintNoiseContrast;
 			float _BaseOpacityCutoff;
+
+			//Noah's additions
+			float _GrassDisplacementAmount;
+			float _GrassBendRadius;
+			float3 _PlayerPos;
+
 			#ifdef ASE_TRANSMISSION
 				float _TransmissionShadow;
 			#endif
@@ -512,6 +523,37 @@ Shader "ANGRYMESH/Stylized Pack/Grass"
 				float3 Output_Wind35_g1 = ( rotatedValue56_g1 - input.positionOS.xyz );
 				float Wind_Mask225_g1 = input.ase_color.r;
 				float3 lerpResult232_g1 = lerp( float3( 0,0,0 ) , ( Output_Wind35_g1 * Wind_Mask225_g1 ) , ASPW_WindToggle);
+
+				// Noah's additions
+				// === Grass Displacement (Dynamic Player Bending) ===
+
+				// Use world position computed earlier by ASE
+				float3 worldPos = ase_positionWS;
+
+				// Get XZ distance from player
+				float2 diffXZ = worldPos.xz - _PlayerPos.xz;
+				float dist = length(diffXZ);
+
+				// Compute bending intensity (1 near player ? 0 at bend radius)
+				float bend = saturate(1.0 - dist / _GrassBendRadius);
+
+				// Direction away from player (XZ plane only)
+				float3 dir = normalize(float3(diffXZ.x, 0, diffXZ.y));
+
+				// Apply outward displacement (pushes grass away)
+				worldPos += dir * bend * _GrassDisplacementAmount;
+
+				// If you prefer downward bending instead of outward, replace with:
+				// worldPos.y -= bend * _GrassDisplacementAmount;
+
+				// Transform the displaced position back to object space
+				float3 displacedPosOS = TransformWorldToObject(worldPos);
+
+				// Overwrite the vertex position so ASE’s later transforms use it
+				input.positionOS.xyz = displacedPosOS;
+
+				//Noah is done
+
 				#ifdef _ENABLEWIND_ON
 				float3 staticSwitch192_g1 = lerpResult232_g1;
 				#else
