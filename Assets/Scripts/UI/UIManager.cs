@@ -210,6 +210,7 @@ public class UIManager : MonoBehaviour
     public void closeBuildMenu()
     {
         //Move camera back to player POV
+        CameraZoom.Instance.GoToPlayerView();
         GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().canMove = true;
         buildMenu.SetActive(false);
         EndCursorInteraction();
@@ -219,6 +220,7 @@ public class UIManager : MonoBehaviour
         CloseBuildingInfoFooter();
         GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().canMove = false;
         //Move camera to build POV
+        CameraZoom.Instance.GoToBuildingView();
         buildMenu.SetActive(true);
     }
 
