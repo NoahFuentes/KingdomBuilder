@@ -91491,6 +91491,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerStarter
       objectReference: {fileID: 0}
+    - target: {fileID: 7911231288351534399, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: interactionDistance
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
