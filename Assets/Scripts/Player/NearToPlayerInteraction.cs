@@ -1,4 +1,5 @@
 using UnityEngine;
+using StarterAssets;
 
 public class NearToPlayerInteraction : MonoBehaviour
 {
@@ -86,6 +87,7 @@ public class NearToPlayerInteraction : MonoBehaviour
             animator.SetBool("isChopping", true);
 
         }
+        transform.parent.GetComponent<ThirdPersonController>().canJump = false;
         res.Interaction();
     } 
     private void HandleBuildingInteraction(BuildingBase building)

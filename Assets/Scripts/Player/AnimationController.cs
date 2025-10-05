@@ -26,7 +26,9 @@ public class AnimationController : MonoBehaviour
     }
     public void FinishAttackAnimEvent()
     {
-        GetComponent<ThirdPersonController>().canMove = true;
+        ThirdPersonController tpc = GetComponent<ThirdPersonController>();
+        tpc.canMove = true;
+        tpc.canJump = true;
         animator.SetBool("isAttacking", false);
     }
     public void CheckHitBoxAnimEvent()

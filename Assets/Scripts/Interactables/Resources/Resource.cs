@@ -1,4 +1,5 @@
 using UnityEngine;
+using StarterAssets;
 
 public class Resource : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Resource : MonoBehaviour
     public void Harvest()
     {
         PlayerInventory.Instance.addResource(resToGive, amtToGive);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().canJump = true;
         Destroy(gameObject); //TODO: Make this actually do something
     }
 

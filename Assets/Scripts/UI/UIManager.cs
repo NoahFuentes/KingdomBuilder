@@ -124,6 +124,7 @@ public class UIManager : MonoBehaviour
     public void openExploringOverlay()
     {
         CloseBuildingInfoFooter();
+        EndCursorInteraction();
         kingdomOverlay.SetActive(false);
         exploringOverlay.SetActive(true);
     }
@@ -132,6 +133,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI[] kingdomResourceCountStrings;
     [SerializeField] private GameObject buildMenu;
+    [SerializeField] private Button buildBtn;
 
     [SerializeField] private GameObject buildingInfoFooter;
     public GameObject interactionButton;
@@ -159,19 +161,13 @@ public class UIManager : MonoBehaviour
 
     public void OpenBuildingInfoFooter()
     {
-        buildingInfoFooter.SetActive(true); 
-        StarterAssetsInputs sai = GameObject.FindGameObjectWithTag("Player").GetComponent<StarterAssetsInputs>();
-        sai.look = Vector2.zero;
-        sai.cursorInputForLook = false;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        buildingInfoFooter.SetActive(true);
+        StartCursorInteraction();
     }
     public void CloseBuildingInfoFooter()
     {
         buildingInfoFooter.SetActive(false);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<StarterAssetsInputs>().cursorInputForLook = true;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        DisableBuildBtn();
     }
     public void UpdateBuildingInfoFooter(Building_SO buildingInfo, ushort level)
     {
@@ -186,13 +182,43 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void EndCursorInteraction()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<StarterAssetsInputs>().cursorInputForLook = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void StartCursorInteraction()
+    {
+        StarterAssetsInputs sai = GameObject.FindGameObjectWithTag("Player").GetComponent<StarterAssetsInputs>();
+        sai.look = Vector2.zero;
+        sai.cursorInputForLook = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     //Building
+
+    public void EnableBuildBtn()
+    {
+        buildBtn.gameObject.SetActive(true);
+    }
+    public void DisableBuildBtn()
+    {
+        buildBtn.gameObject.SetActive(false);
+    }
     public void closeBuildMenu()
     {
+        //Move camera back to player POV
+        GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().canMove = true;
         buildMenu.SetActive(false);
+        EndCursorInteraction();
     }
     public void openBuildMenu()
     {
+        CloseBuildingInfoFooter();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().canMove = false;
+        //Move camera to build POV
         buildMenu.SetActive(true);
     }
 

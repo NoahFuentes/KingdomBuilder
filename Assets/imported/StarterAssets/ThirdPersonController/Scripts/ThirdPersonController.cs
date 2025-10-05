@@ -18,6 +18,9 @@ namespace StarterAssets
         [Tooltip("Can the player move or not")]
         public bool canMove = true;
 
+        [Tooltip("Can the player jump or not")]
+        public bool canJump = true;
+
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
 
@@ -248,9 +251,15 @@ namespace StarterAssets
                 _speed = targetSpeed;
             }
 
-            if (!canMove) _speed = 0f;
+            if (!canMove)
+            {
+                _speed = 0f;
+                targetSpeed = 0f;
+            }
             if (_input.move != Vector2.zero)
             {
+                if (_animator.GetBool("isChopping") || _animator.GetBool("isMining"))
+                    canJump = true;
                 _animator.SetBool("isChopping", false);
                 _animator.SetBool("isMining", false);
             } 
@@ -310,7 +319,7 @@ namespace StarterAssets
                 }
 
                 // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                if (_input.jump && _jumpTimeoutDelta <= 0.0f && canJump)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -321,6 +330,7 @@ namespace StarterAssets
                         _animator.SetBool(_animIDJump, true);
                     }
                 }
+                _input.jump = false;
 
                 // jump timeout
                 if (_jumpTimeoutDelta >= 0.0f)

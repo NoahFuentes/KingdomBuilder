@@ -11,6 +11,7 @@ public class BuildingBase : MonoBehaviour
     public virtual void OnDemolish()
     {
         UIManager.Instance.CloseBuildingInfoFooter();
+        UIManager.Instance.EndCursorInteraction();
     }
     public virtual void OnSelect()
     {

@@ -52,6 +52,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Attack()
     {
+        tpc.canJump = false;
         animator.SetTrigger("attack"); //attack animation needs to set isAttacking to false
         
         /*

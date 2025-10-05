@@ -16,6 +16,7 @@ public class Kingdom : BuildingBase
     {
         base.OnSelect();
         UIManager.Instance.interactionButton.GetComponent<Button>().onClick.AddListener(() => PlayerInventory.Instance.depotToKingdom());
+        UIManager.Instance.EnableBuildBtn();
     }
 
 
