@@ -91691,9 +91691,6 @@ MonoBehaviour:
   zoomMin: 2
   zoomMax: 15
   zoomSensitivity: 4
-  buildingViewHeight: 0
-  buildingViewOffset: {x: 21, y: 21, z: 21}
-  cameraPanSpeed: 0
   c3pf: {fileID: 0}
 --- !u!114 &3190266765279152470
 MonoBehaviour:

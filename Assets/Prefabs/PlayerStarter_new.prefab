@@ -2218,6 +2218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
+  canJump: 1
   MoveSpeed: 4
   SprintSpeed: 8
   RotationSmoothTime: 0.12
@@ -2504,7 +2505,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36e0079de87fdc408dbdc988d6570e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: chop hit
+    clip: {fileID: 8300000, guid: da7f2615d648520448a41c8650cbb07c, type: 3}
+    volume: 1
+    pitchVariation: 1
+    pitch: 0
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 1
+    maxDistance: 50
+    source: {fileID: 0}
+  - name: mine hit
+    clip: {fileID: 8300000, guid: 430252e325ffd1d45a17b7243e385880, type: 3}
+    volume: 0.7
+    pitchVariation: 1
+    pitch: 0
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 1
+    maxDistance: 50
+    source: {fileID: 0}
 --- !u!1 &7829790249334072638
 GameObject:
   m_ObjectHideFlags: 0
