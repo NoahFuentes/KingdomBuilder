@@ -218,7 +218,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GrassBendRadius: 2.5
+    - _GrassBendRadius: 2
     - _GrassDisplacementAmount: 1
     - _Keyword0: 0
     - _Metallic: 0
