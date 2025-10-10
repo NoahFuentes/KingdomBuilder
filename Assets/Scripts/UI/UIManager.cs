@@ -211,14 +211,18 @@ public class UIManager : MonoBehaviour
     {
         //Move camera back to player POV
         CameraZoom.Instance.GoToPlayerView();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().canMove = true;
+        ThirdPersonController tpc = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
+        tpc.canMove = true;
+        tpc.canAttack = true;
         buildMenu.SetActive(false);
         EndCursorInteraction();
     }
     public void openBuildMenu()
     {
         CloseBuildingInfoFooter();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().canMove = false;
+        ThirdPersonController tpc = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
+        tpc.canMove = false;
+        tpc.canAttack = false;
         //Move camera to build POV
         CameraZoom.Instance.GoToBuildingView();
         buildMenu.SetActive(true);

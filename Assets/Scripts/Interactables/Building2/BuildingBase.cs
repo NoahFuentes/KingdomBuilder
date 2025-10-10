@@ -7,7 +7,9 @@ public class BuildingBase : MonoBehaviour
     [SerializeField] private ushort buildingLevel;
     public Vector2Int originGridPos;
 
-    public virtual void OnBuild() { }
+    public virtual void OnBuild() 
+    {
+    }
     public virtual void OnDemolish()
     {
         UIManager.Instance.CloseBuildingInfoFooter();

@@ -21,6 +21,10 @@ namespace StarterAssets
         [Tooltip("Can the player jump or not")]
         public bool canJump = true;
 
+        [Header("Player")]
+        [Tooltip("Can the player attack or not")]
+        public bool canAttack = true;
+
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
 

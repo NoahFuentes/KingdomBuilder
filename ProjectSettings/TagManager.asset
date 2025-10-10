@@ -19,6 +19,7 @@ TagManager:
   - GlobalAudioManager
   - CinemachineTarget
   - CinemachineVC
+  - Town Center
   layers:
   - Default
   - TransparentFX

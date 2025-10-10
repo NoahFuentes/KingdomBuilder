@@ -9,6 +9,8 @@ public class CameraZoom : MonoBehaviour
     [SerializeField] private float zoomMax;
     [SerializeField] private float zoomSensitivity;
 
+    [SerializeField] private Vector3 buildPos;
+
 
     [SerializeField] private Cinemachine3rdPersonFollow c3pf;
 
@@ -32,10 +34,13 @@ public class CameraZoom : MonoBehaviour
 
     public void GoToBuildingView()
     {
+        c3pf.enabled = false;
+        transform.position = buildPos;
+        transform.LookAt(GameObject.FindGameObjectWithTag("Town Center").transform);
     }
 
     public void GoToPlayerView()
     {
-
+        c3pf.enabled = true;
     }
 }

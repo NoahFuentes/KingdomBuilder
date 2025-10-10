@@ -56,7 +56,6 @@ public class BuildingManager : MonoBehaviour
         wsPlacer = Instantiate(buildingToBuild.placer);
         isPlacing = true;
         buildingGridVisual.SetActive(isPlacing);
-        UIManager.Instance.closeBuildMenu();
     }
     public void BuildBuilding()
     {

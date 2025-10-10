@@ -19931,6 +19931,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 750126050}
@@ -19939,11 +19943,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 750126050}
     - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2894685476647427475}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
@@ -19955,12 +19967,20 @@ PrefabInstance:
       value: OpenPlacer
       objectReference: {fileID: 0}
     - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: GoToBuildingView
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: BuildingManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: BuildingManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: CameraZoom, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -19972,6 +19992,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505819350924416, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7931749308672148662, guid: 148619cdb5ef5734f8059cce8dfd9958, type: 3}
@@ -38604,7 +38628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -573, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &869225241
@@ -44024,6 +44048,10 @@ PrefabInstance:
     - target: {fileID: 7915702127991562498, guid: d4a53ab4822eaf04c8def3befc5df6e7, type: 3}
       propertyPath: m_Name
       value: TownCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7915702127991562498, guid: d4a53ab4822eaf04c8def3befc5df6e7, type: 3}
+      propertyPath: m_TagString
+      value: Town Center
       objectReference: {fileID: 0}
     - target: {fileID: 8415936098223095444, guid: d4a53ab4822eaf04c8def3befc5df6e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -91455,6 +91483,10 @@ PrefabInstance:
       propertyPath: FootstepAudioVolume
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2493432339787399444, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: GroundLayers.m_Bits
+      value: 32961
+      objectReference: {fileID: 0}
     - target: {fileID: 3012341866274386142, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
       propertyPath: sounds.Array.size
       value: 2
@@ -91767,6 +91799,7 @@ MonoBehaviour:
   zoomMin: 2
   zoomMax: 15
   zoomSensitivity: 4
+  buildPos: {x: 0, y: 50, z: -25}
   c3pf: {fileID: 0}
 --- !u!114 &3190266765279152470
 MonoBehaviour:
