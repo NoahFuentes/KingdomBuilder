@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour
             source.playOnAwake = s.playOnAwake;
             source.loop = s.loop;
             source.spatialBlend = s.spatialBlend;
-            source.rolloffMode = AudioRolloffMode.Linear;
+            source.rolloffMode = AudioRolloffMode.Logarithmic;
             source.maxDistance = s.maxDistance;
             source.dopplerLevel = 0;
             s.source = source;

@@ -25208,8 +25208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: current music
-    clip: {fileID: 8300000, guid: cc5d588c7c946a84c9b0494688784e29, type: 3}
+  - name: ambiance
+    clip: {fileID: 8300000, guid: 45882cd3e4aed7b4a9612c4e29b4f17f, type: 3}
     volume: 0.1
     pitchVariation: 0
     pitch: 1
@@ -91447,6 +91447,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1210040688623302057, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: terrain
+      value: 
+      objectReference: {fileID: 333847645}
+    - target: {fileID: 2493432339787399444, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: FootstepAudioVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012341866274386142, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: sounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012341866274386142, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0b274f11bec21e0409d0169e8cdb73f6, type: 3}
+    - target: {fileID: 3012341866274386142, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: sounds.Array.data[2].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012341866274386142, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: grass loop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012341866274386142, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.393
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012341866274386142, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: sounds.Array.data[0].maxDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012341866274386142, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: sounds.Array.data[1].maxDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012341866274386142, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: sounds.Array.data[2].maxDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012341866274386142, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: sounds.Array.data[2].playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012341866274386142, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: sounds.Array.data[2].spatialBlend
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012341866274386142, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
+      propertyPath: sounds.Array.data[2].pitchVariation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4813019180412868748, guid: e8501a7a8956a4f42b68de95ab23ddbd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.54
