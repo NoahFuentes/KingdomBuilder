@@ -50,7 +50,7 @@ MonoBehaviour:
   checkLayer: 0
   checkTag: 0
   checkSlope: 1
-  ignorePaintedPrefabs: 1
+  ignorePaintedPrefabs: 0
   ignoreTriggers: 1
   chainPivotAxis: 0
   chainDirection: 0
@@ -85,14 +85,14 @@ MonoBehaviour:
   minZScale: 1
   maxZScale: 2
   parentList: []
-  eraseBrushSize: 20
+  eraseBrushSize: 100
   minEraseBrushSize: 0.1
-  maxEraseBrushSize: 20
+  maxEraseBrushSize: 100
   eraseType: 0
   checkLayerForErase: 0
   checkTagForErase: 0
   checkSlopeForErase: 0
-  mustBeSelectedInBrush: 0
+  mustBeSelectedInBrush: 1
   requiredTagMaskForErase: 0
   requiredLayerMaskForErase: 0
   minRequiredSlopeForErase: 0

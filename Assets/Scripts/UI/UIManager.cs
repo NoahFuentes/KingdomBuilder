@@ -309,7 +309,7 @@ public class UIManager : MonoBehaviour
         mainMenu.SetActive(false);
         inventoryUI.SetActive(false);
 
-        closeBuildMenu();
+        //closeBuildMenu();
 
         InitializePlayerInventoryResourceCounts();
         UpdateKingdomResourceCounts();
