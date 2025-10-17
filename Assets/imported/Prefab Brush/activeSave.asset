@@ -35,13 +35,13 @@ MonoBehaviour:
   - prefab: {fileID: 872305611457084623, guid: 4ee7a02bcec4dfc43bbbb32e0c700a07, type: 3}
     selected: 1
   paintType: 0
-  brushSize: 62.8
+  brushSize: 89.4
   minBrushSize: 0.1
   maxBrushSize: 100
   paintDeltaDistance: 5
   maxPaintDeltaDistance: 10
   minPaintDeltaDistance: 2
-  prefabsPerStroke: 5
+  prefabsPerStroke: 4
   maxprefabsPerStroke: 100
   minprefabsPerStroke: 1
   spawnHeight: 10
@@ -50,7 +50,7 @@ MonoBehaviour:
   checkLayer: 0
   checkTag: 0
   checkSlope: 1
-  ignorePaintedPrefabs: 0
+  ignorePaintedPrefabs: 1
   ignoreTriggers: 1
   chainPivotAxis: 0
   chainDirection: 0
@@ -85,14 +85,14 @@ MonoBehaviour:
   minZScale: 1
   maxZScale: 2
   parentList: []
-  eraseBrushSize: 100
+  eraseBrushSize: 20
   minEraseBrushSize: 0.1
-  maxEraseBrushSize: 100
+  maxEraseBrushSize: 20
   eraseType: 0
   checkLayerForErase: 0
   checkTagForErase: 0
   checkSlopeForErase: 0
-  mustBeSelectedInBrush: 1
+  mustBeSelectedInBrush: 0
   requiredTagMaskForErase: 0
   requiredLayerMaskForErase: 0
   minRequiredSlopeForErase: 0
