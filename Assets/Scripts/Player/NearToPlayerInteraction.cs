@@ -12,7 +12,7 @@ public class NearToPlayerInteraction : MonoBehaviour
     [SerializeField] private float interactionDistance;
     private LayerMask interactionMask;
 
-    [SerializeField] private LayerMask buildingMask;
+    [SerializeField] private LayerMask npcMask;
     [SerializeField] private LayerMask resourceMask;
 
     private MeshRenderer focusedObjectRenderer;
@@ -61,9 +61,9 @@ public class NearToPlayerInteraction : MonoBehaviour
         {
             HandleResourceInteraction(res);
         }
-        else if (currentFocusedObject.TryGetComponent<BuildingBase>(out BuildingBase building))
+        else if (currentFocusedObject.TryGetComponent<Companion>(out Companion companion))
         {
-            HandleBuildingInteraction(building);
+            HandleNPCInteraction(companion);
         }
             
     }
@@ -90,10 +90,10 @@ public class NearToPlayerInteraction : MonoBehaviour
         transform.parent.GetComponent<ThirdPersonController>().canJump = false;
         res.Interaction();
     } 
-    private void HandleBuildingInteraction(BuildingBase building)
+    private void HandleNPCInteraction(Companion companion)
     {
-        if (null == currentFocusedObject || null == building) return;
-        building.OnSelect();
+        if (null == currentFocusedObject || null == companion) return;
+        companion.Interact();
     }
 
     //UNITY FUNCTIONS
@@ -101,7 +101,7 @@ public class NearToPlayerInteraction : MonoBehaviour
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        interactionMask = buildingMask + resourceMask;
+        interactionMask = npcMask + resourceMask;
     }
 
     private void Update()
@@ -135,13 +135,11 @@ public class NearToPlayerInteraction : MonoBehaviour
         //if the closest is not the focus object, change to the closest
         if (closestInteractable.gameObject != currentFocusedObject)
         {
-            /* CLEANUP
             if ((resourceMask.value & (1 << closestInteractable.gameObject.layer)) != 0)
                 ChangeFocusedObject(closestInteractable.transform.parent.gameObject);
-            else if ((buildingMask.value & (1 << closestInteractable.gameObject.layer)) != 0)
+            else if ((npcMask.value & (1 << closestInteractable.gameObject.layer)) != 0)
                 ChangeFocusedObject(closestInteractable.gameObject);
-            */
-                ChangeFocusedObject(closestInteractable.transform.parent.gameObject);
+            //ChangeFocusedObject(closestInteractable.transform.parent.gameObject);
 
         }
     }

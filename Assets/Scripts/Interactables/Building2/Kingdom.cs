@@ -15,8 +15,8 @@ public class Kingdom : BuildingBase
     public override void OnSelect()
     {
         base.OnSelect();
-        UIManager.Instance.interactionButton.GetComponent<Button>().onClick.AddListener(() => PlayerInventory.Instance.depotToKingdom());
-        UIManager.Instance.EnableBuildBtn();
+        //UIManager.Instance.interactionButton.GetComponent<Button>().onClick.AddListener(() => PlayerInventory.Instance.depotToKingdom());
+        //UIManager.Instance.EnableBuildBtn();
     }
 
 

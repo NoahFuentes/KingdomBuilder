@@ -123,8 +123,8 @@ public class UIManager : MonoBehaviour
     }
     public void openExploringOverlay()
     {
-        CloseBuildingInfoFooter();
-        EndCursorInteraction();
+        //CloseBuildingInfoFooter();
+        //EndCursorInteraction();
         kingdomOverlay.SetActive(false);
         exploringOverlay.SetActive(true);
     }
@@ -132,16 +132,19 @@ public class UIManager : MonoBehaviour
     #region KINGDOM OVERLAY
 
     [SerializeField] private TextMeshProUGUI[] kingdomResourceCountStrings;
-    [SerializeField] private GameObject buildMenu;
-    [SerializeField] private Button buildBtn;
 
-    [SerializeField] private GameObject buildingInfoFooter;
-    public GameObject interactionButton;
-    [SerializeField] private GameObject upgradeButton;
-    [SerializeField] private GameObject demolishButton;
-    [SerializeField] private TextMeshProUGUI buildingInfoDesc;
-    [SerializeField] private TextMeshProUGUI buildingInfoName;
-    [SerializeField] private Image buildingInfoImage;
+    public bool interactingWithNPC = false;
+    [SerializeField] private GameObject centerCityMap;
+    //[SerializeField] private GameObject buildMenu;
+    //[SerializeField] private Button buildBtn;
+
+    //[SerializeField] private GameObject buildingInfoFooter;
+    //public GameObject interactionButton;
+    //[SerializeField] private GameObject upgradeButton;
+    //[SerializeField] private GameObject demolishButton;
+    //[SerializeField] private TextMeshProUGUI buildingInfoDesc;
+    //[SerializeField] private TextMeshProUGUI buildingInfoName;
+    //[SerializeField] private Image buildingInfoImage;
 
 
     public void UpdateKingdomResourceCounts()
@@ -159,6 +162,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    /************************ OLD ************************
     public void OpenBuildingInfoFooter()
     {
         buildingInfoFooter.SetActive(true);
@@ -180,21 +184,6 @@ public class UIManager : MonoBehaviour
         interactionButton.GetComponentInChildren<TextMeshProUGUI>().text = buildingInfo.interactButtonString;
         buildingInfoImage.sprite = buildingInfo.buildingIcon;
 
-    }
-
-    public void EndCursorInteraction()
-    {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<StarterAssetsInputs>().cursorInputForLook = true;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-    public void StartCursorInteraction()
-    {
-        StarterAssetsInputs sai = GameObject.FindGameObjectWithTag("Player").GetComponent<StarterAssetsInputs>();
-        sai.look = Vector2.zero;
-        sai.cursorInputForLook = false;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
     }
 
     //Building
@@ -226,6 +215,40 @@ public class UIManager : MonoBehaviour
         //Move camera to build POV
         CameraZoom.Instance.GoToBuildingView();
         buildMenu.SetActive(true);
+    }
+    ***************************** END OLD *****************************/
+
+    public void OpenCenterCityMap()
+    {
+        centerCityMap.SetActive(true);
+        StartCursorInteraction();
+    }
+    public void CloseCenterCityMap()
+    {
+        centerCityMap.SetActive(false);
+        EndCursorInteraction();
+        interactingWithNPC = false;
+    }
+
+    public void EndCursorInteraction()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<StarterAssetsInputs>().cursorInputForLook = true;
+        player.GetComponent<ThirdPersonController>().canMove = true;
+        player.GetComponent<ThirdPersonController>().canJump = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void StartCursorInteraction()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        StarterAssetsInputs sai = player.GetComponent<StarterAssetsInputs>();
+        sai.look = Vector2.zero;
+        sai.cursorInputForLook = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        player.GetComponent<ThirdPersonController>().canMove = false;
+        player.GetComponent<ThirdPersonController>().canJump = false;
     }
 
 

@@ -192,8 +192,8 @@ public class BuildingManager : MonoBehaviour
         if (wsBuilding == null) return;
         if(Vector3.Distance(player.transform.position, wsBuilding.transform.position) > buildingInteractDistance)
         {
-            UIManager.Instance.CloseBuildingInfoFooter();
-            UIManager.Instance.EndCursorInteraction();
+           // UIManager.Instance.CloseBuildingInfoFooter();
+          //  UIManager.Instance.EndCursorInteraction();
         }
     }
 }

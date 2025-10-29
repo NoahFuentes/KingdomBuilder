@@ -14,6 +14,6 @@ public class Armory : BuildingBase
     public override void OnSelect()
     {
         base.OnSelect();
-        UIManager.Instance.interactionButton.GetComponent<Button>().onClick.AddListener(() => UIManager.Instance.OpenArmoryCraftingMenu());
+        //UIManager.Instance.interactionButton.GetComponent<Button>().onClick.AddListener(() => UIManager.Instance.OpenArmoryCraftingMenu());
     }
 }
