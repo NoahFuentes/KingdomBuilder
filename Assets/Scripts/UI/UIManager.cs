@@ -296,7 +296,7 @@ public class UIManager : MonoBehaviour
 
 
 
-    //main functions
+    //unity functions
     private void Awake()
     {
         Instance = this; 
