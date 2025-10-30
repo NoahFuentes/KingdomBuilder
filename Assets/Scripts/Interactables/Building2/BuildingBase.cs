@@ -18,8 +18,8 @@ public class BuildingBase : MonoBehaviour
     public virtual void OnSelect()
     {
         //UIManager.Instance.interactionButton.GetComponent<Button>().onClick.RemoveAllListeners();
-        BuildingManager.Instance.wsBuilding = gameObject;
-        BuildingManager.Instance.SetBuildingToBuild(buildingInfo);
+        //BuildingManager.Instance.wsBuilding = gameObject;
+        //BuildingManager.Instance.SetBuildingToBuild(buildingInfo);
 
        // UIManager.Instance.UpdateBuildingInfoFooter(buildingInfo, buildingLevel);
        // UIManager.Instance.OpenBuildingInfoFooter();

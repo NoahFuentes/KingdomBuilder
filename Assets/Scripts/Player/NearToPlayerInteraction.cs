@@ -13,6 +13,7 @@ public class NearToPlayerInteraction : MonoBehaviour
     private LayerMask interactionMask;
 
     [SerializeField] private LayerMask npcMask;
+    [SerializeField] private LayerMask buildingRestorationMask;
     [SerializeField] private LayerMask resourceMask;
 
     private MeshRenderer focusedObjectRenderer;
@@ -65,6 +66,11 @@ public class NearToPlayerInteraction : MonoBehaviour
         {
             HandleNPCInteraction(companion);
         }
+        else if (currentFocusedObject.TryGetComponent<Building>(out Building building))
+        {
+            if (building.isRestored) return;
+            HandleBuildingInteraction(building.info);
+        }
             
     }
 
@@ -95,13 +101,18 @@ public class NearToPlayerInteraction : MonoBehaviour
         if (null == currentFocusedObject || null == companion) return;
         companion.Interact();
     }
+    private void HandleBuildingInteraction(Building_SO buildingInfo)
+    {
+        if (null == currentFocusedObject || null == buildingInfo) return;
+        UIManager.Instance.PromptForRestoration(buildingInfo);
+    }
 
     //UNITY FUNCTIONS
 
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        interactionMask = npcMask + resourceMask;
+        interactionMask = npcMask + resourceMask + buildingRestorationMask;
     }
 
     private void Update()
@@ -138,6 +149,8 @@ public class NearToPlayerInteraction : MonoBehaviour
             if ((resourceMask.value & (1 << closestInteractable.gameObject.layer)) != 0)
                 ChangeFocusedObject(closestInteractable.transform.parent.gameObject);
             else if ((npcMask.value & (1 << closestInteractable.gameObject.layer)) != 0)
+                ChangeFocusedObject(closestInteractable.gameObject);
+            else if ((buildingRestorationMask.value & (1 << closestInteractable.gameObject.layer)) != 0)
                 ChangeFocusedObject(closestInteractable.gameObject);
             //ChangeFocusedObject(closestInteractable.transform.parent.gameObject);
 

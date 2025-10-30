@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11d38ea99fa3414bbbf232b975de223, type: 3}
+  m_Name: lumbermillInfo
+  m_EditorClassIdentifier: 
+  buildingName: Lumber Mill
+  buildingDesc: Produces timber for the kingdom. Can be set to process timber into
+    lumber. 90% lumber, 10% fine lumber.
+  buildingIcon: {fileID: 21300000, guid: e232efa096f10134a91bdf0ff689e302, type: 3}
+  resources:
+  - food
+  - timber
+  - copper
+  - iron
+  costs: 14000000190000000f0000000a000000
+  gridSize: {x: 3, y: 3}
+  interactable: 1
+  interactButtonString: Cut Lumber
+  upgradable: 1
+  demolishable: 1
+  placer: {fileID: 5205168168571267679, guid: 1742ca6d08caad64da7438f851a0368b, type: 3}
+  building: {fileID: 5071439788468570273, guid: b2ea6bb11a60ff44f889fc743b9068fd, type: 3}

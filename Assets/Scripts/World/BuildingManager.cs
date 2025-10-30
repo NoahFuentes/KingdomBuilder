@@ -3,6 +3,7 @@
  * and their grid positions used for building validity checking.
  */
 
+/*
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -197,3 +198,4 @@ public class BuildingManager : MonoBehaviour
         }
     }
 }
+*/

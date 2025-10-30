@@ -18,7 +18,7 @@ public class BuildingBtn : MonoBehaviour
 
     private void Start()
     {
-        buildingIcon.sprite = buildingInfo.buildingIcon;
+        //buildingIcon.sprite = buildingInfo.buildingIcon;
         buildingName.text = buildingInfo.buildingName;
         buildingDesc.text = buildingInfo.buildingDesc;
 

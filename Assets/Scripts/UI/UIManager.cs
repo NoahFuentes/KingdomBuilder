@@ -134,7 +134,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] kingdomResourceCountStrings;
 
     public bool interactingWithNPC = false;
-    [SerializeField] private GameObject centerCityMap;
+
+    [SerializeField] private GameObject restorationPrompt;
+    [SerializeField] private TextMeshProUGUI resBuildingQuestion;
+    [SerializeField] private Image[] resBuildingResImages;
+    [SerializeField] private TextMeshProUGUI[] resBuildingCosts;
+
+
     //[SerializeField] private GameObject buildMenu;
     //[SerializeField] private Button buildBtn;
 
@@ -217,17 +223,33 @@ public class UIManager : MonoBehaviour
         buildMenu.SetActive(true);
     }
     ***************************** END OLD *****************************/
-
-    public void OpenCenterCityMap()
+    public void PromptForRestoration(Building_SO buildingInfo)
     {
-        centerCityMap.SetActive(true);
+        resBuildingQuestion.text = "Are you sure you want to restore the " + buildingInfo.buildingName + " for:";
+        for (int i = 0; i < buildingInfo.resources.Length; i++)
+        {
+            resBuildingResImages[i].gameObject.SetActive(true);
+            resBuildingResImages[i].sprite = GetResIconByName(buildingInfo.resources[i]);
+        }
+        for (int i = buildingInfo.resources.Length; i < resBuildingResImages.Length; i++)
+        {
+            resBuildingResImages[i].gameObject.SetActive(false);
+        }
+        for (int i = 0; i < buildingInfo.costs.Length; i++)
+        {
+            resBuildingCosts[i].text = buildingInfo.costs[i].ToString();
+        }
+        for (int i = buildingInfo.costs.Length; i < resBuildingCosts.Length; i++)
+        {
+            resBuildingCosts[i].text = "";
+        }
+        restorationPrompt.SetActive(true);
         StartCursorInteraction();
     }
-    public void CloseCenterCityMap()
+    public void CloseRestorationPrompt()
     {
-        centerCityMap.SetActive(false);
+        restorationPrompt.SetActive(false);
         EndCursorInteraction();
-        interactingWithNPC = false;
     }
 
     public void EndCursorInteraction()
