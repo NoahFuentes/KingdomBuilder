@@ -54,6 +54,7 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I)) addResource("red essence", resCountMaxes[12]);
         if (Input.GetKeyDown(KeyCode.O)) addResource("white essence", resCountMaxes[13]);
         if (Input.GetKeyDown(KeyCode.P)) addResource("artifact", resCountMaxes[14]);
+        if (Input.GetKeyDown(KeyCode.M)) depotToKingdom();
     }
 
     

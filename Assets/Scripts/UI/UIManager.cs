@@ -133,7 +133,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI[] kingdomResourceCountStrings;
 
-    public bool interactingWithNPC = false;
+    public bool interacting = false;
 
     [SerializeField] private GameObject restorationPrompt;
     [SerializeField] private TextMeshProUGUI resBuildingQuestion;
@@ -225,6 +225,7 @@ public class UIManager : MonoBehaviour
     ***************************** END OLD *****************************/
     public void PromptForRestoration(Building_SO buildingInfo)
     {
+        interacting = true;
         resBuildingQuestion.text = "Are you sure you want to restore the " + buildingInfo.buildingName + " for:";
         for (int i = 0; i < buildingInfo.resources.Length; i++)
         {
@@ -251,6 +252,13 @@ public class UIManager : MonoBehaviour
         restorationPrompt.SetActive(false);
         EndCursorInteraction();
     }
+    public void RestoreBuilding()
+    {
+        CloseRestorationPrompt();
+        NearToPlayerInteraction.Instance.currentFocusedObject.TryGetComponent<Building>(out Building building);
+        if (building != null)
+            building.RestoreSelf();
+    }
 
     public void EndCursorInteraction()
     {
@@ -258,6 +266,7 @@ public class UIManager : MonoBehaviour
         player.GetComponent<StarterAssetsInputs>().cursorInputForLook = true;
         player.GetComponent<ThirdPersonController>().canMove = true;
         player.GetComponent<ThirdPersonController>().canJump = true;
+        interacting = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

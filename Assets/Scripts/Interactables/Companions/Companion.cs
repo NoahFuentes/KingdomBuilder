@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class Companion : MonoBehaviour
 {
+    [SerializeField] private string companionName;
     public bool canInteract = true;
     public string nameOfBuilding;
     public virtual void Interact()
     {
         if (!canInteract) return;
-
-        UIManager.Instance.interactingWithNPC = true;
+        Debug.Log("Interacted with " + companionName);
+        UIManager.Instance.interacting = true;
     }
 }

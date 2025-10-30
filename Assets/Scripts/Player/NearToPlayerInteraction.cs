@@ -3,9 +3,11 @@ using StarterAssets;
 
 public class NearToPlayerInteraction : MonoBehaviour
 {
+    public static NearToPlayerInteraction Instance;
+
     [SerializeField] private Material focusShaderMat;
 
-    [SerializeField] private GameObject currentFocusedObject;
+    public GameObject currentFocusedObject;
     private Transform playerTransform;
 
     //[SerializeField] private Transform checkTransform;
@@ -40,6 +42,8 @@ public class NearToPlayerInteraction : MonoBehaviour
 
     private void FocusOnNewFocusObject(GameObject objectToFocusOn)
     {
+        if (objectToFocusOn.TryGetComponent<Building>(out Building building))
+            if (building.isRestored) return;
         currentFocusedObject = objectToFocusOn;
         focusedObjectRenderer = currentFocusedObject.GetComponentInChildren<MeshRenderer>();
         focusedObjOriginalMats = focusedObjectRenderer.materials;
@@ -109,6 +113,10 @@ public class NearToPlayerInteraction : MonoBehaviour
 
     //UNITY FUNCTIONS
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -151,7 +159,7 @@ public class NearToPlayerInteraction : MonoBehaviour
             else if ((npcMask.value & (1 << closestInteractable.gameObject.layer)) != 0)
                 ChangeFocusedObject(closestInteractable.gameObject);
             else if ((buildingRestorationMask.value & (1 << closestInteractable.gameObject.layer)) != 0)
-                ChangeFocusedObject(closestInteractable.gameObject);
+                ChangeFocusedObject(closestInteractable.transform.parent.gameObject);
             //ChangeFocusedObject(closestInteractable.transform.parent.gameObject);
 
         }

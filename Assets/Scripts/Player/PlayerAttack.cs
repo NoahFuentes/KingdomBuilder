@@ -82,7 +82,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject() || UIManager.Instance.interactingWithNPC || !tpc.Grounded || !tpc.canAttack) return;
+            if (EventSystem.current.IsPointerOverGameObject() || UIManager.Instance.interacting || !tpc.Grounded || !tpc.canAttack) return;
             
             StartAttack();
         }
