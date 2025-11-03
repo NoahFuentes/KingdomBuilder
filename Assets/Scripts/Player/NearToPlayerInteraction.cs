@@ -108,6 +108,11 @@ public class NearToPlayerInteraction : MonoBehaviour
     private void HandleBuildingInteraction(Building_SO buildingInfo)
     {
         if (null == currentFocusedObject || null == buildingInfo) return;
+        if (!KingdomStats.Instance.CanAfford(buildingInfo.resources, buildingInfo.costs))
+        {
+            NotificationManager.Instance.Notify("Cannot afford " + buildingInfo.buildingName, Color.red);
+            return;
+        }
         UIManager.Instance.PromptForRestoration(buildingInfo);
     }
 

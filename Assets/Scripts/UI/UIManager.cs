@@ -110,6 +110,11 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void SetGOInactive(GameObject go)
+    {
+        go.SetActive(false);
+    }
+
     #endregion
     #region OVERLAY TOGGLING
     [SerializeField] private GameObject kingdomOverlay;

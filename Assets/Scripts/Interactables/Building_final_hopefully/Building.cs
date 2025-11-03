@@ -13,6 +13,7 @@ public class Building : MonoBehaviour
             return;
         }
         KingdomStats.Instance.RemoveResources(info.resources, info.costs);
+        //play animation of restoration and swap meshes/prefabs
         isRestored = true;
     }
 }
