@@ -20,6 +20,7 @@ public class CompanionManager : MonoBehaviour
     {
         if(Time.time - lastWaitStart > waitTime)
         {
+            Debug.Log("Trying to spawn");
             //check if the game time is correct for companion joining (day time)
             //check if there is population space
             if (ks.currentPopulation + 1 > ks.maxPopulation) return;
@@ -31,12 +32,16 @@ public class CompanionManager : MonoBehaviour
                 if (!ks.companionsSaved[i]) continue; //next iteration if companion is not saved
                 //spawn companion if so
                 Instantiate(companionPrefabs[i], companionSpawnPoint.position, Quaternion.identity);
-
+                ks.companionsPresent[i] = true;
+                ks.currentPopulation++;
+                break;
             }
             //select random wait time
             waitTime = Random.Range(30f, 90f);
             lastWaitStart = Time.time;
         }
+        else
+            Debug.Log("Waiting: " + ((Time.time - lastWaitStart) - waitTime));
         
     }
 }

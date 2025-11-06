@@ -10,8 +10,6 @@ public class KingdomStats : MonoBehaviour
     public int[] resourceCurrentAmounts;
     public int[] resourceMaxAmounts;
 
-    public string[] upkeepResourceNames;
-    public int[] upkeepAmounts;
 
     //Buildings
     public bool[] buildingsRestored;
@@ -29,20 +27,6 @@ public class KingdomStats : MonoBehaviour
      * quarry
      */
 
-    /* might not need
-    public bool gateIsRestored = false;
-    public bool wellIsRestored = false;
-    public bool farmIsRestored = false;
-    public bool lumberMillIsRestored = false;
-    public bool masonsYardIsRestored = false;
-    public bool stableIsRestored = false;
-    public bool forgeIsRestored = false;
-    public bool weaponsmithyIsRestored = false;
-    public bool bowyersWorkshopIsRestored = false;
-    public bool sanctumIsRestored = false;
-    public bool armoryIsRestored = false;
-    public bool quarryIsRestored = false;
-    */
     //Companions
     public bool[] companionsSaved;
     /*councilman
@@ -59,37 +43,7 @@ public class KingdomStats : MonoBehaviour
      * miner
      */
 
-    /* might not need
-    public bool councilmanIsSaved = false;
-    public bool waterBearerIsSaved = false;
-    public bool farmerIsSaved = false;
-    public bool lumberJackIsSaved = false;
-    public bool masonIsSaved = false;
-    public bool stableMasterIsSaved = false;
-    public bool blacksmithIsSaved = false;
-    public bool swordsmithIsSaved = false;
-    public bool fletcherIsSaved = false;
-    public bool mageIsSaved = false;
-    public bool armorerIsSaved = false;
-    public bool minerIsSaved = false;
-    */
-
     public bool[] companionsPresent; // same order as above
-
-    /* might not need
-    public bool councilmanPresent = false;
-    public bool waterBearerPresent = false;
-    public bool farmerPresent = false;
-    public bool lumberJackPresent = false;
-    public bool masonPresent = false;
-    public bool stableMasterPresent = false;
-    public bool blacksmithPresent = false;
-    public bool swordsmithPresent = false;
-    public bool fletcherPresent = false;
-    public bool magePresent = false;
-    public bool armorerPresent = false;
-    public bool minerPresent = false;
-    */
 
     public int maxPopulation; // when a house is restored, this goes up one
     public int currentPopulation; // when a companion joins the city, this goes up one. Cannot exceed maxPopulation
