@@ -103,7 +103,7 @@ public class NearToPlayerInteraction : MonoBehaviour
     private void HandleNPCInteraction(Companion companion)
     {
         if (null == currentFocusedObject || null == companion) return;
-        companion.Interact();
+        companion.Talk();
     }
     private void HandleBuildingInteraction(Building_SO buildingInfo)
     {

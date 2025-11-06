@@ -114,6 +114,14 @@ public class UIManager : MonoBehaviour
     {
         go.SetActive(false);
     }
+    public void SetGOActive(GameObject go)
+    {
+        go.SetActive(true);
+    }
+    public void ToggleGOActiveState(GameObject go)
+    {
+        go.SetActive(!go.activeSelf);
+    }
 
     #endregion
     #region OVERLAY TOGGLING
@@ -138,7 +146,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI[] kingdomResourceCountStrings;
 
-    public bool interacting = false;
+    public bool interactingWithUI = false;
 
     [SerializeField] private GameObject restorationPrompt;
     [SerializeField] private TextMeshProUGUI resBuildingQuestion;
@@ -172,65 +180,8 @@ public class UIManager : MonoBehaviour
             kingdomResourceCountStrings[i].text = resCounts[i].ToString();
         }
     }
-
-    /************************ OLD ************************
-    public void OpenBuildingInfoFooter()
-    {
-        buildingInfoFooter.SetActive(true);
-        StartCursorInteraction();
-    }
-    public void CloseBuildingInfoFooter()
-    {
-        buildingInfoFooter.SetActive(false);
-        DisableBuildBtn();
-    }
-    public void UpdateBuildingInfoFooter(Building_SO buildingInfo, ushort level)
-    {
-        interactionButton.SetActive(buildingInfo.interactable);
-        upgradeButton.SetActive(buildingInfo.upgradable);
-        demolishButton.SetActive(buildingInfo.demolishable);
-
-        buildingInfoDesc.text = buildingInfo.buildingDesc;
-        buildingInfoName.text = buildingInfo.buildingName + " lvl. " + level.ToString();
-        interactionButton.GetComponentInChildren<TextMeshProUGUI>().text = buildingInfo.interactButtonString;
-        buildingInfoImage.sprite = buildingInfo.buildingIcon;
-
-    }
-
-    //Building
-
-    public void EnableBuildBtn()
-    {
-        buildBtn.gameObject.SetActive(true);
-    }
-    public void DisableBuildBtn()
-    {
-        buildBtn.gameObject.SetActive(false);
-    }
-    public void closeBuildMenu()
-    {
-        //Move camera back to player POV
-        CameraZoom.Instance.GoToPlayerView();
-        ThirdPersonController tpc = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
-        tpc.canMove = true;
-        tpc.canAttack = true;
-        buildMenu.SetActive(false);
-        EndCursorInteraction();
-    }
-    public void openBuildMenu()
-    {
-        CloseBuildingInfoFooter();
-        ThirdPersonController tpc = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
-        tpc.canMove = false;
-        tpc.canAttack = false;
-        //Move camera to build POV
-        CameraZoom.Instance.GoToBuildingView();
-        buildMenu.SetActive(true);
-    }
-    ***************************** END OLD *****************************/
     public void PromptForRestoration(Building_SO buildingInfo)
     {
-        interacting = true;
         resBuildingQuestion.text = "Are you sure you want to restore the " + buildingInfo.buildingName + " for:";
         for (int i = 0; i < buildingInfo.resources.Length; i++)
         {
@@ -271,12 +222,13 @@ public class UIManager : MonoBehaviour
         player.GetComponent<StarterAssetsInputs>().cursorInputForLook = true;
         player.GetComponent<ThirdPersonController>().canMove = true;
         player.GetComponent<ThirdPersonController>().canJump = true;
-        interacting = false;
+        interactingWithUI = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
     public void StartCursorInteraction()
     {
+        interactingWithUI = true;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         StarterAssetsInputs sai = player.GetComponent<StarterAssetsInputs>();
         sai.look = Vector2.zero;

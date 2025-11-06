@@ -2,29 +2,24 @@ using UnityEngine;
 
 public class Companion : MonoBehaviour
 {
-    [SerializeField] private string occupation;
-    [SerializeField] private string companionName;
-    public bool canInteract = true;
-    [SerializeField] private string nameOfBuilding;
+    [SerializeField] protected Companion_SO info;
 
-    [SerializeField] private Vector3 workPosition;
-    [SerializeField] private Vector3 homePosition;
+    [SerializeField] private Transform workPosition;
+    [SerializeField] private Transform homePosition;
 
     [SerializeField] private GameObject interactionInterface; //Store, resource selection, etc. *Primary function of the companion*
-    
-    public virtual void Interact()
+
+    public virtual void Talk()
     {
-        if (!canInteract) return;
-        Debug.Log("Interacted with " + companionName);
-        UIManager.Instance.interacting = true;
-        UIManager.Instance.StartCursorInteraction();
+        Debug.Log("Talking with " + info.companionName);
         interactionInterface.SetActive(true);
+        UIManager.Instance.StartCursorInteraction();
     }
 
     // UNITY FUNCTIONS
     public virtual void Start()
     {
-        Debug.Log(companionName + " ::Start()");
+        Debug.Log(info.companionName + " ::Start()");
         interactionInterface.SetActive(false);
     }
 
