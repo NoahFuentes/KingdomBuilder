@@ -12,7 +12,7 @@ public class KingdomStats : MonoBehaviour
 
 
     //Buildings
-    public bool[] buildingsRestored;
+    public bool[] buildingsRestored; // THESE BUILDINGS *MUST* FOLLOW THE ORDER OF CompanionManager.companionTitles!!!
     /*gate
      * well
      * farm
@@ -26,24 +26,6 @@ public class KingdomStats : MonoBehaviour
      * armory
      * quarry
      */
-
-    //Companions
-    public bool[] companionsSaved;
-    /*councilman
-     * waterbearer
-     * farmer
-     * lumberjack
-     * mason
-     * stablemaster
-     * blacksmith
-     * swordsmith
-     * fletcher
-     * mage
-     * armorer
-     * miner
-     */
-
-    public bool[] companionsPresent; // same order as above
 
     public int maxPopulation; // when a house is restored, this goes up one
     public int currentPopulation; // when a companion joins the city, this goes up one. Cannot exceed maxPopulation
