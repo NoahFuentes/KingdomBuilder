@@ -218,11 +218,11 @@ public class UIManager : MonoBehaviour
 
     public void EndCursorInteraction()
     {
+        interactingWithUI = false;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<StarterAssetsInputs>().cursorInputForLook = true;
         player.GetComponent<ThirdPersonController>().canMove = true;
         player.GetComponent<ThirdPersonController>().canJump = true;
-        interactingWithUI = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

@@ -52,7 +52,8 @@ public class CompanionManager : MonoBehaviour
                 if (!ks.buildingsRestored[i]) continue; //next iteration if building is not restored
                 if (!companionsSaved[i]) continue; //next iteration if companion is not saved
                 //spawn companion if so
-                Instantiate(companionPrefabs[i], companionSpawnPoint.position, Quaternion.identity);
+                GameObject companionSpawned = Instantiate(companionPrefabs[i], companionSpawnPoint.position, Quaternion.identity);
+                NotificationManager.Instance.Notify(companionSpawned.GetComponent<Companion>().info.companionName + " the " + companionTitles[i] + " has joined Center City!", Color.yellow);
                 companionsPresent[i] = true;
                 ks.currentPopulation++;
                 break;

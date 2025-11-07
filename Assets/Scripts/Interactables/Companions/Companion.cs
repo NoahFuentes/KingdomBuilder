@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Companion : MonoBehaviour
 {
-    [SerializeField] protected Companion_SO info;
+    public Companion_SO info;
 
     [SerializeField] private Transform workPosition;
     [SerializeField] private Transform homePosition;
 
     [SerializeField] private GameObject interactionInterface; //Store, resource selection, etc. *Primary function of the companion*
 
-    public virtual void Talk()
+    public virtual void Talk() //ENDCURSORINTERACTION ON THE END TALK BUTTON DOES NOT SET INTERACTING WITH UI TO FALSE... FIXME
     {
         Debug.Log("Talking with " + info.companionName);
         interactionInterface.SetActive(true);
