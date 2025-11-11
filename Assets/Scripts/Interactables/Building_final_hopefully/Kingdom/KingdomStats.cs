@@ -13,11 +13,11 @@ public class KingdomStats : MonoBehaviour
 
     //Buildings
     public bool[] buildingsRestored; // THESE BUILDINGS *MUST* FOLLOW THE ORDER OF CompanionManager.companionTitles!!!
-    /*gate
-     * well
-     * farm
-     * lumber mill
-     * masons yard
+    /*houses, gate, all buildings that dont belong to a companion - 0
+     * well - 1
+     * farm - 2
+     * lumber mill - 3...
+     * masonry yard
      * stable
      * forge
      * weaponsmithy

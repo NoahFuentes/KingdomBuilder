@@ -13,16 +13,9 @@ MonoBehaviour:
   m_Name: houseInfo
   m_EditorClassIdentifier: 
   buildingName: House
-  buildingDesc: Increases the kingdom population cap by +1. Copanions need their
-    own house to move into the kingdom.
-  buildingIcon: {fileID: 21300000, guid: 947c90ea345a54944bf0e2dc4af85150, type: 3}
+  buildingDesc: Increases the max population cap by +1.
+  buildingNumber: 0
   resources:
   - timber
   - food
   costs: 0a0000000a000000
-  gridSize: {x: 2, y: 2}
-  interactable: 0
-  upgradable: 0
-  demolishable: 1
-  placer: {fileID: 5205168168571267679, guid: 2a2c79d5027cb674ab5e215c8e1bc551, type: 3}
-  building: {fileID: 1432519351757623957, guid: 0bce610d884beee4da817ba346fe7f90, type: 3}

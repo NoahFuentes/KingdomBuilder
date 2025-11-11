@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Water Well
   buildingDesc: Provides water for Center City.
+  buildingNumber: 1
   resources:
   - water
   - timber
   - rough stone
   costs: 0f0000000a0000000a000000
-  restoredBuildingPrefab: {fileID: 0}

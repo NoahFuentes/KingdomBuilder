@@ -5,8 +5,8 @@ public class Building_SO : ScriptableObject
 {
     public string buildingName;
     public string buildingDesc;
+    public int buildingNumber;
 
     public string[] resources;
     public int[] costs;
-    public GameObject restoredBuildingPrefab;
 }

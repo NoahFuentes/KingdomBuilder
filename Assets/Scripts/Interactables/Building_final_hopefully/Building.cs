@@ -20,6 +20,6 @@ public class Building : MonoBehaviour
         brokenBuilding.SetActive(false);
         restoredBuilding.SetActive(true);
         isRestored = true;
-        //child classes will set kingdom stat restoration bools for themselves
+        KingdomStats.Instance.buildingsRestored[info.buildingNumber] = true;
     }
 }
