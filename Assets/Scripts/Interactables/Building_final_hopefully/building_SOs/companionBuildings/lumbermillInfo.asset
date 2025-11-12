@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d11d38ea99fa3414bbbf232b975de223, type: 3}
-  m_Name: quarryInfo
+  m_Name: lumbermillInfo
   m_EditorClassIdentifier: 
-  buildingName: Quarry
-  buildingDesc: 
-  buildingNumber: 11
-  resources: []
-  costs: 
+  buildingName: Lumber Mill
+  buildingDesc: Provides timber and allows processing of timber into lumber.
+  buildingNumber: 3
+  resources:
+  - food
+  - timber
+  - cloth
+  - rough stone
+  costs: 00000000000000000000000000000000

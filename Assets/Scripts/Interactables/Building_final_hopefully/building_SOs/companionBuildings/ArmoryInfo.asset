@@ -9,9 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17256182fcd70864886e97d62680a906, type: 3}
-  m_Name: CouncilmanInfo
+  m_Script: {fileID: 11500000, guid: d11d38ea99fa3414bbbf232b975de223, type: 3}
+  m_Name: ArmoryInfo
   m_EditorClassIdentifier: 
-  occupation: Councilman
-  companionName: Edward
-  buildingOfWork: Council's Chamber
+  buildingName: Armory
+  buildingDesc: Allows crafting of armors.
+  buildingNumber: 10
+  resources:
+  - food
+  - polished brick
+  - leather
+  - iron
+  costs: 00000000000000000000000000000000

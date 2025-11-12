@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d11d38ea99fa3414bbbf232b975de223, type: 3}
-  m_Name: bowyersWorkshopInfo
+  m_Name: wellInfo
   m_EditorClassIdentifier: 
-  buildingName: Bowyer's Workshop
-  buildingDesc: 
-  buildingNumber: 8
-  resources: []
-  costs: 
+  buildingName: Water Well
+  buildingDesc: Provides water for the city.
+  buildingNumber: 1
+  resources:
+  - water
+  - timber
+  - rough stone
+  costs: 0f0000000a0000000a000000

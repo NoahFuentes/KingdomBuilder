@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d11d38ea99fa3414bbbf232b975de223, type: 3}
-  m_Name: lumbermillInfo
+  m_Name: farmInfo
   m_EditorClassIdentifier: 
-  buildingName: Lumber Mill
-  buildingDesc: Automates gathering of timber. Allows processing of timber into lumber.
-  buildingNumber: 3
+  buildingName: Farm
+  buildingDesc: Provides food and textiles for the city.
+  buildingNumber: 2
   resources:
+  - water
   - food
   - timber
-  - leather
-  - rough stone
-  costs: 1e000000280000001400000014000000
+  - cloth
+  costs: 00000000000000000000000000000000

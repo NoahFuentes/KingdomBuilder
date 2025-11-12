@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d11d38ea99fa3414bbbf232b975de223, type: 3}
-  m_Name: weaponSmithyInfo
+  m_Script: {fileID: 11500000, guid: 17256182fcd70864886e97d62680a906, type: 3}
+  m_Name: BlacksmithInfo
   m_EditorClassIdentifier: 
-  buildingName: Weaponsmithy
-  buildingDesc: 
-  buildingNumber: 7
-  resources: []
-  costs: 
+  occupation: Blacksmith
+  companionName: Jose
+  buildingOfWork: Forge
