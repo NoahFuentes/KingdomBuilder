@@ -152,6 +152,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI resBuildingQuestion;
     [SerializeField] private Image[] resBuildingResImages;
     [SerializeField] private TextMeshProUGUI[] resBuildingCosts;
+    [SerializeField] private Button restoreBuildingBtn;
 
 
     //[SerializeField] private GameObject buildMenu;
@@ -200,6 +201,7 @@ public class UIManager : MonoBehaviour
         {
             resBuildingCosts[i].text = "";
         }
+        restoreBuildingBtn.interactable = KingdomStats.Instance.CanAfford(buildingInfo.resources, buildingInfo.costs);
         restorationPrompt.SetActive(true);
         StartCursorInteraction();
     }
