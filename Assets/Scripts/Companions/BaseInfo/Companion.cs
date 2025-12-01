@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class Companion : MonoBehaviour
 {
@@ -26,6 +27,16 @@ public class Companion : MonoBehaviour
         Debug.Log("Talking with " + info.companionName);
         interactionInterface.SetActive(true);
         UIManager.Instance.StartCursorInteraction();
+    }
+
+    public void ScheduleWakeUpTime(float delay) // this function is to be called at the end of the companion interact animation
+    {
+        StartCoroutine(WakeUp(delay));
+    }
+    private IEnumerator WakeUp(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        stateMachine.ChangeState(walkingWork);
     }
 
     // UNITY FUNCTIONS

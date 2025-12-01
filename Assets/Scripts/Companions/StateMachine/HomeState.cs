@@ -13,8 +13,7 @@ public class HomeState : BaseState
     public void EnterState()
     {
         companion.agent.isStopped = true;
-        companion.animator.Play("Interact");
-        //fade companion out TODO
+        companion.animator.Play("Interact"); // interact animation fades companion out and calls schedule wake up
     }
 
     public void TickState()
@@ -24,11 +23,5 @@ public class HomeState : BaseState
     public void ExitState()
     {
         //fade companion in TODO
-    }
-
-    private IEnumerator WakeUp(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        companion.stateMachine.ChangeState(companion.walkingWork);
     }
 }

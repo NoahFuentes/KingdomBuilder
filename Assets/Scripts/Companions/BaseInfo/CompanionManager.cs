@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CompanionManager : MonoBehaviour
 {
@@ -28,6 +29,21 @@ public class CompanionManager : MonoBehaviour
         }
         Debug.Log("No companion found with title: " + title);
     }
+
+    public void SendAllCompanionsHome() // This is to be called when the in game clock reaches end of work hours.
+    {
+        foreach (Companion companion in GameObject.FindObjectsByType<Companion>(FindObjectsSortMode.None))
+        {
+            StartGoHome(companion, Random.Range(0f, 30f));
+        }
+    }
+    private IEnumerator StartGoHome(Companion companion, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        companion.stateMachine.ChangeState(companion.walkingHome);
+    }
+
+    //UNITY FUNCTIONS
 
     private void Awake()
     {
