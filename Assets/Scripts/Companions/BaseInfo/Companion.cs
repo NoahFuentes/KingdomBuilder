@@ -52,7 +52,6 @@ public class Companion : MonoBehaviour
 
     public virtual void Update()
     {
-        //Time of day checks should be implemented here TODO
         stateMachine.Tick();
     }
 
