@@ -16,8 +16,9 @@ public class WorkingState : BaseState
     {
         companion.agent.isStopped = true;
         companion.transform.position = companion.workPosition.position;
-        companion.animator.Play("Working");
+        //companion.animator.Play("Working");
         timeToWork = Random.Range(60f, 180f);
+        Debug.Log("Entered Working for " + timeToWork.ToString() + " seconds.");
         workStartTime = Time.time;
     }
 

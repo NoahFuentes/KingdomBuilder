@@ -11,14 +11,15 @@ public class WanderingState : BaseState
 
     public void EnterState()
     {
+        Debug.Log("Entered Wandering.");
         companion.agent.isStopped = false;
         //companion.agent.SetDestination(/*random location*/);
-        companion.animator.Play("Walking");
+        //companion.animator.Play("Walking");
     }
 
     public void TickState()
     {
-        if (Vector3.Distance(companion.transform.position, companion.agent.destination) > companion.agent.stoppingDistance) return;
+        if (Vector3.Distance(companion.transform.position, companion.agent.destination) > 1f) return;
         companion.stateMachine.ChangeState(companion.idle);
     }
 

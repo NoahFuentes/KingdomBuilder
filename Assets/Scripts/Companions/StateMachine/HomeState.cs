@@ -13,7 +13,8 @@ public class HomeState : BaseState
     public void EnterState()
     {
         companion.agent.isStopped = true;
-        companion.animator.Play("Interact"); // interact animation fades companion out
+        //companion.animator.Play("Interact"); // interact animation fades companion out
+        Debug.Log("Entered Home.");
     }
 
     public void TickState()

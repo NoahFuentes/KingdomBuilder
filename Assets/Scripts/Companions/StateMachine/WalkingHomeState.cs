@@ -13,12 +13,13 @@ public class WalkingHomeState : BaseState
     {
         companion.agent.isStopped = false;
         companion.agent.SetDestination(companion.homePosition.position);
-        companion.animator.Play("Walking");
+        //companion.animator.Play("Walking");
+        Debug.Log("Entered Walking Home.");
     }
 
     public void TickState()
     {
-        if (Vector3.Distance(companion.transform.position, companion.agent.destination) > companion.agent.stoppingDistance) return;
+        if (Vector3.Distance(companion.transform.position, companion.homePosition.position) > 1f) return;
         companion.stateMachine.ChangeState(companion.atHome);
     }
 

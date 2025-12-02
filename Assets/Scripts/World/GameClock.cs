@@ -8,11 +8,11 @@ public class GameClock : MonoBehaviour
     [SerializeField] private float realSecondsPerGameMinute = 1f;
     public float currentTimeOfDayMinutes = 0f;
 
-    [SerializeField] private float startOfWorkDayTime = 360f; //6am
-    [SerializeField] private float endOfWorkDayTime = 1320f; //10pm
+    public float startOfWorkDayTime = 360f; //6am
+    public float endOfWorkDayTime = 1320f; //10pm
 
-    [SerializeField] private bool companionsHaveBeenSentHome = false;
-    [SerializeField] private bool companionsHaveBeenSentToWork = false;
+    public bool companionsHaveBeenSentHome = false;
+    public bool companionsHaveBeenSentToWork = false;
 
     [SerializeField] private TextMeshProUGUI clockTxt;
 

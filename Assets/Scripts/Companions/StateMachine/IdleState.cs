@@ -16,8 +16,9 @@ public class IdleState : BaseState
     public void EnterState()
     {
         companion.agent.isStopped = true;
-        companion.animator.Play("Idle");
+        //companion.animator.Play("Idle");
         timeToWait = Random.Range(3f, 8f);
+        Debug.Log("Entered Idle for " + timeToWait.ToString() + " seconds.");
         waitStartTime = Time.time;
     }
 
@@ -27,7 +28,12 @@ public class IdleState : BaseState
         if (Random.Range(0f, 1f) <= chanceToKeepWandering)
             companion.stateMachine.ChangeState(companion.wandering);
         else
-            companion.stateMachine.ChangeState(companion.walkingWork);
+        {
+            if (GameClock.Instance.currentTimeOfDayMinutes >= GameClock.Instance.endOfWorkDayTime || GameClock.Instance.currentTimeOfDayMinutes < GameClock.Instance.startOfWorkDayTime)
+                companion.stateMachine.ChangeState(companion.walkingHome);
+            else
+                companion.stateMachine.ChangeState(companion.walkingWork);
+        }
     }
 
     public void ExitState()
