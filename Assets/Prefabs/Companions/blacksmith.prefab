@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7115564614144262540}
   - component: {fileID: 2968711482073870654}
   - component: {fileID: 3423248379024724702}
+  - component: {fileID: 1099528670327960255}
+  - component: {fileID: 8218880583914091488}
   m_Layer: 14
   m_Name: blacksmith
   m_TagString: Untagged
@@ -125,9 +127,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 9f9edb06cb7f2ad4bbc2766e87b38ed7, type: 2}
+  agent: {fileID: 0}
+  animator: {fileID: 0}
   workPosition: {fileID: 0}
   homePosition: {fileID: 0}
   interactionInterface: {fileID: 5144701382869681269}
+--- !u!195 &1099528670327960255
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391783330624114963}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!95 &8218880583914091488
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391783330624114963}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5144701382869681269
 GameObject:
   m_ObjectHideFlags: 0

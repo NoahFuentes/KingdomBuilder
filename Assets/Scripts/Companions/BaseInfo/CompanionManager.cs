@@ -9,6 +9,8 @@ public class CompanionManager : MonoBehaviour
     public bool[] companionsSaved;
     public bool[] companionsPresent;
 
+    [SerializeField] private Transform[] companionWorkPositions;
+
     [SerializeField] private GameObject[] companionPrefabs; // list must be in same order as companionTitles above
     [SerializeField] private Transform companionSpawnPoint;
 
@@ -82,6 +84,7 @@ public class CompanionManager : MonoBehaviour
                 if (!companionsSaved[i]) continue; //next iteration if companion is not saved
                 //spawn companion if so
                 GameObject companionSpawned = Instantiate(companionPrefabs[i], companionSpawnPoint.position, Quaternion.identity);
+                companionSpawned.GetComponent<Companion>().workPosition = companionWorkPositions[i];
                 NotificationManager.Instance.Notify(companionSpawned.GetComponent<Companion>().info.companionName + " the " + companionTitles[i] + " has joined Center City!", Color.yellow);
                 companionsPresent[i] = true;
                 ks.currentPopulation++;
