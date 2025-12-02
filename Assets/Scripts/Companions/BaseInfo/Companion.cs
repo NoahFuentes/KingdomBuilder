@@ -29,15 +29,6 @@ public class Companion : MonoBehaviour
         UIManager.Instance.StartCursorInteraction();
     }
 
-    public void ScheduleWakeUpTime(float delay) // this function is to be called at the end of the companion interact animation
-    {
-        StartCoroutine(WakeUp(delay));
-    }
-    private IEnumerator WakeUp(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        stateMachine.ChangeState(walkingWork);
-    }
 
     // UNITY FUNCTIONS
 

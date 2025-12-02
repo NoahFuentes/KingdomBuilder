@@ -34,13 +34,26 @@ public class CompanionManager : MonoBehaviour
     {
         foreach (Companion companion in GameObject.FindObjectsByType<Companion>(FindObjectsSortMode.None))
         {
-            StartGoHome(companion, Random.Range(0f, 30f));
+            StartCoroutine(StartGoHome(companion, Random.Range(0f, 30f)));
         }
     }
     private IEnumerator StartGoHome(Companion companion, float delay)
     {
         yield return new WaitForSeconds(delay);
         companion.stateMachine.ChangeState(companion.walkingHome);
+    }
+
+    public void WakeAllCompanionsUp() // This is to be called when the in game clock reaches start of work hours.
+    {
+        foreach (Companion companion in GameObject.FindObjectsByType<Companion>(FindObjectsSortMode.None))
+        {
+            StartCoroutine(StartGoWork(companion, Random.Range(0f, 30f)));
+        }
+    }
+    private IEnumerator StartGoWork(Companion companion, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        companion.stateMachine.ChangeState(companion.walkingWork);
     }
 
     //UNITY FUNCTIONS

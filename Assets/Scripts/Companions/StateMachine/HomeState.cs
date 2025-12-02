@@ -13,7 +13,7 @@ public class HomeState : BaseState
     public void EnterState()
     {
         companion.agent.isStopped = true;
-        companion.animator.Play("Interact"); // interact animation fades companion out and calls schedule wake up
+        companion.animator.Play("Interact"); // interact animation fades companion out
     }
 
     public void TickState()
