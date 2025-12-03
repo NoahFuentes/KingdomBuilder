@@ -18,7 +18,7 @@ public class IdleState : BaseState
         companion.agent.isStopped = true;
         //companion.animator.Play("Idle");
         timeToWait = Random.Range(3f, 8f);
-        Debug.Log("Entered Idle for " + timeToWait.ToString() + " seconds.");
+        Debug.Log(companion.info.occupation + " entered Idle for " + timeToWait.ToString() + " seconds.");
         waitStartTime = Time.time;
     }
 

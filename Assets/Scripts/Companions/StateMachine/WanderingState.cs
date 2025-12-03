@@ -11,9 +11,9 @@ public class WanderingState : BaseState
 
     public void EnterState()
     {
-        Debug.Log("Entered Wandering.");
+        Debug.Log(companion.info.occupation + " entered Wandering.");
         companion.agent.isStopped = false;
-        //companion.agent.SetDestination(/*random location*/);
+        companion.agent.SetDestination(CompanionManager.Instance.wanderPositions[Random.Range(0,CompanionManager.Instance.wanderPositions.Length)].position);
         //companion.animator.Play("Walking");
     }
 

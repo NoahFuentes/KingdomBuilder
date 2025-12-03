@@ -15,10 +15,10 @@ public class WorkingState : BaseState
     public void EnterState()
     {
         companion.agent.isStopped = true;
-        companion.transform.position = companion.workPosition.position;
+        companion.transform.position = companion.workPosition.position ;
         //companion.animator.Play("Working");
         timeToWork = Random.Range(60f, 180f);
-        Debug.Log("Entered Working for " + timeToWork.ToString() + " seconds.");
+        Debug.Log(companion.info.occupation + " entered Working for " + timeToWork.ToString() + " seconds.");
         workStartTime = Time.time;
     }
 

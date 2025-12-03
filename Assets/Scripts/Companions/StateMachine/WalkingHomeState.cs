@@ -14,7 +14,7 @@ public class WalkingHomeState : BaseState
         companion.agent.isStopped = false;
         companion.agent.SetDestination(companion.homePosition.position);
         //companion.animator.Play("Walking");
-        Debug.Log("Entered Walking Home.");
+        Debug.Log(companion.info.occupation + " entered Walking Home.");
     }
 
     public void TickState()

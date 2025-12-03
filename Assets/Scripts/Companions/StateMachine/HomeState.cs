@@ -14,7 +14,7 @@ public class HomeState : BaseState
     {
         companion.agent.isStopped = true;
         //companion.animator.Play("Interact"); // interact animation fades companion out
-        Debug.Log("Entered Home.");
+        Debug.Log(companion.info.occupation + " entered Home.");
     }
 
     public void TickState()

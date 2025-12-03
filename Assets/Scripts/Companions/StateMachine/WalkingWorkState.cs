@@ -14,7 +14,7 @@ public class WalkingWorkState : BaseState
         companion.agent.isStopped = false;
         companion.agent.SetDestination(companion.workPosition.position);
         //companion.animator.Play("Walking");
-        Debug.Log("Entered Walking to Work.");
+        Debug.Log(companion.info.occupation + " entered Walking to Work.");
     }
 
     public void TickState()

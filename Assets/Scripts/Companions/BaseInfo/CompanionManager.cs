@@ -12,6 +12,7 @@ public class CompanionManager : MonoBehaviour
 
     [SerializeField] private Transform[] companionWorkPositions;
     public List<Transform> homePositions;
+    public Transform[] wanderPositions;
 
     [SerializeField] private GameObject[] companionPrefabs; // list must be in same order as companionTitles above
     [SerializeField] private Transform companionSpawnPoint;
@@ -88,7 +89,7 @@ public class CompanionManager : MonoBehaviour
                 GameObject companionSpawned = Instantiate(companionPrefabs[i], companionSpawnPoint.position, Quaternion.identity);
                 companionSpawned.GetComponent<Companion>().workPosition = companionWorkPositions[i];
                 companionSpawned.GetComponent<Companion>().homePosition = homePositions[ks.currentPopulation];
-                NotificationManager.Instance.Notify(companionSpawned.GetComponent<Companion>().info.companionName + " the " + companionTitles[i] + " has joined Center City!", Color.yellow);
+                NotificationManager.Instance.Notify(companionSpawned.GetComponent<Companion>().info.companionName + " the " + companionSpawned.GetComponent<Companion>().info.occupation + " has joined Center City!", Color.yellow);
                 companionsPresent[i] = true;
                 ks.currentPopulation++;
                 break;
