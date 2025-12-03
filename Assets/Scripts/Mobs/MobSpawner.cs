@@ -32,7 +32,7 @@ public class MobSpawner : MonoBehaviour
             {
                 float randX = Random.Range(-width / 2, width / 2);
                 float randZ = Random.Range(-height / 2, height / 2);
-                Vector3 spawnLoc = new Vector3(transform.position.x + randX, 0f, transform.position.z + randZ);
+                Vector3 spawnLoc = new Vector3(transform.position.x + randX, transform.position.y, transform.position.z + randZ);
                 GameObject npc = Instantiate(mobs[i], spawnLoc, Quaternion.identity, gameObject.transform);
                 npc.GetComponent<MobAI>().spawner = this;
                 npc.GetComponent<MobAI>().spawnerIndex = (ushort)i;
