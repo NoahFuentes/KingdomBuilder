@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
+using TMPro;
 
 public class Companion : MonoBehaviour
 {
@@ -20,15 +20,20 @@ public class Companion : MonoBehaviour
     public Transform workPosition;
     public Transform homePosition;
 
-    [SerializeField] protected GameObject interactionInterface; //Store, resource selection, etc. *Primary function of the companion*
+    [SerializeField] protected GameObject interactionInterface; //Companion dialoug prefab
+    [SerializeField] protected TextMeshProUGUI companionWords;
 
-    public virtual void Talk() //ENDCURSORINTERACTION ON THE END TALK BUTTON DOES NOT SET INTERACTING WITH UI TO FALSE... FIXME
+    public virtual void Talk()
     {
-        Debug.Log("Talking with " + info.companionName);
+        companionWords.text = CompanionManager.Instance.greetings[Random.Range(0, CompanionManager.Instance.greetings.Length)];
         interactionInterface.SetActive(true);
         UIManager.Instance.StartCursorInteraction();
     }
-
+    public virtual void EndTalk()
+    {
+        UIManager.Instance.EndCursorInteraction();
+        UIManager.Instance.SetGOInactive(interactionInterface);
+    }
 
     // UNITY FUNCTIONS
 

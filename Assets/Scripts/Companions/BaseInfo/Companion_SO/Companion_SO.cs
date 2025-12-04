@@ -6,5 +6,8 @@ public class Companion_SO : ScriptableObject
     public string occupation;
     public string companionName;
     public string buildingOfWork;
-    //maybe keep a list of strings here for player dialog?
+
+    public Sprite dialougImg;
+
+    public string hint;
 }

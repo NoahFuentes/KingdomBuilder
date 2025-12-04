@@ -14,6 +14,8 @@ public class CompanionManager : MonoBehaviour
     public List<Transform> homePositions;
     public Transform[] wanderPositions;
 
+    public string[] greetings;
+
     [SerializeField] private GameObject[] companionPrefabs; // list must be in same order as companionTitles above
     [SerializeField] private Transform companionSpawnPoint;
 
