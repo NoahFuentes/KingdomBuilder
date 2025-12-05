@@ -25,6 +25,7 @@ public class WorkingState : BaseState
     public void TickState()
     {
         if (Time.time - workStartTime < timeToWork) return;
+        if (companion.isTalking) return;
         companion.stateMachine.ChangeState(companion.wandering);
     }
 

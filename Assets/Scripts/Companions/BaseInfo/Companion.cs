@@ -13,6 +13,9 @@ public class Companion : MonoBehaviour
     public HomeState atHome;
     public WalkingHomeState walkingHome;
     public WalkingWorkState walkingWork;
+    public TalkingState talking;
+
+    [HideInInspector] public bool isTalking = false;
 
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Animator animator;
@@ -28,11 +31,17 @@ public class Companion : MonoBehaviour
         companionWords.text = CompanionManager.Instance.greetings[Random.Range(0, CompanionManager.Instance.greetings.Length)];
         interactionInterface.SetActive(true);
         UIManager.Instance.StartCursorInteraction();
+        isTalking = true;
+        if (stateMachine.CurrentState != working)
+            stateMachine.ChangeState(talking);
     }
     public virtual void EndTalk()
     {
         UIManager.Instance.EndCursorInteraction();
         UIManager.Instance.SetGOInactive(interactionInterface);
+        isTalking = false;
+        if (stateMachine.CurrentState != working)
+            stateMachine.ChangeState(idle);
     }
 
     // UNITY FUNCTIONS
@@ -49,6 +58,7 @@ public class Companion : MonoBehaviour
         atHome = new HomeState(this);
         walkingHome = new WalkingHomeState(this);
         walkingWork = new WalkingWorkState(this);
+        talking = new TalkingState(this);
     }
     public virtual void Start()
     {
