@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4563387978640741160}
   - component: {fileID: -746764564372761115}
   - component: {fileID: 5152014475061034242}
-  - component: {fileID: 7632940441225683534}
+  - component: {fileID: 813853594255810861}
   m_Layer: 14
   m_Name: blacksmith
   m_TagString: Untagged
@@ -267,7 +267,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7632940441225683534
+--- !u!114 &813853594255810861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7806276476363155842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a6c71289f6f67347b6d0e7cae5ee417, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ac152ad0e447174faa230340c4bddb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 1f131ff5aebf14e4593eb7d6da1e93b2, type: 2}
@@ -287,6 +287,12 @@ MonoBehaviour:
   homePosition: {fileID: 0}
   talkingInterface: {fileID: 89539537264437977}
   companionWords: {fileID: 6792489491758153680}
+  copperTime: 5
+  copperOreCostPerBar: 3
+  ironTime: 10
+  ironOreCostPerBar: 3
+  goldTime: 15
+  goldOreCostPerBar: 2
 --- !u!1001 &477762262677798334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -410,7 +416,7 @@ PrefabInstance:
     - target: {fileID: 9011554837721033282, guid: e7949df2e363a0b49a7aa4f2272f1e69, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7632940441225683534}
+      objectReference: {fileID: 813853594255810861}
     - target: {fileID: 9011554837721033282, guid: e7949df2e363a0b49a7aa4f2272f1e69, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
