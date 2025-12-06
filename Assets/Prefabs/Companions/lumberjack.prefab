@@ -236,11 +236,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 8eb5f44f7a320f646a5a3f571bba18ff, type: 2}
+  isTalking: 0
   agent: {fileID: 0}
   animator: {fileID: 0}
   workPosition: {fileID: 0}
   homePosition: {fileID: 0}
-  interactionInterface: {fileID: 89539537264437977}
+  talkingInterface: {fileID: 89539537264437977}
   companionWords: {fileID: 6792489491758153680}
 --- !u!195 &-746764564372761115
 NavMeshAgent:
@@ -297,6 +298,10 @@ PrefabInstance:
     - target: {fileID: 549229711365035879, guid: e7949df2e363a0b49a7aa4f2272f1e69, type: 3}
       propertyPath: m_Name
       value: Companion Dialoug
+      objectReference: {fileID: 0}
+    - target: {fileID: 549229711365035879, guid: e7949df2e363a0b49a7aa4f2272f1e69, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3386491198805138639, guid: e7949df2e363a0b49a7aa4f2272f1e69, type: 3}
       propertyPath: m_Pivot.x
@@ -377,6 +382,22 @@ PrefabInstance:
     - target: {fileID: 3386491198805138639, guid: e7949df2e363a0b49a7aa4f2272f1e69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814626370727559618, guid: e7949df2e363a0b49a7aa4f2272f1e69, type: 3}
+      propertyPath: m_overflowMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6027064310933660796, guid: e7949df2e363a0b49a7aa4f2272f1e69, type: 3}
+      propertyPath: m_overflowMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404856490761273966, guid: e7949df2e363a0b49a7aa4f2272f1e69, type: 3}
+      propertyPath: m_overflowMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998707411901748630, guid: e7949df2e363a0b49a7aa4f2272f1e69, type: 3}
+      propertyPath: m_overflowMode
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9011554837721033282, guid: e7949df2e363a0b49a7aa4f2272f1e69, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
