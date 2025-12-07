@@ -12,7 +12,7 @@ public class BlackSmith : Companion
     private float timeSenseLastIron;
     private float timeSenseLastGold;
 
-    private void SetCuttingValues()
+    private void SetMetalValues()
     {
         timeSenseLastCopper = Time.time;
         timeSenseLastIron = Time.time;
@@ -24,7 +24,7 @@ public class BlackSmith : Companion
     public override void Start()
     {
         base.Start();
-        SetCuttingValues();
+        SetMetalValues();
     }
 
     public override void Update()
