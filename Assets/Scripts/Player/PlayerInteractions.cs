@@ -30,7 +30,7 @@ public class PlayerInteractions : MonoBehaviour
         UIManager.Instance.updateStaminaBarMaxValue(PlayerStats.Instance.m_MaxStamina);
         UIManager.Instance.updateStaminaBarCurrentValue(PlayerStats.Instance.m_CurrentStamina);
 
-        EquipWeapon(WeaponManager.Instance.GetWeaponDetailsByName("Stick"));
+        WeaponManager.Instance.EquipWeapon("Stick");
     }
 
     private void FixedUpdate()
@@ -100,7 +100,7 @@ public class PlayerInteractions : MonoBehaviour
     }
     #endregion
 
-    #region Combat
+    /*
     public void EquipWeapon(Weapon_SO weapon)
     {
         PlayerStats.Instance.m_CurrentWeapon = weapon;
@@ -123,7 +123,6 @@ public class PlayerInteractions : MonoBehaviour
 
         //TODO: update UI sprite
     }
-
-    #endregion
+    */
 
 }
