@@ -28,7 +28,7 @@ public class Farmer : Companion
     public override void Update()
     {
         base.Update();
-        if (stateMachine.CurrentState == atHome) return;
+        if (stateMachine.CurrentState == atHome || stateMachine.CurrentState == walkingHome || isTalking) return;
         if (Time.time - timeSenseLastFood >= foodTime)
         {
             string[] res = { "food" };

@@ -44,11 +44,9 @@ public class Miner : Companion
     public override void Update()
     {
         base.Update();
-        if ((stateMachine.CurrentState != atHome) && (Time.time - timeSenseLastMine >= currWaitTime))
-        {
-            string[] res = { mineSelections[currentMineSelection] };
-            KingdomStats.Instance.AddResources(res, new int[] { 1 });
-            timeSenseLastMine = Time.time;
-        }
+        if ((stateMachine.CurrentState == atHome) || (Time.time - timeSenseLastMine < currWaitTime) || stateMachine.CurrentState == walkingHome || isTalking) return;
+        string[] res = { mineSelections[currentMineSelection] };
+        KingdomStats.Instance.AddResources(res, new int[] { 1 });
+        timeSenseLastMine = Time.time;
     }
 }

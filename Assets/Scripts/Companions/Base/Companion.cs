@@ -41,7 +41,13 @@ public class Companion : MonoBehaviour
         UIManager.Instance.SetGOInactive(talkingInterface);
         isTalking = false;
         if (stateMachine.CurrentState != working)
-            stateMachine.ChangeState(idle);
+        {
+            if (GameClock.Instance.currentTimeOfDayMinutes >= GameClock.Instance.endOfWorkDayTime || GameClock.Instance.currentTimeOfDayMinutes < GameClock.Instance.startOfWorkDayTime)
+                stateMachine.ChangeState(walkingHome);
+            else
+                stateMachine.ChangeState(idle);
+
+        }
     }
     public virtual void PrimaryInteraction() {}
     public virtual void SecondInteraction() {}

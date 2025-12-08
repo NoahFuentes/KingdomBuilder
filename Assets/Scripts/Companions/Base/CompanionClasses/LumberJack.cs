@@ -48,24 +48,22 @@ public class LumberJack : Companion
     public override void Update()
     {
         base.Update();
-        if((stateMachine.CurrentState != atHome) && (Time.time - timeSenseLastCut >= currWaitTime))
+        if ((stateMachine.CurrentState == atHome) || (Time.time - timeSenseLastCut < currWaitTime) || stateMachine.CurrentState == walkingHome || isTalking) return;
+        if (processingLumber)
         {
-            if (processingLumber)
-            {
-                if (!KingdomStats.Instance.CanAfford(new string[] { "timber" }, new int[] { 2 })) return;
-                KingdomStats.Instance.RemoveResources(new string[] { "timber" }, new int[] { 2 });
+            if (!KingdomStats.Instance.CanAfford(new string[] { "timber" }, new int[] { 2 })) return;
+            KingdomStats.Instance.RemoveResources(new string[] { "timber" }, new int[] { 2 });
 
-                string[] res = { "lumber" };
-                if (Random.Range(0f, 1f) <= fineLumberChance) res = new string[] { "fine lumber" };
-                KingdomStats.Instance.AddResources(res, new int[] { 1 });
-            }
-            else
-            {
-                string[] res = { "timber" };
-                KingdomStats.Instance.AddResources(res, new int[] { 1 });
-            }
-
-            timeSenseLastCut = Time.time;
+            string[] res = { "lumber" };
+            if (Random.Range(0f, 1f) <= fineLumberChance) res = new string[] { "fine lumber" };
+            KingdomStats.Instance.AddResources(res, new int[] { 1 });
         }
+        else
+        {
+            string[] res = { "timber" };
+            KingdomStats.Instance.AddResources(res, new int[] { 1 });
+        }
+
+        timeSenseLastCut = Time.time;
     }
 }

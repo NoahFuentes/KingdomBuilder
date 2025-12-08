@@ -22,11 +22,9 @@ public class WaterBearer : Companion
     public override void Update()
     {
         base.Update();
-        if ((stateMachine.CurrentState != atHome) && (Time.time - timeSenseLastWater >= waitTime))
-        {
-            string[] res = { "water" };
-            KingdomStats.Instance.AddResources(res, new int[] { amountToGive });
-            timeSenseLastWater = Time.time;
-        }
+        if ((stateMachine.CurrentState == atHome) || (Time.time - timeSenseLastWater < waitTime) || stateMachine.CurrentState == walkingHome || isTalking) return;
+        string[] res = { "water" };
+        KingdomStats.Instance.AddResources(res, new int[] { amountToGive });
+        timeSenseLastWater = Time.time;
     }
 }

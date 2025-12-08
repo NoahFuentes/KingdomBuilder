@@ -15,6 +15,11 @@ public class IdleState : BaseState
 
     public void EnterState()
     {
+        if (GameClock.Instance.currentTimeOfDayMinutes >= GameClock.Instance.endOfWorkDayTime || GameClock.Instance.currentTimeOfDayMinutes < GameClock.Instance.startOfWorkDayTime)
+        {
+            companion.stateMachine.ChangeState(companion.walkingHome);
+            return;
+        }
         companion.agent.isStopped = true;
         //companion.animator.Play("Idle");
         timeToWait = Random.Range(3f, 8f);
