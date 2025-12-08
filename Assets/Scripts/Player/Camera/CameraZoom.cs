@@ -25,7 +25,7 @@ public class CameraZoom : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetAxisRaw("Mouse ScrollWheel") == 0) return;
+        if (Input.GetAxisRaw("Mouse ScrollWheel") == 0 || UIManager.Instance.interactingWithUI) return;
         float scrollVal = Input.GetAxisRaw("Mouse ScrollWheel") * -zoomSensitivity;
         float newDistance = c3pf.CameraDistance + scrollVal;
 

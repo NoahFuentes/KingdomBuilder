@@ -3,7 +3,9 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager Instance { get; private set; }
+
     public Weapon_SO[] weapons;
+    public bool[] weaponCraftedStates;
 
     [SerializeField] private Transform rightItemSpawn;
     [SerializeField] private Transform leftItemSpawn;
@@ -13,7 +15,7 @@ public class WeaponManager : MonoBehaviour
         Instance = this;
     }
 
-    public Weapon_SO GetWeaponDetailsByName(string name)
+    private Weapon_SO GetWeaponDetailsByName(string name)
     {
         foreach(Weapon_SO weapon in weapons)
         {
@@ -23,11 +25,41 @@ public class WeaponManager : MonoBehaviour
         Debug.Log("WeaponManger::GetWeaponByName: No weapon found by name: " + name);
         return null;
     }
-
+    private int GetWeaponIndexByName(string weaponName)
+    {
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            if (weapons[i].weaponName == weaponName)
+            {
+                return i;
+            }
+        }
+        Debug.Log("WeaponManger::GetWeaponIndexByName: No weapon found by name: " + name);
+        return 0;
+    }
+    /*
+    public void WeaponButtonInteract(string weaponName)
+    {
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            if (weapons[i].weaponName == weaponName)
+            {
+                if (weaponCraftedStates[i])
+                    EquipWeapon(weaponName);
+                else
+                    CraftWeapon(weaponName);
+                return;
+            }
+        }
+        Debug.Log("WeaponManager::WeaponButtonInteract: No weapon found with name: " + weaponName);
+    }
+    */
     public void CraftWeapon(string weaponName)
     {
         Weapon_SO weapon = GetWeaponDetailsByName(weaponName);
-
+        if (!KingdomStats.Instance.CanAfford(weapon.resources, weapon.costs)) return;
+        KingdomStats.Instance.RemoveResources(weapon.resources, weapon.costs);
+        weaponCraftedStates[GetWeaponIndexByName(weaponName)] = true;
     }
 
     public void EquipWeapon(string weaponName)
