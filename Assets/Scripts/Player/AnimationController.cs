@@ -75,6 +75,11 @@ public class AnimationController : MonoBehaviour
 
     }
 
+    public void SetPlayerCanControl()
+    {
+        GetComponent<ThirdPersonController>().canMove = true;
+        GetComponent<ThirdPersonController>().canAttack = true;
+    }
     public void PlayPlayerSoundByName(string soundName)
     {
         PlayerAudioManager.Instance.PlaySoundByName(soundName);

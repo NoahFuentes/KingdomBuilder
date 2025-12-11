@@ -4,7 +4,7 @@ using StarterAssets;
 public class Resource : MonoBehaviour
 {
     [SerializeField] private string resName;
-    public bool isMinable = false; //used to defer between axe and pickaxe
+    public ResourceType interactType;
 
     [SerializeField] private string resToGive;
     [SerializeField] private int amtToGive;

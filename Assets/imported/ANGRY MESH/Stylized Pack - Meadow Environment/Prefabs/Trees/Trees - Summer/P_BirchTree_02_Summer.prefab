@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resName: Birch Tree
-  isMinable: 0
+  interactType: 1
   resToGive: timber
   amtToGive: 3
   maxHealth: 10

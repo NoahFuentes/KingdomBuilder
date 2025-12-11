@@ -105,21 +105,19 @@ public class CharacterMovement : MonoBehaviour
                 nav.enabled = false;
                 return;
             }
-            if (PlayerInteractions.Instance.resourceInteractable.isMinable)
-            {
-                //mine
-                animator.SetBool("isChopping", false);
-                animator.SetBool("isMining", true);
 
-            }
-            else
+            switch (PlayerInteractions.Instance.resourceInteractable.interactType)
             {
-                //chop
-                animator.SetBool("isMining", false);
-                animator.SetBool("isChopping", true);
+                case ResourceType.CHOPPABLE:
 
+                    break;
+                case ResourceType.MINEABLE:
+
+                    break;
+                case ResourceType.HARVESTABLE:
+
+                    break;
             }
-            
         }
         if (inputDirection.magnitude > 0)
         {

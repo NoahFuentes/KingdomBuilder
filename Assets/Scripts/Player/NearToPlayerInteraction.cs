@@ -83,6 +83,25 @@ public class NearToPlayerInteraction : MonoBehaviour
         if (null == currentFocusedObject || null == res) return;
         Animator animator = GetComponentInParent<Animator>();
         transform.parent.LookAt(currentFocusedObject.transform);
+        switch (res.interactType)
+        {
+            case ResourceType.CHOPPABLE:
+                animator.SetBool("isMining", false);
+                animator.SetBool("isChopping", true);
+                break;
+            case ResourceType.MINEABLE:
+                animator.SetBool("isChopping", false);
+                animator.SetBool("isMining", true);
+                break;
+            case ResourceType.HARVESTABLE:
+                animator.SetBool("isChopping", false);
+                animator.SetBool("isMining", false);
+                animator.SetTrigger("harvest");
+                transform.parent.GetComponent<ThirdPersonController>().canMove = false;
+                transform.parent.GetComponent<ThirdPersonController>().canAttack = false;
+                break;
+        }
+        /*
         if (res.isMinable)
         {
             //mine
@@ -97,6 +116,7 @@ public class NearToPlayerInteraction : MonoBehaviour
             animator.SetBool("isChopping", true);
 
         }
+        */
         transform.parent.GetComponent<ThirdPersonController>().canJump = false;
         res.Interaction();
     } 
