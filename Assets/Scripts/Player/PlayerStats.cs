@@ -4,7 +4,7 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Instance;
 
-
+    [Header("Health info")]
     public int m_MaxHealth = 100;
     public float m_CurrentHealth = 100;
 
@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour
     public float m_HealthRegenDelay = 5f;
     public bool m_ShouldRegenHealth = false;
 
+    [Header("Stamina info")]
     public int m_MaxStamina = 100;
     public float m_CurrentStamina = 100;
 
@@ -19,6 +20,7 @@ public class PlayerStats : MonoBehaviour
     public float m_StaminaRegenDelay = 0.5f;
     public bool m_ShouldRegenStamina = false;
 
+    [Header("Movement info")]
     public float m_BaseMovementSpeed = 10;
     public float m_SprintSpeedMult = 1.4f;
     public float m_SprintStaminaCost = 0.1f;

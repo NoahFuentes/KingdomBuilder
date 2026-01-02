@@ -288,10 +288,12 @@ MonoBehaviour:
   talkingInterface: {fileID: 89539537264437977}
   companionWords: {fileID: 6792489491758153680}
   mineSelections:
+  - rough stone
   - copper ore
   - iron ore
   - gold ore
   waitTimes:
+  - 2
   - 3
   - 5
   - 10
