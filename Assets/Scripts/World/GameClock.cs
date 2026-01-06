@@ -37,11 +37,6 @@ public class GameClock : MonoBehaviour
     {
         companionsHaveBeenSentHome = false;
         companionsHaveBeenSentToWork = false;
-        foreach(Village vill in GameObject.FindObjectsByType<Village>(FindObjectsSortMode.None))
-        {
-            if (!vill.isSaved) continue;
-            vill.ContributeToKingdom();
-        }
     }
 
     //UNITY FUNCTIONS

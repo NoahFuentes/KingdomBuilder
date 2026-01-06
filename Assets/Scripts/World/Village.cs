@@ -3,10 +3,8 @@ using System.Collections.Generic;
 
 public class Village : MonoBehaviour
 {
-    [SerializeField] private string[] dailyResources;
-    [SerializeField] private int[] dailyAmounts;
+    [SerializeField] private string companionToSave; //Lumber Jack, Farmer, etc
 
-    public bool isSaved = false;
     [SerializeField] private List<GameObject> enemies;
 
     [SerializeField] private KeyCode testinput;
@@ -16,18 +14,6 @@ public class Village : MonoBehaviour
     {
         if (!enemies.Remove(enemy)) return;
         if (enemies.Count <= 0)
-            isSaved = true;
-    }
-
-    public void ContributeToKingdom()
-    {
-        if (!isSaved) return;
-        KingdomStats.Instance.AddResources(dailyResources, dailyAmounts);
-    }
-
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(testinput)) isSaved = true; // TODO: remove this 
+            CompanionManager.Instance.SetCompanionAsSaved(companionToSave);
     }
 }

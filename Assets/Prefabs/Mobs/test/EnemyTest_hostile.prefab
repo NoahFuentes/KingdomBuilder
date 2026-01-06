@@ -120,11 +120,11 @@ GameObject:
   - component: {fileID: 587599690859036761}
   - component: {fileID: 1352870149416919274}
   - component: {fileID: 2286956293821282183}
-  - component: {fileID: 9173496343529118871}
-  - component: {fileID: 1989190096875658417}
-  - component: {fileID: 2565227013016793382}
-  - component: {fileID: 8913690002621523139}
-  m_Layer: 10
+  - component: {fileID: 8318050355364328262}
+  - component: {fileID: 4183090296325947080}
+  - component: {fileID: 8968145375062886375}
+  - component: {fileID: 3556295910472502833}
+  m_Layer: 0
   m_Name: EnemyTest_hostile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,56 +223,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &9173496343529118871
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5214062316515028892}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!114 &1989190096875658417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5214062316515028892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12983a5606d8f0449a440f59fd41a844, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 10
-  healthRegenTime: 5
-  baseMovementSpeed: 7
-  sprintMovementSpeed: 12
-  damage: 3
-  damageType: Physical
-  attackRate: 1
-  attackDimensions: {x: 0, y: 0, z: 0}
-  stoppingDistance: 0
---- !u!195 &2565227013016793382
+--- !u!195 &8318050355364328262
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,15 +237,37 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2.1
-  m_BaseOffset: 1.1
-  m_WalkableMask: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8913690002621523139
+--- !u!95 &4183090296325947080
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5214062316515028892}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8968145375062886375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,16 +276,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 5214062316515028892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 536017cfb172abb46b7ce0d5f13370b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e463b1f10e78424b9b142bdb459248b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noticeRange: 25
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 8704
-  wanderRange: 20
-  wanderTime: 5
-  spawner: {fileID: 0}
-  spawnerIndex: 0
-  isAttacking: 0
-  attackTrans: {fileID: 0}
+  isStationary: 1
+  isHostile: 1
+  alertRange: 10
+  alertTime: 1
+--- !u!114 &3556295910472502833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5214062316515028892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cbea2e5087710d40aea8792b54138b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 10
+  healthRegenTime: 2
+  baseMovementSpeed: 3
+  sprintMovementSpeed: 7
+  damageType: 0
+  damage: 5
+  attackRate: 2
+  attackDimensions: {x: 2, y: 2, z: 2}
+  stoppingDistance: 1
