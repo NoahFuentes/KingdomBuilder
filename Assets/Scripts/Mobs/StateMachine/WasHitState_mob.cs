@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WasHitState_mob : BaseState
+public class WasHitState_mob : IState
 {
     public float damageToTake;
 

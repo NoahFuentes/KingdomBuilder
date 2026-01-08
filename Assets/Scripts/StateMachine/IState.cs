@@ -1,5 +1,5 @@
 
-public interface BaseState
+public interface IState
 {
     void EnterState();
     void TickState();

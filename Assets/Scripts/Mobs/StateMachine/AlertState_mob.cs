@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AlertState_mob : BaseState
+public class AlertState_mob : IState
 {
     private float alertStartTime;
 

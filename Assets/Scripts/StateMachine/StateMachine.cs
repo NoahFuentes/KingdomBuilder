@@ -1,8 +1,8 @@
 public class StateMachine
 {
-    public BaseState CurrentState { get; private set; }
+    public IState CurrentState { get; private set; }
 
-    public void ChangeState(BaseState newState)
+    public void ChangeState(IState newState)
     {
         CurrentState?.ExitState();
         CurrentState = newState;

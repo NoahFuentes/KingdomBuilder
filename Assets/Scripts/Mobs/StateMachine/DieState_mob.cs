@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DieState_mob : BaseState
+public class DieState_mob : IState
 {
 
 

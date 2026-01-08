@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FleeState_mob : BaseState
+public class FleeState_mob : IState
 {
 
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class HomeState : BaseState
+public class HomeState : IState
 {
     private readonly Companion companion;
 

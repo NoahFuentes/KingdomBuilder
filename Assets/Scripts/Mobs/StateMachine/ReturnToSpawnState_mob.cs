@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ReturnToSpawnState_mob : BaseState
+public class ReturnToSpawnState_mob : IState
 {
 
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WorkingState : BaseState
+public class WorkingState : IState
 {
     private readonly Companion companion;
 

@@ -3,27 +3,20 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(MobStatsBase))]
+[RequireComponent(typeof(MobStats))]
 public class MobBase : MonoBehaviour
 {
-    private NavMeshAgent agent;
-    private Animator animator;
+    [HideInInspector] public NavMeshAgent agent;
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public MobStats stats;
 
     [HideInInspector] public StateMachine stateMachine;
-    [HideInInspector] public BaseState defaultState; //usually idle or wandering
+    [HideInInspector] public IState defaultState; //usually idle or wandering
     [HideInInspector] public AlertState_mob alert;
-    [HideInInspector] public BaseState reactionState; //chase or flee
+    [HideInInspector] public IState reactionState; //chase or flee
     [HideInInspector] public WasHitState_mob hit;
     [HideInInspector] public DieState_mob die;
     [HideInInspector] public ReturnToSpawnState_mob returnToSpawn;
-
-    [SerializeField] private bool isStationary;
-    [SerializeField] private bool isHostile;
-
-
-    public float alertRange;
-    public float alertTime;
-
 
 
     //UNITY FUNCTIONS
@@ -34,12 +27,12 @@ public class MobBase : MonoBehaviour
        animator = GetComponent<Animator>();
 
         stateMachine = new StateMachine();
-        if(isStationary)
+        if(stats.isStationary)
             defaultState = new IdleState_mob(this);
         else
             defaultState = new WanderState_mob(this);
 
-        if (isHostile)
+        if (stats.isHostile)
             reactionState = new ChaseState_mob(this);
         else
             reactionState = new FleeState_mob(this);

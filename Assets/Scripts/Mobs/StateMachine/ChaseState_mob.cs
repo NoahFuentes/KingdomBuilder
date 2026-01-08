@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChaseState_mob : BaseState
+public class ChaseState_mob : IState
 {
 
 

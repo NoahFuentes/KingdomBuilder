@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WanderingState : BaseState
+public class WanderingState : IState
 {
     private readonly Companion companion;
 

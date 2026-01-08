@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WalkingHomeState : BaseState
+public class WalkingHomeState : IState
 {
     private readonly Companion companion;
 

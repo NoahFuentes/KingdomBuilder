@@ -1,6 +1,6 @@
 using UnityEngine;
 //This state is entered at the end of wandering. Companion then chooses to continue wandering or go back to work.
-public class IdleState : BaseState
+public class IdleState : IState
 {
     private readonly Companion companion;
 

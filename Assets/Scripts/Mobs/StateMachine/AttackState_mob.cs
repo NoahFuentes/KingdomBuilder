@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AttackState_mob : BaseState
+public class AttackState_mob : IState
 {
 
 

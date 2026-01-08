@@ -1,5 +1,5 @@
 using UnityEngine;
-public class TalkingState : BaseState
+public class TalkingState : IState
 {
     private readonly Companion companion;
 
