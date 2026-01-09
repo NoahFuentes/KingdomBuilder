@@ -20,6 +20,7 @@ public class MobStats : MonoBehaviour
 
 
     [Header("Alertness Stats")]
+    [SerializeField] private SphereCollider alertnessTrigger;
     public float alertRange;
     public float alertTime; //Time it takes for the mob to notice or not notice you. Ref alertState_mob
 
@@ -34,7 +35,6 @@ public class MobStats : MonoBehaviour
     [Header("=================ATTACKING STATS================")]
     public DamageType damageType;
     public int damage;
-
     public float attackDistance;
 
 
@@ -43,6 +43,16 @@ public class MobStats : MonoBehaviour
     public void HealHealth(int recoverAmt)
     {
         currentHealth = Mathf.Min(currentHealth + recoverAmt, maxHealth);
+    }
+
+    //UNITY FUNCTIONS
+
+    private void Awake()
+    {
+        currentHealth = maxHealth;
+
+        alertnessTrigger.isTrigger = true;
+        alertnessTrigger.radius = alertRange;
     }
 
 }

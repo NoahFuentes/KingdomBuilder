@@ -4,7 +4,6 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(MobStats))]
-[RequireComponent(typeof(HurtBox))]
 public class MobBase : MonoBehaviour
 {
     [HideInInspector] public NavMeshAgent agent;
@@ -24,6 +23,8 @@ public class MobBase : MonoBehaviour
 
     public virtual void Awake()
     {
+        stats = GetComponent<MobStats>();
+
         agent = GetComponent<NavMeshAgent>();
         agent.speed = stats.baseMovementSpeed;
         agent.angularSpeed = stats.turningSpeed;
@@ -59,9 +60,4 @@ public class MobBase : MonoBehaviour
         stateMachine.Tick();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            stateMachine.ChangeState(alert);
-    }
 }

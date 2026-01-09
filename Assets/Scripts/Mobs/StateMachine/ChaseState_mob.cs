@@ -13,6 +13,7 @@ public class ChaseState_mob : IState
     {
         //set navmesh target to player pos
         //play running animation
+        Debug.Log("is chase state");
     }
 
     public void TickState()

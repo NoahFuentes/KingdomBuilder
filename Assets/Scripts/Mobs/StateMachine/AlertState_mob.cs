@@ -17,7 +17,8 @@ public class AlertState_mob : IState
         //face player
         mob.transform.LookAt(PlayerStats.Instance.transform.position);
         //player alert animation
-        mob.animator.Play("alert");
+        //mob.animator.Play("alert");
+        Debug.Log("in alert state");
     }
 
     public void TickState()

@@ -17,7 +17,8 @@ public class IdleState_mob : IState
         //set navmesh to not walk
         mob.agent.isStopped = true;
         //set animations to idle
-        mob.animator.Play("idle");
+        //mob.animator.Play("idle");
+        Debug.Log("in idle state");
     }
 
     public void TickState()

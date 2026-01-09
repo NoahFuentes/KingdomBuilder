@@ -21,12 +21,13 @@ public class WanderState_mob : IState
         mob.agent.isStopped = false;
         //set agent to walking speed
         mob.agent.speed = mob.stats.baseMovementSpeed;
+        Debug.Log("in wander state");
     }
 
     public void TickState()
     {
-        if (mob.agent.remainingDistance <= mob.agent.stoppingDistance) mob.animator.Play("idle");
-        else mob.animator.Play("walk");
+        //if (mob.agent.remainingDistance <= mob.agent.stoppingDistance) mob.animator.Play("idle");
+        //else mob.animator.Play("walk");
         //recover full health if left in default state for a spec time
         if (Time.time - timeEnteredWander >= mob.stats.healthRegenTime)
             mob.stats.HealHealth(mob.stats.maxHealth);
