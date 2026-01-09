@@ -15,7 +15,8 @@ public class AlertState_mob : IState
         //set time of noticing player
         alertStartTime = Time.time;
         //face player
-        mob.transform.LookAt(PlayerStats.Instance.transform.position);
+        mob.agent.updatePosition = false;
+        mob.agent.SetDestination(PlayerStats.Instance.transform.position);
         //player alert animation
         //mob.animator.Play("alert");
         Debug.Log("in alert state");
@@ -33,7 +34,7 @@ public class AlertState_mob : IState
 
     public void ExitState()
     {
-        //nothing
+        mob.agent.updatePosition = true;
     }
 
 }
