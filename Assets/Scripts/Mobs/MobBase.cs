@@ -4,6 +4,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(MobStats))]
+[RequireComponent(typeof(HurtBox))]
 public class MobBase : MonoBehaviour
 {
     [HideInInspector] public NavMeshAgent agent;
@@ -23,8 +24,14 @@ public class MobBase : MonoBehaviour
 
     public virtual void Awake()
     {
-       agent = GetComponent<NavMeshAgent>();
-       animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = stats.baseMovementSpeed;
+        agent.angularSpeed = stats.turningSpeed;
+        agent.acceleration = stats.acceleration;
+        agent.radius = stats.avoidanceDist;
+        agent.height = stats.avoidanceHeight;
+
+        animator = GetComponent<Animator>();
 
         stateMachine = new StateMachine();
         if(stats.isStationary)
