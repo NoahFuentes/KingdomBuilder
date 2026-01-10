@@ -34,6 +34,7 @@ public class AlertState_mob : IState
 
     public void ExitState()
     {
+        mob.agent.Warp(mob.transform.position);
         mob.agent.updatePosition = true;
     }
 

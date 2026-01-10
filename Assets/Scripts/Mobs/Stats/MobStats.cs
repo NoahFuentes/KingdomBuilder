@@ -28,14 +28,17 @@ public class MobStats : MonoBehaviour
     [Header("Special Options")]
     public bool isStationary;
     public float wanderRadius;
+    public float maxDistFromSpawn;
 
     public bool isHostile;
+    public float deagroRange;
 
 
     [Header("=================ATTACKING STATS================")]
     public DamageType damageType;
     public int damage;
     public float attackDistance;
+    [HideInInspector] public bool isAttacking;
 
 
 

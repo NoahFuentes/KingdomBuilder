@@ -15,6 +15,7 @@ public class MobBase : MonoBehaviour
     [HideInInspector] public AlertState_mob alert;
     [HideInInspector] public IState reactionState; //chase or flee
     [HideInInspector] public WasHitState_mob hit;
+    [HideInInspector] public AttackState_mob attack;
     [HideInInspector] public DieState_mob die;
     [HideInInspector] public ReturnToSpawnState_mob returnToSpawn;
 
@@ -47,6 +48,7 @@ public class MobBase : MonoBehaviour
 
         alert = new AlertState_mob(this);
         hit = new WasHitState_mob(this);
+        attack = new AttackState_mob(this);
         die = new DieState_mob(this);
         returnToSpawn = new ReturnToSpawnState_mob(this);
 
