@@ -4,7 +4,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(MobStats))]
-public class MobBase : MonoBehaviour
+public class MobBase : MonoBehaviour, IHurtBox
 {
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Animator animator;
@@ -19,6 +19,15 @@ public class MobBase : MonoBehaviour
     [HideInInspector] public DieState_mob die;
     [HideInInspector] public ReturnToSpawnState_mob returnToSpawn;
 
+
+    public void TakeHit(int damage, DamageType damageType)
+    {
+        stats.currentHealth -= damage;
+        if (stats.currentHealth <= 0)
+            stateMachine.ChangeState(die);
+        else
+            stateMachine.ChangeState(hit);
+    }
 
     //UNITY FUNCTIONS
 

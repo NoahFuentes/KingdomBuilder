@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 public class HitBox : MonoBehaviour
 {
-    [SerializeField] private int damage;
-    private HashSet<HurtBox> hitSet = new();
+    [HideInInspector] public int damage;
+    [HideInInspector] public DamageType damageType;
+
+    private HashSet<IHurtBox> hitSet = new();
 
     public void ResetHitSet()
     {
@@ -14,11 +16,11 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<HurtBox>(out var hurtBox))
+        if (other.TryGetComponent<IHurtBox>(out var hurtBox))
         {
             if (hitSet.Add(hurtBox))
             {
-                hurtBox.TakeHit(damage);
+                hurtBox.TakeHit(damage, damageType);
             }
         }
     }
