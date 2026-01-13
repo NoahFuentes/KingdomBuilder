@@ -3,6 +3,7 @@ using UnityEngine;
 public class MobStats : MonoBehaviour
 {
     [Header("===============BASE STATS===============")]
+    public GameObject spawner; //used to keep track of spawning logic
     public Vector3 spawnPoint;
     public int maxHealth;
     public int currentHealth;
@@ -28,6 +29,7 @@ public class MobStats : MonoBehaviour
     [Header("Special Options")]
     public bool isStationary;
     public float wanderRadius;
+    public float fleeDistance;
     public float maxDistFromSpawn;
 
     public bool isHostile;
@@ -37,10 +39,16 @@ public class MobStats : MonoBehaviour
     [Header("=================ATTACKING STATS================")]
     public DamageType damageType;
     public int damage;
+    public float attackRate;
     public float attackDistance;
     [HideInInspector] public bool isAttacking;
 
 
+    [Header("=================TAKING DAMAGE STATS================")]
+    public float meleeResistance;
+    public float rangeResistance;
+    public float magicResistance;
+    public float flinchDuration;
 
 
     public void HealHealth(int recoverAmt)

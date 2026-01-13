@@ -15,6 +15,7 @@ public class AlertState_mob : IState
         //set time of noticing player
         alertStartTime = Time.time;
         //face player
+        mob.agent.isStopped = false;
         mob.agent.updatePosition = false;
         mob.agent.SetDestination(PlayerStats.Instance.transform.position);
         //player alert animation

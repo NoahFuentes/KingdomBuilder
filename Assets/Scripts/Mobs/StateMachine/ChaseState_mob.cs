@@ -15,6 +15,7 @@ public class ChaseState_mob : IState
         //set navmesh target to player pos
         target = PlayerStats.Instance.transform;
         //play running animation
+       // mob.animator.Play("run");
         Debug.Log("in chase state");
     }
 

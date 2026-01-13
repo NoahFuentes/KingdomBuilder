@@ -222,9 +222,9 @@ public class UIManager : MonoBehaviour
     {
         interactingWithUI = false;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<StarterAssetsInputs>().cursorInputForLook = true;
-        player.GetComponent<ThirdPersonController>().canMove = true;
-        player.GetComponent<ThirdPersonController>().canJump = true;
+       // player.GetComponent<StarterAssetsInputs>().cursorInputForLook = true;
+        //player.GetComponent<ThirdPersonController>().canMove = true;
+        //player.GetComponent<ThirdPersonController>().canJump = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -232,13 +232,13 @@ public class UIManager : MonoBehaviour
     {
         interactingWithUI = true;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        StarterAssetsInputs sai = player.GetComponent<StarterAssetsInputs>();
-        sai.look = Vector2.zero;
-        sai.cursorInputForLook = false;
+        //StarterAssetsInputs sai = player.GetComponent<StarterAssetsInputs>();
+        //sai.look = Vector2.zero;
+        //sai.cursorInputForLook = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-        player.GetComponent<ThirdPersonController>().canMove = false;
-        player.GetComponent<ThirdPersonController>().canJump = false;
+        //player.GetComponent<ThirdPersonController>().canMove = false;
+        //player.GetComponent<ThirdPersonController>().canJump = false;
     }
 
 

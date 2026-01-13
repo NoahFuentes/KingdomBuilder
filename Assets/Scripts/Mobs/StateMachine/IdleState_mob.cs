@@ -30,7 +30,7 @@ public class IdleState_mob : IState
 
     public void ExitState()
     {
-        //nothing
+        mob.agent.isStopped = false;
     }
 
 }

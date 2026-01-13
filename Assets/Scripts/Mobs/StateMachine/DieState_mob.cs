@@ -11,20 +11,25 @@ public class DieState_mob : IState
     }
     public void EnterState()
     {
-        //stop all other animations.
+        Debug.Log("in death state");
         //stop movement
+        mob.agent.isStopped = true;
+        mob.agent.updatePosition = false;
         //play death animation
+        //mob.animator.Play("death");
         //report to spawner
+        //mob.stats.spawner.<REMOVE SELF FROM SPAWNER MOB LIST>
     }
 
     public void TickState()
     {
-        //nothing
+        //nothing for now
     }
 
     public void ExitState()
     {
-        //nothing
+        mob.agent.isStopped = false;
+        mob.agent.updatePosition = true;
     }
 
 }

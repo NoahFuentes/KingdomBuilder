@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class WasHitState_mob : IState
 {
-    public float damageToTake;
+    //DAMAGING OF THE MOB IS DONE IN THE HURTBOX.TAKEDAMAGE() CALL **********NOT HERE!!!*********
+
+    private float hitStartTime;
 
     private readonly MobBase mob;
     public WasHitState_mob(MobBase mob)
@@ -11,20 +13,24 @@ public class WasHitState_mob : IState
     }
     public void EnterState()
     {
-        //stop all other animations.
+        Debug.Log("in wasHit state");
         //stop movement
+        mob.agent.isStopped = true;
+        mob.agent.updatePosition = false;
         //play hit animation
-        //reduce health by damage to take
+        //mob.animator.Play("hit");
+        hitStartTime = Time.time;
     }
 
     public void TickState()
     {
-        //nothing
+        if (Time.time - hitStartTime >= mob.stats.flinchDuration) mob.stateMachine.ChangeState(mob.reactionState);
     }
 
     public void ExitState()
     {
-        //nothing
+        mob.agent.isStopped = false;
+        mob.agent.updatePosition = true;
     }
 
 }

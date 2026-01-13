@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12983a5606d8f0449a440f59fd41a844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
   spawnPoint: {x: 0, y: 0, z: 0}
   maxHealth: 10
   currentHealth: 10
@@ -190,17 +191,23 @@ MonoBehaviour:
   avoidanceDist: 1
   avoidanceHeight: 2
   alertnessTrigger: {fileID: 1590502211353714662}
-  alertRange: 20
+  alertRange: 25
   alertTime: 1
   isStationary: 0
-  wanderRadius: 20
-  maxDistFromSpawn: 60
+  wanderRadius: 30
+  fleeDistance: 100
+  maxDistFromSpawn: 65
   isHostile: 1
   deagroRange: 40
   damageType: 0
   damage: 5
+  attackRate: 1.5
   attackDistance: 1
   isAttacking: 0
+  meleeResistance: 0
+  rangeResistance: 0
+  magicResistance: 0
+  flinchDuration: 2
 --- !u!114 &1341513532943035270
 MonoBehaviour:
   m_ObjectHideFlags: 0

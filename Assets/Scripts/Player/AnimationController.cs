@@ -31,6 +31,7 @@ public class AnimationController : MonoBehaviour
         tpc.canJump = true;
         animator.SetBool("isAttacking", false);
     }
+    /* REMOVE WHEN REAL DMG SYSTEM IS IN PLACE
     public void CheckHitBoxAnimEvent()
     {
         Weapon_SO weapon = PlayerStats.Instance.m_CurrentWeapon;
@@ -42,7 +43,6 @@ public class AnimationController : MonoBehaviour
 
         foreach(Collider target in targetsHit)
         {
-            //bad spot for this, but this is where we damgage enemies...
             MobBase mob = target.GetComponent<MobBase>();
             if(null == mob) continue;
 
@@ -50,6 +50,7 @@ public class AnimationController : MonoBehaviour
             mob.stateMachine.ChangeState(mob.hit);
         }
     }
+    */
     public void EnableWeaponTrailR()
     {
         playerWSWeaponR.GetComponentInChildren<TrailRenderer>().emitting = true;

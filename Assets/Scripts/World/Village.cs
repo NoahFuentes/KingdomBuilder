@@ -16,4 +16,9 @@ public class Village : MonoBehaviour
         if (enemies.Count <= 0)
             CompanionManager.Instance.SetCompanionAsSaved(companionToSave);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(testinput)) CompanionManager.Instance.SetCompanionAsSaved(companionToSave);
+    }
 }
