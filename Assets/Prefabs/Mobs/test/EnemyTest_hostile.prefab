@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 8040002241751057488}
   m_Layer: 0
   m_Name: alertnessTrigger
-  m_TagString: Untagged
+  m_TagString: alertTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

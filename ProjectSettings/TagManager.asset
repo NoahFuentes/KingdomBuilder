@@ -20,6 +20,7 @@ TagManager:
   - CinemachineTarget
   - CinemachineVC
   - Town Center
+  - alertTrigger
   layers:
   - Default
   - TransparentFX
