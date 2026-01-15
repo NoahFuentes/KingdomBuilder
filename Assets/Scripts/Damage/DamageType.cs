@@ -1,7 +1,8 @@
 
 public enum DamageType
 {
-    MELEE,
-    RANGED,
+    BLUNT,
+    SLASH,
+    PIERCE,
     MAGIC
 }

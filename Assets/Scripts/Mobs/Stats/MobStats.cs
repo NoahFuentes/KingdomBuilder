@@ -45,8 +45,9 @@ public class MobStats : MonoBehaviour
 
 
     [Header("=================TAKING DAMAGE STATS================")]
-    public float meleeResistance;
-    public float rangeResistance;
+    public float bluntResistance;
+    public float slashResistance;
+    public float pierceResistance;
     public float magicResistance;
     public float flinchDuration;
 

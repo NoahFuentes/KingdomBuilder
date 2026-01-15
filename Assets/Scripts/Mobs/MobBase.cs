@@ -32,11 +32,14 @@ public class MobBase : MonoBehaviour, IHurtBox
     private int CalcDamageToTake(int damage, DamageType damageType)
     {
         switch (damageType) {
-            case DamageType.MELEE:
-                return Mathf.RoundToInt(damage * (1f - stats.meleeResistance));
+            case DamageType.BLUNT:
+                return Mathf.RoundToInt(damage * (1f - stats.bluntResistance));
 
-            case DamageType.RANGED:
-                return Mathf.RoundToInt(damage * (1f - stats.rangeResistance));
+            case DamageType.SLASH:
+                return Mathf.RoundToInt(damage * (1f - stats.slashResistance));
+
+            case DamageType.PIERCE:
+                return Mathf.RoundToInt(damage * (1f - stats.pierceResistance));
 
             case DamageType.MAGIC:
                 return Mathf.RoundToInt(damage * (1f - stats.magicResistance));
