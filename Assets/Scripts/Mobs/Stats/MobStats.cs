@@ -60,6 +60,8 @@ public class MobStats : MonoBehaviour
 
     private void Awake()
     {
+        spawnPoint = transform.position;
+
         currentHealth = maxHealth;
 
         alertnessTrigger.isTrigger = true;

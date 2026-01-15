@@ -99,8 +99,8 @@ GameObject:
   - component: {fileID: 5082887186525789418}
   - component: {fileID: 8745817863846460588}
   - component: {fileID: 1341513532943035270}
-  m_Layer: 8
-  m_Name: EnemyTest_hostile
+  m_Layer: 0
+  m_Name: MobTest_hostile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   damageType: 0
   damage: 20
   attackRate: 1.5
-  attackDistance: 1
+  attackDistance: 2
   isAttacking: 0
   meleeResistance: 0
   rangeResistance: 0
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 4364838983509302228}
   - component: {fileID: 8026487808562360679}
   - component: {fileID: 2000784661972834395}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

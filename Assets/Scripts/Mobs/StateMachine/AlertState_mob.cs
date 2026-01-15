@@ -27,7 +27,7 @@ public class AlertState_mob : IState
     {
         if (Time.time - alertStartTime < mob.stats.alertTime) return;
         //check if player is in range still after alertTime has passed
-        if (Vector3.Distance(mob.transform.position, PlayerStats.Instance.transform.position) <= mob.stats.alertRange)
+        if (Vector3.Distance(mob.transform.position, PlayerStats.Instance.transform.position) <= mob.stats.alertRange + 1f)
             mob.stateMachine.ChangeState(mob.reactionState);
         else
             mob.stateMachine.ChangeState(mob.defaultState); //player is gone

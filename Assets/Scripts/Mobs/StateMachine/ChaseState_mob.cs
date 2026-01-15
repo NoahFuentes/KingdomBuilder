@@ -23,7 +23,10 @@ public class ChaseState_mob : IState
     {
         //if mob got to far from spawn pos, go to ReturnToSpawn state
         if (Vector3.Distance(mob.transform.position, mob.stats.spawnPoint) > mob.stats.maxDistFromSpawn)
+        {
             mob.stateMachine.ChangeState(mob.returnToSpawn);
+            return;
+        }
 
         float distToTarget = Vector3.Distance(mob.transform.position, target.position);
         //if target is within chase range
