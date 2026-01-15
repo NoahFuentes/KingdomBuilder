@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5082887186525789418}
   - component: {fileID: 8745817863846460588}
   - component: {fileID: 1341513532943035270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyTest_hostile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

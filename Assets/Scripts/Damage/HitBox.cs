@@ -6,7 +6,7 @@ public class HitBox : MonoBehaviour
     public int damage;
     public DamageType damageType;
 
-    public List<string> ignoreTags;
+    public LayerMask hitMask;
 
     private HashSet<IHurtBox> hitSet = new();
 
@@ -18,14 +18,11 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (ignoreTags.Contains(other.tag)) return;
-        Debug.Log("trigger with: "+ other.name);
+        if ((hitMask.value & (1 << other.gameObject.layer)) == 0) return;
         if (other.transform.parent.TryGetComponent<IHurtBox>(out var hurtBox))
         {
-            Debug.Log("found hurtbox");
             if (hitSet.Add(hurtBox))
             {
-                Debug.Log("added to set");
                 hurtBox.TakeHit(damage, damageType);
             }
         }

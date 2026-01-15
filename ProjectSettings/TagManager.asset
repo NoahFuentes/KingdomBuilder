@@ -20,7 +20,6 @@ TagManager:
   - CinemachineTarget
   - CinemachineVC
   - Town Center
-  - alertTrigger
   layers:
   - Default
   - TransparentFX
@@ -32,10 +31,10 @@ TagManager:
   - Resource
   - Enemy
   - Player
-  - Hostile
-  - Neutral
-  - Passive
-  - Skittish
+  - 
+  - 
+  - 
+  - 
   - NPC
   - Building
   - CityPath
