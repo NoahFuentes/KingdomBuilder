@@ -22,11 +22,28 @@ public class MobBase : MonoBehaviour, IHurtBox
 
     public void TakeHit(int damage, DamageType damageType)
     {
-        stats.currentHealth -= damage;
+        stats.currentHealth -= CalcDamageToTake(damage, damageType);
         if (stats.currentHealth <= 0)
             stateMachine.ChangeState(die);
         else
             stateMachine.ChangeState(hit);
+    }
+
+    private int CalcDamageToTake(int damage, DamageType damageType)
+    {
+        switch (damageType) {
+            case DamageType.MELEE:
+                return Mathf.RoundToInt(damage * (1f - stats.meleeResistance));
+
+            case DamageType.RANGED:
+                return Mathf.RoundToInt(damage * (1f - stats.rangeResistance));
+
+            case DamageType.MAGIC:
+                return Mathf.RoundToInt(damage * (1f - stats.magicResistance));
+
+            default:
+                return 0;
+        }
     }
 
     //UNITY FUNCTIONS

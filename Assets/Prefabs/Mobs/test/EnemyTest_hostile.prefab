@@ -181,8 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 0}
   spawnPoint: {x: 0, y: 0, z: 0}
-  maxHealth: 10
-  currentHealth: 10
+  maxHealth: 100
+  currentHealth: 100
   healthRegenTime: 5
   baseMovementSpeed: 5
   sprintMovementSpeed: 8
@@ -200,7 +200,7 @@ MonoBehaviour:
   isHostile: 1
   deagroRange: 40
   damageType: 0
-  damage: 5
+  damage: 20
   attackRate: 1.5
   attackDistance: 1
   isAttacking: 0
