@@ -29,13 +29,13 @@ public class AlertState_mob : IState
         //check if player is in range still after alertTime has passed
         if (Vector3.Distance(mob.transform.position, PlayerStats.Instance.transform.position) <= mob.stats.alertRange + 1f)
         {
-            Debug.Log("player found!");
+            //Debug.Log("player found!");
             mob.stateMachine.ChangeState(mob.reactionState);
             return;
         }
         else
         {
-            Debug.Log("player left");
+            //Debug.Log("player left");
             mob.stateMachine.ChangeState(mob.defaultState); //player is gone
             return;
         }

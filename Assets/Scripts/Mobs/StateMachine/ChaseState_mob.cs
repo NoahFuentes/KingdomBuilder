@@ -24,7 +24,7 @@ public class ChaseState_mob : IState
         //if mob got to far from spawn pos, go to ReturnToSpawn state
         if (Vector3.Distance(mob.transform.position, mob.stats.spawnPoint) > mob.stats.maxDistFromSpawn)
         {
-            Debug.Log("chase: mob traveled too far from its spawn");
+            //Debug.Log("chase: mob traveled too far from its spawn");
             mob.stateMachine.ChangeState(mob.returnToSpawn);
             return;
         }
@@ -37,14 +37,14 @@ public class ChaseState_mob : IState
         }
         else
         {
-            Debug.Log("chase: player got too far away");
+            //Debug.Log("chase: player got too far away");
             mob.stateMachine.ChangeState(mob.returnToSpawn);
             return;
         }
             //if target is within attack dist
         if (distToTarget <= mob.stats.attackDistance)
         {
-            Debug.Log("chase: in attacking distance");
+            //Debug.Log("chase: in attacking distance");
             mob.stateMachine.ChangeState(mob.attack);
             return;
         }
