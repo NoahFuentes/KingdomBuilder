@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FleeState_mob : IState
 {
@@ -20,12 +21,29 @@ public class FleeState_mob : IState
         //mob.animator.Play("run");
         //set destination to away from target
         Vector3 fleeDir = (mob.transform.position - target.position).normalized;
-        mob.agent.SetDestination(mob.transform.position + (fleeDir * mob.stats.fleeDistance));
+        fleeDir.y = 0;
+        Vector3 rawDestination = mob.transform.position + (fleeDir * mob.stats.fleeDistance);
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(rawDestination, out hit, 1000f, NavMesh.AllAreas))
+        {
+            // Snap only the Y to NavMesh, keep X/Z strict
+            Vector3 finalPosition = new Vector3(rawDestination.x, hit.position.y, rawDestination.z);
+            mob.agent.SetDestination(finalPosition);
+        }
+        else
+        {
+            Debug.LogWarning("No valid NavMesh Y found at this X/Z!");
+        }
     }
 
     public void TickState()
     {
-        if (mob.agent.remainingDistance <= mob.agent.stoppingDistance) mob.stateMachine.ChangeState(mob.returnToSpawn);
+        if (mob.agent.remainingDistance <= mob.agent.stoppingDistance)
+        {
+            mob.stateMachine.ChangeState(mob.returnToSpawn);
+            return;
+        }
     }
 
     public void ExitState()

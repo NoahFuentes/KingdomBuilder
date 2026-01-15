@@ -27,7 +27,11 @@ public class AttackState_mob : IState
         //keep attacking if player is in range
         if (Vector3.Distance(mob.transform.position, target.position) <= mob.stats.attackDistance) Attack();
         //go to reaction state if not in range
-        else mob.stateMachine.ChangeState(mob.reactionState);
+        else
+        {
+            mob.stateMachine.ChangeState(mob.reactionState);
+            return;
+        }
     }
 
     public void ExitState()

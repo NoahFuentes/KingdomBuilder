@@ -24,7 +24,11 @@ public class WasHitState_mob : IState
 
     public void TickState()
     {
-        if (Time.time - hitStartTime >= mob.stats.flinchDuration) mob.stateMachine.ChangeState(mob.reactionState);
+        if (Time.time - hitStartTime >= mob.stats.flinchDuration)
+        {
+            mob.stateMachine.ChangeState(mob.reactionState);
+            return;
+        }
     }
 
     public void ExitState()

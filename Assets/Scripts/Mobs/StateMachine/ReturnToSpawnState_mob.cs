@@ -21,7 +21,12 @@ public class ReturnToSpawnState_mob : IState
     public void TickState()
     {
         //if at spawn pos, go to default state (idle or wander)
-        if(mob.agent.remainingDistance <= mob.agent.stoppingDistance) mob.stateMachine.ChangeState(mob.defaultState);
+        if(mob.agent.remainingDistance <= mob.agent.stoppingDistance)
+        {
+            Debug.Log("rts: got to spawn");
+            mob.stateMachine.ChangeState(mob.defaultState);
+            return;
+        }
     }
 
     public void ExitState()
