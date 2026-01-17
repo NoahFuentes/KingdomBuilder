@@ -14,9 +14,9 @@ public class MobSpawnerBase : MonoBehaviour
     private bool playerIsInRange;
 
     [SerializeField] private float respawnTime;
-    private float lastKillTime;
+    [HideInInspector] public float lastKillTime;
 
-    private bool needRespawning;
+    [HideInInspector] public bool needRespawning;
 
     private void SpawnMobs() //spawns a mobToSpawn at each mobSpawnPosition
     {

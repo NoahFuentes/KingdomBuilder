@@ -80,7 +80,10 @@ MonoBehaviour:
   mobToSpawn: {fileID: 0}
   mobSpawnTransforms: []
   mobs: []
-  setActiveDistance: 0
+  setActiveDistance: 100
+  respawnTime: 20
+  lastKillTime: 0
+  needRespawning: 0
 --- !u!135 &7278828204625117876
 SphereCollider:
   m_ObjectHideFlags: 0
