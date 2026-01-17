@@ -3,7 +3,7 @@ using UnityEngine;
 public class MobStats : MonoBehaviour
 {
     [Header("===============BASE STATS===============")]
-    public GameObject spawner; //used to keep track of spawning logic
+    public MobSpawnerBase spawner; //used to keep track of spawning logic
     public Vector3 spawnPoint;
     public int maxHealth;
     public int currentHealth;
