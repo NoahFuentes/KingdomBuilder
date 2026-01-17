@@ -80,8 +80,8 @@ MonoBehaviour:
   mobToSpawn: {fileID: 0}
   mobSpawnTransforms: []
   mobs: []
-  setActiveDistance: 100
-  respawnTime: 20
+  setActiveDistance: 200
+  respawnTime: 300
   lastKillTime: 0
   needRespawning: 0
 --- !u!135 &7278828204625117876

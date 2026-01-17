@@ -23,7 +23,7 @@ public class MobSpawnerBase : MonoBehaviour
         GameObject mob;
         for (int i = 0; i < mobSpawnTransforms.Count; i++)
         {
-            mob = Instantiate(mobToSpawn, mobSpawnTransforms[i].position, mobSpawnTransforms[i].rotation);
+            mob = Instantiate(mobToSpawn, mobSpawnTransforms[i].position, mobSpawnTransforms[i].rotation, transform);
             mob.GetComponent<MobStats>().spawner = this;
             mob.GetComponent<MobStats>().spawnPoint = mobSpawnTransforms[i].position;
             mobs.Add(mob);
