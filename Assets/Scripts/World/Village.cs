@@ -15,10 +15,10 @@ public class Village : MonoBehaviour
         mobsAlive--;
         if (mobsAlive <= 0)
         {
-            CompanionManager.Instance.SetCompanionAsSaved(companionToSave);
             foreach(MobSpawnerBase spawner in spawners)
                 Destroy(spawner);
             Destroy(GetComponent<SphereCollider>());
+            CompanionManager.Instance.SetCompanionAsSaved(companionToSave); //instead of doing this, set the companion trapped as interactable
         }
     }
 
