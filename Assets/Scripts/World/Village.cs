@@ -5,18 +5,41 @@ public class Village : MonoBehaviour
 {
     [SerializeField] private string companionToSave; //Lumber Jack, Farmer, etc
 
-    [SerializeField] private List<GameObject> enemies;
+    [SerializeField] private int mobsAlive;
 
-    [SerializeField] private KeyCode testinput;
+    private MobSpawnerBase[] spawners;
 
-    //Call this from enemy death
-    public void TrackEnemyDeath(GameObject enemy)
+
+    private void TrackMobDeath()
     {
-        if (!enemies.Remove(enemy)) return;
-        if (enemies.Count <= 0)
+        mobsAlive--;
+        if (mobsAlive <= 0)
+        {
             CompanionManager.Instance.SetCompanionAsSaved(companionToSave);
+            foreach(MobSpawnerBase spawner in spawners)
+                Destroy(spawner);
+            Destroy(GetComponent<SphereCollider>());
+        }
     }
 
+    private void AddMobsAlive(int mobCount)
+    {
+        mobsAlive += mobCount;
+    }
+
+    //UNITY FUNCTIONS
+
+    private void Awake()
+    {
+        spawners = GetComponentsInChildren<MobSpawnerBase>();
+        foreach (MobSpawnerBase spawner in spawners)
+        {
+            spawner.respawnedMobs += AddMobsAlive;
+            spawner.mobDied += TrackMobDeath;
+        }
+    }
+
+    [SerializeField] private KeyCode testinput;
     private void Update()
     {
         if (Input.GetKeyDown(testinput)) CompanionManager.Instance.SetCompanionAsSaved(companionToSave);

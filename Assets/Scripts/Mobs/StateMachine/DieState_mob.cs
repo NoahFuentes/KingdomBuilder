@@ -18,8 +18,7 @@ public class DieState_mob : IState
         //play death animation
         //mob.animator.Play("death");
         //report to spawner
-        mob.stats.spawner.needRespawning = true;
-        mob.stats.spawner.lastKillTime = Time.time;
+        mob.stats.spawner.ReportMobDeath();
     }
 
     public void TickState()
