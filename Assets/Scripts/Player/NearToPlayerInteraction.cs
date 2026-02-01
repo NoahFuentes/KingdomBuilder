@@ -40,7 +40,7 @@ public class NearToPlayerInteraction : MonoBehaviour
         currentFocusedObject = null;
     }
 
-    private void FocusOnNewFocusObject(GameObject objectToFocusOn)
+    private void FocusOnNewFocusObject(GameObject objectToFocusOn) //TODO: dont do shader stuff, just show a pop up near the player with an interaction word based on what is focused on
     {
         if (objectToFocusOn.TryGetComponent<Building>(out Building building))
             if (building.isRestored) return;
@@ -101,22 +101,6 @@ public class NearToPlayerInteraction : MonoBehaviour
                 transform.parent.GetComponent<ThirdPersonController>().canAttack = false;
                 break;
         }
-        /*
-        if (res.isMinable)
-        {
-            //mine
-            animator.SetBool("isChopping", false);
-            animator.SetBool("isMining", true);
-
-        }
-        else
-        {
-            //chop
-            animator.SetBool("isMining", false);
-            animator.SetBool("isChopping", true);
-
-        }
-        */
         transform.parent.GetComponent<ThirdPersonController>().canJump = false;
         res.Interaction();
     } 
@@ -153,7 +137,7 @@ public class NearToPlayerInteraction : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //get all colliders with interactabel layer
+        //get all colliders with interactable layer
         Collider[] interactablesInRange = Physics.OverlapSphere(transform.position, interactionDistance, interactionMask);
         if (interactablesInRange.Length < 1)
         {

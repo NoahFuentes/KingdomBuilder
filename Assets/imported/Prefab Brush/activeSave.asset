@@ -15,33 +15,33 @@ MonoBehaviour:
   prefabList: []
   prefabData:
   - prefab: {fileID: 6472482104993175197, guid: 23cfd292dd2292b4889b7d0b539bbac9, type: 3}
-    selected: 1
+    selected: 0
   - prefab: {fileID: 5862405924426940943, guid: c32e71d04b3efee4c8b51ac32a9f0d52, type: 3}
-    selected: 1
+    selected: 0
   - prefab: {fileID: 3123003154188008992, guid: 16b06d38b02a08a47b4dc73cf2170e36, type: 3}
     selected: 1
   - prefab: {fileID: 1251633837437587517, guid: a843a6495ff298c468704aac7b54f069, type: 3}
-    selected: 1
+    selected: 0
   - prefab: {fileID: 8795537203286808627, guid: 4f8d5dccf650451429f16ab1a411c983, type: 3}
-    selected: 1
+    selected: 0
   - prefab: {fileID: 7127126856755748550, guid: b3dfd692508cb7945a8d73d87ce544c1, type: 3}
     selected: 1
   - prefab: {fileID: 494598984310106526, guid: 816de6b64cea5e14e8888a759f6faac4, type: 3}
-    selected: 1
+    selected: 0
   - prefab: {fileID: 5488659430540574960, guid: 77b637d43b8a8db4c8953750c3b86c3e, type: 3}
-    selected: 1
+    selected: 0
   - prefab: {fileID: 4797334568627606873, guid: 7456e05cb8ccd1b4b945965689533574, type: 3}
-    selected: 1
+    selected: 0
   - prefab: {fileID: 872305611457084623, guid: 4ee7a02bcec4dfc43bbbb32e0c700a07, type: 3}
-    selected: 1
+    selected: 0
   paintType: 0
-  brushSize: 89.4
+  brushSize: 26.1
   minBrushSize: 0.1
   maxBrushSize: 100
   paintDeltaDistance: 5
   maxPaintDeltaDistance: 10
   minPaintDeltaDistance: 2
-  prefabsPerStroke: 4
+  prefabsPerStroke: 1
   maxprefabsPerStroke: 100
   minprefabsPerStroke: 1
   spawnHeight: 10
@@ -57,7 +57,7 @@ MonoBehaviour:
   requiredTagMask: 0
   requiredLayerMask: 0
   minRequiredSlope: 0
-  maxRequiredSlope: 25.637913
+  maxRequiredSlope: 30.383675
   prefabOriginOffset: {x: 0, y: 0, z: 0}
   prefabRotationOffset: {x: 0, y: 0, z: 0}
   draggingAction: 0
@@ -74,16 +74,16 @@ MonoBehaviour:
   maxYRotation: 360
   minZRotation: 0
   maxZRotation: 0
-  scaleType: 1
+  scaleType: 2
   scaleApplicationType: 1
-  minScale: 1
-  maxScale: 2
-  minXScale: 1
-  maxXScale: 2
-  minYScale: 1
-  maxYScale: 2
-  minZScale: 1
-  maxZScale: 2
+  minScale: 2
+  maxScale: 4
+  minXScale: 3
+  maxXScale: 4
+  minYScale: 4
+  maxYScale: 5
+  minZScale: 3
+  maxZScale: 4
   parentList: []
   eraseBrushSize: 20
   minEraseBrushSize: 0.1
