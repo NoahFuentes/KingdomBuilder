@@ -1,25 +1,28 @@
 using UnityEngine;
-using StarterAssets;
+using TMPro;
 
 public class NearToPlayerInteraction : MonoBehaviour
 {
     public static NearToPlayerInteraction Instance;
 
-    [SerializeField] private Material focusShaderMat;
-
     public GameObject currentFocusedObject;
     private Transform playerTransform;
 
-    //[SerializeField] private Transform checkTransform;
     [SerializeField] private float interactionDistance;
     private LayerMask interactionMask;
 
     [SerializeField] private LayerMask npcMask;
+    [SerializeField] private string npcInteractPrompt;
     [SerializeField] private LayerMask buildingRestorationMask;
+    [SerializeField] private string buildingInteractPrompt;
     [SerializeField] private LayerMask resourceMask;
+    [SerializeField] private string resourceInteractPrompt_pickUp;
+    [SerializeField] private string resourceInteractPrompt_mine;
+    [SerializeField] private string resourceInteractPrompt_chop;
 
-    private MeshRenderer focusedObjectRenderer;
-    private Material[] focusedObjOriginalMats;
+    [SerializeField] private GameObject interactionPrompt;
+    [SerializeField] private TextMeshProUGUI promptString;
+
 
     private void ChangeFocusedObject(GameObject objectToFocusOn)
     {
@@ -33,30 +36,47 @@ public class NearToPlayerInteraction : MonoBehaviour
 
     private void ClearFocusedObject()
     {
-        if (null == currentFocusedObject) return;
-        //take off focus shader
-        focusedObjectRenderer.materials = focusedObjOriginalMats;
-
+        if (!currentFocusedObject || !interactionPrompt) return;
+        interactionPrompt.SetActive(false);
         currentFocusedObject = null;
     }
 
-    private void FocusOnNewFocusObject(GameObject objectToFocusOn) //TODO: dont do shader stuff, just show a pop up near the player with an interaction word based on what is focused on
+    private void FocusOnNewFocusObject(GameObject objectToFocusOn) 
     {
-        if (objectToFocusOn.TryGetComponent<Building>(out Building building))
-            if (building.isRestored) return;
         currentFocusedObject = objectToFocusOn;
-        focusedObjectRenderer = currentFocusedObject.GetComponentInChildren<MeshRenderer>();
-        focusedObjOriginalMats = focusedObjectRenderer.materials;
+        if (null == currentFocusedObject) return;
+        if (currentFocusedObject.TryGetComponent<Resource>(out Resource res))
+        {
+            switch (res.interactType)
+            {
+                case ResourceType.HARVESTABLE:
+                    PromptInteraction(resourceInteractPrompt_pickUp);
+                    break;
+                case ResourceType.MINEABLE:
+                    PromptInteraction(resourceInteractPrompt_mine);
+                    break;
+                case ResourceType.CHOPPABLE:
+                    PromptInteraction(resourceInteractPrompt_chop);
+                    break;
+            }
+        }
+        else if (currentFocusedObject.TryGetComponent<Companion>(out Companion companion))
+        {
+            PromptInteraction(companion.info.companionName);
+        }
+        else if (currentFocusedObject.TryGetComponent<Building>(out Building building))
+        {
+            if (building.isRestored) return;
+            PromptInteraction(buildingInteractPrompt + " " + building.info.buildingName);
+        }
 
-        //set focus shader
-        Material[] newMats = new Material[focusedObjOriginalMats.Length + 1];
-        for (int i = 0; i < focusedObjOriginalMats.Length; i++)
-            newMats[i] = focusedObjOriginalMats[i];
+    }
 
-        // Add the outline as the last material
-        newMats[newMats.Length - 1] = focusShaderMat;
-
-        focusedObjectRenderer.materials = newMats;
+    private void PromptInteraction(string prompt)
+    {
+        if (!promptString || !interactionPrompt) return;
+        promptString.text = prompt;
+        interactionPrompt.SetActive(true);
     }
 
     private void InteractWithFocusedObject()
@@ -97,11 +117,8 @@ public class NearToPlayerInteraction : MonoBehaviour
                 animator.SetBool("isChopping", false);
                 animator.SetBool("isMining", false);
                 animator.SetTrigger("harvest");
-                transform.parent.GetComponent<ThirdPersonController>().canMove = false;
-                transform.parent.GetComponent<ThirdPersonController>().canAttack = false;
                 break;
         }
-        transform.parent.GetComponent<ThirdPersonController>().canJump = false;
         res.Interaction();
     } 
     private void HandleNPCInteraction(Companion companion)
