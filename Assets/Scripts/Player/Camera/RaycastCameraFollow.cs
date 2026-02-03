@@ -8,19 +8,19 @@ public class RaycastCameraFollow : MonoBehaviour
 
     [Header("Orbit Settings")]
     public float mouseSensitivity = 2f; // Mouse look sensitivity
-    public float minPitch = -30f;       // How far down you can look
-    public float maxPitch = 60f;        // How far up you can look
-    public Vector3 pivotOffset = new Vector3(0, 1.5f, 0); // Offset for orbit pivot
+    [SerializeField] private float minPitch = -30f;       // How far down you can look
+    [SerializeField] private float maxPitch = 60f;        // How far up you can look
+    [SerializeField] private Vector3 pivotOffset = new Vector3(0, 1.5f, 0); // Offset for orbit pivot
 
     [Header("Zoom Settings")]
-    public float minZoom = 2f;          // Closest zoom distance
-    public float maxZoom = 8f;          // Farthest zoom distance
-    public float zoomSpeed = 2f;        // How fast zoom reacts to scroll
+    [SerializeField] private float minZoom = 4f;          // Closest zoom distance
+    [SerializeField] private float maxZoom = 12f;          // Farthest zoom distance
+    [SerializeField] private float zoomSpeed = 2f;        // How fast zoom reacts to scroll
     private float targetZoom;           // Desired zoom distance
 
     [Header("Camera Settings")]
     public LayerMask collisionMask;     // Layers that block camera
-    public float smoothSpeed = 10f;     // Smoothing for camera movement
+    //public float smoothSpeed = 10f;     // Smoothing for camera movement
 
     private float yaw;
     private float pitch;
@@ -34,8 +34,8 @@ public class RaycastCameraFollow : MonoBehaviour
 
         targetZoom = Mathf.Clamp((minZoom + maxZoom) * 0.5f, minZoom, maxZoom); // Start at mid zoom
 
-        //Cursor.lockState = CursorLockMode.Locked; // Lock cursor (optional)
-        //Cursor.visible = false;                   // Hide cursor (optional)
+        Cursor.lockState = CursorLockMode.Locked; // Lock cursor (optional)
+        Cursor.visible = false;                   // Hide cursor (optional)
 
         character = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -74,7 +74,7 @@ public class RaycastCameraFollow : MonoBehaviour
         }
 
         // Smooth camera movement
-        cameraTransform.position = Vector3.Lerp(cameraTransform.position, targetPos, smoothSpeed * Time.deltaTime);
+        cameraTransform.position = targetPos;
 
         // Always look at the pivot
         cameraTransform.LookAt(rayStart);

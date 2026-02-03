@@ -44170,13 +44170,12 @@ MonoBehaviour:
   minPitch: -30
   maxPitch: 60
   pivotOffset: {x: 0, y: 1.5, z: 0}
-  minZoom: 2
-  maxZoom: 8
-  zoomSpeed: 2
+  minZoom: 4
+  maxZoom: 12
+  zoomSpeed: 3
   collisionMask:
     serializedVersion: 2
     m_Bits: 32960
-  smoothSpeed: 10
 --- !u!1001 &6974348092493968095
 PrefabInstance:
   m_ObjectHideFlags: 0
