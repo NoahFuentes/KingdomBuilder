@@ -21,9 +21,10 @@ public class PlayerStats : MonoBehaviour
     public bool m_ShouldRegenStamina = false;
 
     [Header("Movement info")]
-    public float m_BaseMovementSpeed = 10;
+    public float m_BaseMovementSpeed = 0.1f;
     public float m_SprintSpeedMult = 1.4f;
     public float m_SprintStaminaCost = 0.1f;
+    public float m_InAirSpeed = 0.03f;
 
     public Animator m_Animator;
 

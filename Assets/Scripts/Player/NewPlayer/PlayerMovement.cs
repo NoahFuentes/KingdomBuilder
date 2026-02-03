@@ -1,117 +1,89 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("References")]
-    public Transform cameraTransform;
+    public static PlayerMovement Instance;
 
-    [Header("Movement")]
-    public float gravity = -20f;
-
-    [Header("Slope")]
-    [Range(0f, 89f)] public float maxSlopeAngle = 50f;
-    [Range(0f, 89f)] public float slowdownStartAngle = 35f;
-    public float groundCheckDistance = 1.5f;
-
+    private PlayerStats stats;
     private CharacterController controller;
-    private Vector3 velocity;
-    private Vector3 groundNormal = Vector3.up;
 
-    void Awake()
+    private Vector3 moveInput;
+
+     public bool canMove;
+     public bool canJump;
+     public bool isGrounded;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayerMask;
+
+    [SerializeField] private float gravity;
+
+     public float currentMovementSpeed;
+
+    private Vector3 GetGroundNormal()
     {
+        if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.25f))
+            return hit.normal;
+        return Vector3.up;
+    }
+
+    //UNITY FUNCTIONS
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+    private void Start()
+    {
+        canMove = true;
+
+        stats = PlayerStats.Instance;
+        currentMovementSpeed = stats.m_BaseMovementSpeed;
+
         controller = GetComponent<CharacterController>();
     }
-
-    void Update()
+    private void Update() //get inputs
     {
-        UpdateGroundNormal();
-        HandleMovement();
-        ApplyGravity();
-    }
+        if (!canMove) return;
 
-    void UpdateGroundNormal()
-    {
-        if (!controller.isGrounded)
-        {
-            groundNormal = Vector3.up;
-            return;
-        }
 
-        RaycastHit hit;
-        Vector3 origin = transform.position + Vector3.up * 0.2f;
-
-        if (Physics.Raycast(origin, Vector3.down, out hit, groundCheckDistance))
-            groundNormal = hit.normal;
+        //Get correct movespeed
+        isGrounded = Physics.CheckSphere(groundCheck.position, 0.25f, groundLayerMask);
+        if (!isGrounded)
+            currentMovementSpeed = stats.m_InAirSpeed;
+        else if (Input.GetKey(KeyCode.LeftShift))
+            currentMovementSpeed = stats.m_BaseMovementSpeed * stats.m_SprintSpeedMult;
         else
-            groundNormal = Vector3.up;
-    }
+            currentMovementSpeed = stats.m_BaseMovementSpeed;
 
-    void HandleMovement()
+        //gather move input and apply speed to normalized move vector
+        moveInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        if(moveInput.magnitude > 1f) moveInput.Normalize();
+        moveInput *= currentMovementSpeed;
+        
+    }
+    private void FixedUpdate() //handle movement
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        //apply gravity
+        if(!isGrounded)
+            controller.Move(new Vector3(0f, -gravity, 0f));
 
-        Vector3 camForward = cameraTransform.forward;
-        Vector3 camRight = cameraTransform.right;
-
-        camForward.y = 0f;
-        camRight.y = 0f;
-        camForward.Normalize();
-        camRight.Normalize();
-
-        // ?? Authoritative input direction (XZ only)
-        Vector3 inputDir = camForward * v + camRight * h;
-
-        if (inputDir.sqrMagnitude < 0.0001f)
-            return;
-
-        inputDir.Normalize();
-
-        // --- Directional slope calculation ---
-        // Sample slope in the direction of movement
-        Vector3 testDir = inputDir;
-        testDir.y = -(groundNormal.x * testDir.x + groundNormal.z * testDir.z) / groundNormal.y;
-
-        float directionalSlopeAngle = Vector3.Angle(
-            new Vector3(testDir.x, 0f, testDir.z),
-            testDir
-        );
-
-        bool isUphill = testDir.y > 0f;
-
-        float slopeMultiplier = 1f;
-
-        if (isUphill && directionalSlopeAngle > slowdownStartAngle)
-        {
-            slopeMultiplier = Mathf.InverseLerp(
-                maxSlopeAngle,
-                slowdownStartAngle,
-                directionalSlopeAngle
-            );
-
-            if (directionalSlopeAngle > maxSlopeAngle)
-                return; // blocked ONLY in this direction
-        }
-
-        // --- Final movement: SAME direction, Y solved ---
-        Vector3 finalMove = inputDir;
-
-        finalMove.y = -(groundNormal.x * finalMove.x + groundNormal.z * finalMove.z) / groundNormal.y;
-
-        controller.Move(finalMove * PlayerStats.Instance.m_BaseMovementSpeed * slopeMultiplier * Time.deltaTime);
+        Vector3 groundNormal = GetGroundNormal();
+        Vector3 slopeMove = Vector3.ProjectOnPlane(moveInput, groundNormal);
+        controller.Move(slopeMove);
     }
+    
 
 
 
 
 
-    void ApplyGravity()
-    {
-        if (controller.isGrounded && velocity.y < 0f)
-            velocity.y = -2f;
 
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-    }
+
+
+    //MAKE IT DIRECTIONAL TO THE CAMERA
+    //ADD GRAVITY
+    //TURN THE CHARACTER
+
+    //ADD JUMPING
+
 }

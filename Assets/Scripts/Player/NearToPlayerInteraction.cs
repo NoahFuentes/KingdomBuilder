@@ -62,7 +62,7 @@ public class NearToPlayerInteraction : MonoBehaviour
         }
         else if (currentFocusedObject.TryGetComponent<Companion>(out Companion companion))
         {
-            PromptInteraction(companion.info.companionName);
+            PromptInteraction(npcInteractPrompt + " with " + companion.info.companionName + " the " + companion.info.occupation);
         }
         else if (currentFocusedObject.TryGetComponent<Building>(out Building building))
         {
