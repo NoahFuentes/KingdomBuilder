@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
 
     private Vector3 moveInput;
+    private Transform cam;
 
      public bool canMove;
      public bool canJump;
@@ -34,12 +35,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
-        canMove = true;
-
         stats = PlayerStats.Instance;
         currentMovementSpeed = stats.m_BaseMovementSpeed;
 
         controller = GetComponent<CharacterController>();
+
+        cam = Camera.main.transform;
     }
     private void Update() //get inputs
     {
@@ -55,8 +56,13 @@ public class PlayerMovement : MonoBehaviour
         else
             currentMovementSpeed = stats.m_BaseMovementSpeed;
 
-        //gather move input and apply speed to normalized move vector
-        moveInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        //gather move input and apply speed to normalized move vector based on camera rotation
+        Vector3 camForward = cam.forward;
+        camForward.y = 0f;
+        Vector3 camRight = cam.right;
+        camRight.y = 0f;
+
+        moveInput = (camRight * Input.GetAxis("Horizontal")) + (camForward *Input.GetAxis("Vertical"));
         if(moveInput.magnitude > 1f) moveInput.Normalize();
         moveInput *= currentMovementSpeed;
         
@@ -78,10 +84,6 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
-
-    //MAKE IT DIRECTIONAL TO THE CAMERA
-    //ADD GRAVITY
     //TURN THE CHARACTER
 
     //ADD JUMPING
