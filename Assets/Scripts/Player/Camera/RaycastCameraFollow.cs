@@ -3,8 +3,8 @@ using UnityEngine;
 public class RaycastCameraFollow : MonoBehaviour
 {
     [Header("References")]
-    public Transform character;         // The target to follow
-    public Transform cameraTransform;   // The camera to move
+    [SerializeField] private Transform character;         // The target to follow
+    [SerializeField] private Transform cameraTransform;   // The camera to move
 
     [Header("Orbit Settings")]
     public float mouseSensitivity = 2f; // Mouse look sensitivity
@@ -19,8 +19,8 @@ public class RaycastCameraFollow : MonoBehaviour
     private float targetZoom;           // Desired zoom distance
 
     [Header("Camera Settings")]
-    public LayerMask collisionMask;     // Layers that block camera
-    //public float smoothSpeed = 10f;     // Smoothing for camera movement
+    [SerializeField] private LayerMask collisionMask;     // Layers that block camera
+    [SerializeField] private float collisionInsetDistance;
 
     private float yaw;
     private float pitch;
@@ -68,9 +68,9 @@ public class RaycastCameraFollow : MonoBehaviour
         Vector3 targetPos = rayStart + rayDir * targetZoom;
 
         // Raycast to prevent clipping into walls
-        if (Physics.Raycast(rayStart, rayDir, out RaycastHit hit, targetZoom, collisionMask))
+        if (Physics.SphereCast(rayStart, collisionInsetDistance, rayDir, out RaycastHit hit, targetZoom, collisionMask))
         {
-            targetPos = hit.point;
+            targetPos = hit.point + hit.normal * collisionInsetDistance;
         }
 
         // Smooth camera movement
