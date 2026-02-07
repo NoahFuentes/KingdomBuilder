@@ -119356,13 +119356,6 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.3
-    functionName: PlayPlayerSoundByName
-    data: attack
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 0.4
     functionName: EnableWeaponTrailR
     data: 
@@ -119370,8 +119363,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.43333334
-    functionName: CheckHitBoxAnimEvent
+  - time: 0.4
+    functionName: EnableWeaponHitBox
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -119379,6 +119372,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.5
     functionName: DisableWeaponTrailR
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: DisableWeaponHitBox
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

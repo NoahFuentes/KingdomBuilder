@@ -26,9 +26,8 @@ public class AnimationController : MonoBehaviour
     }
     public void FinishAttackAnimEvent()
     {
-        ThirdPersonController tpc = GetComponent<ThirdPersonController>();
-        tpc.canMove = true;
-        tpc.canJump = true;
+        PlayerMovement.Instance.canMove = true;
+        PlayerMovement.Instance.canJump = true;
         animator.SetBool("isAttacking", false);
     }
     /* REMOVE WHEN REAL DMG SYSTEM IS IN PLACE

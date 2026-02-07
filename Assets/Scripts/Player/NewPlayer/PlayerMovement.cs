@@ -10,10 +10,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveInput;
     private Vector3 velocity;
     private Transform cam;
+    private Animator animator;
 
-     public bool canMove;
-     public bool canJump;
-     public bool isGrounded;
+
+    [HideInInspector] public bool canMove;
+    [HideInInspector] public bool canJump;
+    [HideInInspector] public bool isGrounded;
 
     [Header("Player Grounding")]
     [SerializeField] private Transform groundCheck;
@@ -55,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         currentMovementSpeed = stats.m_BaseMovementSpeed;
 
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
 
         cam = Camera.main.transform;
     }
@@ -101,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
 
             velocity.x = wishMove.x * currentMovementSpeed;
             velocity.z = wishMove.z * currentMovementSpeed;
+            animator.SetFloat("Speed", (new Vector3(velocity.x, 0f, velocity.z).magnitude) / (stats.m_BaseMovementSpeed * stats.m_SprintSpeedMult));
         }
         else
         {

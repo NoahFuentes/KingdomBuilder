@@ -745,7 +745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3374245458340424278}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.3, y: 105.55, z: -70}
   m_LocalScale: {x: 1.4243, y: 1.4243, z: 1.4243}
   m_ConstrainProportionsScale: 0
@@ -767,7 +767,7 @@ Animator:
   m_GameObject: {fileID: 3374245458340424278}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 36078ab0369161e49a29d349ae3e0739, type: 3}
-  m_Controller: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5d4a25d5083e82f40a7edeb3aede3846, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_StaminaRegenDelay: 0.5
   m_ShouldRegenStamina: 0
   m_BaseMovementSpeed: 10
-  m_SprintSpeedMult: 1.5
+  m_SprintSpeedMult: 1.3
   m_SprintStaminaCost: 0.1
   m_InAirSpeed: 5
   m_Animator: {fileID: 0}
