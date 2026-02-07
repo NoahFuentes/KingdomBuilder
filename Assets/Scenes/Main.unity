@@ -23014,7 +23014,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1084607588}
   m_Layer: 0
-  m_Name: Trees
+  m_Name: Trees (DELETE?)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25886,12 +25886,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1209032810}
   m_Layer: 0
-  m_Name: wall parent
+  m_Name: wall parent (DELETE?)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1209032810
 Transform:
   m_ObjectHideFlags: 0
