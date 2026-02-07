@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
 
     private Vector3 moveInput;
+    private Vector3 velocity;
     private Transform cam;
 
      public bool canMove;
@@ -20,20 +21,22 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float gravity;
     [SerializeField] private float maxFallSpeed;
-    private float currentFallSpeed;
+    [SerializeField] private float airDrag;
 
     [Header("Movement")]
      public float currentMovementSpeed;
     [SerializeField] private float turnSpeed;
     private float currentRotationalVel;
     [SerializeField] private float maxSlope;
-    private Quaternion targetRotation;
+    [SerializeField] private float jumpHeight;
+    private bool jumpRequested = false;
 
     private Vector3 GetGroundNormal()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.25f, groundLayerMask))
+        if(Physics.Raycast(groundCheck.position, Vector3.down, out RaycastHit hit, 0.5f, groundLayerMask))
         {
             float angle = Vector3.Angle(hit.normal, Vector3.up);
+            Debug.Log(angle);
             if (angle <= maxSlope)
                 return hit.normal;
         }
@@ -70,41 +73,70 @@ public class PlayerMovement : MonoBehaviour
             currentMovementSpeed = stats.m_BaseMovementSpeed;
 
         //gather move input and apply speed to normalized move vector based on camera rotation
-        Vector3 camForward = cam.forward;
-        camForward.y = 0f;
-        Vector3 camRight = cam.right;
-        camRight.y = 0f;
+        Vector3 camForward = Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized;
+        Vector3 camRight = Vector3.ProjectOnPlane(cam.right, Vector3.up).normalized;
 
         moveInput = (camRight * Input.GetAxis("Horizontal")) + (camForward * Input.GetAxis("Vertical"));
         if(moveInput.magnitude > 1f) moveInput.Normalize();
-        moveInput *= currentMovementSpeed;
         
+        if (canJump && Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            jumpRequested = true;
+        }
     }
     private void FixedUpdate() //handle movement
     {
-        //apply gravity if not grounded
-        if (!isGrounded)
+        if(jumpRequested && isGrounded)
         {
-            currentFallSpeed = Mathf.Min(currentFallSpeed + gravity, maxFallSpeed);
-            controller.Move(new Vector3(0f, -currentFallSpeed, 0f));
+            jumpRequested = false;
+            velocity.y = jumpHeight;
+        }
+
+
+        if (isGrounded)
+        {
+            // Build velocity from input only while grounded
+            Vector3 groundNormal = GetGroundNormal();
+            Vector3 wishMove = Vector3.ProjectOnPlane(moveInput, groundNormal);
+
+            velocity.x = wishMove.x * currentMovementSpeed;
+            velocity.z = wishMove.z * currentMovementSpeed;
         }
         else
         {
-            currentFallSpeed = 0f;
+            // AIR: preserve existing X/Z momentum
+            // Optional: small air control
+            Vector3 horizontal = new Vector3(velocity.x, 0f, velocity.z);
+            horizontal *= Mathf.Clamp01(1f - airDrag * Time.fixedDeltaTime);
+
+            Vector3 controlForce = moveInput * stats.m_InAirSpeed * Time.fixedDeltaTime;
+            horizontal += controlForce;
+
+            velocity.x = horizontal.x;
+            velocity.z = horizontal.z;
+            //velocity.x = Mathf.Lerp(velocity.x, airWish.x, airControl);
+            //velocity.z = Mathf.Lerp(velocity.z, airWish.z, airControl);
+
+            // Gravity
+            //velocity.y = Mathf.Lerp(velocity.y, -maxFallSpeed, gravity);
+            velocity.y -= gravity * Time.fixedDeltaTime;
+            velocity.y = Mathf.Max(velocity.y, -maxFallSpeed);
         }
 
-        //face move direction
-        if(moveInput.magnitude > 0)
+        Vector3 flatVel = new Vector3(velocity.x, 0, velocity.z);
+        if (flatVel.magnitude > 0.1f)
         {
-            float targetAngle = Mathf.Atan2(moveInput.x, moveInput.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref currentRotationalVel, 1f/turnSpeed);
+            float targetAngle = Mathf.Atan2(flatVel.x, flatVel.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(
+                transform.eulerAngles.y,
+                targetAngle,
+                ref currentRotationalVel,
+                1f / turnSpeed
+            );
             transform.rotation = Quaternion.Euler(0, angle, 0);
         }
 
-        //move based on ground normal
-        Vector3 groundNormal = GetGroundNormal();
-        Vector3 slopeMove = Vector3.ProjectOnPlane(moveInput, groundNormal);
-        controller.Move(slopeMove);
+        controller.Move(velocity * Time.fixedDeltaTime);
     }
     
 
