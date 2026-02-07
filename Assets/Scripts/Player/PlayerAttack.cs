@@ -5,7 +5,7 @@ using StarterAssets;
 public class PlayerAttack : MonoBehaviour
 {
     private PlayerInteractions pi;
-    private ThirdPersonController tpc;
+    private PlayerMovement movement;
     private Animator animator;
     //[SerializeField] private LayerMask attackLayer;
 
@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour
     private float lastAttackedTime;
 
 
-    public void StartAttack()
+    public void Attack()
     {
         //BAIL CASES
         if (isAttacking) return;
@@ -29,13 +29,23 @@ public class PlayerAttack : MonoBehaviour
         lastAttackedTime = Time.time;
         pi.ReduceStamina(PlayerStats.Instance.m_CurrentWeapon.staminaCost);
         //disable movement and stop animations
-        tpc.canMove = false;
+        movement.canMove = false;
+        movement.canJump = false;
         animator.SetBool("isMining", false);
         animator.SetBool("isChopping", false);
         //face attack direction
         FaceCameraDir();
-        //start dash (dash animation should check for collision or end of range and attack)
-        Attack();
+        animator.SetTrigger("attack");
+        /*
+        Debug.Log("Attacked with " + ps.m_CurrentWeapon.weaponName);
+        Debug.Log("Damage: " + ps.m_CurrentWeapon.damage);
+        Debug.Log("Dmg Type: " + ps.m_CurrentWeapon.dmgType);
+        Debug.Log("Range: " + ps.m_CurrentWeapon.attackRange);
+        Debug.Log("Type: " + ps.m_CurrentWeapon.weaponType);
+        Debug.Log("Dash Distance: " + ps.m_CurrentWeapon.dashDistance);
+        Debug.Log("Dash Speed: " + ps.m_CurrentWeapon.dashSpeed);
+        Debug.Log("Knockback: " + ps.m_CurrentWeapon.knockBackDist);
+        */
     }
     public void FaceCameraDir()
     {
@@ -50,29 +60,13 @@ public class PlayerAttack : MonoBehaviour
             transform.rotation = targetRotation;
         }
     }
-    private void Attack()
-    {
-        tpc.canJump = false;
-        animator.SetTrigger("attack"); //attack animation needs to set isAttacking to false
-        
-        /*
-        Debug.Log("Attacked with " + ps.m_CurrentWeapon.weaponName);
-        Debug.Log("Damage: " + ps.m_CurrentWeapon.damage);
-        Debug.Log("Dmg Type: " + ps.m_CurrentWeapon.dmgType);
-        Debug.Log("Range: " + ps.m_CurrentWeapon.attackRange);
-        Debug.Log("Type: " + ps.m_CurrentWeapon.weaponType);
-        Debug.Log("Dash Distance: " + ps.m_CurrentWeapon.dashDistance);
-        Debug.Log("Dash Speed: " + ps.m_CurrentWeapon.dashSpeed);
-        Debug.Log("Knockback: " + ps.m_CurrentWeapon.knockBackDist);
-        */
-    }
 
     //UNITY FUNCTIONS
 
     private void Start()
     {
         pi = GetComponent<PlayerInteractions>();
-        tpc = GetComponent<ThirdPersonController>();
+        movement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
         
         isAttacking = false;
@@ -82,9 +76,9 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject() || UIManager.Instance.interactingWithUI || !tpc.Grounded || !tpc.canAttack) return;
+            if (EventSystem.current.IsPointerOverGameObject() || UIManager.Instance.interactingWithUI || !movement.isGrounded) return;
             
-            StartAttack();
+            Attack();
         }
     }
 }

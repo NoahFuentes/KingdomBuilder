@@ -2895,6 +2895,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2313990932069655706, guid: 16b06d38b02a08a47b4dc73cf2170e36, type: 3}
   m_PrefabInstance: {fileID: 1304616483}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &142100928 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 331393744922686790, guid: d0a2df7c5de46414da6592aff9803379, type: 3}
+  m_PrefabInstance: {fileID: 7599563994191032071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &144037301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2313990932069655706, guid: 16b06d38b02a08a47b4dc73cf2170e36, type: 3}
@@ -11445,6 +11450,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537602133}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &543108900 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3411778262462944289, guid: d0a2df7c5de46414da6592aff9803379, type: 3}
+  m_PrefabInstance: {fileID: 7599563994191032071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &544598107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43429,11 +43439,11 @@ PrefabInstance:
     - target: {fileID: 2644544291888612008, guid: 2008d899773a52642a24d1aa8b510c5a, type: 3}
       propertyPath: leftItemSpawn
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 142100928}
     - target: {fileID: 2644544291888612008, guid: 2008d899773a52642a24d1aa8b510c5a, type: 3}
       propertyPath: rightItemSpawn
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 543108900}
     - target: {fileID: 2644544291888612008, guid: 2008d899773a52642a24d1aa8b510c5a, type: 3}
       propertyPath: weaponCraftedStates.Array.size
       value: 2

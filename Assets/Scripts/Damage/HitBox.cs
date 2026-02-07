@@ -16,6 +16,7 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.transform.parent) return;
         if (other.transform.parent.TryGetComponent<IHurtBox>(out var hurtBox))
         {
             if (hitSet.Add(hurtBox))

@@ -94,35 +94,11 @@ public class PlayerInteractions : MonoBehaviour
     }
 
 
+    #endregion
     public void killPlayer()
     {
         gameObject.SetActive(false);
     }
-    #endregion
 
-    /*
-    public void EquipWeapon(Weapon_SO weapon)
-    {
-        PlayerStats.Instance.m_CurrentWeapon = weapon;
-        animator.runtimeAnimatorController = weapon.animController;
-        if (rightItemSpawn.childCount != 0)
-        {
-            //remove old weapon model
-            Destroy(rightItemSpawn.GetChild(0).gameObject);
-        }
-        if (leftItemSpawn.childCount != 0)
-        {
-            //remove old weapon model
-            Destroy(leftItemSpawn.GetChild(0).gameObject);
-        }
-        //add new weapon model
-        if (null != weapon.modelRight)
-            AnimationController.Instance.playerWSWeaponR = Instantiate(weapon.modelRight, rightItemSpawn);
-        if (null != weapon.modelLeft)
-            AnimationController.Instance.playerWSWeaponL = Instantiate(weapon.modelLeft, leftItemSpawn);
-
-        //TODO: update UI sprite
-    }
-    */
 
 }

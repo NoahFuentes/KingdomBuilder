@@ -51,6 +51,21 @@ public class AnimationController : MonoBehaviour
         }
     }
     */
+
+    public void EnableWeaponHitBox()
+    {
+        if(playerWSWeaponR)
+            playerWSWeaponR.GetComponentInChildren<HitBox>().enabled = true;
+        if(playerWSWeaponL)
+            playerWSWeaponL.GetComponentInChildren<HitBox>().enabled = true;
+    }
+    public void DisableWeaponHitBox()
+    {
+        if(playerWSWeaponR)
+            playerWSWeaponR.GetComponentInChildren<HitBox>().enabled = false;
+        if(playerWSWeaponL)
+            playerWSWeaponL.GetComponentInChildren<HitBox>().enabled = false;
+    }
     public void EnableWeaponTrailR()
     {
         playerWSWeaponR.GetComponentInChildren<TrailRenderer>().emitting = true;
@@ -80,11 +95,6 @@ public class AnimationController : MonoBehaviour
 
     }
 
-    public void SetPlayerCanControl()
-    {
-        GetComponent<ThirdPersonController>().canMove = true;
-        GetComponent<ThirdPersonController>().canAttack = true;
-    }
     public void PlayPlayerSoundByName(string soundName)
     {
         PlayerAudioManager.Instance.PlaySoundByName(soundName);

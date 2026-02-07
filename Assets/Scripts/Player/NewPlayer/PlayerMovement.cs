@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         if(Physics.Raycast(groundCheck.position, Vector3.down, out RaycastHit hit, 0.5f, groundLayerMask))
         {
             float angle = Vector3.Angle(hit.normal, Vector3.up);
-            Debug.Log(angle);
+            //Debug.Log(angle);
             if (angle <= maxSlope)
                 return hit.normal;
         }

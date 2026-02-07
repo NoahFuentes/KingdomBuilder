@@ -5,13 +5,12 @@ public class Weapon_SO : ScriptableObject
 {
     public string weaponName;
     public string weaponDesc;
-    public string dmgType; //melee, ranged, magic
+    public DamageType dmgType;
 
-    public float attackRange; //mainly for ranged weapons
+    public float attackRange; //only for weapons that need it
     public int damage;
     public float staminaCost;
     public float attackTime;
-    public float knockBackDist;
 
     public string[] resources;
     public int[] costs;
@@ -20,5 +19,4 @@ public class Weapon_SO : ScriptableObject
     public AnimatorOverrideController animController;
     public GameObject modelRight;
     public GameObject modelLeft;
-    public Vector3 attackDimensions;
 }

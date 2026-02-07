@@ -80,10 +80,31 @@ public class WeaponManager : MonoBehaviour
             Destroy(leftItemSpawn.GetChild(0).gameObject);
         }
         //add new weapon model
+        AnimationController animController = AnimationController.Instance;
         if (null != weapon.modelRight)
-            AnimationController.Instance.playerWSWeaponR = Instantiate(weapon.modelRight, rightItemSpawn);
+            animController.playerWSWeaponR = Instantiate(weapon.modelRight, rightItemSpawn);
         if (null != weapon.modelLeft)
-            AnimationController.Instance.playerWSWeaponL = Instantiate(weapon.modelLeft, leftItemSpawn);
+            animController.playerWSWeaponL = Instantiate(weapon.modelLeft, leftItemSpawn);
+
+        HitBox weaponR = null;
+        HitBox weaponL = null;
+
+
+        if(animController.playerWSWeaponR)
+            weaponR = animController.playerWSWeaponR.GetComponentInChildren<HitBox>();
+        if(animController.playerWSWeaponL)
+            weaponL = animController.playerWSWeaponL.GetComponentInChildren<HitBox>();
+        if (weaponR)
+        {
+            weaponR.damageType = weapon.dmgType;
+            weaponR.damage = weapon.damage;
+        }
+        if (weaponL)
+        {
+            weaponL.damageType = weapon.dmgType;
+            weaponL.damage = weapon.damage;
+        }
+
 
         //TODO: update UI sprite
     }
