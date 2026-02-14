@@ -50,17 +50,29 @@ public class AnimationController : MonoBehaviour
 
     public void EnableWeaponHitBox()
     {
-        if(playerWSWeaponR)
+        if (playerWSWeaponR)
+        {
+            playerWSWeaponR.GetComponentInChildren<HitBox>().enabled = true;
             playerWSWeaponR.GetComponentInChildren<CapsuleCollider>().enabled = true;
-        if(playerWSWeaponL)
+        }
+        if (playerWSWeaponL)
+        {
+            playerWSWeaponL.GetComponentInChildren<HitBox>().enabled = true;
             playerWSWeaponL.GetComponentInChildren<CapsuleCollider>().enabled = true;
+        }
     }
     public void DisableWeaponHitBox()
     {
-        if(playerWSWeaponR)
+        if (playerWSWeaponR)
+        {
+            playerWSWeaponR.GetComponentInChildren<HitBox>().enabled = false;
             playerWSWeaponR.GetComponentInChildren<CapsuleCollider>().enabled = false;
-        if(playerWSWeaponL)
+        }
+        if (playerWSWeaponL)
+        {
+            playerWSWeaponL.GetComponentInChildren<HitBox>().enabled = false;
             playerWSWeaponL.GetComponentInChildren<CapsuleCollider>().enabled = false;
+        }
     }
     public void EnableWeaponTrailR()
     {
