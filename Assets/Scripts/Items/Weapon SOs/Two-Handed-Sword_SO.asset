@@ -16,9 +16,10 @@ MonoBehaviour:
   weaponDesc: A large blade. Good for groups of enemies.
   dmgType: 1
   attackRange: 0
-  damage: 6
+  damage: 40
   staminaCost: 20
-  attackTime: 2
+  comboResetTime: 0
+  comboLength: 0
   resources:
   - food
   - lumber

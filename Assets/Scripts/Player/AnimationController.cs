@@ -1,12 +1,10 @@
 using UnityEngine;
-using StarterAssets;
 
 public class AnimationController : MonoBehaviour
 {
     public static AnimationController Instance;
     private Animator animator;
 
-    [SerializeField] private Transform attackTrans;
     [SerializeField] private LayerMask attackMask;
     public GameObject playerWSWeaponR;
     public GameObject playerWSWeaponL;
@@ -53,16 +51,16 @@ public class AnimationController : MonoBehaviour
     public void EnableWeaponHitBox()
     {
         if(playerWSWeaponR)
-            playerWSWeaponR.GetComponentInChildren<HitBox>().enabled = true;
+            playerWSWeaponR.GetComponentInChildren<CapsuleCollider>().enabled = true;
         if(playerWSWeaponL)
-            playerWSWeaponL.GetComponentInChildren<HitBox>().enabled = true;
+            playerWSWeaponL.GetComponentInChildren<CapsuleCollider>().enabled = true;
     }
     public void DisableWeaponHitBox()
     {
         if(playerWSWeaponR)
-            playerWSWeaponR.GetComponentInChildren<HitBox>().enabled = false;
+            playerWSWeaponR.GetComponentInChildren<CapsuleCollider>().enabled = false;
         if(playerWSWeaponL)
-            playerWSWeaponL.GetComponentInChildren<HitBox>().enabled = false;
+            playerWSWeaponL.GetComponentInChildren<CapsuleCollider>().enabled = false;
     }
     public void EnableWeaponTrailR()
     {
