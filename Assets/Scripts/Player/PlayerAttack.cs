@@ -7,26 +7,35 @@ public class PlayerAttack : MonoBehaviour
     private PlayerInteractions pi;
     private PlayerMovement movement;
     private Animator animator;
-    //[SerializeField] private LayerMask attackLayer;
 
-    private bool isAttacking;
-
-    private float lastAttackedTime;
+    private float lastAttackTime;
 
 
     public void Attack()
     {
+        if (Time.time - lastAttackTime > PlayerStats.Instance.m_CurrentWeapon.comboResetTime)
+            animator.SetInteger("AttackIndex", 0);
+
+        if (animator.GetInteger("AttackIndex") >= PlayerStats.Instance.m_CurrentWeapon.comboLength)
+            return;
+
+         // Set comboIndex to the next comboIndex in evey attack anim
+        animator.SetTrigger("Attack");
+
+        lastAttackTime = Time.time;
+
+
+
+        /*
+
         //BAIL CASES
         if (isAttacking) return;
-        //check for attack spamming
-        if (Time.time - lastAttackedTime < PlayerStats.Instance.m_CurrentWeapon.attackTime) return;
         //check stamina and remove it
         if (PlayerStats.Instance.m_CurrentStamina < PlayerStats.Instance.m_CurrentWeapon.staminaCost)
         {
             NotificationManager.Instance.Notify("Insufficient stamina", Color.red);
             return;
         }
-        lastAttackedTime = Time.time;
         pi.ReduceStamina(PlayerStats.Instance.m_CurrentWeapon.staminaCost);
         //disable movement and stop animations
         movement.canMove = false;
@@ -47,6 +56,12 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log("Knockback: " + ps.m_CurrentWeapon.knockBackDist);
         */
     }
+
+    public void ANIMEVENT_SetAttackIndex(int index)
+    {
+        animator.SetInteger("AttackIndex", index);
+    }
+
     public void FaceCameraDir()
     {
         Vector3 camForward = Camera.main.transform.forward;
@@ -69,8 +84,7 @@ public class PlayerAttack : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
         
-        isAttacking = false;
-        lastAttackedTime = Time.time;
+        lastAttackTime = Time.time;
     }
     private void Update()
     {

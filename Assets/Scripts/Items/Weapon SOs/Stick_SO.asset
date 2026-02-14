@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Stick
   weaponDesc: A widdled stick used for the lowest levels of combat.
-  dmgType: melee
+  dmgType: 0
   attackRange: 0
   damage: 2
   staminaCost: 10
-  attackTime: 1
-  knockBackDist: 80
+  comboResetTime: 1
+  comboLength: 3
   resources:
   - food
   - timber
@@ -28,4 +28,3 @@ MonoBehaviour:
   animController: {fileID: 22100000, guid: e4578509f8f57bf4e8a1f98bc7c06282, type: 2}
   modelRight: {fileID: 1125422861488534708, guid: 147a73392412ab2449e0ea933dc0c8bb, type: 3}
   modelLeft: {fileID: 0}
-  attackDimensions: {x: 2, y: 2, z: 2}

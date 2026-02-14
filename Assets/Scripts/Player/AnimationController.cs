@@ -22,13 +22,12 @@ public class AnimationController : MonoBehaviour
 
     public void StartAttackAnimEvent()
     {
-        animator.SetBool("isAttacking", true);
+        
     }
     public void FinishAttackAnimEvent()
     {
         PlayerMovement.Instance.canMove = true;
         PlayerMovement.Instance.canJump = true;
-        animator.SetBool("isAttacking", false);
     }
     /* REMOVE WHEN REAL DMG SYSTEM IS IN PLACE
     public void CheckHitBoxAnimEvent()

@@ -93,8 +93,12 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpRequested = false;
             velocity.y = jumpHeight;
+            animator.SetTrigger("Jump");
         }
 
+
+        //Play inAir animation
+        animator.SetBool("isGrounded", isGrounded);
 
         if (isGrounded)
         {
@@ -108,8 +112,9 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            // AIR: preserve existing X/Z momentum
-            // Optional: small air control
+            
+
+            //small air control
             Vector3 horizontal = new Vector3(velocity.x, 0f, velocity.z);
             horizontal *= Mathf.Clamp01(1f - airDrag * Time.fixedDeltaTime);
 
@@ -144,8 +149,5 @@ public class PlayerMovement : MonoBehaviour
     }
     
 
-
-
-    //ADD JUMPING
 
 }
