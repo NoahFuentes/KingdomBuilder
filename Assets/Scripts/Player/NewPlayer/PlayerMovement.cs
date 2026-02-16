@@ -26,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float airDrag;
 
     [Header("Movement")]
-     public float currentMovementSpeed;
+    [SerializeField] private float currentMovementSpeed;
+    [SerializeField] private float movementAnimSmoothing;
     [SerializeField] private float turnSpeed;
     private float currentRotationalVel;
     [SerializeField] private float maxSlope;
@@ -97,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        //Play inAir animation
+        //Play animation based on grounded state
         animator.SetBool("isGrounded", isGrounded);
 
         if (isGrounded)
@@ -108,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
             velocity.x = wishMove.x * currentMovementSpeed;
             velocity.z = wishMove.z * currentMovementSpeed;
-            animator.SetFloat("Speed", (new Vector3(velocity.x, 0f, velocity.z).magnitude) / (stats.m_BaseMovementSpeed * stats.m_SprintSpeedMult));
+            animator.SetFloat("Speed", (new Vector3(velocity.x, 0f, velocity.z).magnitude) / (stats.m_BaseMovementSpeed * stats.m_SprintSpeedMult), movementAnimSmoothing, Time.fixedDeltaTime);
         }
         else
         {
