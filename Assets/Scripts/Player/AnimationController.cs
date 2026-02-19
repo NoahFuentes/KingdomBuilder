@@ -20,33 +20,15 @@ public class AnimationController : MonoBehaviour
 
     public void StartAttackAnimEvent()
     {
-        
+        PlayerMovement.Instance.canMove = false;
+        PlayerMovement.Instance.canJump = false;
+        GetComponent<PlayerAttack>().ANIMEVENT_FaceCameraDir();
     }
     public void FinishAttackAnimEvent()
     {
         PlayerMovement.Instance.canMove = true;
         PlayerMovement.Instance.canJump = true;
     }
-    /* REMOVE WHEN REAL DMG SYSTEM IS IN PLACE
-    public void CheckHitBoxAnimEvent()
-    {
-        Weapon_SO weapon = PlayerStats.Instance.m_CurrentWeapon;
-        Collider[] targetsHit = Physics.OverlapBox(attackTrans.position, weapon.attackDimensions / 2, transform.rotation, attackMask);
-        if(targetsHit.Length > 0)
-            Draw.Instance.DrawBox(attackTrans.position, transform.rotation, weapon.attackDimensions, Color.red);
-        else
-            Draw.Instance.DrawBox(attackTrans.position, transform.rotation, weapon.attackDimensions, Color.blue);
-
-        foreach(Collider target in targetsHit)
-        {
-            MobBase mob = target.GetComponent<MobBase>();
-            if(null == mob) continue;
-
-            mob.hit.damageToTake = weapon.damage;
-            mob.stateMachine.ChangeState(mob.hit);
-        }
-    }
-    */
 
     public void EnableWeaponHitBox()
     {

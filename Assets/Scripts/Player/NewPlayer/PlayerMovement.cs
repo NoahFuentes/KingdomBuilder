@@ -64,7 +64,11 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update() //get inputs
     {
-        if (!canMove) return;
+        if (!canMove)
+        {
+            currentMovementSpeed = 0f;
+            return;
+        }
 
 
         //Get correct movespeed
