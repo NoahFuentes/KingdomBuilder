@@ -10,8 +10,6 @@ public class Weapon_SO : ScriptableObject
     public float attackRange; //only for weapons that need it
     public int damage;
     public float staminaCost;
-    public float comboResetTime;
-    public int comboLength;
 
     public string[] resources;
     public int[] costs;

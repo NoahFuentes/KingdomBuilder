@@ -12,7 +12,6 @@ public class MobSpawnerBase : MonoBehaviour
     [SerializeField] private List<GameObject> mobs;
 
     [SerializeField] private float setActiveDistance; //Distance the player must be to enable/disable all mobs
-    private bool playerIsInRange;
 
     [SerializeField] private float respawnTime;  //Time delta required since lastKillTime for mobs to respawn
     [HideInInspector] public float lastKillTime; //Time.time when last mob was killed
@@ -22,7 +21,7 @@ public class MobSpawnerBase : MonoBehaviour
     [HideInInspector] public UnityAction<int> respawnedMobs; //other classes register functions with this
     [HideInInspector] public UnityAction mobDied;       //other classes register functions with this
 
-    private void SpawnMobs() //spawns a mobToSpawn at each mobSpawnPosition
+    private void SpawnMobs() //spawns a mobToSpawn at each mobSpawnPosition, only called in Start()
     {
         GameObject mob;
         for (int i = 0; i < mobSpawnTransforms.Count; i++)
@@ -35,7 +34,7 @@ public class MobSpawnerBase : MonoBehaviour
         respawnedMobs?.Invoke(mobSpawnTransforms.Count);
     }
 
-    private void ResetAllMobs()
+    private void ResetAllMobs() //Called to "respawn all mobs"
     {
         for(int i = 0; i < mobs.Count; i++)
         {
@@ -73,18 +72,6 @@ public class MobSpawnerBase : MonoBehaviour
 
     //UNITY FUNCTIONS
 
-    /*
-    private void Start()
-    {
-        foreach(Transform t in GetComponentInChildren<Transform>())
-        {
-            mobSpawnTransforms.Add(t);
-        }
-        GetComponent<SphereCollider>().radius = setActiveDistance;
-
-        SpawnMobs();
-    }
-    */
     private void Start()
     {
         foreach (Transform t in GetComponentInChildren<Transform>())
@@ -98,34 +85,28 @@ public class MobSpawnerBase : MonoBehaviour
         if (Vector3.Distance(PlayerStats.Instance.transform.position, transform.position) <= setActiveDistance)
         {
             SetMobsActiveState(true);
-            playerIsInRange = true;
         }
         else
         {
             SetMobsActiveState(false);
-            playerIsInRange = false;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        playerIsInRange = true;
         SetMobsActiveState(true);
     }
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        playerIsInRange = false;
-        SetMobsActiveState(false);
-    }
 
-    private void FixedUpdate()
-    {
-        if (!playerIsInRange && needRespawning && Time.time - lastKillTime >= respawnTime)
+        if (needRespawning && Time.time - lastKillTime >= respawnTime)
         {
             needRespawning = false;
             ResetAllMobs();
         }
+
+        SetMobsActiveState(false);
     }
 }

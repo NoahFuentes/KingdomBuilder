@@ -11490,7 +11490,7 @@ PrefabInstance:
     - target: {fileID: 3532121284775976512, guid: 33d843b9d2aa47649a40199a1c9136c7, type: 3}
       propertyPath: mobToSpawn
       value: 
-      objectReference: {fileID: 5214062316515028892, guid: 4cf99a37de770114c9db85c5b09ea808, type: 3}
+      objectReference: {fileID: 3374245458340424278, guid: e5497c4916987ac44a65ab440d3fae88, type: 3}
     - target: {fileID: 3532121284775976512, guid: 33d843b9d2aa47649a40199a1c9136c7, type: 3}
       propertyPath: respawnTime
       value: 300

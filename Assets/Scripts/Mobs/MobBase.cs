@@ -22,6 +22,7 @@ public class MobBase : MonoBehaviour, IHurtBox
 
     public void TakeHit(int damage, DamageType damageType)
     {
+        if (stateMachine.CurrentState == die) return;
         stats.currentHealth -= CalcDamageToTake(damage, damageType);
         if (stats.currentHealth <= 0)
             stateMachine.ChangeState(die);

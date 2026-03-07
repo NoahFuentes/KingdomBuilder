@@ -8,21 +8,15 @@ public class PlayerAttack : MonoBehaviour
     private PlayerMovement movement;
     private Animator animator;
 
-    private float lastAttackTime;
 
 
     public void Attack()
     {
-        if (Time.time - lastAttackTime > PlayerStats.Instance.m_CurrentWeapon.comboResetTime)
-            animator.SetInteger("AttackIndex", 0);
 
-        if (animator.GetInteger("AttackIndex") >= PlayerStats.Instance.m_CurrentWeapon.comboLength)
-            animator.SetInteger("AttackIndex", 0);
 
         // Set comboIndex to the next comboIndex in evey attack anim
         animator.SetTrigger("Attack");
 
-        lastAttackTime = Time.time;
 
 
 
@@ -57,11 +51,6 @@ public class PlayerAttack : MonoBehaviour
         */
     }
 
-    public void ANIMEVENT_SetAttackIndex(int index)
-    {
-        animator.SetInteger("AttackIndex", index);
-    }
-
     public void ANIMEVENT_FaceCameraDir()
     {
         Vector3 camForward = Camera.main.transform.forward;
@@ -84,7 +73,7 @@ public class PlayerAttack : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
         
-        lastAttackTime = Time.time;
+        //lastAttackTime = Time.time;
     }
     private void Update()
     {

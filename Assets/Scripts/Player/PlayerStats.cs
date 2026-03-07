@@ -33,9 +33,6 @@ public class PlayerStats : MonoBehaviour
     public Axe m_Axe;
 
     public Armor m_Armor;
-    public Accessory m_Accessory1;
-    public Accessory m_Accessory2;
-    public Accessory m_Accessory3;
 
     private void Awake()
     {
