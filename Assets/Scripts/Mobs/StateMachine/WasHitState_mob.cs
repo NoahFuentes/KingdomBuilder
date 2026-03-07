@@ -18,7 +18,7 @@ public class WasHitState_mob : IState
         mob.agent.isStopped = true;
         mob.agent.updatePosition = false;
         //play hit animation
-        mob.animator.Play("getHit");
+        mob.animator.Play("getHit", 0, 0f);
         hitStartTime = Time.time;
     }
 

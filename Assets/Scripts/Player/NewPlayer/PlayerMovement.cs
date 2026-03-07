@@ -117,8 +117,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            
 
+            animator.ResetTrigger("Jump");
             //small air control
             Vector3 horizontal = new Vector3(velocity.x, 0f, velocity.z);
             horizontal *= Mathf.Clamp01(1f - airDrag * Time.fixedDeltaTime);

@@ -716,7 +716,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.3, y: 105.55, z: -70}
-  m_LocalScale: {x: 1.4243, y: 1.4243, z: 1.4243}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7069666646333888257}
@@ -803,9 +803,6 @@ MonoBehaviour:
   m_Pickaxe: {fileID: 0}
   m_Axe: {fileID: 0}
   m_Armor: {fileID: 0}
-  m_Accessory1: {fileID: 0}
-  m_Accessory2: {fileID: 0}
-  m_Accessory3: {fileID: 0}
 --- !u!114 &5479299432467996749
 MonoBehaviour:
   m_ObjectHideFlags: 0
