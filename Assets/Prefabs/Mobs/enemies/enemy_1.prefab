@@ -797,7 +797,7 @@ MonoBehaviour:
   deagroRange: 40
   damageType: 0
   damage: 20
-  attackRate: 1.5
+  attackRate: 2
   attackDistance: 2
   isAttacking: 0
   bluntResistance: 0
