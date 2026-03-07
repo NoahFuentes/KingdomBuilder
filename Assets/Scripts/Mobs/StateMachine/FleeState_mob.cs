@@ -18,7 +18,7 @@ public class FleeState_mob : IState
         mob.agent.isStopped = false;
         mob.agent.updatePosition = true;
         //play run animation
-        //mob.animator.Play("run");
+        mob.animator.Play("run");
         //set destination to away from target
         Vector3 fleeDir = (mob.transform.position - target.position).normalized;
         fleeDir.y = 0;

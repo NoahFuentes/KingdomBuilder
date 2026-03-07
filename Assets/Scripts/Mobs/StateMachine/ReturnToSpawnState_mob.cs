@@ -15,7 +15,7 @@ public class ReturnToSpawnState_mob : IState
         //set navmesh target to spawn pos
         mob.agent.SetDestination(mob.stats.spawnPoint);
         //play running animation
-       // mob.animator.Play("run");
+        mob.animator.Play("run");
     }
 
     public void TickState()

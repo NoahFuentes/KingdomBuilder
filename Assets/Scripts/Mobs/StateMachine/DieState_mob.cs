@@ -16,7 +16,7 @@ public class DieState_mob : IState
         mob.agent.isStopped = true;
         mob.agent.updatePosition = false;
         //play death animation
-        //mob.animator.Play("death");
+        mob.animator.Play("die");
         //report to spawner
         mob.stats.spawner.ReportMobDeath();
     }

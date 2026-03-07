@@ -22,6 +22,7 @@ public class WanderState_mob : IState
         //set agent to walking speed
         mob.agent.speed = mob.stats.baseMovementSpeed;
         Debug.Log("in wander state");
+        mob.animator.Play("walk");
     }
 
     public void TickState()

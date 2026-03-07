@@ -44,7 +44,7 @@ public class AttackState_mob : IState
     private void Attack()
     {
         lastAttackTime = Time.time;
-        //mob.animator.Play("attack"); //attack anim needs events to handle attack logic. trigger hitbox toggling
+        mob.animator.Play("attack"); //attack anim needs events to handle attack logic. trigger hitbox toggling
         Debug.Log("attacked");
     }
 

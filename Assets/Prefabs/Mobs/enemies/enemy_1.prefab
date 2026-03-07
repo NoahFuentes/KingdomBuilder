@@ -786,7 +786,7 @@ MonoBehaviour:
   acceleration: 50
   avoidanceDist: 1
   avoidanceHeight: 2
-  alertnessTrigger: {fileID: 0}
+  alertnessTrigger: {fileID: 1493807054860087159}
   alertRange: 25
   alertTime: 1
   isStationary: 0
